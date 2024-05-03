@@ -1,14 +1,12 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Calendar {
-    private LocalDate currentDate;
+    public static LocalDate currentDate = LocalDate.now();
+    public static LocalDateTime time = LocalDateTime.now();
 
-    public Calendar() {
-        this.currentDate = LocalDate.now();
-    }
-
-    public void advanceDay() {
-        this.currentDate = this.currentDate.plusDays(1);
+    public static void advanceDay() {
+        currentDate = currentDate.plusDays(1);
     }
 
     // Method to go back to the previous day
@@ -18,6 +16,6 @@ public class Calendar {
 
     // Method to get the current date
     public LocalDate getCurrentDate() {
-        return this.currentDate;
+        return currentDate;
     }
 }

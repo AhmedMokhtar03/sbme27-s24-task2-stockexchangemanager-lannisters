@@ -5,7 +5,7 @@ public class Admin {
     //private Company objectName = new Company();
     private Calendar calendar = new Calendar();
 
-    ArrayList<Company> companyList = new ArrayList<Company>();
+    public static ArrayList<Company> companyList = new ArrayList<Company>();
 
     private int adminID;
     private int sessionID;
@@ -71,7 +71,9 @@ public class Admin {
         //store closing price
         calendar.advanceDay();
     }
-    public void approval(){}
+    public void approval(){
+
+    }
 
 //    public void createCompany(){
 //        companyList.add(new Company(11,"apple","appl",100,100,100));

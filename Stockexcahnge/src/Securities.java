@@ -55,11 +55,11 @@ abstract class Securities {
         return companyName;
     }
 
-    double Calculate_dividen() {
+    double Calculate_dividend() {
         return 0;
     }
 
-    double Calculate_dividen_Yield() {
+    double Calculate_dividend_Yield() {
         return 0;
     }
 }
