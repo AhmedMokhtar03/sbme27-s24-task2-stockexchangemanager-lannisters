@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -39,7 +41,7 @@
                </font>
             </Label>
             <TextField fx:id="username" layoutX="-139.0" layoutY="157.0" prefHeight="28.0" prefWidth="131.0" promptText="username" />
-            <Button fx:id="button" layoutX="-189.0" layoutY="273.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: #440145;" text="login" textFill="WHITE">
+            <Button fx:id="button" layoutX="-150.0" layoutY="273.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: #440145;" text="login" textFill="WHITE">
                <effect>
                   <DropShadow>
                      <color>
@@ -52,13 +54,29 @@
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font></Label>
-            <ChoiceBox fx:id="choicebox" layoutX="-139.0" layoutY="111.0" prefHeight="25.0" prefWidth="133.0" />
+            <ChoiceBox fx:id="choicebox" layoutX="-139.0" layoutY="111.0" prefHeight="25.0" prefWidth="133.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Admin" />
+                     <String fx:value="User" />
+                     <String fx:value="Premium User" />
+                  </FXCollections>
+               </items>
+            </ChoiceBox>
             <Label layoutX="-299.0" layoutY="106.0" text="Select status" textFill="WHITE">
                <font>
                   <Font name="Bookman Old Style" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="myLabel" layoutX="-334.0" layoutY="112.0" text="Label" />
+            <Button fx:id="button1" layoutX="-320.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: #440145;" text="Signup" textFill="WHITE">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.780701756477356" green="0.47709551453590393" blue="0.6896198987960815" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
          </children>
       </AnchorPane>
    </right>
