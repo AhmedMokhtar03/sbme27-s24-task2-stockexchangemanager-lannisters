@@ -1,3 +1,4 @@
+package Stockexcahnge.src;
 
 public class SecurityFactory {
     private static SecurityFactory instance;
