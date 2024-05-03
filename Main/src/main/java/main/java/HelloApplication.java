@@ -22,6 +22,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stg =  stage;
+        //This is Hilarious 
 
         stage.setResizable(false);
 
