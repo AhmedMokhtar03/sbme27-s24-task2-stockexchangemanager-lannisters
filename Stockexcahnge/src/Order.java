@@ -1,5 +1,3 @@
-package Stockexcahnge.src;
-
 public class Order {
     int orderID;
     int traderID;

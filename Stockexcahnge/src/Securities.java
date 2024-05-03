@@ -1,5 +1,3 @@
-package Stockexcahnge.src;
-
 abstract class Securities {
     int availablestocks;
     String lable;

@@ -1,6 +1,6 @@
-import Stockexcahnge.src.Observer;
-import Stockexcahnge.src.Order;
-import Stockexcahnge.src.Stock;
+//import Stockexcahnge.src.Observer;
+//import Stockexcahnge.src.Order;
+//import Stockexcahnge.src.Stock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ public abstract class User {
     private List<Order> orders;
     private List<Double> oldPrices;
     private boolean isPremium;
+    public User(){}
     public User(int ID, String username, String password, double cashBalance,boolean isPremium) {
         this.ID = ID;
         this.username = username;
@@ -85,7 +86,7 @@ public abstract class User {
         this.isPremium = isPremium;
 
 
-        Approve_Users();
+        //Approve_Users();
     }
 
 
