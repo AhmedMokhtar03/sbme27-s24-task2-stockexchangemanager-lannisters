@@ -13,7 +13,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.LogIn">
    <center>
       <ImageView fitHeight="406.0" fitWidth="645.0" pickOnBounds="true" BorderPane.alignment="CENTER">
@@ -49,7 +48,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Label fx:id="wronglogin" layoutX="-157.0" layoutY="76.0" prefHeight="21.0" prefWidth="46.0" textFill="#ff21bc">
+            <Label fx:id="wronglogin" layoutX="-302.0" layoutY="56.0" prefHeight="41.0" prefWidth="293.0" textFill="#ff21bc">
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font></Label>
@@ -59,6 +58,7 @@
                   <Font name="Bookman Old Style" size="24.0" />
                </font>
             </Label>
+            <Label fx:id="myLabel" layoutX="-334.0" layoutY="112.0" text="Label" />
          </children>
       </AnchorPane>
    </right>

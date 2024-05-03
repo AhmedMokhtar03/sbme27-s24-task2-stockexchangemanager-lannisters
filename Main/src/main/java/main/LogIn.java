@@ -13,9 +13,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static main.java.HelloApplication.changeScene;
+
 public class LogIn implements Initializable {
 
 
+@FXML
 private Label myLabel;
     @FXML
     private Button button;
@@ -27,13 +30,13 @@ private Label myLabel;
     private PasswordField password;
 
     @FXML
-    private ChoiceBox<String> choicebox;
+    public ChoiceBox<String> choicebox;
     private  String[] SelectStatus = {"Admin","User","PremiumUser"};
 
 
     public void initialize(URL arg0, ResourceBundle arg1) {
 
-        choicebox.getItems().addAll(SelectStatus);
+        boolean b = choicebox.getItems().addAll(SelectStatus);
         choicebox.setOnAction(this::getSelectStatus);
 
     }
@@ -55,7 +58,8 @@ private void checkLogin() throws IOException{
     if(username.getText().equals("java")&&
     password.getText().equals("123")){
         wronglogin.setText("Success!");
-    m.changeScene();}
+
+    changeScene(HelloApplication.stg);}
     else if (username.getText().isEmpty()&&password.getText().isEmpty()) {
         wronglogin.setText("Please enter your data");
     }

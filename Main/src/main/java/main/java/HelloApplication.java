@@ -31,13 +31,13 @@ public class HelloApplication extends Application {
         stage.setScene(new Scene(root,600,400));
         stage.show();
     }
-    public void changeScene() throws IOException {
+    public static void changeScene( Stage stg) throws IOException {
 
 
-        Parent pane =FXMLLoader.load(getClass().getResource("/org/example/main/afterLogin.fxml"));
+        Parent pane =FXMLLoader.load(HelloApplication.class.getResource("/org/example/main/afterLogin.fxml"));
 
 
-        stg.getScene().setRoot(pane);
+        HelloApplication.stg.getScene().setRoot(pane);
     }
 
     public static void main(String[] args) {
