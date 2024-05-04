@@ -86,7 +86,7 @@ public abstract class User {
         this.isPremium = isPremium;
 
 
-        //Approve_Users();
+        //Approve_Users(); supposed to be uncommented after finishing this method in the admin class
     }
 
 

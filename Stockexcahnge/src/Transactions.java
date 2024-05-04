@@ -1,7 +1,3 @@
-
-
-
-
 public class Transactions {
     private double depositValue;
     private double withdrawValue;
@@ -50,7 +46,7 @@ public class Transactions {
             throw new IllegalArgumentException("Withdrawal amount must be positive.");
         }
         if (amount > withdrawValue) {
-                throw new InsufficientFundsException("Insufficient funds for withdrawal.");
+                throw new RuntimeException("Withdrawal amount exceeds withdraw limit.");
         }
         withdrawValue -= amount;
         User currentUser = getCurrentUser();
