@@ -2,9 +2,6 @@ abstract class Securities {
     int availablestocks;
     String lable;
     String companyName;
-    double Maximumprice;
-    double Minimumprice;
-    int shareholders;
     double totaldividens;
 
     public void setTotaldividens(double totaldividens) {
@@ -14,31 +11,6 @@ abstract class Securities {
     public double getTotaldividens() {
         return totaldividens;
     }
-
-    public void setShareholders(int shareholders) {
-        this.shareholders = shareholders;
-    }
-
-    public int getShareholders() {
-        return shareholders;
-    }
-
-    public void setMaximumprice(double Maximumprice) {
-        this.Maximumprice = Maximumprice;
-    }
-
-    public double getMaximumprice() {
-        return Maximumprice;
-    }
-
-    public void setMinimumprice(double Minimumprice) {
-        this.Minimumprice = Minimumprice;
-    }
-
-    public double getMinimumprice() {
-        return Minimumprice;
-    }
-
     public void setLabel(String label) {
         this.lable = label;
     }
@@ -55,11 +27,7 @@ abstract class Securities {
         return companyName;
     }
 
-    double Calculate_dividend() {
-        return 0;
-    }
+    abstract double Calculate_dividend();
 
-    double Calculate_dividend_Yield() {
-        return 0;
-    }
+    abstract double Calculate_dividend_Yield();
 }

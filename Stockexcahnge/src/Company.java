@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Company {
     private String name;
     private String label;
@@ -5,6 +7,10 @@ public class Company {
     private double stockPrice;
     private double dividends;
     private int numOfAvailableStocks;
+    int shareholders =0;
+    double Maximumprice;
+    double Minimumprice;
+    private List<Map<String, Double>> priceHistory = new ArrayList<Map<String, Double>>();
 
     public Company() {
     }
@@ -16,6 +22,24 @@ public class Company {
         this.stockPrice = stockPrice;
         this.numOfAvailableStocks = numOfAvailableStocks;
         this.dividends = dividends;
+    }
+
+    public void add_price_entry(Date date, double oldPrice, double newPrice) {
+        Map<String, Double> entry = new HashMap<String, Double>();
+        entry.put("date", (double) date.getTime());
+        entry.put("OpeningPrice", newPrice);
+        entry.put("closingPrice", newPrice);
+        entry.put("HighestPrice", getMaximumprice());
+        entry.put("LowestPrice", getMinimumprice());
+        priceHistory.add(entry);
+    }
+
+    public void setShareholders(int shareholders) {
+        this.shareholders = shareholders;
+    }
+
+    public int getShareholders() {
+        return shareholders;
     }
 
     public String getName() {
@@ -66,6 +90,25 @@ public class Company {
         this.numOfAvailableStocks = numOfAvailableStocks;
     }
 
+    public void setMaximumprice(double Maximumprice) {
+        this.Maximumprice = Maximumprice;
+    }
+
+    public double getMaximumprice() {
+        return Maximumprice;
+    }
+
+    public void setMinimumprice(double Minimumprice) {
+        this.Minimumprice = Minimumprice;
+    }
+
+    public double getMinimumprice() {
+        return Minimumprice;
+    }
+    public List<Map<String, Double>> getPriceHistory() //when the user asks for the list of the price history, call this method
+    {
+        return priceHistory;
+    }
 
 
     @Override

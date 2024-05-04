@@ -3,54 +3,70 @@ public class Order {
     String orderType;
     int quantity;
     double price;
+    double offeredPrice;
     String orderStatus;
     Company com;
     int UserID;
+    private int sellingUserId;
 
-    public void place_order(String Label, int quantity, String orderType, int userID) {
+    public void buy(String Label, int quantity, int userID) {
         this.UserID = userID;
         User user = Users.get(userID);
         this.Label = Label;
         this.quantity = quantity;
-        this.orderType = orderType;
         for (Company company : CompanyController.companyList) {
             if (company.getLabel().equals(Label)) {
-                com= company;
+                com = company;
                 price = company.getStockPrice() * quantity;
-                    if(company.getNumOfAvailableStocks() > quantity && user.getCashBalance()> price){
-                        update_order("APPROVED");
-                        company.setNumOfAvailableStocks(company.getNumOfAvailableStocks() - quantity);
-                        user.setCashBalance(user.getCashBalance() - price);
-                    }else
-                        update_order("REJECTED");
-                }
+                if (company.getNumOfAvailableStocks() > quantity && user.getCashBalance() > price) {
+                    Securities newstock = SecurityFactory.createSecurity("stock", Label, quantity, "buy");
+                    user.setCashBalance(user.getCashBalance() - price);
+                } else
+                    throw new SecurityException("Not enough stock to buy this item");
             }
         }
-
-
-    public void cancel_order() {
-        this.orderStatus = "CANCELED";
-        com.setNumOfAvailableStocks(com.getNumOfAvailableStocks() + quantity);
-        User user = Users.get(userID);
-        user.setCashBalance(user.getCashBalance() + price);
-        update_order(orderStatus);
     }
 
-    public void update_order(String state) {
-        String str = state.toUpperCase();
-        switch (str) {
-            case "APPROVED":
-                this.orderStatus = "APPROVED";
-                Securities newstock = SecurityFactory.createSecurity("stock", Label, quantity, orderType);
-                System.out.println("Your order has been approved");
-                break;
-            case "REJECTED":
-                this.orderStatus = "REJECTED";
-                System.out.println("No available stocks");
-                break;
-            case "CANCELLED":
-                Securities returnstock = SecurityFactory.createSecurity("stock", Label, quantity, "new");
-                break;
-        }
-    }
+public void sell(String Label, int quantity, double price, int userID){
+    this.offeredPrice = price;
+    this.sellingUserId = userID;
+    this.quantity = quantity;
+    this.orderStatus= "OFFER_FOR_SALE";
+}
+
+
+public void cancel_order() {
+    com.setNumOfAvailableStocks(com.getNumOfAvailableStocks() + quantity);
+    User user = Users.get(userID);
+    user.setCashBalance(user.getCashBalance() + price);
+}
+
+//public void update_order(String state) {
+//    String str = state.toUpperCase();
+//    switch (str) {
+//        case "APPROVED":
+//            this.orderStatus = "APPROVED";
+//            Securities newstock = SecurityFactory.createSecurity("stock", Label, quantity, orderType);
+//            System.out.println("Your order has been approved");
+//            break;
+//        case "REJECTED":
+//            this.orderStatus = "REJECTED";
+//            System.out.println("No available stocks");
+//            break;
+//        case "OFFER_FOR_SALE":
+//            this.orderStatus = "OFFER_FOR_SALE";
+//            break;
+//    }
+//}
+
+public void buyFromUser(int buyingUserID, User buyingUser, User sellingUser) {
+    com.setStockPrice((com.getStockPrice() + offeredPrice) / 2);
+    sellingUser.removeStock();
+    buyingUser.addStock();
+    double totalPrice = com.getStockPrice() * quantity;
+    buyingUser.setCashBalance(buyingUser.getCashBalance() - totalPrice);
+    sellingUser.setCashBalance(sellingUser.getCashBalance() + totalPrice);
+    Securities newstock = SecurityFactory.createSecurity("stock", Label, quantity, "sell");
+    this.orderStatus = "COMPLETED";
+}
 }

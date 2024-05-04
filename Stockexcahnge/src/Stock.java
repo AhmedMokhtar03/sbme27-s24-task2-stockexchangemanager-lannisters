@@ -3,48 +3,40 @@ import java.util.*;
 public class Stock extends Securities {
     double current_price;
     int no_of_stocks;
-    int available_stocks;
-    private List<Map<String, Double>> priceHistory = new ArrayList<Map<String, Double>>();
+    Company company;
 
     public Stock(String label, int no_of_stocks, String state)//this constructor is to be used if the user wants to buy a stock state=sell||buy
     {
-        switch (state) {
-            case "buy":
-                this.no_of_stocks = no_of_stocks;
-                update_available_stocks(no_of_stocks);
-                break;
-            case "sell":
-                this.no_of_stocks = (-1) * no_of_stocks;
-                update_available_stocks(no_of_stocks);
-                break;
-            case "new":
-                this.available_stocks = no_of_stocks;
-                break;
-            default:
-                throw new RuntimeException("Invalid state");
+        for (Company c : CompanyController.companyList) {
+            if (c.getLabel().equalsIgnoreCase(label)) {
+                this.company = c;
+                this.current_price = c.getStockPrice();
+            }
+        }
+        if (company != null) {
+            switch (state.toUpperCase()) {
+                case "BUY":
+                    update_available_stocks(no_of_stocks, label);
+                    company.setShareholders(company.getShareholders() + 1);
+                    updateStockPrice(no_of_stocks, state);
+                    break;
+                case "SELL":
+                    updateStockPrice(no_of_stocks, state);
+                case "NEW":
+                    company.setNumOfAvailableStocks(no_of_stocks);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid state");
+            }
+        } else {
+            throw new IllegalArgumentException("company does not exist");
         }
 
     }
 
-    public void add_price_entry(Date date, double OpeningPrice, double closingPrice) //when there's a price change (from the admin) call this method and pass the appropriate date
-    {
-        Map<String, Double> entry = new HashMap<String, Double>();
-        entry.put("date", (double) date.getTime());
-        entry.put("OpeningPrice", OpeningPrice);
-        entry.put("closingPrice", closingPrice);
-        entry.put("HighestPrice", getMaximumprice());
-        entry.put("LowestPrice", getMinimumprice());
-        priceHistory.add(entry);
-    }
-
-    public List<Map<String, Double>> getPriceHistory() //when the user asks for the list of the price history, call this method
-    {
-        return priceHistory;
-    }
-
     @Override
     double Calculate_dividend() {
-        return (getTotaldividens() / getShareholders());
+        return (getTotaldividens() / company.getShareholders());
     }
 
     @Override
@@ -52,8 +44,35 @@ public class Stock extends Securities {
         return (Calculate_dividend() / current_price) * 100;
     }
 
-    public void update_available_stocks(int no_of_stocks) //only call this method when you approve the user's request to buy or sell a stock
+    public void update_available_stocks(int no_of_stocks, String label) //only call this method when you approve the user's request to buy or sell a stock
     {
-        availablestocks -= no_of_stocks;
+        company.setNumOfAvailableStocks(company.getNumOfAvailableStocks() - no_of_stocks);
+    }
+
+    public void updateStockPrice(int quantity, String orderType) {
+        double current_price = this.current_price;
+        double newPrice;
+        double randomFactor = generateRandomFactor();
+        if (orderType.equalsIgnoreCase("buy")) {
+            newPrice = current_price * (1 + randomFactor);
+            newPrice = newPrice * quantity + current_price;
+        } else if (orderType.equalsIgnoreCase("sell")) {
+            newPrice = current_price * (1 - randomFactor);
+            newPrice = newPrice * quantity + current_price;
+        } else
+            throw new IllegalArgumentException("Invalid order type");
+        newPrice /= (quantity + 1);
+        company.setStockPrice(newPrice);
+        Date currentDate = new Date();
+        company.setMaximumprice(Math.max(company.getMaximumprice(), newPrice));
+        company.setMinimumprice(Math.min(company.getMinimumprice(), newPrice));
+        company.add_price_entry(currentDate, current_price, newPrice);
+    }
+
+    private double generateRandomFactor() {
+        Random random = new Random();
+        double minFactor = 0.0;
+        double maxFactor = 0.25;
+        return minFactor + random.nextDouble() * (maxFactor - minFactor);
     }
 }
