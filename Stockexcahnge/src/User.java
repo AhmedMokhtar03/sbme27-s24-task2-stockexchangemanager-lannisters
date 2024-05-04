@@ -3,7 +3,9 @@
 //import Stockexcahnge.src.Stock;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class User {
     private int ID;
@@ -13,15 +15,19 @@ public abstract class User {
     private List<Order> orders;
     private List<Double> oldPrices;
     private boolean isPremium;
-    public User(){}
-    public User(int ID, String username, String password, double cashBalance,boolean isPremium) {
+    private Map<Integer,Order> OrderIds = new HashMap<>();
+
+    public User() {
+    }
+
+    public User(int ID, String username, String password, double cashBalance, boolean isPremium) {
         this.ID = ID;
         this.username = username;
         this.password = password;
         this.cashBalance = cashBalance;
         this.orders = new ArrayList<>();
         this.oldPrices = new ArrayList<>();
-        this.isPremium= isPremium;
+        this.isPremium = isPremium;
     }
 
     public int getID() {
@@ -44,11 +50,10 @@ public abstract class User {
         return password;
     }
 
-
-
     private void setPassword(String password) {
         this.password = password;
     }
+
     public double getCashBalance() {
         return cashBalance;
     }
@@ -88,19 +93,33 @@ public abstract class User {
 
         //Approve_Users(); supposed to be uncommented after finishing this method in the admin class
     }
+    public void addOrder(String label, int quantity, String orderType) {
 
-
-    public void addOrder(Order order) {
         try {
+            Order order = new Order();
+            order.place_order(label, quantity, orderType, this.ID);
             orders.add(order);
+            for(Order o : orders){
+                OrderIds.put(o.hashCode(), o);
+            }
+            System.out.println("Order added and your orderID is: " + order.hashCode());
         } catch (Exception e) {
             System.err.println("Failed to add order: " + e.getMessage());
         }
+
     }
 
-    public void deleteOrder(Order order) {
+    public void deleteOrder(int OrderID) {
         try {
-            orders.remove(order);
+            if (OrderIds.containsKey(OrderID)) {
+                Order order = orders.get(OrderID);
+                order.cancel_order();
+                orders.remove(order);
+                OrderIds.remove(OrderID);
+                System.out.println("Order with ID " + OrderID + " has been canceled and removed.");
+            }else {
+                throw new IllegalArgumentException("OrderID is not in order list");
+            }
         } catch (Exception e) {
             System.err.println("Failed to delete order: " + e.getMessage());
         }
@@ -118,6 +137,7 @@ public abstract class User {
     public abstract void Subscribe(Observer observer);
 
     public abstract void unSubscribe(Observer observer);
+
     public abstract void update(Stock stock, double newPrice);
 
 }
