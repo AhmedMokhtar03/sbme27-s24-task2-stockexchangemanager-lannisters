@@ -18,14 +18,9 @@ public class Order {
             if (company.getLabel().equals(Label)) {
                 com = company;
                 price = company.getStockPrice() * quantity;
-                if (company.getNumOfAvailableStocks() > quantity && user.getCashBalance() > price) {
-                    Securities newstock = SecurityFactory.createSecurity("stock", Label, quantity, "buy");
-                    user.setCashBalance(user.getCashBalance() - price);
-                } else
-                    throw new SecurityException("Not enough stock to buy this item");
-            }
+                orderExecution(company, price, quantity, user, Label);
         }
-    }
+    }}
 
 public void sell(String Label, int quantity, double price, int userID){
     this.offeredPrice = price;
@@ -68,5 +63,14 @@ public void buyFromUser(int buyingUserID, User buyingUser, User sellingUser) {
     sellingUser.setCashBalance(sellingUser.getCashBalance() + totalPrice);
     Securities newstock = SecurityFactory.createSecurity("stock", Label, quantity, "sell");
     this.orderStatus = "COMPLETED";
+}
+public void orderExecution(Company company, double price, int quantity, User user, String label){
+    if (company.getNumOfAvailableStocks() >= quantity && user.getCashBalance() >= price) {
+        Securities newstock = SecurityFactory.createSecurity("stock", label, quantity, "buy");
+        user.setCashBalance(user.getCashBalance() - price);
+        orderStatus = "EXECUTED";
+    } else {
+        throw new SecurityException("Not enough stock or funds to buy this item");
+    }
 }
 }

@@ -97,7 +97,11 @@ public abstract class User {
 
     public void addOrder(String label, int quantity, String orderType, double price) {
         try {
-            Order order = new Order();
+            Order order;
+            if (orderType.equalsIgnoreCase("LIMIT")) {
+                order = new LimitOrder(label, quantity, this.getID(), price);
+            } else order = new Order();
+
             if (orderType.equalsIgnoreCase("BUY_FROM_USER")) {
                 int sellingUserID = findSellingUser(label, quantity);
                 if (sellingUserID != -1) {
@@ -113,6 +117,7 @@ public abstract class User {
                 order.buy(label, quantity, this.ID);
             } else
                 throw new IllegalArgumentException("Invalid order type");
+            
             orders.add(order);
             for (Order o : orders) {
                 OrderIds.put(o.hashCode(), o);
@@ -157,10 +162,11 @@ public abstract class User {
             System.err.println("Failed to delete order: " + e.getMessage());
         }
     }
+
     public List<Map<String, Double>> getOldPrices(String label) {
         try {
-            for(Company c : CompanyController.companyList){
-                if(c.getLabel().equals(label)){
+            for (Company c : CompanyController.companyList) {
+                if (c.getLabel().equals(label)) {
                     return c.getPriceHistory();
                 }
             }
