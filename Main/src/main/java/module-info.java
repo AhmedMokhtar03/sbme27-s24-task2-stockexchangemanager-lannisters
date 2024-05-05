@@ -11,6 +11,7 @@ module org.example.main {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.desktop;
+    requires annotations;
 
     opens org.example.main to javafx.fxml;
     exports org.example.main;
@@ -18,4 +19,6 @@ module org.example.main {
     opens main.java to javafx.fxml;
     exports main;
     opens main to javafx.fxml;
+
+
 }

@@ -3,17 +3,29 @@ package main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import main.java.HelloApplication;
 
 import java.io.*;
 
+
+
+
+import static main.java.HelloApplication.changeScene;
+
 public class LogIn {
-//HAHA
+    //HAHA
     @FXML
     private Label myLabel;
 
@@ -21,7 +33,7 @@ public class LogIn {
     private Button button;
 
     @FXML
-    private Label wronglogin;
+    public Label wronglogin;
 
     @FXML
     private TextField username;
@@ -46,8 +58,8 @@ public class LogIn {
         myLabel.setText(label);
     }
 
-    @FXML
-    public void userLogIn(ActionEvent event) {
+//    @FXML
+    public void userLogIn(ActionEvent event) throws IOException {
         handleLogin();
     }
 
@@ -58,7 +70,7 @@ public class LogIn {
             String password = this.password.getText();
             String userType = choicebox.getValue();
 
-            if (!isValidInput(username, password)) {
+            if (!isValidInput(username, password, userType)) {
                 wronglogin.setText("Please enter a valid username and password.");
                 return;
             }
@@ -83,32 +95,35 @@ public class LogIn {
             e.printStackTrace();
         }
     }
+@FXML
 
-
-    private void handleLogin() {
+    private void handleLogin() throws IOException {
         String username = this.username.getText();
         String password = this.password.getText();
         String userType = choicebox.getValue();
 
-        if (!isValidInput(username, password)) {
+        if (!isValidInput(username, password, userType)) {
             wronglogin.setText("Please enter a valid username and password.");
             return;
         }
 
         if (isAuthenticated(username, password, userType)) {
             wronglogin.setText("Login successful.");
+            if ("Admin".equals(userType))
+                HelloApplication.changeScene("/org/example/main/AdminView.fxml");
+            else if ("User".equals(userType) || "Premium User".equals(userType))
+                HelloApplication.changeScene("//org/example/main/UserView.fxml");
         } else {
             wronglogin.setText("Invalid username, password, or user type.");
         }
     }
 
-
-    private boolean isValidInput(String username, String password) {
+    private boolean isValidInput(String username, String password, String userType) {
         return !username.isEmpty() && !password.isEmpty();
     }
 
     private boolean isExistingUser(String username) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(LogIn.CSV_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -117,14 +132,14 @@ public class LogIn {
                 }
             }
         } catch (IOException e) {
-            wronglogin.setText("Error reading " + CSV_FILE);
+            wronglogin.setText("Error reading " + LogIn.CSV_FILE);
             e.printStackTrace();
         }
         return false;
     }
 
     private boolean isAuthenticated(String username, String password, String userType) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(LogIn.CSV_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -134,9 +149,10 @@ public class LogIn {
             }
             //iojnjnlm
         } catch (IOException e) {
-            wronglogin.setText("Error reading " + CSV_FILE);
+            wronglogin.setText("Error reading " + LogIn.CSV_FILE);
             e.printStackTrace();
         }
         return false;
     }
+
 }
