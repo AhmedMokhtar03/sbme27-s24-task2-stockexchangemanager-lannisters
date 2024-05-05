@@ -1,30 +1,20 @@
 abstract class Securities {
-    int availablestocks;
-    String lable;
-    String companyName;
-    double totaldividens;
+   protected String label;
+   public double totalDividends;
 
-    public void setTotaldividens(double totaldividens) {
-        this.totaldividens = totaldividens;
+    public void setTotalDividends(double totalDividens) {
+        this.totalDividends = totalDividens;
     }
 
-    public double getTotaldividens() {
-        return totaldividens;
+    public double getTotalDividends() {
+        return totalDividends;
     }
     public void setLabel(String label) {
-        this.lable = label;
+        this.label = label;
     }
 
     public String getLabel() {
-        return lable;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getCompanyName() {
-        return companyName;
+        return label;
     }
 
     abstract double Calculate_dividend();

@@ -1,12 +1,12 @@
 public class Order {
-    String Label;
-    String orderType;
-    int quantity;
-    double price;
-    double offeredPrice;
-    String orderStatus;
-    Company com;
-    int UserID;
+    protected String Label;
+    protected String orderType;
+    protected int quantity;
+    protected double price;
+    protected double offeredPrice;
+    protected String orderStatus;
+    protected Company com;
+    protected int UserID;
     private int sellingUserId;
 
     public void buy(String Label, int quantity, int userID) {
@@ -64,7 +64,7 @@ public void buyFromUser(int buyingUserID, User buyingUser, User sellingUser) {
     Securities newstock = SecurityFactory.createSecurity("stock", Label, quantity, "sell");
     this.orderStatus = "COMPLETED";
 }
-public void orderExecution(Company company, double price, int quantity, User user, String label){
+protected void orderExecution(Company company, double price, int quantity, User user, String label){
     if (company.getNumOfAvailableStocks() >= quantity && user.getCashBalance() >= price) {
         Securities newstock = SecurityFactory.createSecurity("stock", label, quantity, "buy");
         user.setCashBalance(user.getCashBalance() - price);

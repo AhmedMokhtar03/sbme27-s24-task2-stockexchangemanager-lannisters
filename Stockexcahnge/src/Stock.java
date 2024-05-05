@@ -1,16 +1,15 @@
 import java.util.*;
 
 public class Stock extends Securities {
-    double current_price;
-    int no_of_stocks;
-    Company company;
+    private double currentPrice;
+    private Company company;
 
     public Stock(String label, int no_of_stocks, String state)//this constructor is to be used if the user wants to buy a stock state=sell||buy
     {
         for (Company c : CompanyController.companyList) {
             if (c.getLabel().equalsIgnoreCase(label)) {
                 this.company = c;
-                this.current_price = c.getStockPrice();
+                this.currentPrice = c.getStockPrice();
             }
         }
         if (company != null) {
@@ -36,12 +35,12 @@ public class Stock extends Securities {
 
     @Override
     double Calculate_dividend() {
-        return (getTotaldividens() / company.getShareholders());
+        return (getTotalDividends() / company.getShareholders());
     }
 
     @Override
     double Calculate_dividend_Yield() {
-        return (Calculate_dividend() / current_price) * 100;
+        return (Calculate_dividend() / currentPrice) * 100;
     }
 
     public void update_available_stocks(int no_of_stocks, String label) //only call this method when you approve the user's request to buy or sell a stock
@@ -50,7 +49,7 @@ public class Stock extends Securities {
     }
 
     public void updateStockPrice(int quantity, String orderType) {
-        double current_price = this.current_price;
+        double current_price = this.currentPrice;
         double newPrice;
         double randomFactor = generateRandomFactor();
         if (orderType.equalsIgnoreCase("buy")) {

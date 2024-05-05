@@ -1,7 +1,3 @@
-//import Stockexcahnge.src.Observer;
-//import Stockexcahnge.src.Order;
-//import Stockexcahnge.src.Stock;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -117,7 +113,7 @@ public abstract class User {
                 order.buy(label, quantity, this.ID);
             } else
                 throw new IllegalArgumentException("Invalid order type");
-            
+
             orders.add(order);
             for (Order o : orders) {
                 OrderIds.put(o.hashCode(), o);

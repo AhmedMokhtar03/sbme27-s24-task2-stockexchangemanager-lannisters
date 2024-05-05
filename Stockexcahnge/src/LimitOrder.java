@@ -1,5 +1,6 @@
 public class LimitOrder extends Order {
-    private double limitPrice;
+    private final double limitPrice;
+
     public LimitOrder(String label, int quantity , int userID, double limitPrice) {
         this.limitPrice = limitPrice;
         this.Label =label;
@@ -26,4 +27,4 @@ public class LimitOrder extends Order {
         }
     }
     }
-}
+
