@@ -1,3 +1,5 @@
+package backend;
+
 abstract class Securities {
    protected String label;
    public double totalDividends;

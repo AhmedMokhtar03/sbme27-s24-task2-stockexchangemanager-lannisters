@@ -1,3 +1,5 @@
+package backend;
+
 public class SecurityFactory {
     private static SecurityFactory instance;
 

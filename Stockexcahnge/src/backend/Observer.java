@@ -1,3 +1,5 @@
+package backend;
+
 public interface Observer {
     void update(Stock stock, double newPrice);
 
