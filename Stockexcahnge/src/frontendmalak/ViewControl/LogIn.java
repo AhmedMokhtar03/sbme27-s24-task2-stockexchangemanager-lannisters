@@ -36,12 +36,13 @@ public class LogIn {
     @FXML
     private ChoiceBox<String> choicebox;
 
-    private static final String CSV_FILE = "Stockexcahnge/src/StoredData/userdata.csv";
+    private static final String CSV_FILE = "src/StoredData/userdata.csv";
 
     @FXML
     public void initialize() {
         ObservableList<String> userTypes = FXCollections.observableArrayList("Admin", "User", "Premium User");
         choicebox.setItems(userTypes);
+        choicebox.setValue("User");
     }
 
     @FXML
