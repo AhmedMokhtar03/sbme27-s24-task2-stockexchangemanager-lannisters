@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="backend.CompanyController">
+    <Label text="Company Name:"/>
+    <TextField fx:id="companyNameField"/>
+    <Label text="Company Label:"/>
+    <TextField fx:id="companyLabelField"/>
+    <Label text="Company ID:"/>
+    <TextField fx:id="companyIDField"/>
+    <Label text="Stock Price:"/>
+    <TextField fx:id="stockPriceField"/>
+    <Label text="Dividends:"/>
+    <TextField fx:id="dividendsField"/>
+    <Label text="Number of Available Stocks:"/>
+    <TextField fx:id="numOfAvailableStocksField"/>
+    <Button text="Create Company" onAction="#createCompany"/>
+</VBox>
