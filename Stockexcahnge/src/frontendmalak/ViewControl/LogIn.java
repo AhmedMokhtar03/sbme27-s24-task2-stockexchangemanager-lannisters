@@ -1,6 +1,5 @@
 package frontendmalak.ViewControl;
 
-import frontendmalak.HelloApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,8 +12,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 import java.io.*;
 
@@ -39,7 +36,7 @@ public class LogIn {
     @FXML
     private ChoiceBox<String> choicebox;
 
-    private static final String CSV_FILE = "userdata.csv";
+    private static final String CSV_FILE = "Stockexcahnge/src/StoredData/userdata.csv";
 
     @FXML
     public void initialize() {
@@ -107,7 +104,7 @@ public class LogIn {
             try {
                 FXMLLoader loader;
                 if ("Admin".equals(userType)) {
-                    loader = new FXMLLoader(getClass().getResource("/frontendmalak/img/AdminView.fxml"));
+                    loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/AdminHomePage.fxml"));
                 } else {
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
                 }
