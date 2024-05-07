@@ -1,5 +1,6 @@
 package frontendmalak.ViewControl;
 
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,16 +32,16 @@ public class LogIn {
     private TextField username;
 
     @FXML
-    private PasswordField password;
+    private MFXPasswordField password;
 
     @FXML
     private ChoiceBox<String> choicebox;
 
-    private static final String CSV_FILE = "src/StoredData/userdata.csv";
+    private static final String CSV_FILE = "C:\\Users\\lenovo\\Documents\\GitHub\\sbme27-s24-task2-stockexchangemanager-lannisters\\Stockexcahnge\\src\\frontendmalak\\userdata.csv";
 
     @FXML
     public void initialize() {
-        ObservableList<String> userTypes = FXCollections.observableArrayList("Admin", "User", "Premium User");
+        ObservableList<String> userTypes = FXCollections.observableArrayList("Admin", "User");
         choicebox.setItems(userTypes);
         choicebox.setValue("User");
     }
@@ -62,7 +63,10 @@ public class LogIn {
             String username = this.username.getText();
             String password = this.password.getText();
             String userType = choicebox.getValue();
-
+if (userType.equals("Admin")) {
+    wronglogin.setText("Admin cannot sign up");
+    return;
+}
             if (!isValidInput(username, password, userType)) {
                 wronglogin.setText("Please enter a valid username and password.");
                 return;
