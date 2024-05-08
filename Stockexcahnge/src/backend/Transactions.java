@@ -26,13 +26,9 @@
 //    public void setWithdrawValue(double withdrawValue) {
 //        this.withdrawValue = withdrawValue;
 //    }
-//    public static void setCurrentUser(User user) {
-//        currentUser = user;
-//    }
 //
-//    private User getCurrentUser() {
-//        return currentUser;
-//    }
+//
+//
 //
 //    public void setProfitPercentage(double initialValue) {
 //        if (initialValue <= 0) {
@@ -51,9 +47,8 @@
 //                throw new RuntimeException("Withdrawal amount exceeds withdraw limit.");
 //        }
 //        withdrawValue -= amount;
-//        User currentUser = getCurrentUser();
-//        currentUser.setCashBalance(currentUser.getCashBalance() - amount);
-//        System.out.println("Withdrawal successful. New balance: " + currentUser.getCashBalance());
+//
+//
 //    }
 //
 //    public void deposit(double amount) {

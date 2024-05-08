@@ -32,7 +32,7 @@ public class LogIn {
     private TextField username;
 
     @FXML
-    private MFXPasswordField password;
+    private PasswordField password;
 
     @FXML
     private ChoiceBox<String> choicebox;
