@@ -24,17 +24,19 @@ public class Transactions {
     @FXML
     private Label balanceLabel;
     @FXML
-    private Button depositButton;
+    private Label messageLabel;
     @FXML
-    private Button withdrawButton;
+    private MFXButton depositButton;
     @FXML
-    private Button calculateProfitButton;
+    private MFXButton withdrawButton;
     @FXML
+
+
     private Button back1;
 
     private double depositValue;
     private double withdrawValue;
-    private double profitPercentage;
+
     private static User currentUser;
 
     @FXML
@@ -48,7 +50,7 @@ public class Transactions {
 
         depositButton.setOnAction(this::handleDeposit);
         withdrawButton.setOnAction(this::handleWithdrawal);
-        calculateProfitButton.setOnAction(this::handleProfitCalculation);
+
 
     }
     User user=new User(0,"ahmed","ahmed");
@@ -61,35 +63,44 @@ public class Transactions {
         return user;
     }
 
-    public void setProfitPercentage(double initialValue) {
-        if (initialValue <= 0) {
-            throw new IllegalArgumentException("Initial value must be positive for profit calculation.");
-        }
-        double profit = depositValue - withdrawValue - initialValue;
-        profitPercentage = (profit / initialValue) * 100;
-        System.out.println("Profit Percentage: " + profitPercentage + "%");
-    }
+//    public void setProfitPercentage(double initialValue) {
+//        if (initialValue <= 0) {
+//            throw new IllegalArgumentException("Initial value must be positive for profit calculation.");
+//
+//        }
+//
+//        double profit = depositValue - withdrawValue - initialValue;
+//        profitPercentage = (profit / initialValue) * 100;
+//        System.out.println("Profit Percentage: " + profitPercentage + "%");
+//    }
 
     public void withdraw(double amount) {
         if (amount <= 0) {
+            messageLabel.setText("Withdrawal amount must be positive.");
             throw new IllegalArgumentException("Withdrawal amount must be positive.");
         }
         if (amount > currentUser.getCashBalance()){
+//
+            messageLabel.setText("Withdraw Fails!");
             throw new RuntimeException("Withdrawal amount exceeds withdraw limit.");
+
         }
         withdrawValue -= amount;
         currentUser.setCashBalance(currentUser.getCashBalance() - amount);
         System.out.println("Withdrawal successful. New balance: " + currentUser.getCashBalance());
+        messageLabel.setText("Withdrawal successful!");
         updateBalanceLabel();
     }
 
     public void deposit(double amount) {
         if (amount <= 0) {
+            messageLabel.setText("Deposit amount must be positive.");
             throw new IllegalArgumentException("Deposit amount must be positive.");
         }
         depositValue += amount;
         currentUser.setCashBalance(currentUser.getCashBalance() + amount);
-        System.out.println("Deposit successful. New balance: " + currentUser.getCashBalance());
+        messageLabel.setText("Deposit successful!");
+
         updateBalanceLabel();
     }
 
@@ -99,7 +110,8 @@ public class Transactions {
             double amount = Double.parseDouble(depositAmountField.getText());
             deposit(amount);
         } catch (NumberFormatException e) {
-            System.out.println("Invalid input for deposit amount.");
+
+            messageLabel.setText("Invalid input for deposit amount.");
         }
     }
 
@@ -110,17 +122,18 @@ public class Transactions {
             withdraw(amount);
         } catch (NumberFormatException e) {
             System.out.println("Invalid input for withdrawal amount.");
+            messageLabel.setText("Invalid input for withdrawal amount.");
         }
     }
 
     @FXML
-    private void handleProfitCalculation(ActionEvent event) {
-        double initialValue = 0;
-        setProfitPercentage(initialValue);
-    }
+//    private void handleProfitCalculation(ActionEvent event) {
+//        double initialValue = 0;
+//        setProfitPercentage(initialValue);
+//    }
 
     private void updateBalanceLabel() {
-        balanceLabel.setText(String.valueOf(currentUser.getCashBalance()));
+        balanceLabel.setText(String.valueOf("Balance=" +currentUser.getCashBalance()));
     }
 
 
