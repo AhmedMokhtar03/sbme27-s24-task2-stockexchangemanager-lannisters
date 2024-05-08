@@ -35,5 +35,9 @@
          </font>
       </Label>
       <TextField fx:id="withdrawalAmountField" layoutX="338.0" layoutY="164.0" prefHeight="29.0" prefWidth="273.0" promptText="enter amount" />
+      <Button fx:id="depositButton" layoutX="341.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleDeposit" text="Button" />
+      <Button fx:id="withdrawButton" layoutX="441.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleWithdrawal" text="Button" />
+      <Button fx:id="calculateProfitButton" layoutX="559.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleProfitCalculation" text="Button" />
+      <Label fx:id="balanceLabel" layoutX="441.0" layoutY="213.0" text="Label" />
    </children>
 </AnchorPane>

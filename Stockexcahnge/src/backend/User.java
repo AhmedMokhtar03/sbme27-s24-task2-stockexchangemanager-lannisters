@@ -88,6 +88,17 @@ public  class User {
     public void setOwnedStocks(Map<String, Integer> ownedStocks) {
         this.ownedStocks = ownedStocks;
     }
+
+   // public User getCurrentUser() {
+    //    return user;
+   // }
+
+
+  //  public void setCurrentUser(double cashBalance) {
+  //      this.cashBalance = cashBalance;
+   // }
+
+
 //    public List<Order> getOrders() {
 //        return orders;
 //    }

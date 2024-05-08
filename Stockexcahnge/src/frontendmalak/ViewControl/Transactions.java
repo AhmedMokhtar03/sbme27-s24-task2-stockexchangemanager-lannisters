@@ -24,11 +24,11 @@ public class Transactions {
     @FXML
     private Label balanceLabel;
     @FXML
-    private MFXButton depositButton;
+    private Button depositButton;
     @FXML
-    private MFXButton withdrawButton;
+    private Button withdrawButton;
     @FXML
-    private MFXButton calculateProfitButton;
+    private Button calculateProfitButton;
     @FXML
     private Button back1;
 
@@ -51,13 +51,14 @@ public class Transactions {
         calculateProfitButton.setOnAction(this::handleProfitCalculation);
 
     }
+    User user=new User(0,"ahmed","ahmed");
 
     public static void setCurrentUser(User user) {
         currentUser = user;
     }
 
     private User getCurrentUser() {
-        return currentUser;
+        return user;
     }
 
     public void setProfitPercentage(double initialValue) {
@@ -73,7 +74,7 @@ public class Transactions {
         if (amount <= 0) {
             throw new IllegalArgumentException("Withdrawal amount must be positive.");
         }
-        if (amount > withdrawValue) {
+        if (amount > currentUser.getCashBalance()){
             throw new RuntimeException("Withdrawal amount exceeds withdraw limit.");
         }
         withdrawValue -= amount;
@@ -92,6 +93,7 @@ public class Transactions {
         updateBalanceLabel();
     }
 
+    @FXML
     private void handleDeposit(ActionEvent event) {
         try {
             double amount = Double.parseDouble(depositAmountField.getText());
@@ -101,6 +103,7 @@ public class Transactions {
         }
     }
 
+    @FXML
     private void handleWithdrawal(ActionEvent event) {
         try {
             double amount = Double.parseDouble(withdrawalAmountField.getText());
@@ -110,6 +113,7 @@ public class Transactions {
         }
     }
 
+    @FXML
     private void handleProfitCalculation(ActionEvent event) {
         double initialValue = 0;
         setProfitPercentage(initialValue);
