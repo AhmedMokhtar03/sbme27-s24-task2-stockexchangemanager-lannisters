@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="frontendmalak.ViewControl.Transactions"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.Transactions">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="648.0">
+         <image>
+            <Image url="@../img/Dark%20Blue%20Simple%20Dark%20Tech%20and%20Gaming%20Bio-Link%20Website.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="337.0" layoutY="42.0" prefHeight="69.0" prefWidth="273.0" text="Withdraw" textFill="#fffefe">
+         <font>
+            <Font name="Javanese Text" size="23.0" />
+         </font>
+      </JFXButton>
+      <Line endX="159.33331298828125" endY="-6.333335876464844" layoutX="451.0" layoutY="123.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" />
+      <JFXButton layoutX="338.0" layoutY="116.0" prefHeight="69.0" prefWidth="273.0" text="Deposit" textFill="#fffefe">
+         <font>
+            <Font name="Javanese Text" size="23.0" />
+         </font>
+      </JFXButton>
+      <Line endX="158.33331298828125" endY="-6.3333282470703125" layoutX="453.0" layoutY="202.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" />
+   </children>
 </AnchorPane>

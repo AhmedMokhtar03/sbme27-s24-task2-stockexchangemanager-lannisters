@@ -54,7 +54,7 @@
                   <Image url="@../../../../../../../Downloads/Untitled_design__3_-removebg-preview.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="-272.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="-271.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../Downloads/Untitled_design__4_-removebg-preview.png" />
                </image>
