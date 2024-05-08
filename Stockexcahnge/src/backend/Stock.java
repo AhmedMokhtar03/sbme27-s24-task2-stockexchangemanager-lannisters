@@ -4,9 +4,44 @@ import java.util.*;
 
 public class Stock extends Securities {
     private double currentPrice;
+    private int ID;
+    public double Dividend;
     private Company company;
 
-    public Stock(String label, int no_of_stocks, String state)//this constructor is to be used if the user wants to buy a stock state=sell||buy
+    public double getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
+
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public double getDividend() {
+        return Dividend;
+    }
+
+    public void setDividend(double dividend) {
+        Dividend = dividend;
+    }
+
+    public Stock(int stockID, String label, int no_of_stocks, String state)//this constructor is to be used if the user wants to buy a stock state=sell||buy
     {
         for (Company c : CompanyController.companyList) {
             if (c.getLabel().equalsIgnoreCase(label)) {
@@ -14,6 +49,8 @@ public class Stock extends Securities {
                 this.currentPrice = c.getStockPrice();
             }
         }
+
+
         if (company != null) {
             switch (state.toUpperCase()) {
                 case "BUY":
@@ -35,15 +72,12 @@ public class Stock extends Securities {
 
     }
 
-    @Override
-    double Calculate_dividend() {
-        return (getTotalDividends() / company.getShareholders());
+
+    double Calculate_dividends() {
+        //elmafrod ttgab mn el map bta3et ownedstocks
+        return (getDividend() *numberofstocks);
     }
 
-    @Override
-    double Calculate_dividend_Yield() {
-        return (Calculate_dividend() / currentPrice) * 100;
-    }
 
     public void update_available_stocks(int no_of_stocks, String label) //only call this method when you approve the user's request to buy or sell a stock
     {

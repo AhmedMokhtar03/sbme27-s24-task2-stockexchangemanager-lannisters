@@ -18,7 +18,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        Calendar calendar = new Calendar();
         Admin admin1 = new Admin();
        Admin admin2 = new Admin();
     }

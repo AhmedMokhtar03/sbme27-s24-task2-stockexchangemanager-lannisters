@@ -1,11 +1,12 @@
 package backend;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Admin {
 
     //private Company objectName = new Company();
-    private Calendar calendar = new Calendar();
 
     public static ArrayList<Company> companyList = new ArrayList<Company>();
 
@@ -15,8 +16,10 @@ public class Admin {
     private String userName;
     private String password;
     private boolean onSession;
+    public static List<User> userList = new ArrayList<>();
+    public static List<Stock> stockList = new ArrayList<>();
 
-
+//===========================================================
     public int getAdminID() {
         return adminID;
     }
@@ -71,9 +74,91 @@ public class Admin {
         onSession = false;
         //closing price = current price
         //store closing price
-        calendar.advanceDay();
+        Calendar.advanceDay();
     }
-    public void approval(){
+
+//    public void createNewUser(String username, String password) {
+//        if (username == null || username.isEmpty()) {
+//            throw new IllegalArgumentException("Username cannot be empty");
+//        }
+//        if (password == null || password.isEmpty()) {
+//            throw new IllegalArgumentException("Password cannot be empty");
+//        }
+//        this.username = username;
+//        this.password = password;
+//        //Approve_Users(); supposed to be uncommented after finishing this method in the admin class
+//    }
+
+
+
+    private void addUser(){
+        //String userName = userNameField.getText();
+        //String password = userPasswordField.getText();
+        //forTesting we will get them from the fxml file
+
+
+        int userID=0;
+        String userName = "ahmed";
+        String password = "ahmed";
+
+        User newUser = new User(userID,userName,password);
+        userList.add(newUser);
+
+}
+//i imagine it is like the admin will have a page that show all the users and there are two buttons add and delete
+    //if he pressed delete we will pass the id of this user
+private void deleteUser(int userID){
+    Iterator<User> iterator = userList.iterator();
+    while (iterator.hasNext()) {
+        User tempUser = iterator.next();
+        if (tempUser.getID() == userID) { // Check if the user ID in the arraylist matches the wanted ID
+            iterator.remove();
+        }
+        //if he didnt find a match no user will be deleted
+    }
+
+
+    }
+
+    // i will use stock class cause i dont understand securities company
+private void addStock(){
+  //for testing
+        String label= "appl";
+        int no_of_stocks =500;
+        String state= "NEW";
+        int StockID=0;
+
+        //7asb el constructor
+        Stock newStock = new Stock( StockID,label,  no_of_stocks,  state);
+        stockList.add(newStock);
+
+
+    }
+
+    private void deleteStock(int stockID){
+
+        Iterator<Stock> iterator = stockList.iterator();
+        while (iterator.hasNext()) {
+            Stock tempStock = iterator.next();
+            if (tempStock.getID() == stockID) { // Check if the user ID in the arraylist matches the wanted ID
+                iterator.remove();
+            }
+            //if he didnt find a match no user will be deleted
+        }
+
+
+
+    }
+
+
+
+
+    public void acceptRequests(){
+
+    }
+
+    public void reject(){
+
 
     }
 
