@@ -1,5 +1,7 @@
 package backend;
 
+import frontendmalak.ViewControl.ManageOrder;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -132,6 +134,10 @@ public  class User {
             }
         }
         //should be exception handling here
+    }
+
+    public  ManageOrder getOrders() {
+        return getOrders();
     }
 
 

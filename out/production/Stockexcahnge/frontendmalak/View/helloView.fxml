@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2f023c;" stylesheets="@Designs.css" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.LogIn">
+   <center>
+      <ImageView fitHeight="355.0" fitWidth="649.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../img/Home (1).png" />
+         </image>
+      </ImageView>
+   </center>
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="0.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="username" layoutX="-219.0" layoutY="150.0" opacity="0.6" prefHeight="35.0" prefWidth="194.0" promptText="username" style="-fx-background-color: white;" />
+            <Label fx:id="wronglogin" layoutX="-326.0" layoutY="70.0" prefHeight="27.0" prefWidth="317.0" textFill="#ff0004">
+               <font>
+                  <Font name="Comfortaa Light" size="13.0" />
+               </font></Label>
+            <ChoiceBox fx:id="choicebox" layoutX="-219.0" layoutY="105.0" opacity="0.6" prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: white;" styleClass="text-field1">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Admin" />
+                     <String fx:value="User" />
+                     <String fx:value="Premium User" />
+                  </FXCollections>
+               </items>
+            </ChoiceBox>
+            <MFXButton fx:id="button1" layoutX="-266.0" layoutY="275.0" onAction="#handleSignUp" opacity="0.77" prefHeight="30.0" prefWidth="82.0" rippleColor="#57055c" style="-fx-background-color: #ffa7e0;" text="Register" />
+            <MFXButton fx:id="button" layoutX="-140.0" layoutY="275.0" onAction="#userLogIn" opacity="0.8" prefHeight="31.0" prefWidth="82.0" rippleColor="#57055c" style="-fx-background-color: #ffa7e0;" text="Log in" />
+            <ImageView fitHeight="40.0" fitWidth="46.0" layoutX="-266.0" layoutY="147.0">
+               <image>
+                  <Image url="@../../../../../../../Downloads/Untitled_design__2_-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="52.0" fitWidth="57.0" layoutX="-270.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/Untitled_design__3_-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="-271.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/Untitled_design__4_-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="password" layoutX="-218.0" layoutY="208.0" prefHeight="33.0" prefWidth="194.0" />
+            <ImageView fitHeight="41.0" fitWidth="85.0" layoutX="-269.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Untitled_design__2_-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="150.0" layoutX="-275.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Untitled_design__3_-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="74.0" fitWidth="65.0" layoutX="-280.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Untitled_design__4_-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </right>
+</fx:root>

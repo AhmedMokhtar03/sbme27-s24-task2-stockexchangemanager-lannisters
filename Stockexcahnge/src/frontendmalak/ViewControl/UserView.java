@@ -34,7 +34,7 @@ private JFXButton premium;
     }
     public void ManageOrderr(ActionEvent event) throws IOException {
         this.event = event;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageAccount.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageOrder.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stg.setScene(scene);

@@ -37,7 +37,7 @@ public class LogIn {
     @FXML
     private ChoiceBox<String> choicebox;
 
-    private static final String CSV_FILE = "C:\\Users\\lenovo\\Documents\\GitHub\\sbme27-s24-task2-stockexchangemanager-lannisters\\Stockexcahnge\\src\\frontendmalak\\userdata.csv";
+    private static final String CSV_FILE = "/C:\\Users\\ahmed\\Documents\\GitHub\\sbme27-s24-task2-stockexchangemanager-lannisters\\Stockexcahnge\\src\\frontendmalak\\userdata.csv";
 
     @FXML
     public void initialize() {
