@@ -1,5 +1,6 @@
 package frontendmalak.ViewControl;
 
+import backend.User;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import java.io.*;
 
 import static frontendmalak.HelloApplication.stg;
 
+
 public class LogIn {
     @FXML
     private Label myLabel;
@@ -29,7 +31,7 @@ public class LogIn {
     public Label wronglogin;
 
     @FXML
-    private TextField username;
+    public TextField username;
 
     @FXML
     private PasswordField password;
@@ -45,6 +47,8 @@ public class LogIn {
         choicebox.setItems(userTypes);
         choicebox.setValue("User");
     }
+
+
 
     @FXML
     public void getSelectStatus(ActionEvent event) {
@@ -108,13 +112,17 @@ if (userType.equals("Admin")) {
             wronglogin.setText("Login successful.");
             try {
                 FXMLLoader loader;
+                User currentUser = null;
                 if ("Admin".equals(userType)) {
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/AdminHomePage.fxml"));
                 } else {
+                    currentUser = new User(username);
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
                 }
 
                 Parent root = loader.load();
+                UserView userViewController = loader.getController();
+                userViewController.setCurrentUser(currentUser);
                 Scene scene = new Scene(root);
                 stg.setScene(scene);
                 stg.show();
@@ -163,5 +171,8 @@ if (userType.equals("Admin")) {
         }
         return false;
     }
+//    public String getUsername() {
+//        return this.username;
+//    }
 }
 
