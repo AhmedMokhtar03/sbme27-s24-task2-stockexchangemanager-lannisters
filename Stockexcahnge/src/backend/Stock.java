@@ -95,12 +95,7 @@ public class Stock extends Securities {
         } else
             throw new IllegalArgumentException("Invalid order type");
         newPrice /= (quantity + 1);
-        company.setStockPrice(newPrice);
-        DataManager.saveCompanies(company);
-        Date currentDate = new Date();
-        company.setMaximumPrice(Math.max(company.getMaximumPrice(), newPrice));
-        company.setMinimumPrice(Math.min(company.getMinimumPrice(), newPrice));
-        company.add_price_entry(currentDate, current_price, newPrice);
+        company.setStockPrice(newPrice, current_price);
     }
 
     private double generateRandomFactor() {
