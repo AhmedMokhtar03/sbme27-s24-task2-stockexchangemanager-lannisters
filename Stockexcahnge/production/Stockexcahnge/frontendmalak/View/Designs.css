@@ -173,11 +173,16 @@
 }
 .button11
 {
-    -fx-background-color :  #e0e0e0;
+
+    -fx-opacity: 1;
+
 
 }
 .button11:hover
 {
-    -fx-background-color:RED;
+
+    -fx-background-color : WHITE ;
+    -fx-opacity: 0.3;
+
 
 }

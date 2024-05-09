@@ -11,13 +11,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2f023c;" stylesheets="@Designs.css" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.LogIn">
    <center>
-      <ImageView fitHeight="355.0" fitWidth="649.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../img/Home (1).png" />
+            <Image url="@../img/440751908_3466850260271714_519064189478753276_n.jpg" />
          </image>
       </ImageView>
    </center>
@@ -74,6 +75,7 @@
                   <Image url="@../img/Untitled_design__4_-removebg-preview.png" />
                </image>
             </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#210236" height="50.0" layoutX="-600.0" layoutY="351.0" stroke="#210236" strokeType="INSIDE" width="116.0" />
          </children>
       </AnchorPane>
    </right>

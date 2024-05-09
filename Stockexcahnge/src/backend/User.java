@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 public  class User {
+
+
     private int ID;
     private String userName;
     private String password;
@@ -38,7 +40,12 @@ public  class User {
 //         this.orders = new ArrayList<>();
         //this.oldPrices = new ArrayList<>();
     }
-//=============================================
+
+    public User(String username) {
+        this.userName = username;
+    }
+
+    //=============================================
     public int getID() {
         return ID;
     }
@@ -47,7 +54,7 @@ public  class User {
         this.ID = ID;
     }
 
-    private String getUserName() {
+    public String getUserName() {
         return userName;
     }
 
@@ -139,6 +146,7 @@ public  class User {
     public  ManageOrder getOrders() {
         return getOrders();
     }
+
 
 
 //    public void addOrder(String label, int quantity, String orderType, double price) {
