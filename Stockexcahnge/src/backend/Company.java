@@ -2,7 +2,7 @@ package backend;
 
 import java.util.*;
 
-public class Company {
+public class Company extends Observable {
     private String name;
     private String label;
     private int ID;
@@ -10,8 +10,8 @@ public class Company {
     private double dividends;
     private int numOfAvailableStocks;
     int shareholders =0;
-    double Maximumprice;
-    double Minimumprice;
+    double MaximumPrice;
+    double MinimumPrice;
     private List<Map<String, Double>> priceHistory = new ArrayList<Map<String, Double>>();
 
     public Company() {
@@ -31,8 +31,8 @@ public class Company {
         entry.put("date", (double) date.getTime());
         entry.put("OpeningPrice", newPrice);
         entry.put("closingPrice", newPrice);
-        entry.put("HighestPrice", getMaximumprice());
-        entry.put("LowestPrice", getMinimumprice());
+        entry.put("HighestPrice", getMaximumPrice());
+        entry.put("LowestPrice", getMinimumPrice());
         priceHistory.add(entry);
     }
 
@@ -74,6 +74,8 @@ public class Company {
 
     public void setStockPrice(double stockPrice) {
         this.stockPrice = stockPrice;
+        setChanged();
+        notifyObservers(stockPrice);
     }
 
     public double getDividends() {
@@ -92,20 +94,20 @@ public class Company {
         this.numOfAvailableStocks = numOfAvailableStocks;
     }
 
-    public void setMaximumprice(double Maximumprice) {
-        this.Maximumprice = Maximumprice;
+    public void setMaximumPrice(double Maximumprice) {
+        this.MaximumPrice = Maximumprice;
     }
 
-    public double getMaximumprice() {
-        return Maximumprice;
+    public double getMaximumPrice() {
+        return MaximumPrice;
     }
 
-    public void setMinimumprice(double Minimumprice) {
-        this.Minimumprice = Minimumprice;
+    public void setMinimumPrice(double Minimumprice) {
+        this.MinimumPrice = Minimumprice;
     }
 
-    public double getMinimumprice() {
-        return Minimumprice;
+    public double getMinimumPrice() {
+        return MinimumPrice;
     }
     public List<Map<String, Double>> getPriceHistory() //when the user asks for the list of the price history, call this method
     {

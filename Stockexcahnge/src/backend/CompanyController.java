@@ -38,9 +38,9 @@ public class CompanyController {
         int numOfAvailableStocks = Integer.parseInt(numOfAvailableStocksField.getText());
 
         Company newCompany = new Company(companyName, companyLabel, companyID, stockPrice, dividends, numOfAvailableStocks);
-        Stocks.add(SecurityFactory.createSecurity("stock", newCompany.getLabel(), newCompany.getNumOfAvailableStocks(), "new"));
+        //Stocks.add(SecurityFactory.createSecurity("stock", newCompany.getLabel(), newCompany.getNumOfAvailableStocks(), "new"));
         companyList.add(newCompany);
-
+        DataManager.saveCompanies(newCompany);
         System.out.println("New Company created: " + newCompany.getName() );
         printAllCompanies();
         printAllStocks();

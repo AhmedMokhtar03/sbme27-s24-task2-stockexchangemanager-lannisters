@@ -6,6 +6,7 @@ public class Stock extends Securities {
     int ID;
     public double Dividend;
     private Company company;
+    private int numberofstocks;
 
     public double getCurrentPrice() {
         return currentPrice;
@@ -41,7 +42,7 @@ public class Stock extends Securities {
     }
 
     public Stock(String label, int no_of_stocks, String state)//this constructor is to be used if the user wants to buy a stock state=sell||buy
-    {
+    { this.numberofstocks= no_of_stocks;
         for (Company c : CompanyController.companyList) {
             if (c.getLabel().equalsIgnoreCase(label)) {
                 this.company = c;
@@ -95,9 +96,10 @@ public class Stock extends Securities {
             throw new IllegalArgumentException("Invalid order type");
         newPrice /= (quantity + 1);
         company.setStockPrice(newPrice);
+        DataManager.saveCompanies(company);
         Date currentDate = new Date();
-        company.setMaximumprice(Math.max(company.getMaximumprice(), newPrice));
-        company.setMinimumprice(Math.min(company.getMinimumprice(), newPrice));
+        company.setMaximumPrice(Math.max(company.getMaximumPrice(), newPrice));
+        company.setMinimumPrice(Math.min(company.getMinimumPrice(), newPrice));
         company.add_price_entry(currentDate, current_price, newPrice);
     }
 

@@ -1,36 +1,18 @@
 package backend;
-
-import java.util.List;
-
+import java.util.Observable;
+import java.util.Observer;
 public class PremiumUser extends User implements Observer {
-    private boolean notificationsEnabled;
-    private List<Observer> observerList;
     public PremiumUser(int ID, String username, String password, double cashBalance,boolean isPremium) {
         super();
-        this.notificationsEnabled = false;
     }
-
     public void showLineCharts() {
 
     }
-    public void enableNotifications() {
-        this.notificationsEnabled = true;
-    }
-
-    public void Subscribe(Observer observer){
-        observerList.add(observer);
-    }
-
-    public void unSubscribe(Observer observer){
-        observerList.remove(observer);
-    }
-
-    public void update(Stock stock, double newPrice) {
-        if (notificationsEnabled) {
-            System.out.println("Notification: Stock price of " + stock.getLabel() + " has changed to " + newPrice);
+    @Override
+    public void update(Observable o, Object arg) {
+        if (o instanceof Company company) {
+            double newPrice = (double) arg;
+            System.out.println("Notification: Stock price of " + company.getLabel() + " has changed to " + newPrice);
         }
-
- }
-
-
+    }
 }

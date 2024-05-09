@@ -132,10 +132,5 @@ public  class User {
             System.out.println(e.getMessage());
         }
     }
-   // public abstract void Subscribe(Observer observer);
-
-    //public abstract void unSubscribe(Observer observer);
-
-    //public abstract void update(Stock stock, double newPrice);
 
 }

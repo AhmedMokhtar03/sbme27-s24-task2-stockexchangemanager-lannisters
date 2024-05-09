@@ -1,6 +1,7 @@
 package frontendmalak.ViewControl;
 
 import backend.User;
+import backend.UserManager;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -86,6 +87,7 @@ if (userType.equals("Admin")) {
                 writer.write(username + "," + password + "," + userType);
                 writer.newLine();
                 wronglogin.setText("Sign up successful.");
+                UserManager.loadUsersFromCSV("userdata.csv");
             } catch (IOException e) {
                 wronglogin.setText("Error writing to " + CSV_FILE);
                 e.printStackTrace();
