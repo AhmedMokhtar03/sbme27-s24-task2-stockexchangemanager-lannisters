@@ -53,7 +53,7 @@ public class Transactions {
 
 
     }
-    User user=new User(0,"ahmed","ahmed");
+    User user=new User("ahmed","ahmed");
 
     public static void setCurrentUser(User user) {
         currentUser = user;
