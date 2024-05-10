@@ -12,7 +12,7 @@ public class LimitOrder extends Order {
     }
     @Override
     public void buy(String label, int quantity, int userID) {
-        User user = UserManager.users.get(userID);
+        User user = DataManager.users.get(userID);
         this.Label = label;
         this.quantity = quantity;
         for (Company company : CompanyController.companyList) {
@@ -32,7 +32,7 @@ public class LimitOrder extends Order {
     }
     @Override
     public void sell(String label, int quantity, int userID) {
-        User user = UserManager.users.get(userID);
+        User user = DataManager.users.get(userID);
         this.Label = label;
         this.quantity = quantity;
         for (Company company : CompanyController.companyList) {

@@ -1,5 +1,6 @@
 package frontendmalak.ViewControl;
 
+import backend.DataManager;
 import backend.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -41,7 +42,7 @@ public class UserManagementController {
 
     @FXML
     public void initialize() {
-        loadUsersFromCSV();
+        DataManager.loadUsersFromCSV();
         tableView.setItems(userList);
 
         // Initialize all TableColumn cell value factories
@@ -76,8 +77,8 @@ public class UserManagementController {
             User user = new User(username, password);
 
              //i was testing if premium columns work
-            // user.setPremium(true);
-            //user.setFirstDateOfPremium(LocalDate.now());
+             user.setPremium(true);
+            user.setFirstDateOfPremium(LocalDate.now());
             userList.add(user);
             clearFields();
         } else {
@@ -108,46 +109,8 @@ public class UserManagementController {
         }
     }
 
-    private void loadUsersFromCSV() {
-        userList.clear();
-        try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 6) {
-                    int id = Integer.parseInt(parts[0]);
-                    String username = parts[1];
-                    String password = parts[2];
-                    double cashBalance = Double.parseDouble(parts[3]);
-                    boolean isPremium = Boolean.parseBoolean(parts[4]);
-                    LocalDate firstDateOfPremium = null;
-                    if (!parts[5].equals("null")) { // Check if date string is not 'null'
-                        firstDateOfPremium = LocalDate.parse(parts[5]); // Assuming date is in ISO format
-                    }
 
-                    User user = new User(username, password);
-                    user.setID(id);
-                    user.setCashBalance(cashBalance);
-                    user.setPremium(isPremium);
-                    if (firstDateOfPremium != null) {
-                        user.setFirstDateOfPremium(firstDateOfPremium);
-                    } else {
-
-                        //wethar set it to arbitery date or leave it as null
-               //       user.setFirstDateOfPremium(LocalDate.MIN); // Set an arbitrary date
-                        user.setFirstDateOfPremium(null);
-                    }
-
-                    userList.add(user);
-                }
-            }
-        } catch (IOException e) {
-            showAlert("Error", "Failed to load users from CSV file.");
-            e.printStackTrace();
-        }
-    }
-
-    private void showAlert(String title, String message) {
+    public static void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
