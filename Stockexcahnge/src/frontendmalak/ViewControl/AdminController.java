@@ -63,14 +63,14 @@ public class AdminController {
     }
 
     @FXML
-    void signOut(ActionEvent event) {
+    void signOut(ActionEvent event) throws IOException {
 
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource(""));
-//        Parent root = loader.load();
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//
-//        stage.setScene(new Scene(root));
-//        stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/helloView.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setScene(new Scene(root));
+        stage.show();
 
     }
 
