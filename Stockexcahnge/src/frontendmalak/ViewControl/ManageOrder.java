@@ -98,6 +98,8 @@ public class ManageOrder {
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
+
+
     }
 
 }

@@ -2,12 +2,12 @@ package frontendmalak.ViewControl;
 
 import backend.User;
 import backend.UserManager;
-import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,6 +15,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.*;
 
@@ -40,7 +41,7 @@ public class LogIn {
     @FXML
     private ChoiceBox<String> choicebox;
 
-    private static final String CSV_FILE = "/C:\\Users\\ahmed\\Documents\\GitHub\\sbme27-s24-task2-stockexchangemanager-lannisters\\Stockexcahnge\\src\\frontendmalak\\userdata.csv";
+    private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/userdata.csv";
 
     @FXML
     public void initialize() {
@@ -59,7 +60,46 @@ public class LogIn {
 
     @FXML
     public void userLogIn(ActionEvent event) throws IOException {
-        handleLogin();
+        //handleLogin();
+        String username = this.username.getText();
+        String password = this.password.getText();
+        String userType = choicebox.getValue();
+
+        if (!isValidInput(username, password, userType)) {
+            wronglogin.setText("Please enter a valid username and password.");
+            return;
+        }
+
+        if (isAuthenticated(username, password, userType)) {
+            wronglogin.setText("Login successful.");
+            try {
+                FXMLLoader loader;
+                User currentUser = null;
+                if ("Admin".equals(userType)) {
+                    loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminHomePage.fxml"));
+                } else {
+                    currentUser = new User(username);
+                    loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
+                }
+
+//                Parent root = loader.load();
+//                UserView userViewController = loader.getController();
+//                userViewController.setCurrentUser(currentUser);
+//                Scene scene = new Scene(root);
+//                stg.setScene(scene);
+//                stg.show();
+                Parent root = loader.load();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                wronglogin.setText("Error loading the next scene.");
+                e.printStackTrace();
+            }
+        } else {
+            wronglogin.setText("Invalid username, password, or user type.");
+        }
     }
 
     @FXML
@@ -87,7 +127,7 @@ if (userType.equals("Admin")) {
                 writer.write(username + "," + password + "," + userType);
                 writer.newLine();
                 wronglogin.setText("Sign up successful.");
-                UserManager.loadUsersFromCSV("userdata.csv");
+                //UserManager.loadUsersFromCSV("Stockexcahnge/src/frontendmalak/userdata.csv");
             } catch (IOException e) {
                 wronglogin.setText("Error writing to " + CSV_FILE);
                 e.printStackTrace();
@@ -100,7 +140,7 @@ if (userType.equals("Admin")) {
     }
 
     @FXML
-    private void handleLogin() {
+   /* private void handleLogin() {
         String username = this.username.getText();
         String password = this.password.getText();
         String userType = choicebox.getValue();
@@ -116,18 +156,23 @@ if (userType.equals("Admin")) {
                 FXMLLoader loader;
                 User currentUser = null;
                 if ("Admin".equals(userType)) {
-                    loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/AdminHomePage.fxml"));
+                    loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminHomePage.fxml"));
                 } else {
                     currentUser = new User(username);
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
                 }
 
+//                Parent root = loader.load();
+//                UserView userViewController = loader.getController();
+//                userViewController.setCurrentUser(currentUser);
+//                Scene scene = new Scene(root);
+//                stg.setScene(scene);
+//                stg.show();
                 Parent root = loader.load();
-                UserView userViewController = loader.getController();
-                userViewController.setCurrentUser(currentUser);
-                Scene scene = new Scene(root);
-                stg.setScene(scene);
-                stg.show();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                stage.setScene(new Scene(root));
+                stage.show();
             } catch (IOException e) {
                 wronglogin.setText("Error loading the next scene.");
                 e.printStackTrace();
@@ -136,7 +181,7 @@ if (userType.equals("Admin")) {
             wronglogin.setText("Invalid username, password, or user type.");
         }
     }
-
+*/
     private boolean isValidInput(String username, String password, String userType) {
         return !username.isEmpty() && !password.isEmpty();
     }
