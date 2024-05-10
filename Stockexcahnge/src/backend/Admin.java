@@ -13,7 +13,7 @@ public class Admin {
     private String userName;
     private String password;
     private boolean onSession;
-    public static List<User> userList = new ArrayList<>();
+  //  public static List<User> userList = new ArrayList<>();
     public static List<Stock> stockList = new ArrayList<>();
 
     //===========================================================
@@ -97,7 +97,7 @@ public class Admin {
         String password = "ahmed";
 
         User newUser = new User(userName, password);
-        newUser.ID = newUser.hashCode();
+      //  newUser.ID = newUser.hashCode();
         UserManager.users.add(newUser);
     }
 

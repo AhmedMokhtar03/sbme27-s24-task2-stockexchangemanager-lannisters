@@ -135,7 +135,7 @@ public class AdminController {
     @FXML
     void mangeUsers(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/requests.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserManagement.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

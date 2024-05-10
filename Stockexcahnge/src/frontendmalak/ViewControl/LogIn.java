@@ -1,7 +1,6 @@
 package frontendmalak.ViewControl;
 
 import backend.User;
-import backend.UserManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
-import static frontendmalak.HelloApplication.stg;
+import static frontendmalak.ViewControl.UserManagementController.userList;
 
 
 public class LogIn {
@@ -41,7 +40,7 @@ public class LogIn {
     @FXML
     private ChoiceBox<String> choicebox;
 
-    private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/userdata.csv";
+    private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
 
     @FXML
     public void initialize() {
@@ -72,13 +71,14 @@ public class LogIn {
 
         if (isAuthenticated(username, password, userType)) {
             wronglogin.setText("Login successful.");
+
             try {
                 FXMLLoader loader;
-                User currentUser = null;
+
                 if ("Admin".equals(userType)) {
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminHomePage.fxml"));
                 } else {
-                    currentUser = new User(username);
+                    //currentUser = new User(username);
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
                 }
 
@@ -108,10 +108,10 @@ public class LogIn {
             String username = this.username.getText();
             String password = this.password.getText();
             String userType = choicebox.getValue();
-if (userType.equals("Admin")) {
-    wronglogin.setText("Admin cannot sign up");
-    return;
-}
+            if (userType.equals("Admin")) {
+                wronglogin.setText("Admin cannot sign up");
+                return;
+            }
             if (!isValidInput(username, password, userType)) {
                 wronglogin.setText("Please enter a valid username and password.");
                 return;
@@ -122,21 +122,41 @@ if (userType.equals("Admin")) {
                 return;
             }
 
-            // Append new user data to CSV file
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE, true))) {
-                writer.write(username + "," + password + "," + userType);
-                writer.newLine();
+            User user = new User(username, password);
+            userList.add(user);
+            try (PrintWriter writer = new PrintWriter(new FileWriter(new File(CSV_FILE), true))) {
+                for (User tempuser : userList) {
+                    writer.println(user.toCSV());
+                }
                 wronglogin.setText("Sign up successful.");
-                //UserManager.loadUsersFromCSV("Stockexcahnge/src/frontendmalak/userdata.csv");
-            } catch (IOException e) {
+            } catch (FileNotFoundException e) {
                 wronglogin.setText("Error writing to " + CSV_FILE);
                 e.printStackTrace();
-                throw e; // rethrowing the exception
             }
-        } catch (IOException e) {
-            wronglogin.setText("Error during sign up.");
-            e.printStackTrace();
+
+
+            // Append new user data to CSV file
+//            try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE, true))) {
+//                writer.write(username + "," + password + "," + userType);
+//                writer.newLine();
+//                wronglogin.setText("Sign up successful.");
+//                //UserManager.loadUsersFromCSV("Stockexcahnge/src/frontendmalak/userdata.csv");
+//            } catch (IOException e) {
+//                wronglogin.setText("Error writing to " + CSV_FILE);
+//                e.printStackTrace();
+//                throw e; // rethrowing the exception
+//            }
+
         }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+//       catch (IOException e) {
+//            wronglogin.setText("Error during sign up.");
+//            e.printStackTrace();
+//        }
+//
+
     }
 
     @FXML
@@ -191,7 +211,7 @@ if (userType.equals("Admin")) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 1 && parts[0].equals(username)) {
+                if (parts.length >= 6 && parts[1].equals(username)) {
                     return true;
                 }
             }
@@ -203,15 +223,23 @@ if (userType.equals("Admin")) {
     }
 
     private boolean isAuthenticated(String username, String password, String userType) {
+        //now admin login checking is from the code itself not the csv file
+        if (userType.equals("Admin") ){
+            if (username.equals("admin") && password.equals("admin")) {
+                return true;
+            }
+        }
+
+
         try (BufferedReader reader = new BufferedReader(new FileReader(LogIn.CSV_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 3 && parts[0].equals(username) && parts[1].equals(password) && parts[2].equals(userType)) {
+                if (parts.length >= 6 && parts[1].equals(username) && parts[2].equals(password) ) {
                     return true;
                 }
             }
-            //iojnjnlm
+
         } catch (IOException e) {
             wronglogin.setText("Error reading " + LogIn.CSV_FILE);
             e.printStackTrace();

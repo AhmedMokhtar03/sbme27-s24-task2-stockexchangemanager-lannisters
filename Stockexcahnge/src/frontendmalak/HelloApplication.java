@@ -1,6 +1,9 @@
 package frontendmalak;
 
+import backend.User;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,6 +17,7 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     public static Stage stg;
+    public ObservableList<User> userList = FXCollections.observableArrayList();
 
     @Override
     public void start(Stage stage) throws IOException {

@@ -20,7 +20,7 @@ public class UserManager {
                     }
                 }
                 User user = new User(username, password);
-                user.ID= user.hashCode();
+             //   user.ID= user.hashCode();
                 users.add(user);
             }
         } catch (IOException e) {
