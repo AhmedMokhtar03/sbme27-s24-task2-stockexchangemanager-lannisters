@@ -10,15 +10,15 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.Transactions">
+<AnchorPane prefHeight="400.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.Transactions">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="648.0">
+      <ImageView fitHeight="400.0" fitWidth="600.0">
          <image>
             <Image url="@../img/FAQs.png" />
          </image>
       </ImageView>
       <Line endX="159.33331298828125" endY="-6.333335876464844" layoutX="141.0" layoutY="224.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" />
-      <Line endX="158.33331298828125" endY="-6.3333282470703125" layoutX="482.0" layoutY="215.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" />
+      <Line endX="158.33331298828125" endY="-6.3333282470703125" layoutX="425.0" layoutY="223.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" />
       <Label layoutX="56.0" layoutY="79.0" prefHeight="78.0" prefWidth="265.0" text="Deposit Amount" textFill="WHITE">
          <font>
             <Font name="Century" size="24.0" />
@@ -31,21 +31,21 @@
          </font>
       </Label>
       <TextField fx:id="withdrawalAmountField" layoutX="61.0" layoutY="268.0" prefHeight="29.0" prefWidth="200.0" promptText="enter amount" />
-      <Label fx:id="messageLabel" layoutX="362.0" layoutY="152.0" prefHeight="38.0" prefWidth="265.0" textFill="WHITE">
+      <Label fx:id="messageLabel" layoutX="311.0" layoutY="164.0" prefHeight="38.0" prefWidth="265.0" textFill="WHITE">
          <font>
             <Font name="Javanese Text" size="16.0" />
          </font></Label>
       <MFXButton fx:id="depositButton" layoutX="130.0" layoutY="182.0" onAction="#handleDeposit" rippleColor="#000a4a" style="-fx-background-color: #bc78b6;" text="Deposit" textFill="#0d0000" />
       <MFXButton fx:id="withdrawButton" layoutX="126.0" layoutY="309.0" onAction="#handleWithdrawal" rippleColor="#000a4a" style="-fx-background-color: #bc78b6;" text="Withdraw" />
-      <Line endX="158.0" endY="-6.0" layoutX="179.0" layoutY="334.0" startX="156.0" startY="-206.0" stroke="WHITE" />
-      <Label fx:id="balanceLabel" layoutX="375.0" layoutY="232.0" prefHeight="37.0" prefWidth="145.0" textFill="WHITE">
+      <Line endX="158.0" endY="-6.0" layoutX="147.0" layoutY="334.0" startX="156.0" startY="-206.0" stroke="WHITE" />
+      <Label fx:id="balanceLabel" layoutX="326.0" layoutY="232.0" prefHeight="65.0" prefWidth="173.0" textFill="WHITE">
          <font>
-            <Font name="Javanese Text" size="16.0" />
+            <Font name="Javanese Text" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="225.0" layoutY="29.0" prefHeight="53.0" prefWidth="214.0" text="Transaction" textFill="WHITE">
+      <Label layoutX="220.0" layoutY="29.0" prefHeight="53.0" prefWidth="245.0" text="Transaction" textFill="WHITE">
          <font>
-            <Font name="Book Antiqua" size="41.0" />
+            <Font name="Book Antiqua Bold" size="41.0" />
          </font>
       </Label>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="9.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
