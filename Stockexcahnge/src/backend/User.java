@@ -20,9 +20,9 @@ public  class User {
     //each user will have an arraylist for his/her owned stocks in different companies
     private Map<String, Integer> ownedStocks;
 
+    public User() {}
 
 
-    //What the hell are you doing?
     public User(String username, String password) {
         this.ID = hashCode();
         this.userName = username;

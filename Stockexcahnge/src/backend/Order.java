@@ -14,7 +14,7 @@ public class Order {
 
     public void buy(String Label, int quantity, int userID) {
         this.UserID = userID;
-        User user = UserManager.users.get(userID);
+        User user = DataManager.users.get(userID);
         this.Label = Label;
         this.quantity = quantity;
         for (Company company : CompanyController.companyList) {
@@ -27,7 +27,7 @@ public class Order {
 
 public void sell(String Label, int quantity, int userID){
     this.UserID = userID;
-    User user = UserManager.users.get(userID);
+    User user = DataManager.users.get(userID);
     this.Label = Label;
     this.quantity = quantity;
     for (Company company : CompanyController.companyList) {

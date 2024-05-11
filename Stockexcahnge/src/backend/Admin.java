@@ -97,8 +97,8 @@ public class Admin {
         String password = "ahmed";
 
         User newUser = new User(userName, password);
-      //  newUser.ID = newUser.hashCode();
-        UserManager.users.add(newUser);
+        newUser.setID(newUser.hashCode());
+        DataManager.users.add(newUser);
     }
 
     //i imagine it is like the admin will have a page that show all the users and there are two buttons add and delete
@@ -106,7 +106,7 @@ public class Admin {
     private void deleteUser(int userID) {
         // Check if the user ID in the arraylist matches the wanted ID
         //if he didnt find a match no user will be deleted
-        UserManager.users.removeIf(tempUser -> tempUser.getID() == userID);
+        DataManager.users.removeIf(tempUser -> tempUser.getID() == userID);
     }
 
     // i will use stock class cause i dont understand securities company

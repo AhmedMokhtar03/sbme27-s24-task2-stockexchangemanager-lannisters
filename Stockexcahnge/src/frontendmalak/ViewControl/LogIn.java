@@ -126,7 +126,7 @@ public class LogIn {
             userList.add(user);
             try (PrintWriter writer = new PrintWriter(new FileWriter(new File(CSV_FILE), true))) {
                 for (User tempuser : userList) {
-                    writer.println(user.toCSV());
+                    writer.println(tempuser.toCSV());
                 }
                 wronglogin.setText("Sign up successful.");
             } catch (FileNotFoundException e) {
