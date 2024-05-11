@@ -72,7 +72,6 @@ public class DataManager {
     }
     public static void loadUsersFromCSV() {
          final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
-
         userList.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
         String line;
@@ -88,7 +87,6 @@ public class DataManager {
                 if (!parts[5].equals("null")) { // Check if date string is not 'null'
                     firstDateOfPremium = LocalDate.parse(parts[5]); // Assuming date is in ISO format
                 }
-
                 User user = new User(username, password);
                 user.setID(id);
                 user.setCashBalance(cashBalance);
@@ -96,12 +94,10 @@ public class DataManager {
                 if (firstDateOfPremium != null) {
                     user.setFirstDateOfPremium(firstDateOfPremium);
                 } else {
-
                     //wethar set it to arbitery date or leave it as null
                     //       user.setFirstDateOfPremium(LocalDate.MIN); // Set an arbitrary date
                     user.setFirstDateOfPremium(null);
                 }
-
                 userList.add(user);
             }
         }

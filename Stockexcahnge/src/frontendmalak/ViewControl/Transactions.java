@@ -11,12 +11,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import backend.User; // Assuming you have a User class in the backend package
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 import static frontendmalak.HelloApplication.stg; // Assuming you have a HelloApplication class with a static stage variable
 
 public class Transactions {
-
     @FXML
     private TextField depositAmountField;
     @FXML
@@ -33,16 +34,13 @@ public class Transactions {
 
 
     private Button back1;
-
+    private double balance = LogIn.currentUser.getCashBalance();
     private double depositValue;
     private double withdrawValue;
-
-    private static User currentUser;
 
     @FXML
     public void initialize() {
         // Assuming you have a way to get the current user and initial values
-        currentUser = getCurrentUser(); // Get the current user somehow
         depositValue = 0; // Get initial deposit value
         withdrawValue = 0; // Get initial withdrawal value
 
@@ -53,15 +51,8 @@ public class Transactions {
 
 
     }
-    User user=new User("ahmed","ahmed");
+    //User user=new User("ahmed","ahmed");
 
-    public static void setCurrentUser(User user) {
-        currentUser = user;
-    }
-
-    private User getCurrentUser() {
-        return user;
-    }
 
 //    public void setProfitPercentage(double initialValue) {
 //        if (initialValue <= 0) {
@@ -73,34 +64,45 @@ public class Transactions {
 //        profitPercentage = (profit / initialValue) * 100;
 //        System.out.println("Profit Percentage: " + profitPercentage + "%");
 //    }
+    public void updateBalance() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("users.csv"));
+        String line;
+        while ((line = reader.readLine()) != null){
+            String[] parts = line.split(",");
+            if(parts[1].equals(LogIn.currentUser.getUserName())){
+                parts[3] = String.valueOf(balance);
+                break;
+            }
+        }
+    }
 
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws IOException {
         if (amount <= 0) {
             messageLabel.setText("Withdrawal amount must be positive.");
             throw new IllegalArgumentException("Withdrawal amount must be positive.");
         }
-        if (amount > currentUser.getCashBalance()){
-//
+        if (amount > balance){
             messageLabel.setText("Withdraw Fails!");
             throw new RuntimeException("Withdrawal amount exceeds withdraw limit.");
 
         }
-        withdrawValue -= amount;
-        currentUser.setCashBalance(currentUser.getCashBalance() - amount);
-        System.out.println("Withdrawal successful. New balance: " + currentUser.getCashBalance());
+        balance -= amount;
+        LogIn.currentUser.setCashBalance(balance);
+        updateBalance();
+        System.out.println("Withdrawal successful. New balance: " + LogIn.currentUser.getCashBalance());
         messageLabel.setText("Withdrawal successful!");
         updateBalanceLabel();
     }
 
-    public void deposit(double amount) {
+    public void deposit(double amount) throws IOException {
         if (amount <= 0) {
             messageLabel.setText("Deposit amount must be positive.");
             throw new IllegalArgumentException("Deposit amount must be positive.");
         }
-        depositValue += amount;
-        currentUser.setCashBalance(currentUser.getCashBalance() + amount);
+        balance += amount;
+        LogIn.currentUser.setCashBalance(balance);
+        updateBalance();
         messageLabel.setText("Deposit successful!");
-
         updateBalanceLabel();
     }
 
@@ -109,8 +111,7 @@ public class Transactions {
         try {
             double amount = Double.parseDouble(depositAmountField.getText());
             deposit(amount);
-        } catch (NumberFormatException e) {
-
+        } catch (NumberFormatException | IOException e) {
             messageLabel.setText("Invalid input for deposit amount.");
         }
     }
@@ -123,6 +124,8 @@ public class Transactions {
         } catch (NumberFormatException e) {
             System.out.println("Invalid input for withdrawal amount.");
             messageLabel.setText("Invalid input for withdrawal amount.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -133,7 +136,7 @@ public class Transactions {
 //    }
 
     private void updateBalanceLabel() {
-        balanceLabel.setText(String.valueOf("Balance=" +currentUser.getCashBalance()));
+        balanceLabel.setText(String.valueOf("Balance=" +balance));
     }
 
 

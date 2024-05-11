@@ -19,9 +19,9 @@ public class UserManagementController {
     @FXML
     private TableView<User> tableView;
     @FXML
-    private TextField usernameTextField;
+    private static TextField usernameTextField;
     @FXML
-    private TextField passwordTextField;
+    private static TextField passwordTextField;
 
     @FXML
     private TableColumn<User, Integer> idColumn;
@@ -70,12 +70,11 @@ public class UserManagementController {
     }
 
     @FXML
-    public void addUser() {
+    public static void addUser() {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         if (!username.isEmpty() && !password.isEmpty()) {
             User user = new User(username, password);
-
              //i was testing if premium columns work
              user.setPremium(true);
             user.setFirstDateOfPremium(LocalDate.now());
@@ -118,7 +117,7 @@ public class UserManagementController {
         alert.showAndWait();
     }
 
-    private void clearFields() {
+    private static void clearFields() {
         usernameTextField.clear();
         passwordTextField.clear();
     }
