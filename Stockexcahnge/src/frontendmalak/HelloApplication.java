@@ -26,7 +26,7 @@ public class HelloApplication extends Application {
         //changeScene("/frontendmalak/View/helloView.fxml");
         Parent root = FXMLLoader.load(getClass().getResource("/frontendmalak/View/helloView.fxml"));
         stg.setTitle("Lannister Exchange");
-        stg.initStyle(StageStyle.TRANSPARENT);
+//        stg.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();

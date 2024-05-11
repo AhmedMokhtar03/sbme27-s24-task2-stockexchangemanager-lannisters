@@ -28,9 +28,34 @@ private JFXButton premium;
     private User currentUser;
    @FXML
     private  Label welcome;
+   private JFXButton gopremium;
  public void text() {
 
  }
+public void initialize() {
+    currentUser = getCurrentUser();
+}
+
+
+
+    User user=new User("ahmed","ahmed");
+
+    private User getCurrentUser() {return user;
+    }
+    public void Gopremium(ActionEvent event) throws IOException {
+        this.event = event;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stg.setScene(scene);
+        stg.show();
+
+
+
+
+
+    }
+
     public void ManageAccountt(ActionEvent event) throws IOException {
         this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageAccount.fxml"));
@@ -62,15 +87,22 @@ private JFXButton premium;
         stg.show();
 
     }
-    public void Premiumm(ActionEvent event) throws IOException {
+    public void chartss(ActionEvent event) throws IOException {
+       if(currentUser.isPremium()){
         this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premium.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stg.setScene(scene);
-        stg.show();
+        stg.show();}
+       else{
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/charts.fxml"));
+           Parent root = loader.load();
+           Scene scene = new Scene(root);
+           stg.setScene(scene);
+           stg.show();
 
-    }
+    }}
 
     public void setCurrentUser(User user) {
         this.currentUser = user;

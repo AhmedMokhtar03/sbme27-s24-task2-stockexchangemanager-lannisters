@@ -161,6 +161,9 @@
 
     -fx-text-fill: WHITE; /* Set the text color to red when focused */
 }
+
+
+
 .button10
 {
     -fx-background-color :  #b80303;
@@ -186,3 +189,76 @@
 
 
 }
+
+
+.anchorPane1 {
+
+    -fx-opacity: 1; /* Set the default opacity */
+}
+
+.anchorPane1:hover {
+    -fx-background-color: WHITE; /* Set the default background color */
+    -fx-opacity: 0.3; /* Change opacity on hover */
+}
+.button12{
+
+    -fx-background-color :  #e0e0e0;
+;
+
+
+}
+.button12:hover
+{
+
+    -fx-background-color : VIOLET;
+    -fx-opacity: 1;
+
+
+}
+.button13
+{
+    -fx-background-color :  VIOLET;
+    fx-opacity: 0.2;
+
+}
+
+.button13:hover
+{
+    -fx-background-color : red ;
+    -fx-opacity: .2;
+
+}
+.button14
+{
+
+    -fx-background-color : #905299;
+
+
+}
+
+.button14:hover
+{
+    -fx-background-color : red ;
+    -fx-opacity: .6;
+
+}
+.button15
+{
+
+    -fx-background-color : red;
+
+
+}
+
+.button15:hover
+{
+    -fx-background-color : red ;
+    -fx-opacity: .6;
+
+}
+
+
+
+
+
+
