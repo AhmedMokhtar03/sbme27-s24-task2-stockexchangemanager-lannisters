@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
-import static frontendmalak.ViewControl.UserManagementController.userList;
+import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
 
 
 public class LogIn {

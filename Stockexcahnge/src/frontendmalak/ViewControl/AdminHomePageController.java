@@ -1,7 +1,6 @@
 package frontendmalak.ViewControl;
 
 import com.jfoenix.controls.JFXButton;
-import frontendmalak.HelloApplication;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -17,43 +16,31 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-import static frontendmalak.HelloApplication.stg;
-
-public class AdminController {
+public class AdminHomePageController {
 
     @FXML
     private JFXButton closeAppBTN;
-
     @FXML
     private JFXButton signOutBTN;
-
     @FXML
     private JFXButton menuBTN;
-
     @FXML
     private JFXButton closeMenuBTN;
-
     @FXML
     private JFXButton startSessionBTN;
-
-
     @FXML
     private JFXButton endSessionBTN;
-
     @FXML
     private JFXButton requestsBTN;
-
     @FXML
     private JFXButton mangeUsersBTN;
-
     @FXML
     private JFXButton mangeSecuritiesBTN;
 
     @FXML
-    private Pane adminPane;
-
-    @FXML
     private AnchorPane slider;
+    @FXML
+    private Pane adminPane;
 
     //=======================================================
     @FXML
@@ -122,7 +109,7 @@ public class AdminController {
     @FXML
     void requests(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/requests.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminRequests.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -135,7 +122,7 @@ public class AdminController {
     @FXML
     void mangeUsers(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserManagement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminManageUsers.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -147,7 +134,7 @@ public class AdminController {
     @FXML
     void mangeSecurities(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/mangeSecurities.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminManageSecurities.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

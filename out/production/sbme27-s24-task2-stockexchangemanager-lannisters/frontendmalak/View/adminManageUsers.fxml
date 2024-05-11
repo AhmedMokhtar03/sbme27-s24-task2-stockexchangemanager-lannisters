@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- UserManagement.fxml -->
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.AdminMangeUsersController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;">
+         <children>
+            <JFXButton fx:id="closeAppBTN" layoutX="575.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" text="x" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="tablePane" layoutY="54.0" prefHeight="348.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="tableView" prefHeight="345.0" prefWidth="600.0" styleClass="table-viewA">
+               <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="100.0" text="ID">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="ID" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="usernameColumn" prefWidth="100.0" text="Username">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="userName" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="passwordColumn" prefWidth="100.0" text="Password">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="password" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="cashBalanceColumn" prefWidth="100.0" text="Cash Balance">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="cashBalance" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="premiumColumn" prefWidth="100.0" text="Premium">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="premium" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="premiumDateColumn" prefWidth="100.0" text="Premium Date">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="firstDateOfPremium" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="menuPane" layoutY="57.0" prefHeight="320.0" prefWidth="200.0" translateX="-200.0">
+         <children>
+            <TextField fx:id="passwordTextField" layoutX="20.0" layoutY="134.0" prefWidth="160.0" promptText="Password" styleClass="text-field1" />
+            <TextField fx:id="usernameTextField" layoutX="20.0" layoutY="101.0" prefWidth="160.0" promptText="Username" styleClass="text-field1" />
+            <JFXButton layoutX="50.0" layoutY="14.0" onAction="#deleteUser" opacity="0.3" prefHeight="50.0" prefWidth="100.0" styleClass="button15" text="Delete User">
+               <graphic>
+                  <FontAwesomeIconView glyphName="REMOVE" size="20" />
+               </graphic>
+            </JFXButton>
+            <Label fx:id="deleteLabel" alignment="CENTER" layoutX="2.0" layoutY="71.0" prefHeight="17.0" prefWidth="196.0" textFill="#a10a0a" />
+            <JFXButton layoutX="50.0" layoutY="175.0" onAction="#addUser" opacity="0.3" prefHeight="50.0" prefWidth="100.0" styleClass="button12" text="Add User">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" size="20" />
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="50.0" layoutY="237.0" onAction="#saveUsers" opacity="0.3" prefHeight="50.0" prefWidth="100.0" styleClass="button12" text="Save Edits">
+               <graphic>
+                  <FontAwesomeIconView glyphName="SAVE" size="20" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="closeMenuBTN" layoutX="70.0" layoutY="28.0" onAction="#closeMenu" opacity="0.3" prefHeight="25.0" prefWidth="90.0" styleClass="button13" text="Edit Users">
+         <graphic>
+            <FontAwesomeIconView glyphName="EDIT" size="16" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="openMenuBTN" layoutX="70.0" layoutY="28.0" onAction="#openMenu" opacity="0.3" prefHeight="25.0" prefWidth="90.0" styleClass="button13" text="Edit Users">
+         <graphic>
+            <FontAwesomeIconView glyphName="EDIT" size="16" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="goBackBTN" layoutX="7.0" layoutY="28.0" onAction="#goBack" styleClass="button16" text="Back">
+         <graphic>
+            <FontAwesomeIconView glyphName="UNDO" />
+         </graphic>
+      </JFXButton>
+      <ImageView fitHeight="25.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,6 +1,6 @@
 package backend;
 
-import frontendmalak.ViewControl.UserManagementController;
+import frontendmalak.ViewControl.AdminMangeUsersController;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import static frontendmalak.ViewControl.UserManagementController.userList;
+import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
 
 public class DataManager {
     private static final String companiesFile = "companies.csv";
@@ -106,7 +106,7 @@ public class DataManager {
             }
         }
     } catch (IOException e) {
-        UserManagementController.showAlert("Error", "Failed to load users from CSV file.");
+        AdminMangeUsersController.showAlert("Error", "Failed to load users from CSV file.");
         e.printStackTrace();
     }
 }
