@@ -11,9 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import backend.User; // Assuming you have a User class in the backend package
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 import static frontendmalak.HelloApplication.stg; // Assuming you have a HelloApplication class with a static stage variable
 
@@ -34,7 +32,7 @@ public class Transactions {
 
 
     private Button back1;
-    private double balance = LogIn.currentUser.getCashBalance();
+    private double balance;
     private double depositValue;
     private double withdrawValue;
 
@@ -43,13 +41,10 @@ public class Transactions {
         // Assuming you have a way to get the current user and initial values
         depositValue = 0; // Get initial deposit value
         withdrawValue = 0; // Get initial withdrawal value
-
+        balance = LogIn.currentUser.getCashBalance();
         updateBalanceLabel();
-
         depositButton.setOnAction(this::handleDeposit);
         withdrawButton.setOnAction(this::handleWithdrawal);
-
-
     }
     //User user=new User("ahmed","ahmed");
 
@@ -65,15 +60,24 @@ public class Transactions {
 //        System.out.println("Profit Percentage: " + profitPercentage + "%");
 //    }
     public void updateBalance() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("users.csv"));
-        String line;
-        while ((line = reader.readLine()) != null){
+        RandomAccessFile file = new RandomAccessFile("C:\\Users\\chanm\\OneDrive\\Documents\\GitHub\\sbme27-s24-task2-stockexchangemanager-lannisters\\Stockexcahnge\\src\\frontendmalak\\users.csv", "rw");
+       String line; StringBuffer modifiedContent = new StringBuffer();
+       boolean userFound = false;
+        while ((line = file.readLine()) != null){
             String[] parts = line.split(",");
-            if(parts[1].equals(LogIn.currentUser.getUserName())){
-                parts[3] = String.valueOf(balance);
-                break;
+            if(parts[0].equals(String.valueOf(LogIn.currentUser.getID()))){
+                parts[3] = String.valueOf(LogIn.currentUser.getCashBalance());
+                line = String.join(",", parts);
+                System.out.println(parts[3]);
+                userFound = true;
             }
-        }
+            modifiedContent.append(line).append(System.lineSeparator());}
+        if(userFound) {
+            file.seek(0);
+            file.writeBytes(modifiedContent.toString());
+            file.setLength(modifiedContent.length());
+            file.close();
+        }else System.out.println("couldn't find user");
     }
 
     public void withdraw(double amount) throws IOException {
