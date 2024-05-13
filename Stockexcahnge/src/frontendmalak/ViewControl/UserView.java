@@ -49,11 +49,6 @@ public void initialize() {
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
-
-
-
-
-
     }
 
     public void ManageAccountt(ActionEvent event) throws IOException {
@@ -63,11 +58,6 @@ public void initialize() {
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
-
-
-
-
-
     }
     public void ManageOrderr(ActionEvent event) throws IOException {
         this.event = event;

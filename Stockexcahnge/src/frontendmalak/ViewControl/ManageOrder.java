@@ -2,6 +2,8 @@ package frontendmalak.ViewControl;
 
 // Assuming your FXML files are in the frontend package
 
+import backend.Company;
+import backend.CompanyController;
 import backend.User;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.FXCollections;
@@ -21,7 +23,7 @@ import static frontendmalak.HelloApplication.stg;
 // ... other imports as needed
 
 public class ManageOrder {
-
+    private User currentUser = LogIn.currentUser;
     @FXML
     private TableView<ManageOrder> orderTable;
     @FXML
@@ -38,9 +40,6 @@ public class ManageOrder {
     private Button buyButton;
     @FXML
     private Button sellButton;
-    // ... other FXML elements as needed
-
-    private User currentUser; // Assuming you have a way to access the current user
     private ObservableList<ManageOrder> orderData;
     private MFXButton standardOrderButton;
     @FXML
@@ -52,22 +51,18 @@ public class ManageOrder {
         // ... (Initialize table columns and cell factories as shown in previous examples)
 
         // Initialize order data (replace with your actual logic to get orders)
-       // orderData = FXCollections.observableArrayList(currentUser.getOrders());
-       // orderTable.setItems(orderData);
+        // orderData = FXCollections.observableArrayList(currentUser.getOrders());
+        // orderTable.setItems(orderData);
     }
 
     @FXML
     private void handleBuyButtonAction() {
         String label = stockLabelField.getText();
         int quantity = Integer.parseInt(quantityField.getText());
-
-        try {
-            ManageOrder newOrder = new ManageOrder(); // Create a new Order object
-            newOrder.buy(label, quantity, currentUser.getID());
-            orderData.add(newOrder); // Add the new order to the table
-            // Update UI or display confirmation
-        } catch (Exception e) {
-            // Handle errors and display messages to the user
+        for(Company company : CompanyController.companyList){
+            if(label.equals(company.getLabel())){
+                currentUser.addOrder(label, quantity, "BUY", company.getStockPrice());
+            }
         }
     }
 
@@ -75,7 +70,7 @@ public class ManageOrder {
     }
 
     @FXML
-    private void handleStandardOrderButtonAction(ActionEvent event) throws  IOException{
+    private void handleStandardOrderButtonAction(ActionEvent event) throws IOException {
         this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/standardOrder.fxml"));
         Parent root = loader.load();
@@ -83,8 +78,9 @@ public class ManageOrder {
         stg.setScene(scene);
         stg.show();
     }
+
     @FXML
-    public void handleLimitOrderButtonAction (ActionEvent event) throws  IOException{
+    public void handleLimitOrderButtonAction(ActionEvent event) throws IOException {
         this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/limitOrder.fxml"));
         Parent root = loader.load();
@@ -92,6 +88,7 @@ public class ManageOrder {
         stg.setScene(scene);
         stg.show();
     }
+
     public void back2(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();

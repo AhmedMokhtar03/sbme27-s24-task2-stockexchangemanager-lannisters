@@ -1,5 +1,6 @@
 package frontendmalak.ViewControl;
 
+import backend.DataManager;
 import backend.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +23,7 @@ import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
 
 
 public class LogIn {
+    public static User currentUser;
     @FXML
     private Label myLabel;
 
@@ -80,6 +82,17 @@ public class LogIn {
                 } else {
                     //currentUser = new User(username);
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
+                    DataManager.loadUsersFromCSV();
+                    for(User u : userList){
+                        if(u.getUserName().equals(username)){
+                            currentUser = u;
+                            break;
+                        }
+                    }
+                    if (currentUser == null) {
+                        wronglogin.setText("User not found.");
+                        return;
+                    }
                 }
 
 //                Parent root = loader.load();
@@ -229,8 +242,6 @@ public class LogIn {
                 return true;
             }
         }
-
-
         try (BufferedReader reader = new BufferedReader(new FileReader(LogIn.CSV_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
