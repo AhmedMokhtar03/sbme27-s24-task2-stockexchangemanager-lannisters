@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.imageio.IIOParam;
 import java.io.IOException;
 
 import static frontendmalak.HelloApplication.stg;
@@ -21,77 +22,49 @@ import static frontendmalak.HelloApplication.stg;
 // ... other imports as needed
 
 public class ManageOrder {
-
+//    @FXML public ChoiceBox<String> stockChoiceBox;
+//    @FXML
+//    public Label currentPriceLabel;
+//    @FXML public Label EstimatedTotalCostLabel;
+//    @FXML public Label EstimatedTotalProceedsLabel;
+//    @FXML private MenuButton orderTypeMenuButton;
+//    @FXML public MenuItem buyMenuItem;
+//    @FXML public MenuItem sellMenuItem;
+//    @FXML
+//    public TextField stockLabelField;
+//    @FXML
+//    public TextField quantityField;
+//    private User currentUser; // Assuming you have a way to access the current user
     @FXML
-    private TableView<ManageOrder> orderTable;
-    @FXML
-    private TableColumn<ManageOrder, Integer> idColumn;
-    @FXML
-    private TableColumn<ManageOrder, String> labelColumn;
-    // ... other table columns as needed
-
-    @FXML
-    private TextField stockLabelField;
-    @FXML
-    private TextField quantityField;
-    @FXML
-    private Button buyButton;
-    @FXML
-    private Button sellButton;
-    // ... other FXML elements as needed
-
-    private User currentUser; // Assuming you have a way to access the current user
-    private ObservableList<ManageOrder> orderData;
     private MFXButton standardOrderButton;
     @FXML
     private MFXButton limitOrderButton;
+    @FXML
     private ActionEvent event;
 
     @FXML
-    public void initialize() {
-        // ... (Initialize table columns and cell factories as shown in previous examples)
-
-        // Initialize order data (replace with your actual logic to get orders)
-       // orderData = FXCollections.observableArrayList(currentUser.getOrders());
-       // orderTable.setItems(orderData);
-    }
-
-    @FXML
-    private void handleBuyButtonAction() {
-        String label = stockLabelField.getText();
-        int quantity = Integer.parseInt(quantityField.getText());
-
-        try {
-            ManageOrder newOrder = new ManageOrder(); // Create a new Order object
-            newOrder.buy(label, quantity, currentUser.getID());
-            orderData.add(newOrder); // Add the new order to the table
-            // Update UI or display confirmation
-        } catch (Exception e) {
-            // Handle errors and display messages to the user
-        }
-    }
-
-    private void buy(String label, int quantity, int id) {
-    }
-
-    @FXML
-    private void handleStandardOrderButtonAction(ActionEvent event) throws  IOException{
-        this.event = event;
+    private void handleStandardOrderButtonAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/standardOrder.fxml"));
         Parent root = loader.load();
+        StandardOrder standardOrderController = loader.getController();
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
+
     }
+
+    // Method to open Limit Order screen
     @FXML
-    public void handleLimitOrderButtonAction (ActionEvent event) throws  IOException{
-        this.event = event;
+    private void handleLimitOrderButtonAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/limitOrder.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
     }
+
+    // Method to return to User View
+    @FXML
     public void back2(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
@@ -100,6 +73,14 @@ public class ManageOrder {
         stg.show();
     }
 
+//   @FXML
+//    private void openOrderScreen(String fxmlPath) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+//        Parent root = loader.load();
+//        Scene scene = new Scene(root);
+//        stg.setScene(scene);
+//        stg.show();
+//    }
 }
 
 
