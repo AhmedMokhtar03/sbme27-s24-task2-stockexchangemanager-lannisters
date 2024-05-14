@@ -72,8 +72,14 @@ public class Company extends Observable {
         return stockPrice;
     }
 
-    public void setStockPrice(double stockPrice) {
+    public void setStockPrice(double stockPrice, double current_price) {
         this.stockPrice = stockPrice;
+        DataManager.saveCompanies(this);
+        Date currentDate = new Date();
+        setMaximumPrice(Math.max(getMaximumPrice(), stockPrice));
+        setMinimumPrice(Math.min(getMinimumPrice(), stockPrice));
+        add_price_entry(currentDate, current_price, stockPrice);
+        DataManager.savePriceHistory(this);
         setChanged();
         notifyObservers(stockPrice);
     }

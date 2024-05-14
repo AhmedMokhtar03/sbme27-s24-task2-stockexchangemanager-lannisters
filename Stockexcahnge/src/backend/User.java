@@ -1,13 +1,16 @@
 package backend;
-import frontendmalak.ViewControl.ManageOrder;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public  class User {
-    public int ID;
+
+    private int ID;
+    private static Set<Integer> usedIDs = new HashSet<>();
+
     private String userName;
     private String password;
     private double cashBalance;
@@ -19,17 +22,20 @@ public  class User {
 
     public User() {}
 
-//What the hell are you doing?
-    public User( String username, String password) {
+
+    public User(String username, String password) {
+        this.ID = hashCode();
         this.userName = username;
         this.password = password;
         this.cashBalance = 0;
         this.isPremium = false;
         this.ownedStocks = new HashMap<>();
+        generateUniqueID();
+
     }
-    public User(String username) {
-        this.userName = username;
-    }
+    //        public User(String username) {
+//        this.userName = username;
+//    }
     //=============================================
     public int getID() {
         return ID;
@@ -43,15 +49,15 @@ public  class User {
         return userName;
     }
 
-    private void setUserName(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    private String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    private void setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -83,7 +89,7 @@ public  class User {
         this.ownedStocks = ownedStocks;
     }
 
- //========================================
+    //========================================
     public void addStock(String stockLabel, int quantity) {
         //update ownedstock data each time user buy
         ownedStocks.put(stockLabel, ownedStocks.getOrDefault(stockLabel, 0) + quantity);
@@ -100,7 +106,7 @@ public  class User {
                 ownedStocks.put(stockLabel, currentQuantity);
             }
         }else{
-         throw new IllegalArgumentException("Stock label " + stockLabel + " does not exist in your stocks");
+            throw new IllegalArgumentException("Stock label " + stockLabel + " does not exist in your stocks");
         }
     }
 
@@ -128,9 +134,18 @@ public  class User {
                     order.sell(label, quantity, this.ID);
                     break;
             }
-    }catch (Exception e){
+        }catch (Exception e){
             System.out.println(e.getMessage());
         }
     }
+    public String toCSV() {
+        return ID + "," + userName + "," + password + "," + cashBalance + "," + isPremium + "," + firstDateOfPremium;
+    }
 
+    private void generateUniqueID() {
+        do {
+            this.ID = hashCode();
+        } while (usedIDs.contains(this.ID));
+        usedIDs.add(this.ID);
+    }
 }

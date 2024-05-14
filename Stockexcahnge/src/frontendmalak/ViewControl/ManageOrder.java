@@ -2,6 +2,8 @@ package frontendmalak.ViewControl;
 
 // Assuming your FXML files are in the frontend package
 
+import backend.Company;
+import backend.CompanyController;
 import backend.User;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.FXCollections;
@@ -14,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.imageio.IIOParam;
 import java.io.IOException;
 
 import static frontendmalak.HelloApplication.stg;
@@ -22,40 +23,65 @@ import static frontendmalak.HelloApplication.stg;
 // ... other imports as needed
 
 public class ManageOrder {
-//    @FXML public ChoiceBox<String> stockChoiceBox;
-//    @FXML
-//    public Label currentPriceLabel;
-//    @FXML public Label EstimatedTotalCostLabel;
-//    @FXML public Label EstimatedTotalProceedsLabel;
-//    @FXML private MenuButton orderTypeMenuButton;
-//    @FXML public MenuItem buyMenuItem;
-//    @FXML public MenuItem sellMenuItem;
-//    @FXML
-//    public TextField stockLabelField;
-//    @FXML
-//    public TextField quantityField;
-//    private User currentUser; // Assuming you have a way to access the current user
+    private User currentUser = LogIn.currentUser;
     @FXML
+    private TableView<ManageOrder> orderTable;
+    @FXML
+    private TableColumn<ManageOrder, Integer> idColumn;
+    @FXML
+    private TableColumn<ManageOrder, String> labelColumn;
+    // ... other table columns as needed
+
+    @FXML
+    private TextField stockLabelField;
+    @FXML
+    private TextField quantityField;
+    @FXML
+    private Button buyButton;
+    @FXML
+    private Button sellButton;
+    private ObservableList<ManageOrder> orderData;
     private MFXButton standardOrderButton;
     @FXML
     private MFXButton limitOrderButton;
-    @FXML
     private ActionEvent event;
 
     @FXML
+    public void initialize() {
+        // ... (Initialize table columns and cell factories as shown in previous examples)
+
+        // Initialize order data (replace with your actual logic to get orders)
+        // orderData = FXCollections.observableArrayList(currentUser.getOrders());
+        // orderTable.setItems(orderData);
+    }
+
+    @FXML
+    private void handleBuyButtonAction() {
+        String label = stockLabelField.getText();
+        int quantity = Integer.parseInt(quantityField.getText());
+        for(Company company : CompanyController.companyList){
+            if(label.equals(company.getLabel())){
+                currentUser.addOrder(label, quantity, "BUY", company.getStockPrice());
+            }
+        }
+    }
+
+    private void buy(String label, int quantity, int id) {
+    }
+
+    @FXML
     private void handleStandardOrderButtonAction(ActionEvent event) throws IOException {
+        this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/standardOrder.fxml"));
         Parent root = loader.load();
-        StandardOrder standardOrderController = loader.getController();
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
-
     }
 
-    // Method to open Limit Order screen
     @FXML
-    private void handleLimitOrderButtonAction(ActionEvent event) throws IOException {
+    public void handleLimitOrderButtonAction(ActionEvent event) throws IOException {
+        this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/limitOrder.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -63,24 +89,16 @@ public class ManageOrder {
         stg.show();
     }
 
-    // Method to return to User View
-    @FXML
     public void back2(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
+
+
     }
 
-//   @FXML
-//    private void openOrderScreen(String fxmlPath) throws IOException {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-//        Parent root = loader.load();
-//        Scene scene = new Scene(root);
-//        stg.setScene(scene);
-//        stg.show();
-//    }
 }
 
 

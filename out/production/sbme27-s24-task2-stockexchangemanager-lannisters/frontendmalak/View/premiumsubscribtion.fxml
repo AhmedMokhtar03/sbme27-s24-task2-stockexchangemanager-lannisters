@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="404.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.PremiumSubscribtion">
+   <children>
+      <ImageView fitHeight="406.0" fitWidth="600.0" layoutY="-2.0">
+         <image>
+            <Image url="@../img/About.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="back3" layoutX="-6.0" layoutY="-6.0" mnemonicParsing="false" onAction="#Back2" prefHeight="32.0" prefWidth="50.0" style="-fx-background-color: #e00e0e;" text="Back" textFill="WHITE" />
+   </children>
+</AnchorPane>
