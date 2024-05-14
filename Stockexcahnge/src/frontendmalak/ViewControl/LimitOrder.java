@@ -5,7 +5,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+
+import java.io.IOException;
+
+import static frontendmalak.HelloApplication.stg;
 
 public class LimitOrder {
     @FXML private ChoiceBox<String> stockChoiceBox;
@@ -71,6 +78,15 @@ public class LimitOrder {
     // Method to set the current user
     public void setCurrentUser(User user) {
         this.currentUser = user;
+    }
+    public void back2(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageOrder.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stg.setScene(scene);
+        stg.show();
+
+
     }
 }
 

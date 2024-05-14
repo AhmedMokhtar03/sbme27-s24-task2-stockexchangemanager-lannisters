@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -60,6 +61,7 @@
             </Label>
             <ChoiceBox fx:id="stockchoicebox" layoutX="149.0" layoutY="113.0" prefWidth="150.0" style="-fx-background-color: white;" styleClass="text-field1" />
             <Line endX="-99.99996948242188" endY="251.20001220703125" layoutX="419.0" layoutY="140.0" startX="-99.99996948242188" startY="-48.00001525878906" stroke="#eae3e3" />
+            <MFXButton layoutY="6.0" minWidth="49.0" onAction="#back2" prefHeight="28.0" prefWidth="57.0" style="-fx-background-color: red;" text="Back" />
          </children></AnchorPane>
    </center>
 </BorderPane>

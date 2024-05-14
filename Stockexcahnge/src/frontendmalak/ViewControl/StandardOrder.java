@@ -4,9 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+
+import static frontendmalak.HelloApplication.stg;
+
 public class StandardOrder {
     @FXML private ChoiceBox<String> stockchoicebox;
     double currentPrice;
@@ -87,5 +93,14 @@ public class StandardOrder {
         updateEstimates();
 
         //   private void buy(String label, int quantity, int id) {
+    }
+    public void back2(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageOrder.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stg.setScene(scene);
+        stg.show();
+
+
     }
 }
