@@ -6,6 +6,7 @@ import frontendmalak.ViewControl.AdminMangeUsersController;
 import java.io.IOException;
 
 public class Order {
+    public Boolean executed = false;
     protected String Label;
     protected String orderType;
     protected int quantity;

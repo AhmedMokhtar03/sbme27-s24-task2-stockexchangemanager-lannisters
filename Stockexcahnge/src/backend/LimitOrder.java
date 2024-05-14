@@ -6,7 +6,6 @@ import java.io.IOException;
 
 public class LimitOrder extends Order {
     private final double limitPrice;
-    Boolean executed = false;
 
     public LimitOrder(String label, int quantity , int userID, double limitPrice) {
         this.limitPrice = limitPrice;
@@ -16,7 +15,12 @@ public class LimitOrder extends Order {
     }
     @Override
     public void buy(String label, int quantity, int userID) throws IOException {
-        User user = AdminMangeUsersController.userList.get(userID);
+        User user = null;
+        for(User u : AdminMangeUsersController.userList){
+            if(UserID == u.getID()){
+                user = u;
+            }
+        }
         this.Label = label;
         this.quantity = quantity;
         for (Company company : DataManager.companyList) {
@@ -36,7 +40,12 @@ public class LimitOrder extends Order {
     }
     @Override
     public void sell(String label, int quantity, int userID) throws IOException {
-        User user = AdminMangeUsersController.userList.get(userID);
+        User user = null;
+        for(User u : AdminMangeUsersController.userList){
+            if(UserID == u.getID()){
+                user = u;
+            }
+        }
         this.Label = label;
         this.quantity = quantity;
         for (Company company : DataManager.companyList) {

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public  class User {
-
+    public Order order = null;
     private int ID;
     private static Set<Integer> usedIDs = new HashSet<>();
     private String userName;
@@ -109,7 +109,6 @@ public  class User {
 
     public void addOrder(String label, int quantity, String orderType, double price) {
         try {
-            Order order = null;
             switch (orderType) {
                 case "BUY":
                     order = new Order();
