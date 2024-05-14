@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.AdminHomePageControl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.AdminHomePageController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,226 +21,123 @@
       </ImageView>
       <BorderPane layoutY="-2.0" prefHeight="400.0" prefWidth="600.0">
          <top>
-            <Pane prefHeight="29.0" prefWidth="600.0" style="-fx-background-color: #863156;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER_RIGHT" layoutX="510.0" layoutY="2.0" prefHeight="25.0" prefWidth="90.0">
-                     <children>
-                        <Pane fx:id="minimizePane" opacity="0.0" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: #f3e5f5; -fx-background-radius: 8;">
-                           <children>
-                              <Button fx:id="minimizeButton" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="30.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="maximizePane" opacity="0.0" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: #f3e5f5; -fx-background-radius: 8;">
-                           <children>
-                              <Button fx:id="maximizeButton" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="30.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="closePane" opacity="0.0" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: #f3e5f5; -fx-background-radius: 8;">
-                           <children>
-                              <Button fx:id="closeButton" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="30.0" />
-                           </children>
-                        </Pane>
-                     </children>
-                  </HBox>
-                  <ImageView fitHeight="20.0" fitWidth="17.0" layoutX="516.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/minimize.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="19.0" fitWidth="15.0" layoutX="547.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/maximize.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="16.0" fitWidth="14.0" layoutX="578.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/close.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="23.0" fitWidth="22.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                  <JFXButton fx:id="closeAppBTN" layoutX="575.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" text="x" />
+                  <ImageView fitHeight="23.0" fitWidth="127.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/Logo.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="30.0" layoutY="6.0" text="Lannisters Exchange" textFill="#f3e5f5">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
+               </children></Pane>
          </top>
          <center>
-            <Pane prefHeight="274.0" prefWidth="505.0" BorderPane.alignment="CENTER">
+            <Pane fx:id="adminPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane layoutX="100.0" layoutY="70.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #863156; -fx-background-radius: 20;">
+                  <VBox alignment="TOP_CENTER" layoutY="27.0" prefHeight="375.0" prefWidth="40.0">
                      <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="100.0" />
-                        <Circle layoutX="50.0" layoutY="42.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                           <fill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.1725490242242813" green="0.5764706134796143" blue="0.95686274766922" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="0.08812540769577026" green="0.16471058130264282" blue="0.2719298303127289" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </fill>
-                        </Circle>
-                        <Label layoutX="25.0" layoutY="77.0" text="Requests" textFill="WHITE">
+                        <Label opacity="0.5" text="Welcome, Admin" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </Label>
-                        <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="38.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icon1.png" />
-                           </image>
-                        </ImageView>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USER" opacity="0.3" size="200" text="" wrappingWidth="145.52383422851562" />
+                        <JFXButton fx:id="startSessionBTN" onAction="#startSession" opacity="0.4" prefHeight="40.0" prefWidth="100.0" styleClass="button12" text="Start Session" />
+                        <JFXButton fx:id="endSessionBTN" onAction="#endSession" opacity="0.4" prefHeight="40.0" prefWidth="100.0" styleClass="button13" text="End Session">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </JFXButton>
                      </children>
-                  </Pane>
-                  <Pane layoutX="250.0" layoutY="70.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #863156; -fx-background-radius: 20;">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="100.0" />
-                        <Circle layoutX="50.0" layoutY="42.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                           <fill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.1725490242242813" green="0.5764706134796143" blue="0.95686274766922" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="0.5504115223884583" green="0.8333333134651184" blue="0.7343106865882874" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </fill>
-                        </Circle>
-                        <Label layoutX="14.0" layoutY="78.0" text="Mange users" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="35.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icpn2.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="400.0" layoutY="70.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #863156; -fx-background-radius: 20;">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="100.0" />
-                        <Circle layoutX="50.0" layoutY="42.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                           <fill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.1725490242242813" green="0.5764706134796143" blue="0.95686274766922" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="0.4333333373069763" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </fill>
-                        </Circle>
-                        <Label layoutX="6.0" layoutY="78.0" prefHeight="10.0" prefWidth="100.0" text="Mange Securities" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="11.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="43.0" fitWidth="42.0" layoutX="29.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icon3.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="180.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #863156; -fx-background-radius: 20;">
-                     <children>
-                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="100.0" />
-                        <Circle layoutX="50.0" layoutY="42.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                           <fill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.1725490242242813" green="0.5764706134796143" blue="0.95686274766922" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="0.9122806787490845" green="0.5074796080589294" blue="0.27312108874320984" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </fill>
-                        </Circle>
-                        <Label layoutX="17.0" layoutY="78.0" prefHeight="16.0" prefWidth="72.0" text="Start Session" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="11.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="43.0" fitWidth="42.0" layoutX="29.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icon5.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="320.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #863156; -fx-background-radius: 20;">
-                     <children>
-                        <Button layoutX="-36.0" layoutY="-8.0" mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="100.0" />
-                        <Circle layoutX="50.0" layoutY="42.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                           <fill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.1725490242242813" green="0.5764706134796143" blue="0.95686274766922" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="0.8070175647735596" green="0.7752599120140076" blue="0.171864852309227" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </fill>
-                        </Circle>
-                        <Label layoutX="17.0" layoutY="78.0" prefHeight="16.0" prefWidth="72.0" text="End Session" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="11.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="43.0" fitWidth="42.0" layoutX="29.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icon6.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
+                  </VBox>
+                  <JFXButton fx:id="signOutBTN" layoutX="300.0" layoutY="2.0" onAction="#signOut" opacity="0.4" prefHeight="27.0" prefWidth="75.0" style="-fx-background-radius: 10;" styleClass="button15" text="sign out" />
                </children>
             </Pane>
          </center>
+         <left>
+            <Pane prefHeight="200.0" prefWidth="220.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="slider" layoutY="27.0" translateX="-220.0">
+                     <children>
+                        <VBox prefHeight="340.0" prefWidth="220.0">
+                           <children>
+                              <JFXButton fx:id="requestsBTN" alignment="BASELINE_LEFT" onAction="#requests" opacity="0.3" prefHeight="100.0" prefWidth="220.0" styleClass="button12" text="      Requests">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icon1.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton fx:id="mangeUsersBTN" alignment="BASELINE_LEFT" onAction="#mangeUsers" opacity="0.3" prefHeight="100.0" prefWidth="220.0" styleClass="button12" text="     Manage Users">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icon2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton fx:id="mangeSecuritiesBTN" alignment="BASELINE_LEFT" onAction="#mangeSecurities" opacity="0.3" prefHeight="100.0" prefWidth="220.0" styleClass="button12" text="     Manage Securities">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icon3.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <Pane prefHeight="27.0" prefWidth="220.0">
+                     <children>
+                        <JFXButton fx:id="closeMenuBTN" layoutX="5.0" layoutY="2.0" onAction="#closeMenu" opacity="0.3" style="-fx-background-radius: 10;" styleClass="button13" text="   menu">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/menu.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="menuBTN" layoutX="5.0" layoutY="2.0" onAction="#openMenu" opacity="0.3" prefWidth="75.0" style="-fx-background-radius: 10;" styleClass="button13" text="   menu">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/menu.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>

@@ -41,6 +41,7 @@ public class ManageOrder {
     @FXML
     private Button sellButton;
     private ObservableList<ManageOrder> orderData;
+    @FXML
     private MFXButton standardOrderButton;
     @FXML
     private MFXButton limitOrderButton;
