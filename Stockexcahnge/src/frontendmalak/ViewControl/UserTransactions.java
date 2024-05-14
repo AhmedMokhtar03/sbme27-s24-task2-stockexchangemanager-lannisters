@@ -37,6 +37,7 @@ public class UserTransactions {
 
     public  static ObservableList<Transactions> TransactionsList = FXCollections.observableArrayList();
 
+    @FXML
     private Button back1;
     private double balance;
     private double depositValue;
@@ -174,6 +175,7 @@ public class UserTransactions {
                 writer.newLine();
             }
             System.out.println("Transactions saved successfully to CSV file.");
+            messageLabel.setText("Your request is bending.");
         } catch (IOException e) {
             e.printStackTrace();
         }

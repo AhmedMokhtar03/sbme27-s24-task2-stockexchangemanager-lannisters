@@ -6,9 +6,11 @@ import frontendmalak.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -29,6 +31,7 @@ private JFXButton premium;
     private User currentUser;
    @FXML
     private  Label welcome;
+   @FXML
    private JFXButton gopremium;
  public void text() {
 
@@ -37,7 +40,17 @@ public void initialize() {
     currentUser =LogIn.currentUser;
 updatewelcome();
 }
+    @FXML
+    void signOut(ActionEvent event) throws IOException {
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/helloView.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setScene(new Scene(root));
+        stage.show();
+
+    }
 
 
 
