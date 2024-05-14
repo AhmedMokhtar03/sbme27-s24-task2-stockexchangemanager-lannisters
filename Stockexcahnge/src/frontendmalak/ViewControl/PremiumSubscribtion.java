@@ -1,7 +1,6 @@
 package frontendmalak.ViewControl;
 
-import backend.Transactions;
-import frontendmalak.ViewControl.LogIn;
+import frontendmalak.ViewControl.LogIn; // Assuming LogIn class is in the same package
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,32 +8,32 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static frontendmalak.HelloApplication.stg;
-import static frontendmalak.ViewControl.UserTransactions.CSV_FILE_PATH;
-import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
+import static frontendmalak.HelloApplication.stg; // Assuming HelloApplication is your main class
+import static frontendmalak.ViewControl.LogIn.currentUser; // Assuming currentUser is in LogIn
 
 public class PremiumSubscribtion {
     @FXML
     private Label Balance1;
-    double newBalance;
     @FXML
     private Button subscribeButton;
 
     private double balance;
-    private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
+    private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv"; // Update with your CSV path
     private static final double PREMIUM_COST = 50.0;
 
     public void initialize() throws IOException {
-        balance = LogIn.currentUser.getCashBalance();
+        balance = currentUser.getCashBalance();
         updateBalanceLabel();
 
-        // Set up the button click handler
-        subscribeButton.setOnAction(this::handleSubscribe);
+        // Disable subscribe button if user is already premium
+        if (currentUser.isPremium()) {
+            subscribeButton.setDisable(true);
+            Balance1.setText("You are already a Premium member!");
+        }
     }
 
     private void updateBalanceLabel() {
@@ -42,7 +41,7 @@ public class PremiumSubscribtion {
     }
 
     public void Back2(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml")); // Update path if needed
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stg.setScene(scene);
@@ -51,54 +50,48 @@ public class PremiumSubscribtion {
 
     @FXML
     private void handleSubscribe(ActionEvent event) {
-        if (balance >= PREMIUM_COST) {
-            // Deduct the premium cost from the balance
+        if (!currentUser.isPremium() && balance >= PREMIUM_COST) {
             balance -= PREMIUM_COST;
+            currentUser.setCashBalance(balance); // Update user's balance
+            currentUser.setPremium(true); // Set user to premium
 
-            // Update the user's balance in the CSV file (You'll need to implement this method)
-            updateUserBalanceInCSV(LogIn.currentUser.getUserName(), balance);
-
-            // Update the UI
-            updateBalanceLabel();
-            subscribeButton.setDisable(true); // Prevent multiple subscriptions
-            // Optionally display a success message
-            Balance1.setText(Balance1.getText() + " - Successfully subscribed to Premium!");
-
-            balance= newBalance;
+            try {
+                updateUserInCSV(currentUser.getUserName(), balance, true); // Update CSV
+                updateBalanceLabel();
+                subscribeButton.setDisable(true); // Disable button after successful subscription
+                Balance1.setText(Balance1.getText() + " - Successfully subscribed to Premium!");
+            } catch (IOException e) {
+                Balance1.setText("Error subscribing to Premium. Please try again later.");
+                e.printStackTrace();
+            }
+        } else if (currentUser.isPremium()) {
+            Balance1.setText("You are already a Premium member!");
         } else {
-            // Not enough balance
-            // You can display an error message here
             Balance1.setText("Insufficient balance for Premium subscription.");
         }
     }
 
-    // You'll need to implement the CSV file handling methods
-    private void updateUserBalanceInCSV(String username, double newBalance) {
+    // Method to update the user's balance and premium status in the CSV file
+    private void updateUserInCSV(String username, double newBalance, boolean isPremium) throws IOException {
         List<String> updatedLines = new ArrayList<>();
+
         try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 3 && parts[0].equals(username)) {
-                    parts[2] = String.valueOf(newBalance); // Update the balance
-                    line = String.join(",", parts); // Reconstruct the line
+                if (parts.length >= 4 && parts[0].equals(username)) {
+                    parts[2] = String.valueOf(newBalance);
+                    parts[3] = String.valueOf(isPremium);
+                    line = String.join(",", parts);
                 }
                 updatedLines.add(line);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle the error appropriately
         }
 
-        // Write back to the CSV
         try (PrintWriter writer = new PrintWriter(new FileWriter(CSV_FILE))) {
             for (String updatedLine : updatedLines) {
                 writer.println(updatedLine);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle the error appropriately
         }
     }
-
 }
