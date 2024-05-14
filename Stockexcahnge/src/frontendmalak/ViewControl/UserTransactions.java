@@ -47,7 +47,7 @@ public class UserTransactions {
     @FXML
     public void initialize() throws IOException {
         loadTransactionsFromCSV();
-        check();
+        //check();
         // Assuming you have a way to get the current user and initial values
         depositValue = 0; // Get initial deposit value
         withdrawValue = 0; // Get initial withdrawal value
@@ -60,26 +60,7 @@ public class UserTransactions {
 
 
 
-    public void updateBalance() throws IOException {
-        RandomAccessFile file = new RandomAccessFile(CSV_FILE, "rw");
-       String line; StringBuffer modifiedContent = new StringBuffer();
-       boolean userFound = false;
-        while ((line = file.readLine()) != null){
-            String[] parts = line.split(",");
-            if(parts[0].equals(String.valueOf(LogIn.currentUser.getID()))){
-                parts[3] = String.valueOf(LogIn.currentUser.getCashBalance());
-                line = String.join(",", parts);
-                System.out.println(parts[3]);
-                userFound = true;
-            }
-            modifiedContent.append(line).append(System.lineSeparator());}
-        if(userFound) {
-            file.seek(0);
-            file.writeBytes(modifiedContent.toString());
-            file.setLength(modifiedContent.length());
-            file.close();
-        }else System.out.println("couldn't find user");
-    }
+
 
     public void withdraw(double amount) throws IOException {
         if (amount <= 0) {
@@ -135,7 +116,7 @@ public class UserTransactions {
     }
 
 
-
+/*
     private void check() throws IOException {
         for (Transactions i : TransactionsList) {
 
@@ -165,7 +146,7 @@ public class UserTransactions {
 
 
     }
-
+*/
     public void Back1(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
@@ -186,8 +167,7 @@ public class UserTransactions {
                         transaction.getDate() + "," +
                         transaction.getAmount() + "," +
                         transaction.getCurrentBalance() + "," +
-                        transaction.getNewBalance() + "," +
-                        transaction.getDecision());
+                        transaction.getNewBalance());
                 writer.newLine();
             }
             System.out.println("Transactions saved successfully to CSV file.");
