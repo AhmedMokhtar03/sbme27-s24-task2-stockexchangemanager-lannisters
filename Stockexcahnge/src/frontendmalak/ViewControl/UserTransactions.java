@@ -43,7 +43,7 @@ public class UserTransactions {
     private double depositValue;
     private double withdrawValue;
     private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
-    private static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
+    public static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
 
     @FXML
     public void initialize() throws IOException {
