@@ -107,6 +107,8 @@ private User currentUser;
                 tableView.getItems().remove(selectedTransactions);
                 updateCurrentBalanceColumn();
             }
+        saveTransactionsToCSV();
+
     }
 
     @FXML
@@ -114,6 +116,8 @@ private User currentUser;
         Transactions selectedTransactions= tableView.getSelectionModel().getSelectedItem();
         TransactionsList.remove(selectedTransactions);
         tableView.getItems().remove(selectedTransactions);
+        saveTransactionsToCSV();
+
 
     }
     public  void updateBalance() throws IOException {
@@ -138,10 +142,7 @@ private User currentUser;
     }
 
 
-    @FXML
-    private void handleSave(ActionEvent event) {
-        saveTransactionsToCSV();
-    }
+
 
     private void saveTransactionsToCSV() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE_PATH))) {
@@ -177,6 +178,14 @@ public void updateCurrentBalanceColumn(){
     for(Transactions i : TransactionsList) {
         if (i.getUsername().equals(currentUser.getUserName())) {
             i.setCurrentBalance(currentUser.getCashBalance());
+            if(i.getTypeOfTransaction().equals("deposit")) {
+                i.setNewBalance(i.getCurrentBalance() + i.getAmount());
+            }
+else{
+                i.setNewBalance(i.getCurrentBalance() - i.getAmount());
+
+            }
+
         }
     }
 

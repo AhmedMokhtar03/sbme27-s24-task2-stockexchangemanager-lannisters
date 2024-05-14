@@ -150,6 +150,7 @@ public class AdminMangeUsersController {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         if (!username.isEmpty() && !password.isEmpty()) {
+            if(!isExistingUser(username)){
             User user = new User(username, password);
 
              //i was testing if premium columns work
@@ -157,6 +158,11 @@ public class AdminMangeUsersController {
             user.setFirstDateOfPremium(LocalDate.now());
             userList.add(user);
             clearFields();
+            }
+            else{
+                showAlert("Error", "User is already exist.");
+
+            }
         } else {
             showAlert("Error", "Username and password cannot be empty.");
         }
@@ -198,5 +204,21 @@ public class AdminMangeUsersController {
     private void clearFields() {
         usernameTextField.clear();
         passwordTextField.clear();
+    }
+
+    private boolean isExistingUser(String username) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= 6 && parts[1].equals(username)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+        return false;
     }
 }
