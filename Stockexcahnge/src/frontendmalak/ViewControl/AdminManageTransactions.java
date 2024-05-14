@@ -1,5 +1,6 @@
 package frontendmalak.ViewControl;
 
+import backend.DataManager;
 import backend.Transactions;
 import backend.User;
 import javafx.collections.FXCollections;
@@ -12,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import static backend.Calendar.currentDate;
+import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
 import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
 
 import java.io.*;
@@ -20,7 +22,8 @@ import java.util.concurrent.Semaphore;
 
 public class AdminManageTransactions {
     private static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
-
+    private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
+private User currentUser;
 
     @FXML
     private TableView<Transactions> tableView;
@@ -54,6 +57,8 @@ public class AdminManageTransactions {
 
     public void initialize() {
         loadTransactionsFromCSV();
+        DataManager.loadUsersFromCSV();
+
 //        Transactions transaction = new Transactions("ahmed", "deposit", currentDate, 20, 200, 220);
 //        TransactionsList.add(transaction);
 //         transaction = new Transactions("ahmed", "deposit", currentDate, 20, 200, 220);
@@ -90,17 +95,72 @@ public class AdminManageTransactions {
     }
 
     @FXML
-    private void handleAccept(ActionEvent event) {
+    private void handleAccept(ActionEvent event) throws IOException {
         Transactions selectedTransactions= tableView.getSelectionModel().getSelectedItem();
-        selectedTransactions.setDecision(true);
+        for(User u : userList) {
+            if (u.getUserName().equals(selectedTransactions.getUsername())) {
+                currentUser = u;
+                break;
+
+            }
+        }
+            if(selectedTransactions.getTypeOfTransaction().equals("deposit")){
+                //currentUser.set(balance) += i.getAmount();
+                currentUser.setCashBalance(currentUser.getCashBalance()+selectedTransactions.getAmount());
+                updateBalance();
+               // messageLabel.setText("Deposit successful!");
+                //updateBalanceLabel();
+            }
+            else if(selectedTransactions.getTypeOfTransaction().equals("withdrawal")){
+
+                // currentUser.get(balance) -= i.getAmount();
+                currentUser.setCashBalance(currentUser.getCashBalance()-selectedTransactions.getAmount());
+                updateBalance();
+                System.out.println("Withdrawal successful. New balance: " + currentUser.getCashBalance());
+                //messageLabel.setText("Withdrawal successful!");
+                //updateBalanceLabel();
+
+              //  TransactionsList.remove(selectedTransactions);
+
+
+
+        }
     }
 
     @FXML
     private void handleReject(ActionEvent event) {
         Transactions selectedTransactions= tableView.getSelectionModel().getSelectedItem();
-        selectedTransactions.setDecision(true);
-
+       // selectedTransactions.setDecision(true);
+//TransactionsList.remove(selectedTransactions);
     }
+    public  void updateBalance() throws IOException {
+        RandomAccessFile file = new RandomAccessFile(CSV_FILE, "rw");
+        String line; StringBuffer modifiedContent = new StringBuffer();
+        boolean userFound = false;
+        while ((line = file.readLine()) != null){
+            String[] parts = line.split(",");
+            if(parts[0].equals(String.valueOf(currentUser.getID()))){
+                parts[3] = String.valueOf(currentUser.getCashBalance());
+                line = String.join(",", parts);
+                System.out.println(parts[3]);
+                userFound = true;
+            }
+            modifiedContent.append(line).append(System.lineSeparator());}
+        if(userFound) {
+            file.seek(0);
+            file.writeBytes(modifiedContent.toString());
+            file.setLength(modifiedContent.length());
+            file.close();
+        }else System.out.println("couldn't find user");
+    }
+
+
+
+
+
+
+
+
     @FXML
     private void handleSave(ActionEvent event) {
         saveTransactionsToCSV();
@@ -114,8 +174,7 @@ public class AdminManageTransactions {
                         transaction.getDate() + "," +
                         transaction.getAmount() + "," +
                         transaction.getCurrentBalance() + "," +
-                        transaction.getNewBalance() + "," +
-                        transaction.getDecision());
+                        transaction.getNewBalance() );
                 writer.newLine();
             }
             System.out.println("Transactions saved successfully to CSV file.");

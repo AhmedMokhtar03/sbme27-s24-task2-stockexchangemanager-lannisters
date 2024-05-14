@@ -9,7 +9,7 @@ public class Transactions {
     private double amount;
     private double currentBalance;
     private double newBalance ;
-    private boolean decision;
+   // private boolean decision;
 
     public Transactions(String username, String typeOfTransaction, LocalDate date, double amount, double currentBalance, double newBalance) {
         this.username = username;
@@ -18,7 +18,7 @@ public class Transactions {
         this.amount = amount;
         this.currentBalance = currentBalance;
         this.newBalance = newBalance;
-        this.decision = false;
+     //   this.decision = false;
     }
 
     public String getUsername() {
@@ -68,14 +68,16 @@ public class Transactions {
     public void setNewBalance(double newBalance) {
         this.newBalance = newBalance;
     }
+//
+//    public boolean getDecision() {
+//        return decision;
+//    }
+//
+//    public void setDecision(boolean decision) {
+//        this.decision = decision;
+//    }
+//
 
-    public boolean getDecision() {
-        return decision;
-    }
-
-    public void setDecision(boolean decision) {
-        this.decision = decision;
-    }
 //    public void setProfitPercentage(double initialValue) {
 //        if (initialValue <= 0) {
 //            throw new IllegalArgumentException("Initial value must be positive for profit calculation.");
