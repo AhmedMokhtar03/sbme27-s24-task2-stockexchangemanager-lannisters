@@ -43,7 +43,7 @@ public class Stock extends Securities {
 
     public Stock(String label, int no_of_stocks, String state)//this constructor is to be used if the user wants to buy a stock state=sell||buy
     { this.numberofstocks= no_of_stocks;
-        for (Company c : CompanyController.companyList) {
+        for (Company c : DataManager.companyList) {
             if (c.getLabel().equalsIgnoreCase(label)) {
                 this.company = c;
                 this.currentPrice = c.getStockPrice();

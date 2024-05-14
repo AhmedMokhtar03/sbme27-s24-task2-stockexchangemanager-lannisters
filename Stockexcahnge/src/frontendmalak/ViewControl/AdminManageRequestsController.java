@@ -1,6 +1,7 @@
 package frontendmalak.ViewControl;
 
 import backend.DataManager;
+import backend.SecurityFactory;
 import backend.Transactions;
 import backend.User;
 import javafx.application.Platform;
@@ -24,9 +25,15 @@ import java.io.*;
 import java.time.LocalDate;
 
 public class AdminManageRequestsController {
+    private static AdminManageRequestsController instance;
+    public User currentUser;
+    public AdminManageRequestsController(){}
+    public AdminManageRequestsController(User currentUser){
+        this.currentUser = currentUser;
+    }
     private static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
     private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
-private User currentUser;
+
 
     @FXML
     private TableView<Transactions> tableView;
@@ -140,7 +147,7 @@ private User currentUser;
 
 
     }
-    public  void updateBalance() throws IOException {
+    public void updateBalance() throws IOException {
         RandomAccessFile file = new RandomAccessFile(CSV_FILE, "rw");
         String line; StringBuffer modifiedContent = new StringBuffer();
         boolean userFound = false;

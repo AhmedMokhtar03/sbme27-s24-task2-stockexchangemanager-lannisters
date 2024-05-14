@@ -1,5 +1,9 @@
 package backend;
 
+import frontendmalak.ViewControl.AdminMangeUsersController;
+
+import java.io.IOException;
+
 public class LimitOrder extends Order {
     private final double limitPrice;
     Boolean executed = false;
@@ -11,11 +15,11 @@ public class LimitOrder extends Order {
         this.UserID=userID;
     }
     @Override
-    public void buy(String label, int quantity, int userID) {
-        User user = DataManager.users.get(userID);
+    public void buy(String label, int quantity, int userID) throws IOException {
+        User user = AdminMangeUsersController.userList.get(userID);
         this.Label = label;
         this.quantity = quantity;
-        for (Company company : CompanyController.companyList) {
+        for (Company company : DataManager.companyList) {
             if (company.getLabel().equals(label)) {
                 com = company;
                 double currentPrice = company.getStockPrice();
@@ -31,11 +35,11 @@ public class LimitOrder extends Order {
         }
     }
     @Override
-    public void sell(String label, int quantity, int userID) {
-        User user = DataManager.users.get(userID);
+    public void sell(String label, int quantity, int userID) throws IOException {
+        User user = AdminMangeUsersController.userList.get(userID);
         this.Label = label;
         this.quantity = quantity;
-        for (Company company : CompanyController.companyList) {
+        for (Company company : DataManager.companyList) {
             if (company.getLabel().equals(label)) {
                 com = company;
                 double currentPrice = company.getStockPrice();

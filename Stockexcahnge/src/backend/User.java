@@ -1,5 +1,4 @@
 package backend;
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,13 +9,11 @@ public  class User {
 
     private int ID;
     private static Set<Integer> usedIDs = new HashSet<>();
-
     private String userName;
     private String password;
     private double cashBalance;
     private boolean isPremium;
     LocalDate firstDateOfPremium;
-    private boolean  orderAccepted = false;
     //each user will have an arraylist for his/her owned stocks in different companies
     private Map<String, Integer> ownedStocks;
 
@@ -99,7 +96,6 @@ public  class User {
         if (ownedStocks.containsKey(stockLabel)) {
             int currentQuantity = ownedStocks.get(stockLabel);
             currentQuantity -= quantity;
-            orderAccepted = true;
             if (currentQuantity == 0) {
                 ownedStocks.remove(stockLabel);
             } else {

@@ -26,7 +26,6 @@ public class CompanyController {
     @FXML
     private TextField numOfAvailableStocksField;
 
-    public static List<Company> companyList = new ArrayList<>();
     public static List<Securities> Stocks = new ArrayList<>();
 
     public void createCompany() {
@@ -39,7 +38,6 @@ public class CompanyController {
 
         Company newCompany = new Company(companyName, companyLabel, companyID, stockPrice, dividends, numOfAvailableStocks);
         //Stocks.add(SecurityFactory.createSecurity("stock", newCompany.getLabel(), newCompany.getNumOfAvailableStocks(), "new"));
-        companyList.add(newCompany);
         DataManager.saveCompanies(newCompany);
         System.out.println("New Company created: " + newCompany.getName() );
         printAllCompanies();
@@ -48,9 +46,6 @@ public class CompanyController {
 
     private void printAllCompanies() {
         System.out.println("All Companies:");
-        for (Company company : companyList) {
-            System.out.println(companyList);
-        }
     }
     private void printAllStocks() {
         System.out.println("All Stocks:");

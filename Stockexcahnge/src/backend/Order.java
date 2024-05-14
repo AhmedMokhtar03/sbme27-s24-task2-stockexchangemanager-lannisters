@@ -1,5 +1,10 @@
 package backend;
 
+import frontendmalak.ViewControl.AdminManageRequestsController;
+import frontendmalak.ViewControl.AdminMangeUsersController;
+
+import java.io.IOException;
+
 public class Order {
     protected String Label;
     protected String orderType;
@@ -11,13 +16,17 @@ public class Order {
     protected int UserID;
     private int sellingUserId;
 
-
-    public void buy(String Label, int quantity, int userID) {
+    public void buy(String Label, int quantity, int userID) throws IOException {
         this.UserID = userID;
-        User user = DataManager.users.get(userID);
+        User user= null;
+        for(User u : AdminMangeUsersController.userList){
+            if(UserID == u.getID()){
+                user = u;
+            }
+        }
         this.Label = Label;
         this.quantity = quantity;
-        for (Company company : CompanyController.companyList) {
+        for (Company company : DataManager.companyList) {
             if (company.getLabel().equals(Label)) {
                 com = company;
                 price = company.getStockPrice() * quantity;
@@ -25,12 +34,17 @@ public class Order {
         }
     }}
 
-public void sell(String Label, int quantity, int userID){
+public void sell(String Label, int quantity, int userID) throws IOException {
     this.UserID = userID;
-    User user = DataManager.users.get(userID);
+    User user= null;
+    for(User u : AdminMangeUsersController.userList){
+        if(UserID == u.getID()){
+            user = u;
+        }
+    }
     this.Label = Label;
     this.quantity = quantity;
-    for (Company company : CompanyController.companyList) {
+    for (Company company : DataManager.companyList) {
         if (company.getLabel().equals(Label)) {
             com = company;
             price = company.getStockPrice() * quantity;
@@ -39,7 +53,7 @@ public void sell(String Label, int quantity, int userID){
     }
 }
 
-protected void orderExecution(Company company, double price, int quantity, User user, String label, String state){
+protected void orderExecution(Company company, double price, int quantity, User user, String label, String state) throws IOException {
     if (company.getNumOfAvailableStocks() >= quantity && user.getCashBalance() >= price) {
         Securities newstock = SecurityFactory.createSecurity("stock", label, quantity, state);
         switch (state) {

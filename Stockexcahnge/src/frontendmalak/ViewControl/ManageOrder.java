@@ -4,6 +4,7 @@ package frontendmalak.ViewControl;
 
 import backend.Company;
 import backend.CompanyController;
+import backend.DataManager;
 import backend.User;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.FXCollections;
@@ -60,15 +61,15 @@ public class ManageOrder {
     private void handleBuyButtonAction() {
         String label = stockLabelField.getText();
         int quantity = Integer.parseInt(quantityField.getText());
-        for(Company company : CompanyController.companyList){
+        for(Company company : DataManager.companyList){
             if(label.equals(company.getLabel())){
                 currentUser.addOrder(label, quantity, "BUY", company.getStockPrice());
             }
         }
     }
 
-    private void buy(String label, int quantity, int id) {
-    }
+//    private void buy(String label, int quantity, int id) {
+//    }
 
     @FXML
     private void handleStandardOrderButtonAction(ActionEvent event) throws IOException {

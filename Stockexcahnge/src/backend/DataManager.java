@@ -14,8 +14,7 @@ import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
 public class DataManager {
     private static final String companiesFile = "companies.csv";
     private static final String usersFile = "users.csv";
-    private static final String PRICE_HISTORY_DIR = "price_history";
-    public static ArrayList<User> users = new ArrayList<>();
+    public static ArrayList<Company> companyList;
     public static void saveCompanies(Company company) {
         try {
             File file = new File(companiesFile);
@@ -46,13 +45,39 @@ public class DataManager {
             e.printStackTrace();
         }
     }
+    public static void loadCompanies() {
+        companyList = new ArrayList<>();
+        try {
+            File file = new File(companiesFile);
+            if (file.exists()) {
+                try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        String[] data = line.split(",");
+                        if (data.length == 6) {
+                            String name = data[0];
+                            String label = data[1];
+                            int id = Integer.parseInt(data[2]);
+                            double stockPrice = Double.parseDouble(data[3]);
+                            double dividends = Double.parseDouble(data[4]);
+                            int numOfAvailableStocks = Integer.parseInt(data[5]);
+                            Company company = new Company(name, label, id, stockPrice, dividends, numOfAvailableStocks);
+                            companyList.add(company);
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void savePriceHistory(Company company) {
         String fileName = company.getLabel() + ".csv"; // Use the company label as the file name
         File file = new File(fileName);
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
             // Write the header row
-            bw.write("Date,OpeningPrice,ClosingPrice,HighestPrice,LowestPrice");
+            bw.write("Date,OpeningPrice,ClosingPrice,LowestPrice,HighestPrice");
             bw.newLine();
             // Write each price history entry to the CSV file
             for (Map<String, Double> entry : company.getPriceHistory()) {
@@ -106,30 +131,6 @@ public class DataManager {
         e.printStackTrace();
     }
 }
-    /*
-    public static void loadUsersFromCSV(String csvFilePath) {
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
-            String line;
-            br.readLine(); // Skip the header row
-            while ((line = br.readLine()) != null) {
-                String[] fields = line.split(",");
-                String username = fields[1];
-                String password = fields[2];
-                for(User u : users){
-                    if(username.equals(u.getUserName())){
-                        continue;
-                    }
-                    User user = new User(username, password);
-                    user.setID(user.hashCode());
-                    users.add(user);
-                }
-
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading CSV file: " + e.getMessage());
-        }
-    }
-*/
     }
 
 
