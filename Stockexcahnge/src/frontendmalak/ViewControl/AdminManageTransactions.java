@@ -58,20 +58,7 @@ private User currentUser;
     public void initialize() {
         loadTransactionsFromCSV();
         DataManager.loadUsersFromCSV();
-
-//        Transactions transaction = new Transactions("ahmed", "deposit", currentDate, 20, 200, 220);
-//        TransactionsList.add(transaction);
-//         transaction = new Transactions("ahmed", "deposit", currentDate, 20, 200, 220);
-//        TransactionsList.add(transaction);
-
-        tableView.setItems(TransactionsList);
-
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-        typeOfTransactionColumn.setCellValueFactory(new PropertyValueFactory<>("typeOfTransaction"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        currentBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("currentBalance"));
-        newBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("newBalance"));
+       loadTable();
     }
 
     private void loadTransactionsFromCSV() {
@@ -105,33 +92,29 @@ private User currentUser;
             }
         }
             if(selectedTransactions.getTypeOfTransaction().equals("deposit")){
-                //currentUser.set(balance) += i.getAmount();
                 currentUser.setCashBalance(currentUser.getCashBalance()+selectedTransactions.getAmount());
                 updateBalance();
-               // messageLabel.setText("Deposit successful!");
-                //updateBalanceLabel();
-            }
-            else if(selectedTransactions.getTypeOfTransaction().equals("withdrawal")){
+                TransactionsList.remove(selectedTransactions);
+                tableView.getItems().remove(selectedTransactions);
+                updateCurrentBalanceColumn();
 
-                // currentUser.get(balance) -= i.getAmount();
+            }
+
+            else if(selectedTransactions.getTypeOfTransaction().equals("withdrawal")){
                 currentUser.setCashBalance(currentUser.getCashBalance()-selectedTransactions.getAmount());
                 updateBalance();
-                System.out.println("Withdrawal successful. New balance: " + currentUser.getCashBalance());
-                //messageLabel.setText("Withdrawal successful!");
-                //updateBalanceLabel();
-
-              //  TransactionsList.remove(selectedTransactions);
-
-
-
-        }
+                TransactionsList.remove(selectedTransactions);
+                tableView.getItems().remove(selectedTransactions);
+                updateCurrentBalanceColumn();
+            }
     }
 
     @FXML
     private void handleReject(ActionEvent event) {
         Transactions selectedTransactions= tableView.getSelectionModel().getSelectedItem();
-       // selectedTransactions.setDecision(true);
-//TransactionsList.remove(selectedTransactions);
+        TransactionsList.remove(selectedTransactions);
+        tableView.getItems().remove(selectedTransactions);
+
     }
     public  void updateBalance() throws IOException {
         RandomAccessFile file = new RandomAccessFile(CSV_FILE, "rw");
@@ -155,12 +138,6 @@ private User currentUser;
     }
 
 
-
-
-
-
-
-
     @FXML
     private void handleSave(ActionEvent event) {
         saveTransactionsToCSV();
@@ -182,6 +159,31 @@ private User currentUser;
             e.printStackTrace();
         }
     }
+public void loadTable(){
+
+    tableView.setItems(TransactionsList);
+
+    usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+    typeOfTransactionColumn.setCellValueFactory(new PropertyValueFactory<>("typeOfTransaction"));
+    dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+    amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+    currentBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("currentBalance"));
+    newBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("newBalance"));
+
+
+
+}
+public void updateCurrentBalanceColumn(){
+    for(Transactions i : TransactionsList) {
+        if (i.getUsername().equals(currentUser.getUserName())) {
+            i.setCurrentBalance(currentUser.getCashBalance());
+        }
+    }
+
+
+
+}
+
 
 
 }

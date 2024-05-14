@@ -74,6 +74,8 @@ public class UserTransactions {
         }
         Transactions transaction = new Transactions(LogIn.currentUser.getUserName(), "withdrawal", LocalDate.now(), amount, LogIn.currentUser.getCashBalance(), LogIn.currentUser.getCashBalance() - amount);
         TransactionsList.add(transaction);
+        saveTransactionsToCSV();
+
     }
 
 
@@ -84,6 +86,8 @@ public class UserTransactions {
         }
         Transactions transaction = new Transactions(LogIn.currentUser.getUserName(), "deposit", LocalDate.now(), amount, LogIn.currentUser.getCashBalance(), LogIn.currentUser.getCashBalance() + amount);
         TransactionsList.add(transaction);
+        saveTransactionsToCSV();
+
 
     }
     @FXML
@@ -153,7 +157,6 @@ public class UserTransactions {
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
-        saveTransactionsToCSV();
 
     }
 
