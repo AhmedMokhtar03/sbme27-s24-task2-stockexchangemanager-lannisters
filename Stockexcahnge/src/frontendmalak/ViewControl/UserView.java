@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 import static frontendmalak.HelloApplication.stg;
 
@@ -33,15 +34,14 @@ private JFXButton premium;
 
  }
 public void initialize() {
-    currentUser = getCurrentUser();
+    currentUser =LogIn.currentUser;
+updatewelcome();
 }
 
 
 
-    User user=new User("ahmed","ahmed");
 
-    private User getCurrentUser() {return user;
-    }
+
     public void Gopremium(ActionEvent event) throws IOException {
         this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
@@ -66,7 +66,6 @@ public void initialize() {
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
-
     }
     public void Transactionss(ActionEvent event) throws IOException {
         this.event = event;
@@ -78,26 +77,27 @@ public void initialize() {
 
     }
     public void chartss(ActionEvent event) throws IOException {
-       if(currentUser.isPremium()){
-        this.event = event;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premium.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();}
+        if (currentUser.isPremium()) {
+            this.event = event;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premium.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stg.setScene(scene);
+            stg.show();
+            System.out.println("you are premium uer");
+
+        }
        else{
            FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/charts.fxml"));
            Parent root = loader.load();
            Scene scene = new Scene(root);
            stg.setScene(scene);
            stg.show();
+            System.out.println("you are not premium uer");
 
     }}
 
-    public void setCurrentUser(User user) {
-        this.currentUser = user;
-        updatewelcome();
-    }
+
 
     private void updatewelcome() {
         welcome.setText("Welcome, " + currentUser.getUserName());

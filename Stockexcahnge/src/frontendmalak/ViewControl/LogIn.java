@@ -87,6 +87,7 @@ public class LogIn {
                         if(u.getUserName().equals(username)){
                             currentUser = u;
                             break;
+
                         }
                     }
                     if (currentUser == null) {

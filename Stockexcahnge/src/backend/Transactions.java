@@ -1,35 +1,81 @@
-//package backend;
-//
-//public class Transactions {
-//    private double depositValue;
-//    private double withdrawValue;
-//    private double profitPercentage;
-//    private static User currentUser;
-//
-//    public Transactions(double depositValue, double withdrawValue) {
-//        this.depositValue = depositValue;
-//        this.withdrawValue = withdrawValue;
-//    }
-//
-//    public double getDepositValue() {
-//        return depositValue;
-//    }
-//
-//    public void setDepositValue(double depositValue) {
-//        this.depositValue = depositValue;
-//    }
-//
-//    public double getWithdrawValue() {
-//        return withdrawValue;
-//    }
-//
-//    public void setWithdrawValue(double withdrawValue) {
-//        this.withdrawValue = withdrawValue;
-//    }
-//
-//
-//
-//
+package backend;
+
+import java.time.LocalDate;
+
+public class Transactions {
+    private String username;
+    private String typeOfTransaction;
+    private LocalDate date;
+    private double amount;
+    private double currentBalance;
+    private double newBalance ;
+    private boolean decision;
+
+    public Transactions(String username, String typeOfTransaction, LocalDate date, double amount, double currentBalance, double newBalance) {
+        this.username = username;
+        this.typeOfTransaction = typeOfTransaction;
+        this.date = date;
+        this.amount = amount;
+        this.currentBalance = currentBalance;
+        this.newBalance = newBalance;
+        this.decision = false;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getTypeOfTransaction() {
+        return typeOfTransaction;
+    }
+
+    public void setTypeOfTransaction(String typeOfTransaction) {
+        this.typeOfTransaction = typeOfTransaction;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public double getCurrentBalance() {
+        return currentBalance;
+    }
+
+    public void setCurrentBalance(double currentBalance) {
+        this.currentBalance = currentBalance;
+    }
+
+    public double getNewBalance() {
+        return newBalance;
+    }
+
+    public void setNewBalance(double newBalance) {
+        this.newBalance = newBalance;
+    }
+
+    public boolean getDecision() {
+        return decision;
+    }
+
+    public void setDecision(boolean decision) {
+        this.decision = decision;
+    }
 //    public void setProfitPercentage(double initialValue) {
 //        if (initialValue <= 0) {
 //            throw new IllegalArgumentException("Initial value must be positive for profit calculation.");
@@ -60,5 +106,5 @@
 //        currentUser.setCashBalance(currentUser.getCashBalance() + amount);
 //        System.out.println("Deposit successful. New balance: " + currentUser.getCashBalance());
 //    }
-//
-//}
+
+}
