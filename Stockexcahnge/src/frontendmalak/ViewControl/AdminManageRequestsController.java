@@ -3,24 +3,27 @@ package frontendmalak.ViewControl;
 import backend.DataManager;
 import backend.Transactions;
 import backend.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
+import com.jfoenix.controls.JFXButton;
+import javafx.stage.Stage;
 
-import static backend.Calendar.currentDate;
 import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
 import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.concurrent.Semaphore;
 
-public class AdminManageTransactions {
+public class AdminManageRequestsController {
     private static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
     private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
 private User currentUser;
@@ -47,10 +50,10 @@ private User currentUser;
     private TableColumn<Transactions, Double> newBalanceColumn;
 
     @FXML
-    private Button acceptButton;
+    private JFXButton acceptButton;
 
     @FXML
-    private Button rejectButton;
+    private JFXButton rejectButton;
 
     public boolean decision;
 
@@ -59,6 +62,23 @@ private User currentUser;
         loadTransactionsFromCSV();
         DataManager.loadUsersFromCSV();
        loadTable();
+    }
+
+    @FXML
+    void closeApp(ActionEvent event) {
+        Platform.exit();
+
+    }
+
+    @FXML
+    void goBack(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/AdminHomePage.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+
     }
 
     private void loadTransactionsFromCSV() {
