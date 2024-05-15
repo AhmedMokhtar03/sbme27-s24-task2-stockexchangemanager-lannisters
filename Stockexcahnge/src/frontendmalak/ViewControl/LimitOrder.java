@@ -59,7 +59,7 @@ public class LimitOrder {
             orderStatusLabel.setText("Limit buy order executed!");
             admin.updateBalance();
         } else {
-            orderStatusLabel.setText("Limit buy order pending.");
+            orderStatusLabel.setText("pending.");
         }
     }
     @FXML

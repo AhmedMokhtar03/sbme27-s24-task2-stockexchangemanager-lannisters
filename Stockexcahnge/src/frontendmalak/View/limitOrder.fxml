@@ -32,7 +32,7 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Label fx:id="orderStatusLabel" layoutX="27.0" layoutY="287.0" prefHeight="38.0" prefWidth="364.0" text="Order Status" textAlignment="RIGHT" textFill="#f2eaea">
+      <Label layoutX="27.0" layoutY="287.0" prefHeight="38.0" prefWidth="168.0" text="Order Status" textAlignment="RIGHT" textFill="#f2eaea">
          <font>
             <Font size="26.0" />
          </font>
@@ -73,5 +73,10 @@
          </effect>
       </TextField>
       <MFXButton layoutX="-1.0" layoutY="-2.0" minWidth="47.0" onAction="#back2" prefHeight="28.0" prefWidth="47.0" style="-fx-background-color: red;" styleClass="button10" stylesheets="@Designs.css" text="Back" />
+      <Label fx:id="orderStatusLabel" layoutX="220.0" layoutY="291.0" prefHeight="28.0" prefWidth="159.0" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
