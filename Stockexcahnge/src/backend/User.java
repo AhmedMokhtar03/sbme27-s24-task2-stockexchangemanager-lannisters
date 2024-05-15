@@ -134,7 +134,22 @@ public  class User {
         }
     }
     public String toCSV() {
-        return ID + "," + userName + "," + password + "," + cashBalance + "," + isPremium + "," + firstDateOfPremium;
+        StringBuilder sb = new StringBuilder();
+        sb.append(ID).append(",")
+                .append(userName).append(",")
+                .append(password).append(",")
+                .append(cashBalance).append(",")
+                .append(isPremium).append(",")
+                .append(firstDateOfPremium);
+
+        // Append the number of stocks owned for each company
+        if(!DataManager.companyList.isEmpty()){
+        for (Company company : DataManager.companyList) {
+            int ownedStocks = this.ownedStocks.getOrDefault(company.getLabel(), 0);
+            sb.append(",").append(ownedStocks);
+        }}
+
+        return sb.toString();
     }
 
     private void generateUniqueID() {

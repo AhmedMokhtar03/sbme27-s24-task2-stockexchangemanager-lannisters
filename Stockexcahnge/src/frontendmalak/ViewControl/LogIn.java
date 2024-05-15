@@ -46,11 +46,11 @@ public class LogIn {
 
     @FXML
     public void initialize() {
+        DataManager.loadCompanies();
         ObservableList<String> userTypes = FXCollections.observableArrayList("Admin", "User");
         choicebox.setItems(userTypes);
         choicebox.setValue("User");
     }
-
 
 
     @FXML
@@ -76,15 +76,14 @@ public class LogIn {
 
             try {
                 FXMLLoader loader;
-                DataManager.loadCompanies();
                 DataManager.loadUsersFromCSV();
                 if ("Admin".equals(userType)) {
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminHomePage.fxml"));
                 } else {
                     //currentUser = new User(username);
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
-                    for(User u : userList){
-                        if(u.getUserName().equals(username)){
+                    for (User u : userList) {
+                        if (u.getUserName().equals(username)) {
                             currentUser = u;
                             break;
 
@@ -95,13 +94,6 @@ public class LogIn {
                         return;
                     }
                 }
-
-//                Parent root = loader.load();
-//                UserView userViewController = loader.getController();
-//                userViewController.setCurrentUser(currentUser);
-//                Scene scene = new Scene(root);
-//                stg.setScene(scene);
-//                stg.show();
                 Parent root = loader.load();
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -147,75 +139,11 @@ public class LogIn {
                 wronglogin.setText("Error writing to " + CSV_FILE);
                 e.printStackTrace();
             }
-
-
-            // Append new user data to CSV file
-//            try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE, true))) {
-//                writer.write(username + "," + password + "," + userType);
-//                writer.newLine();
-//                wronglogin.setText("Sign up successful.");
-//                //UserManager.loadUsersFromCSV("Stockexcahnge/src/frontendmalak/userdata.csv");
-//            } catch (IOException e) {
-//                wronglogin.setText("Error writing to " + CSV_FILE);
-//                e.printStackTrace();
-//                throw e; // rethrowing the exception
-//            }
-
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
-//       catch (IOException e) {
-//            wronglogin.setText("Error during sign up.");
-//            e.printStackTrace();
-//        }
-//
-
     }
 
-    @FXML
-   /* private void handleLogin() {
-        String username = this.username.getText();
-        String password = this.password.getText();
-        String userType = choicebox.getValue();
-
-        if (!isValidInput(username, password, userType)) {
-            wronglogin.setText("Please enter a valid username and password.");
-            return;
-        }
-
-        if (isAuthenticated(username, password, userType)) {
-            wronglogin.setText("Login successful.");
-            try {
-                FXMLLoader loader;
-                User currentUser = null;
-                if ("Admin".equals(userType)) {
-                    loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminHomePage.fxml"));
-                } else {
-                    currentUser = new User(username);
-                    loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
-                }
-
-//                Parent root = loader.load();
-//                UserView userViewController = loader.getController();
-//                userViewController.setCurrentUser(currentUser);
-//                Scene scene = new Scene(root);
-//                stg.setScene(scene);
-//                stg.show();
-                Parent root = loader.load();
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (IOException e) {
-                wronglogin.setText("Error loading the next scene.");
-                e.printStackTrace();
-            }
-        } else {
-            wronglogin.setText("Invalid username, password, or user type.");
-        }
-    }
-*/
     private boolean isValidInput(String username, String password, String userType) {
         return !username.isEmpty() && !password.isEmpty();
     }
@@ -225,7 +153,7 @@ public class LogIn {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 6 && parts[1].equals(username)) {
+                if (parts.length >= 7 && parts[1].equals(username)) {
                     return true;
                 }
             }
@@ -236,9 +164,10 @@ public class LogIn {
         return false;
     }
 
+    @FXML
     private boolean isAuthenticated(String username, String password, String userType) {
         //now admin login checking is from the code itself not the csv file
-        if (userType.equals("Admin") ){
+        if (userType.equals("Admin")) {
             if (username.equals("admin") && password.equals("admin")) {
                 return true;
             }
@@ -247,19 +176,14 @@ public class LogIn {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 6 && parts[1].equals(username) && parts[2].equals(password) ) {
+                if (parts.length >= 7 && parts[1].equals(username) && parts[2].equals(password)) {
                     return true;
                 }
             }
-
         } catch (IOException e) {
             wronglogin.setText("Error reading " + LogIn.CSV_FILE);
             e.printStackTrace();
         }
         return false;
     }
-//    public String getUsername() {
-//        return this.username;
-//    }
 }
-

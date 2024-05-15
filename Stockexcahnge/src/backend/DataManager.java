@@ -4,10 +4,7 @@ import frontendmalak.ViewControl.AdminMangeUsersController;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
 
@@ -96,41 +93,58 @@ public class DataManager {
         }
     }
     public static void loadUsersFromCSV() {
-         final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
+        final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
         userList.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            String[] parts = line.split(",");
-            if (parts.length >= 6) {
-                int id = Integer.parseInt(parts[0]);
-                String username = parts[1];
-                String password = parts[2];
-                double cashBalance = Double.parseDouble(parts[3]);
-                boolean isPremium = Boolean.parseBoolean(parts[4]);
-                LocalDate firstDateOfPremium = null;
-                if (!parts[5].equals("null")) { // Check if date string is not 'null'
-                    firstDateOfPremium = LocalDate.parse(parts[5]); // Assuming date is in ISO format
-                }
-                User user = new User(username, password);
-                user.setID(id);
-                user.setCashBalance(cashBalance);
-                user.setPremium(isPremium);
-                if (firstDateOfPremium != null) {
+            String line;
+            int columnOffset = 6; // Offset to account for the basic user info columns
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= columnOffset + DataManager.companyList.size()) {
+                    int id = Integer.parseInt(parts[0]);
+                    String username = parts[1];
+                    String password = parts[2];
+                    double cashBalance = Double.parseDouble(parts[3]);
+                    boolean isPremium = Boolean.parseBoolean(parts[4]);
+                    LocalDate firstDateOfPremium = null;
+                    if (!parts[5].equals("null")) { // Check if parts[5] is not "null"
+                        firstDateOfPremium = LocalDate.parse(parts[5]);
+                    }
+
+                    User user = new User(username, password);
+                    user.setID(id);
+                    user.setCashBalance(cashBalance);
+                    user.setPremium(isPremium);
                     user.setFirstDateOfPremium(firstDateOfPremium);
-                } else {
-                    //wethar set it to arbitery date or leave it as null
-                    //       user.setFirstDateOfPremium(LocalDate.MIN); // Set an arbitrary date
-                    user.setFirstDateOfPremium(null);
+
+                    Map<String, Integer> ownedStocks = new HashMap<>();
+                    for (int i = 0; i < DataManager.companyList.size(); i++) {
+                        Company company = DataManager.companyList.get(i);
+                        int quantity = Integer.parseInt(parts[columnOffset + i]);
+                        if (quantity > 0) {
+                            ownedStocks.put(company.getLabel(), quantity);
+                        }
+                    }
+                    user.setOwnedStocks(ownedStocks);
+
+                    userList.add(user);
                 }
-                userList.add(user);
             }
+        } catch (IOException e) {
+            AdminMangeUsersController.showAlert("Error", "Failed to load users from CSV file.");
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        AdminMangeUsersController.showAlert("Error", "Failed to load users from CSV file.");
-        e.printStackTrace();
     }
-}
+    public static void saveUsersToCSV() {
+        final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
+        try (PrintWriter writer = new PrintWriter(new FileWriter(CSV_FILE))) {
+            for (User user : userList) {
+                writer.println(user.toCSV());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     }
 
 

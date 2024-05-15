@@ -60,6 +60,7 @@ public class StandardOrder {
         updateEstimates();
         currentUser.addOrder(selectedStock, quantity, "BUY", currentPrice);
         admin.updateBalance();
+        DataManager.saveUsersToCSV();
     }
 
     @FXML
@@ -68,6 +69,7 @@ public class StandardOrder {
         updateEstimates();
         currentUser.addOrder(selectedStock, quantity, "SELL", currentPrice);
         admin.updateBalance();
+        DataManager.saveUsersToCSV();
     }
 
     private void updateEstimates() {
