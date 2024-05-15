@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,56 +21,24 @@
             <Image url="@../img/Logo.png" />
          </image>
       </ImageView>
-      <JFXCheckBox checkedColor="WHITE" layoutX="299.0" layoutY="105.0" prefHeight="25.0" prefWidth="116.0" text="Subscribe" textFill="#fffefe">
-         <font>
-            <Font name="Calisto MT" size="20.0" />
-         </font>
-      </JFXCheckBox>
-      <JFXCheckBox checkedColor="WHITE" layoutX="445.0" layoutY="105.0" prefHeight="25.0" prefWidth="116.0" text="Unsubscribe" textFill="#fffefe">
-         <font>
-            <Font name="Calisto MT" size="20.0" />
-         </font>
-      </JFXCheckBox>
-      <JFXCheckBox checkedColor="WHITE" layoutX="300.0" layoutY="145.0" prefHeight="25.0" prefWidth="116.0" text="Subscribe" textFill="#fffefe">
-         <font>
-            <Font name="Calisto MT" size="20.0" />
-         </font>
-      </JFXCheckBox>
-      <JFXCheckBox checkedColor="WHITE" layoutX="445.0" layoutY="145.0" prefHeight="25.0" prefWidth="116.0" text="Unsubscribe" textFill="#fffefe">
-         <font>
-            <Font name="Calisto MT" size="20.0" />
-         </font>
-      </JFXCheckBox>
-      <JFXCheckBox checkedColor="WHITE" layoutX="299.0" layoutY="187.0" prefHeight="25.0" prefWidth="116.0" text="Subscribe" textFill="#fffefe">
-         <font>
-            <Font name="Calisto MT" size="20.0" />
-         </font>
-      </JFXCheckBox>
-      <JFXCheckBox checkedColor="WHITE" layoutX="445.0" layoutY="187.0" prefHeight="25.0" prefWidth="116.0" text="Unsubscribe" textFill="#fffefe">
-         <font>
-            <Font name="Calisto MT" size="20.0" />
-         </font>
-      </JFXCheckBox>
-      <JFXCheckBox checkedColor="WHITE" layoutX="299.0" layoutY="223.0" prefHeight="25.0" prefWidth="116.0" text="Subscribe" textFill="#fffefe">
-         <font>
-            <Font name="Calisto MT" size="20.0" />
-         </font>
-      </JFXCheckBox>
-      <JFXCheckBox checkedColor="WHITE" layoutX="445.0" layoutY="223.0" prefHeight="25.0" prefWidth="116.0" text="Unsubscribe" textFill="#fffefe">
-         <font>
-            <Font name="Calisto MT" size="20.0" />
-         </font>
-      </JFXCheckBox>
       <Line endX="-99.99996948242188" endY="169.66665649414062" layoutX="361.0" layoutY="111.0" startX="-99.99996948242188" startY="-27.00000762939453" stroke="#ffffff9b" />
       <Label layoutX="125.0" layoutY="99.0" prefHeight="38.0" prefWidth="134.0" text="AAPL" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="123.0" layoutY="136.0" prefHeight="38.0" prefWidth="134.0" text="AMZN" textFill="WHITE">
+      <Label layoutX="123.0" layoutY="143.0" prefHeight="38.0" prefWidth="134.0" text="AMZN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
+      <Label layoutX="4.0" layoutY="46.0" prefHeight="25.0" prefWidth="585.0" style="-fx-background-color: #00014a;" text="Choose the company that aligns with your investment interests." textFill="WHITE">
+         <font>
+            <Font name="Eras Bold ITC" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="-293.0" endY="169.66665649414062" layoutX="291.0" layoutY="-95.0" startX="299.83331298828125" startY="169.66665649414062" stroke="#ffffff9b" />
+      <ChoiceBox fx:id="aapl" layoutX="294.0" layoutY="105.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="amzn" layoutX="295.0" layoutY="148.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
