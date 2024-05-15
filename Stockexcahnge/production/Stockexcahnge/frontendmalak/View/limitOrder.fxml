@@ -62,12 +62,12 @@
             <ColorAdjust contrast="-0.36" />
          </effect>
       </MenuButton>
-      <TextField layoutX="220.0" layoutY="179.0" prefHeight="26.0" prefWidth="168.0">
+      <TextField fx:id="Quantity" layoutX="220.0" layoutY="179.0" prefHeight="26.0" prefWidth="168.0">
          <effect>
             <ColorAdjust contrast="-0.44" />
          </effect>
       </TextField>
-      <TextField layoutX="220.0" layoutY="230.0" prefHeight="26.0" prefWidth="168.0">
+      <TextField fx:id="Price" layoutX="220.0" layoutY="230.0" prefHeight="26.0" prefWidth="168.0">
          <effect>
             <ColorAdjust contrast="-0.44" />
          </effect>
