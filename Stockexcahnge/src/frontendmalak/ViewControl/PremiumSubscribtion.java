@@ -1,6 +1,5 @@
 package frontendmalak.ViewControl;
 
-import backend.DataManager;
 import frontendmalak.ViewControl.LogIn; // Assuming LogIn class is in the same package
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,9 +53,7 @@ public class PremiumSubscribtion {
         if (!currentUser.isPremium() && balance >= PREMIUM_COST) {
             balance -= PREMIUM_COST;
             currentUser.setCashBalance(balance); // Update user's balance
-            currentUser.setPremium(true);
-            DataManager.saveUsersToCSV();
-            // Set user to premium
+            currentUser.setPremium(true); // Set user to premium
 
             try {
                 updateUserInCSV(currentUser.getUserName(), balance, true); // Update CSV
