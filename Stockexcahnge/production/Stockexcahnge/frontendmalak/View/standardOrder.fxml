@@ -32,7 +32,7 @@
                   <Font name="System Italic" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="quantity1" layoutX="149.0" layoutY="172.0" prefHeight="27.0" prefWidth="150.0" />
+            <TextField layoutX="149.0" layoutY="172.0" prefHeight="27.0" prefWidth="150.0" />
             <MenuButton fx:id="orderTypeMenuButton" layoutX="139.0" layoutY="246.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" style="-fx-background-color: white;" styleClass="button1" stylesheets="@Designs.css" text="Order Type">
 
                <items>
