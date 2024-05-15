@@ -72,5 +72,11 @@
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
+      <Label layoutX="4.0" layoutY="46.0" prefHeight="25.0" prefWidth="585.0" style="-fx-background-color: #00014a;" text="Choose the company that aligns with your investment interests." textFill="WHITE">
+         <font>
+            <Font name="Eras Bold ITC" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="-293.0" endY="169.66665649414062" layoutX="291.0" layoutY="-95.0" startX="299.83331298828125" startY="169.66665649414062" stroke="#ffffff9b" />
    </children>
 </AnchorPane>

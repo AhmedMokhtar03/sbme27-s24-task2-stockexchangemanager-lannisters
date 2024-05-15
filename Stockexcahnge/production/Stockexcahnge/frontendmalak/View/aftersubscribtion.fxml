@@ -52,9 +52,9 @@
             <Font name="Elephant" size="16.0" />
          </font>
       </Label>
-      <JFXButton fx:id="continu" layoutX="225.0" layoutY="303.0" onAction="#Continue" prefHeight="25.0" prefWidth="135.0" styleClass="button12" stylesheets="@Designs.css" text="Continue" textFill="#880586">
+      <JFXButton fx:id="continu" layoutX="225.0" layoutY="303.0" onAction="#Continue" prefHeight="25.0" prefWidth="135.0" styleClass="button14" stylesheets="@Designs.css" text="Continue" textFill="WHITE">
          <font>
-            <Font name="Britannic Bold" size="23.0" />
+            <Font name="Bernard MT Condensed" size="23.0" />
          </font>
       </JFXButton>
    </children>
