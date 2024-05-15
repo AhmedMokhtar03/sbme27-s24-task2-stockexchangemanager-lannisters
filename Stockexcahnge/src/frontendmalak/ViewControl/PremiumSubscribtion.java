@@ -40,6 +40,7 @@ public class PremiumSubscribtion {
         messagee.setText("You can now subscribe for 50 $, validate for 1 month");
         if (LogIn.currentUser.isPremium()) {
             subscribeButton.setDisable(true);
+            subscribeButton.setVisible(false);
             Balance1.setText(Balance1.getText());
             messagee.setText("You are a Premium member!");
         }
