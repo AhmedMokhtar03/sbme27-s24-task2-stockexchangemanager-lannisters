@@ -52,12 +52,14 @@ public class Stock extends Securities {
         if (company != null) {
             switch (state.toUpperCase()) {
                 case "BUY":
-                    update_available_stocks(no_of_stocks, label);
+                    update_available_stocks(no_of_stocks);
                     company.setShareholders(company.getShareholders() + 1);
                     updateStockPrice(no_of_stocks, state);
                     break;
                 case "SELL":
+                    update_available_stocks((-1)*no_of_stocks);
                     updateStockPrice(no_of_stocks, state);
+                    break;
                 case "NEW":
                     company.setNumOfAvailableStocks(no_of_stocks);
                     break;
@@ -77,9 +79,10 @@ public class Stock extends Securities {
     }
 
 
-    public void update_available_stocks(int no_of_stocks, String label) //only call this method when you approve the user's request to buy or sell a stock
+    public void update_available_stocks(int no_of_stocks) //only call this method when you approve the user's request to buy or sell a stock
     {
         company.setNumOfAvailableStocks(company.getNumOfAvailableStocks() - no_of_stocks);
+        System.out.println(company.getNumOfAvailableStocks());
     }
 
     public void updateStockPrice(int quantity, String orderType) {

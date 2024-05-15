@@ -96,7 +96,8 @@ public class Company extends Observable {
         return numOfAvailableStocks;
     }
 
-    public void setNumOfAvailableStocks(int numOfAvailableStocks) {
+    public void setNumOfAvailableStocks(int numOfAvailableStocks)
+    {
         this.numOfAvailableStocks = numOfAvailableStocks;
     }
 

@@ -87,6 +87,14 @@ public class Charts implements Initializable {
           stg.show();
 
      }
+     public void Gopremium(ActionEvent event) throws IOException {
+          this.event = event;
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
+          Parent root = loader.load();
+          Scene scene = new Scene(root);
+          stg.setScene(scene);
+          stg.show();
+     }
 
      @Override
      public void initialize(URL url, ResourceBundle resourceBundle) {

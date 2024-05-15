@@ -8,9 +8,7 @@
 }
 
 .background{
-    -fx-background-image: url("/frontendmalak/img/About.png"); /* Replace with your image path */
-    -fx-background-repeat: no-repeat; /* Prevent image tiling */
-    -fx-background-size: cover; /* Cover the entire background */
+    -fx-background-color: #000000; /* Black */
     -fx-background-radius: 25;
 }
 
@@ -23,7 +21,7 @@
 }
 
 .chart{
-    -fx-background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for chart */
+    -fx-background-color: #000000; /* Black */
     -fx-font-size: 20;
     -fx-text-fill: white;
     -fx-legend-visible: false;
