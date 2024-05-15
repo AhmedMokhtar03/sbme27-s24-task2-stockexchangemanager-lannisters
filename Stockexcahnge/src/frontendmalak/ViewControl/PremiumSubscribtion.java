@@ -1,5 +1,6 @@
 package frontendmalak.ViewControl;
 
+import backend.DataManager;
 import frontendmalak.ViewControl.LogIn; // Assuming LogIn class is in the same package
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,11 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static frontendmalak.HelloApplication.stg; // Assuming HelloApplication is your main class
-import static frontendmalak.ViewControl.LogIn.currentUser; // Assuming currentUser is in LogIn
+//import static frontendmalak.ViewControl.LogIn.currentUser; // Assuming currentUser is in LogIn
 
 public class PremiumSubscribtion {
     @FXML
@@ -26,11 +28,11 @@ public class PremiumSubscribtion {
     private static final double PREMIUM_COST = 50.0;
 
     public void initialize() throws IOException {
-        balance = currentUser.getCashBalance();
+        balance = LogIn.currentUser.getCashBalance();
         updateBalanceLabel();
 
         // Disable subscribe button if user is already premium
-        if (currentUser.isPremium()) {
+        if (LogIn.currentUser.isPremium()) {
             subscribeButton.setDisable(true);
             Balance1.setText("You are already a Premium member!");
         }
@@ -50,13 +52,14 @@ public class PremiumSubscribtion {
 
     @FXML
     private void handleSubscribe(ActionEvent event) {
-        if (!currentUser.isPremium() && balance >= PREMIUM_COST) {
+        if (!LogIn.currentUser.isPremium() && balance >= PREMIUM_COST) {
             balance -= PREMIUM_COST;
-            currentUser.setCashBalance(balance); // Update user's balance
-            currentUser.setPremium(true); // Set user to premium
-
+            LogIn.currentUser.setCashBalance(balance); // Update user's balance
+            LogIn.currentUser.setPremium(true); // Set user to premium
+            LogIn.currentUser.setFirstDateOfPremium(LocalDate.now());
+            DataManager.saveUsersToCSV();
             try {
-                updateUserInCSV(currentUser.getUserName(), balance, true); // Update CSV
+                updateUserInCSV(LogIn.currentUser.getUserName(), balance, true); // Update CSV
                 updateBalanceLabel();
                 subscribeButton.setDisable(true); // Disable button after successful subscription
                 Balance1.setText(Balance1.getText() + " - Successfully subscribed to Premium!");
@@ -64,7 +67,7 @@ public class PremiumSubscribtion {
                 Balance1.setText("Error subscribing to Premium. Please try again later.");
                 e.printStackTrace();
             }
-        } else if (currentUser.isPremium()) {
+        } else if (LogIn.currentUser.isPremium()) {
             Balance1.setText("You are already a Premium member!");
         } else {
             Balance1.setText("Insufficient balance for Premium subscription.");
