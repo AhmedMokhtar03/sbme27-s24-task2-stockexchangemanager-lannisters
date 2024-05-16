@@ -55,14 +55,14 @@ public class StandardOrder {
     @FXML
     private void handleBuyButtonAction(ActionEvent event) throws IOException {
         updateEstimates();
-        currentUser.addOrder(selectedStock, quantity, String.valueOf(BuyButton), currentPrice);
+        currentUser.addOrder(selectedStock, quantity, "BUY", currentPrice);
         DataManager.saveUsersToCSV();
     }
 
     @FXML
     private void handleSellButtonAction(ActionEvent event) throws IOException {
         updateEstimates();
-        currentUser.addOrder(selectedStock, quantity, String.valueOf(SellButton), currentPrice);
+        currentUser.addOrder(selectedStock, quantity, "SELL", currentPrice);
         DataManager.saveUsersToCSV();
     }
 

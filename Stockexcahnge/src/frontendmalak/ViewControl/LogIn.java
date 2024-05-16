@@ -53,6 +53,7 @@ public class LogIn {
     public void initialize() {
         DataManager.loadCompanies();
         DataManager.loadUsersFromCSV();
+        DataManager.loadPriceHistoryFromCSV();
         ObservableList<String> userTypes = FXCollections.observableArrayList("Admin", "User");
         choicebox.setItems(userTypes);
         choicebox.setValue("User");
