@@ -1,5 +1,6 @@
 package frontendmalak.ViewControl;
 
+import backend.DataManager;
 import backend.Transactions;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.FXCollections;
@@ -35,33 +36,20 @@ public class UserTransactions {
     private MFXButton withdrawButton;
     @FXML
 
-    public  static ObservableList<Transactions> TransactionsList = FXCollections.observableArrayList();
+    public static ObservableList<Transactions> TransactionsList = FXCollections.observableArrayList();
 
     @FXML
     private Button back1;
     private double balance;
-    private double depositValue;
-    private double withdrawValue;
-    private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
-    public static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
 
     @FXML
     public void initialize() throws IOException {
-        loadTransactionsFromCSV();
-        //check();
-        // Assuming you have a way to get the current user and initial values
-        depositValue = 0; // Get initial deposit value
-        withdrawValue = 0; // Get initial withdrawal value
+        DataManager.loadTransactionsFromCSV();
         balance = LogIn.currentUser.getCashBalance();
         updateBalanceLabel();
         depositButton.setOnAction(this::handleDeposit);
         withdrawButton.setOnAction(this::handleWithdrawal);
-
     }
-
-
-
-
 
     public void withdraw(double amount) throws IOException {
         if (amount <= 0) {
@@ -74,8 +62,9 @@ public class UserTransactions {
 
         }
         Transactions transaction = new Transactions(LogIn.currentUser.getUserName(), "withdrawal", LocalDate.now(), amount, LogIn.currentUser.getCashBalance(), LogIn.currentUser.getCashBalance() - amount);
-        TransactionsList.add(transaction);
-        saveTransactionsToCSV();
+       TransactionsList.add(transaction);
+        DataManager.saveTransactionsToCSV();
+        messageLabel.setText("Request pending");
 
     }
 
@@ -87,10 +76,10 @@ public class UserTransactions {
         }
         Transactions transaction = new Transactions(LogIn.currentUser.getUserName(), "deposit", LocalDate.now(), amount, LogIn.currentUser.getCashBalance(), LogIn.currentUser.getCashBalance() + amount);
         TransactionsList.add(transaction);
-        saveTransactionsToCSV();
-
-
+        DataManager.saveTransactionsToCSV();
+        messageLabel.setText("Request pending");
     }
+
     @FXML
     private void handleDeposit(ActionEvent event) {
         try {
@@ -115,43 +104,10 @@ public class UserTransactions {
     }
 
 
-
     private void updateBalanceLabel() {
-        balanceLabel.setText(String.valueOf("Balance=" +balance));
+        balanceLabel.setText(String.valueOf("Balance=" + balance));
     }
 
-
-/*
-    private void check() throws IOException {
-        for (Transactions i : TransactionsList) {
-
-            if (i.getDecision() == true) {
-                if(i.getTypeOfTransaction().equals("deposit")){
-                    //currentUser.set(balance) += i.getAmount();
-                LogIn.currentUser.setCashBalance(LogIn.currentUser.getCashBalance()+i.getAmount());
-                updateBalance();
-                messageLabel.setText("Deposit successful!");
-                updateBalanceLabel();
-                }
-                else if(i.getTypeOfTransaction().equals("withdrawal")){
-
-                   // currentUser.get(balance) -= i.getAmount();
-                    LogIn.currentUser.setCashBalance(LogIn.currentUser.getCashBalance()-i.getAmount());
-                    updateBalance();
-                    System.out.println("Withdrawal successful. New balance: " + LogIn.currentUser.getCashBalance());
-                    messageLabel.setText("Withdrawal successful!");
-                    updateBalanceLabel();
-
-                }
-
-            }
-
-        }
-
-
-
-    }
-*/
     public void Back1(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
@@ -160,47 +116,6 @@ public class UserTransactions {
         stg.show();
 
     }
-
-
-
-    private void saveTransactionsToCSV() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE_PATH))) {
-            for (Transactions transaction : TransactionsList) {
-                writer.write(transaction.getUsername() + "," +
-                        transaction.getTypeOfTransaction() + "," +
-                        transaction.getDate() + "," +
-                        transaction.getAmount() + "," +
-                        transaction.getCurrentBalance() + "," +
-                        transaction.getNewBalance());
-                writer.newLine();
-            }
-            System.out.println("Transactions saved successfully to CSV file.");
-            messageLabel.setText("Your request is bending.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private void loadTransactionsFromCSV() {
-        try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                String username = parts[0];
-                String typeOfTransaction = parts[1];
-                LocalDate date = LocalDate.parse(parts[2]);
-                double amount = Double.parseDouble(parts[3]);
-                double currentBalance = Double.parseDouble(parts[4]);
-                double newBalance = Double.parseDouble(parts[5]);
-
-                Transactions transaction = new Transactions(username, typeOfTransaction, date, amount, currentBalance, newBalance);
-                TransactionsList.add(transaction);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
 
 }

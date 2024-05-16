@@ -59,7 +59,6 @@ public class StandardOrder {
         orderTypeMenuButton.setText("Buy");
         updateEstimates();
         currentUser.addOrder(selectedStock, quantity, "BUY", currentPrice);
-        admin.updateBalance();
         DataManager.saveUsersToCSV();
     }
 
@@ -68,7 +67,6 @@ public class StandardOrder {
         orderTypeMenuButton.setText("Sell");
         updateEstimates();
         currentUser.addOrder(selectedStock, quantity, "SELL", currentPrice);
-        admin.updateBalance();
         DataManager.saveUsersToCSV();
     }
 

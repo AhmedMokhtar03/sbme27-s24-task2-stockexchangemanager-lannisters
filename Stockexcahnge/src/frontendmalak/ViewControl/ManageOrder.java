@@ -58,20 +58,6 @@ public class ManageOrder {
     }
 
     @FXML
-    private void handleBuyButtonAction() {
-        String label = stockLabelField.getText();
-        int quantity = Integer.parseInt(quantityField.getText());
-        for(Company company : DataManager.companyList){
-            if(label.equals(company.getLabel())){
-                currentUser.addOrder(label, quantity, "BUY", company.getStockPrice());
-            }
-        }
-    }
-
-//    private void buy(String label, int quantity, int id) {
-//    }
-
-    @FXML
     private void handleStandardOrderButtonAction(ActionEvent event) throws IOException {
         this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/standardOrder.fxml"));

@@ -126,9 +126,7 @@ public class LogIn {
             if (isExistingUser(username)) {
                 wronglogin.setText("Username already exists.");
                 return;
-            }
-
-            User user = new User(username, password);
+            }            User user = new User(username, password);
             userList.add(user);
             try (PrintWriter writer = new PrintWriter(new FileWriter(new File(CSV_FILE), true))) {
                 for (User tempuser : userList) {

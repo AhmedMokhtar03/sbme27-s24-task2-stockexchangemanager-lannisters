@@ -57,7 +57,7 @@ public class LimitOrder {
         currentUser.addOrder(stockLabel, quantity, "LimitBuy", limitPrice);
         if (currentUser.order.executed) {
             orderStatusLabel.setText("Limit buy order executed!");
-            admin.updateBalance();
+            DataManager.saveUsersToCSV();
         } else {
             orderStatusLabel.setText("pending.");
         }
@@ -71,7 +71,7 @@ public class LimitOrder {
         currentUser.addOrder(stockLabel, quantity, "LimitSell", limitPrice);
         if (currentUser.order.executed) {
             orderStatusLabel.setText("Limit buy order executed!");
-            admin.updateBalance();
+            DataManager.saveUsersToCSV();
         } else {
             orderStatusLabel.setText("Limit buy order pending.");
         }

@@ -25,16 +25,12 @@ import java.io.*;
 import java.time.LocalDate;
 
 public class AdminManageRequestsController {
-    private static AdminManageRequestsController instance;
     public User currentUser;
-    public AdminManageRequestsController(){}
+
+    public AdminManageRequestsController() {}
     public AdminManageRequestsController(User currentUser){
         this.currentUser = currentUser;
     }
-    private static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
-    private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
-
-
     @FXML
     private TableView<Transactions> tableView;
 
@@ -66,9 +62,9 @@ public class AdminManageRequestsController {
 
 
     public void initialize() {
-        loadTransactionsFromCSV();
+        DataManager.loadTransactionsFromCSV();
         DataManager.loadUsersFromCSV();
-       loadTable();
+        loadTable();
     }
 
     @FXML
@@ -88,138 +84,93 @@ public class AdminManageRequestsController {
 
     }
 
-    private void loadTransactionsFromCSV() {
-        try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                String username = parts[0];
-                String typeOfTransaction = parts[1];
-                LocalDate date = LocalDate.parse(parts[2]);
-                double amount = Double.parseDouble(parts[3]);
-                double currentBalance = Double.parseDouble(parts[4]);
-                double newBalance = Double.parseDouble(parts[5]);
-
-                Transactions transaction = new Transactions(username, typeOfTransaction, date, amount, currentBalance, newBalance);
-                TransactionsList.add(transaction);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     private void handleAccept(ActionEvent event) throws IOException {
-        Transactions selectedTransactions= tableView.getSelectionModel().getSelectedItem();
-        for(User u : userList) {
+        Transactions selectedTransactions = tableView.getSelectionModel().getSelectedItem();
+        for (User u : userList) {
             if (u.getUserName().equals(selectedTransactions.getUsername())) {
                 currentUser = u;
                 break;
 
             }
         }
-            if(selectedTransactions.getTypeOfTransaction().equals("deposit")){
-                currentUser.setCashBalance(currentUser.getCashBalance()+selectedTransactions.getAmount());
-                updateBalance();
-                TransactionsList.remove(selectedTransactions);
-                tableView.getItems().remove(selectedTransactions);
-                updateCurrentBalanceColumn();
-
-            }
-
-            else if(selectedTransactions.getTypeOfTransaction().equals("withdrawal")){
-                currentUser.setCashBalance(currentUser.getCashBalance()-selectedTransactions.getAmount());
-                updateBalance();
-                TransactionsList.remove(selectedTransactions);
-                tableView.getItems().remove(selectedTransactions);
-                updateCurrentBalanceColumn();
-            }
-        saveTransactionsToCSV();
-
+        if (selectedTransactions.getTypeOfTransaction().equals("deposit")) {
+            currentUser.setCashBalance(currentUser.getCashBalance() + selectedTransactions.getAmount());
+//            updateBalance();
+            DataManager.saveUsersToCSV();
+            TransactionsList.remove(selectedTransactions);
+            tableView.getItems().remove(selectedTransactions);
+            updateCurrentBalanceColumn();
+        } else if (selectedTransactions.getTypeOfTransaction().equals("withdrawal")) {
+            currentUser.setCashBalance(currentUser.getCashBalance() - selectedTransactions.getAmount());
+            //updateBalance();
+            DataManager.saveUsersToCSV();
+            TransactionsList.remove(selectedTransactions);
+            tableView.getItems().remove(selectedTransactions);
+            updateCurrentBalanceColumn();
+        }
+        DataManager.saveTransactionsToCSV();
     }
 
     @FXML
     private void handleReject(ActionEvent event) {
-        Transactions selectedTransactions= tableView.getSelectionModel().getSelectedItem();
+        Transactions selectedTransactions = tableView.getSelectionModel().getSelectedItem();
         TransactionsList.remove(selectedTransactions);
         tableView.getItems().remove(selectedTransactions);
-        saveTransactionsToCSV();
-
-
-    }
-    public void updateBalance() throws IOException {
-        RandomAccessFile file = new RandomAccessFile(CSV_FILE, "rw");
-        String line; StringBuffer modifiedContent = new StringBuffer();
-        boolean userFound = false;
-        while ((line = file.readLine()) != null){
-            String[] parts = line.split(",");
-            if(parts[0].equals(String.valueOf(currentUser.getID()))){
-                parts[3] = String.valueOf(currentUser.getCashBalance());
-                line = String.join(",", parts);
-                System.out.println(parts[3]);
-                userFound = true;
-            }
-            modifiedContent.append(line).append(System.lineSeparator());}
-        if(userFound) {
-            file.seek(0);
-            file.writeBytes(modifiedContent.toString());
-            file.setLength(modifiedContent.length());
-            file.close();
-        }else System.out.println("couldn't find user");
+        DataManager.saveTransactionsToCSV();
     }
 
+//    public void updateBalance() throws IOException {
+//        RandomAccessFile file = new RandomAccessFile("Stockexcahnge/src/frontendmalak/users.csv", "rw");
+//        String line;
+//        StringBuffer modifiedContent = new StringBuffer();
+//        boolean userFound = false;
+//        while ((line = file.readLine()) != null) {
+//            String[] parts = line.split(",");
+//            if (parts[0].equals(String.valueOf(currentUser.getID()))) {
+//                parts[3] = String.valueOf(currentUser.getCashBalance());
+//                line = String.join(",", parts);
+//                System.out.println(parts[3]);
+//                userFound = true;
+//            }
+//            modifiedContent.append(line).append(System.lineSeparator());
+//        }
+//        if (userFound) {
+//            file.seek(0);
+//            file.writeBytes(modifiedContent.toString());
+//            file.setLength(modifiedContent.length());
+//            file.close();
+//        } else System.out.println("couldn't find user");
+//    }
 
+    public void loadTable() {
+        tableView.setItems(TransactionsList);
 
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        typeOfTransactionColumn.setCellValueFactory(new PropertyValueFactory<>("typeOfTransaction"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        currentBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("currentBalance"));
+        newBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("newBalance"));
 
-    private void saveTransactionsToCSV() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE_PATH))) {
-            for (Transactions transaction : TransactionsList) {
-                writer.write(transaction.getUsername() + "," +
-                        transaction.getTypeOfTransaction() + "," +
-                        transaction.getDate() + "," +
-                        transaction.getAmount() + "," +
-                        transaction.getCurrentBalance() + "," +
-                        transaction.getNewBalance() );
-                writer.newLine();
+    }
+
+    public void updateCurrentBalanceColumn() {
+        for (Transactions i : TransactionsList) {
+            if (i.getUsername().equals(currentUser.getUserName())) {
+                i.setCurrentBalance(currentUser.getCashBalance());
+                if (i.getTypeOfTransaction().equals("deposit")) {
+                    i.setNewBalance(i.getCurrentBalance() + i.getAmount());
+                } else {
+                    i.setNewBalance(i.getCurrentBalance() - i.getAmount());
+
+                }
+
             }
-            System.out.println("Transactions saved successfully to CSV file.");
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
+
     }
-public void loadTable(){
-
-    tableView.setItems(TransactionsList);
-
-    usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-    typeOfTransactionColumn.setCellValueFactory(new PropertyValueFactory<>("typeOfTransaction"));
-    dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-    amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
-    currentBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("currentBalance"));
-    newBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("newBalance"));
-
-
-
-}
-public void updateCurrentBalanceColumn(){
-    for(Transactions i : TransactionsList) {
-        if (i.getUsername().equals(currentUser.getUserName())) {
-            i.setCurrentBalance(currentUser.getCashBalance());
-            if(i.getTypeOfTransaction().equals("deposit")) {
-                i.setNewBalance(i.getCurrentBalance() + i.getAmount());
-            }
-else{
-                i.setNewBalance(i.getCurrentBalance() - i.getAmount());
-
-            }
-
-        }
-    }
-
-
-
-}
-
 
 
 }

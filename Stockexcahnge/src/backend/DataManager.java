@@ -7,10 +7,12 @@ import java.time.LocalDate;
 import java.util.*;
 
 import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
+import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
 
 public class DataManager {
     private static final String companiesFile = "companies.csv";
-    private static final String usersFile = "users.csv";
+    private static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
+    private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
     public static ArrayList<Company> companyList;
     public static void saveCompanies(Company company) {
         try {
@@ -93,7 +95,6 @@ public class DataManager {
         }
     }
     public static void loadUsersFromCSV() {
-        final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
         userList.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
             String line;
@@ -141,6 +142,42 @@ public class DataManager {
             for (User user : userList) {
                 writer.println(user.toCSV());
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void loadTransactionsFromCSV() {
+        TransactionsList.clear();
+        try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String username = parts[0];
+                String typeOfTransaction = parts[1];
+                LocalDate date = LocalDate.parse(parts[2]);
+                double amount = Double.parseDouble(parts[3]);
+                double currentBalance = Double.parseDouble(parts[4]);
+                double newBalance = Double.parseDouble(parts[5]);
+
+                Transactions transaction = new Transactions(username, typeOfTransaction, date, amount, currentBalance, newBalance);
+                TransactionsList.add(transaction);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void saveTransactionsToCSV() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE_PATH))) {
+            for (Transactions transaction : TransactionsList) {
+                writer.write(transaction.getUsername() + "," +
+                        transaction.getTypeOfTransaction() + "," +
+                        transaction.getDate() + "," +
+                        transaction.getAmount() + "," +
+                        transaction.getCurrentBalance() + "," +
+                        transaction.getNewBalance());
+                writer.newLine();
+            }
+            System.out.println("Transactions saved successfully to CSV file.");
         } catch (IOException e) {
             e.printStackTrace();
         }

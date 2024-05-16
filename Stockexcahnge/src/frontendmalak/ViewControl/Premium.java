@@ -34,9 +34,6 @@ import java.util.ResourceBundle;
 
 import static frontendmalak.HelloApplication.stg;
 
-
-
-
     public class Premium implements Initializable {
         private double x = 0,y = 0;
 

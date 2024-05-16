@@ -1,11 +1,8 @@
 package backend;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public  class User {
+public  class User implements Observer {
     public Order order = null;
     private int ID;
     private static Set<Integer> usedIDs = new HashSet<>();
@@ -157,5 +154,13 @@ public  class User {
             this.ID = hashCode();
         } while (usedIDs.contains(this.ID));
         usedIDs.add(this.ID);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (o instanceof Company company) {
+            double newPrice = (double) arg;
+            System.out.println("Notification: Stock price of " + company.getLabel() + " has changed to " + newPrice);
+        }
     }
 }

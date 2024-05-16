@@ -30,6 +30,7 @@ public class PremiumSubscribtion {
     private Label messagee;
     @FXML
     private JFXButton subscribeButton;
+
     private double balance;
     private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
     private static final double PREMIUM_COST = 50.0;
@@ -66,86 +67,57 @@ public class PremiumSubscribtion {
             LogIn.currentUser.setPremium(true);
             LogIn.currentUser.setFirstDateOfPremium(LocalDate.now());
             DataManager.saveUsersToCSV();
-            try {
-                updateUserInCSV(LogIn.currentUser.getUserName(), balance, true);
-                updateBalanceLabel();
-                subscribeButton.setDisable(true);
-                Balance1.setText(Balance1.getText());
-                messagee.setText("Successfully subscribed to Premium!");
+            updateBalanceLabel();
+            subscribeButton.setDisable(true);
+            Balance1.setText(Balance1.getText());
+            messagee.setText("Successfully subscribed to Premium!");
 
-                // Pause for 0.5 seconds
-                PauseTransition pause = new PauseTransition(Duration.millis(500));
-                pause.setOnFinished(e -> {
-                    try {
-                        // Load the new FXML scene
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/aftersubscribtion.fxml"));
-                        Parent root = loader.load();
-                        Scene newScene = new Scene(root);
+            // Pause for 0.5 seconds
+            PauseTransition pause = new PauseTransition(Duration.millis(500));
+            pause.setOnFinished(e -> {
+                try {
+                    // Load the new FXML scene
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/aftersubscribtion.fxml"));
+                    Parent root = loader.load();
+                    Scene newScene = new Scene(root);
 
-                        // Get the current scene and its root node
-                        Scene currentScene = stg.getScene();
-                        AnchorPane currentRoot = (AnchorPane) currentScene.getRoot();
+                    // Get the current scene and its root node
+                    Scene currentScene = stg.getScene();
+                    AnchorPane currentRoot = (AnchorPane) currentScene.getRoot();
 
-                        // Set the new scene's dimensions to match the current scene
-                        newScene.getRoot().prefWidth(currentScene.getWidth());
-                        newScene.getRoot().prefHeight(currentScene.getHeight());
+                    // Set the new scene's dimensions to match the current scene
+                    newScene.getRoot().prefWidth(currentScene.getWidth());
+                    newScene.getRoot().prefHeight(currentScene.getHeight());
 
-                        // Add the new scene's root to the current scene
-                        currentRoot.getChildren().add(newScene.getRoot());
+                    // Add the new scene's root to the current scene
+                    currentRoot.getChildren().add(newScene.getRoot());
 
-                        // Set initial position off-screen to the left
-                        newScene.getRoot().setTranslateX(-currentScene.getWidth());
+                    // Set initial position off-screen to the left
+                    newScene.getRoot().setTranslateX(-currentScene.getWidth());
 
-                        // Create the sliding animation
-                        Timeline timeline = new Timeline();
-                        KeyValue kv = new KeyValue(newScene.getRoot().translateXProperty(), 0);
-                        KeyFrame kf = new KeyFrame(Duration.millis(1000), kv); // 1-second animation duration
-                        timeline.getKeyFrames().add(kf);
-                        timeline.setOnFinished(event1 -> {
-                            // Remove the old scene after animation is complete
-                            currentRoot.getChildren().remove(currentScene.getRoot());
-                            stg.setScene(newScene);
-                        });
-                        timeline.play();
+                    // Create the sliding animation
+                    Timeline timeline = new Timeline();
+                    KeyValue kv = new KeyValue(newScene.getRoot().translateXProperty(), 0);
+                    KeyFrame kf = new KeyFrame(Duration.millis(1000), kv); // 1-second animation duration
+                    timeline.getKeyFrames().add(kf);
+                    timeline.setOnFinished(event1 -> {
+                        // Remove the old scene after animation is complete
+                        currentRoot.getChildren().remove(currentScene.getRoot());
+                        stg.setScene(newScene);
+                    });
+                    timeline.play();
 
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                pause.play();
-            } catch (IOException e) {
-                messagee.setText("Error subscribing to Premium. Please try again later.");
-                Balance1.setText(Balance1.getText());
-                e.printStackTrace();
-            }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
+            pause.play();
         } else if (LogIn.currentUser.isPremium()) {
             messagee.setText("You are already a Premium member!");
             Balance1.setText(Balance1.getText());
         } else {
             Balance1.setText(Balance1.getText());
             messagee.setText("Insufficient balance for Premium subscription.");
-        }
-    }
-
-    // Method to update the user's balance and premium status in the CSV file
-    private void updateUserInCSV(String username, double newBalance, boolean isPremium) throws IOException {
-        List<String> updatedLines = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 4 && parts[0].equals(username)) {
-                    parts[2] = String.valueOf(newBalance);
-                    parts[3] = String.valueOf(isPremium);
-                    line = String.join(",", parts);
-                }
-                updatedLines.add(line);
-            }
-        }
-        try (PrintWriter writer = new PrintWriter(new FileWriter(CSV_FILE))) {
-            for (String updatedLine : updatedLines) {
-                writer.println(updatedLine);
-            }
         }
     }
 }
