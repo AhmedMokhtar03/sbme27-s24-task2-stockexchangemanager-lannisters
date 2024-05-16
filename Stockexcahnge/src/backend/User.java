@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public  class User implements Observer {
+    public boolean isSubscribed = false;
     public Order order = null;
     private int ID;
     private static Set<Integer> usedIDs = new HashSet<>();
@@ -158,7 +159,7 @@ public  class User implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (o instanceof Company company) {
+        if (o instanceof Company company && isSubscribed) {
             double newPrice = (double) arg;
             System.out.println("Notification: Stock price of " + company.getLabel() + " has changed to " + newPrice);
         }

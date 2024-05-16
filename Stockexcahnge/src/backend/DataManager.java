@@ -1,6 +1,7 @@
 package backend;
 
 import frontendmalak.ViewControl.AdminManageUsersController;
+import frontendmalak.ViewControl.LogIn;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -211,7 +212,7 @@ public class DataManager {
         }
     }
     public static Map<String, List<String>> loadSubscriptions() {
-        User currentUser= null;
+        User currentUser= LogIn.currentUser;
         Map<String, List<String>> subscriptions = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(SUBSCRIPTION_FILE))) {
             String line;
@@ -225,20 +226,23 @@ public class DataManager {
             e.printStackTrace();
         }
         for(Map.Entry<String, List<String>> entry : subscriptions.entrySet()) {
-            String username = entry.getKey();
-            for(User user : userList) {
-                if(user.getUserName().equalsIgnoreCase(username)){
-                    currentUser = user;
-                }
-            }
+//            for(User user : userList) {
+//                if(user.getUserName().equalsIgnoreCase(username)){
+//                    currentUser = user;
+//                }
+//            }
+            if(entry.getKey().equalsIgnoreCase(currentUser.getUserName())){
             for(String companies : entry.getValue()) {
                 for(Company company : companyList) {
                     if(company.getLabel().equalsIgnoreCase(companies)){
                         company.addObserver(currentUser);
+                        //assert currentUser != null;
+                        System.out.println(currentUser.getUserName());
+                        currentUser.isSubscribed = true;
                     }
                 }
             }
-        }
+        }}
         return subscriptions;
     }
 }

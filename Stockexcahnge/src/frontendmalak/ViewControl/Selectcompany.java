@@ -48,6 +48,7 @@ public class Selectcompany {
             for (Company company : DataManager.companyList) {
                 if (company.getLabel().equalsIgnoreCase(companyLabel)) {
                     company.addObserver(currentUser);
+                    currentUser.isSubscribed = true;
                 }
             }
         } else if (action.equals("unsubscribe")) {
@@ -55,6 +56,7 @@ public class Selectcompany {
             for (Company company : DataManager.companyList) {
                 if (company.getLabel().equalsIgnoreCase(companyLabel)) {
                     company.deleteObserver(currentUser);
+                    currentUser.isSubscribed= false;
                 }
             }
         }
@@ -69,6 +71,7 @@ public class Selectcompany {
                 for (Company company : DataManager.companyList) {
                     if (company.getLabel().equalsIgnoreCase(companyLabel)) {
                         company.addObserver(currentUser);
+                        currentUser.isSubscribed=true;
                     }
                 }
             }

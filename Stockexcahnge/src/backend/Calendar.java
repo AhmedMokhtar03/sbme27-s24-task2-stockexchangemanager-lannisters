@@ -9,7 +9,6 @@ public abstract class Calendar {
 
     public static void advanceDay() {
         currentDate = currentDate.plusDays(1);
-
     }
 
     // Method to go back to the previous day

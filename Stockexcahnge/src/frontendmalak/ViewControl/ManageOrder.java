@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -20,6 +21,8 @@ import static frontendmalak.HelloApplication.stg;
 
 public class ManageOrder {
     private User currentUser = LogIn.currentUser;
+    @FXML
+    private Text Started;
     @FXML
     private TableView<ManageOrder> orderTable;
     @FXML
@@ -54,22 +57,30 @@ public class ManageOrder {
 
     @FXML
     private void handleStandardOrderButtonAction(ActionEvent event) throws IOException {
+       if(AdminHomePageController.started){
         this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/standardOrder.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stg.setScene(scene);
-        stg.show();
+        stg.show();}
+       else{
+           Started.setVisible(true);
+       }
     }
 
     @FXML
     public void handleLimitOrderButtonAction(ActionEvent event) throws IOException {
+        if(AdminHomePageController.started){
         this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/limitOrder.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stg.setScene(scene);
-        stg.show();
+        stg.show();}
+        else{
+            Started.setVisible(true);
+        }
     }
 
     public void back2(ActionEvent event) throws IOException {
