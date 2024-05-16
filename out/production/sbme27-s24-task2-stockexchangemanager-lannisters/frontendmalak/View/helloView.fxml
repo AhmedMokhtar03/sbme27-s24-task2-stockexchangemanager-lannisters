@@ -60,6 +60,7 @@
                      </image>
                   </ImageView>
                   <PasswordField fx:id="password" layoutX="97.0" layoutY="207.0" opacity="0.6" prefHeight="35.0" prefWidth="200.0" promptText="password" />
+                  <MFXButton fx:id="window" layoutX="233.0" layoutY="2.0" prefHeight="25.0" prefWidth="102.0" rippleColor="#cd94ba" text="new window" onAction="#windowAction" AnchorPane.topAnchor="2.0" />
                </children>
             </AnchorPane>
          </right>

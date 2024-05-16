@@ -14,7 +14,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 
-import static frontendmalak.HelloApplication.stg;
+import static frontendmalak.HelloApplication.primaryStage;
 
 public class LimitOrder {
     private User currentUser = LogIn.currentUser;
@@ -79,8 +79,8 @@ public class LimitOrder {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageOrder.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
 
     }

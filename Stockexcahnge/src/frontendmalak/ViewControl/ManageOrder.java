@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-import static frontendmalak.HelloApplication.stg;
+import static frontendmalak.HelloApplication.primaryStage;
 
 // ... other imports as needed
 
@@ -62,8 +62,8 @@ public class ManageOrder {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/standardOrder.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();}
+        primaryStage.setScene(scene);
+        primaryStage.show();}
        else{
            Started.setVisible(true);
        }
@@ -76,8 +76,8 @@ public class ManageOrder {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/limitOrder.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();}
+        primaryStage.setScene(scene);
+        primaryStage.show();}
         else{
             Started.setVisible(true);
         }
@@ -87,8 +87,8 @@ public class ManageOrder {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
 
     }

@@ -11,10 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.util.Duration;
-
 import java.io.IOException;
-
-import static frontendmalak.HelloApplication.stg;
+import static frontendmalak.HelloApplication.primaryStage;
 
 public class Aftersubscribtion {
     @FXML
@@ -34,8 +32,8 @@ public class Aftersubscribtion {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/selectcompany.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
-                stg.setScene(scene);
-                stg.show();
+                primaryStage.setScene(scene);
+                primaryStage.show();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

@@ -19,7 +19,7 @@ import java.io.*;
 import java.time.LocalDate;
 
 import static backend.Calendar.currentDate;
-import static frontendmalak.HelloApplication.stg; // Assuming you have a HelloApplication class with a static stage variable
+import static frontendmalak.HelloApplication.primaryStage; // Assuming you have a HelloApplication class with a static stage variable
 
 public class UserTransactions {
     @FXML
@@ -112,8 +112,8 @@ public class UserTransactions {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
     }
 

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static frontendmalak.HelloApplication.stg;
+import static frontendmalak.HelloApplication.primaryStage;
 
 public class Charts implements Initializable {
      private double x = 0,y = 0;
@@ -83,8 +83,8 @@ public class Charts implements Initializable {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
           Parent root = loader.load();
           Scene scene = new Scene(root);
-          stg.setScene(scene);
-          stg.show();
+          primaryStage.setScene(scene);
+          primaryStage.show();
 
      }
      public void Gopremium(ActionEvent event) throws IOException {
@@ -92,8 +92,8 @@ public class Charts implements Initializable {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
           Parent root = loader.load();
           Scene scene = new Scene(root);
-          stg.setScene(scene);
-          stg.show();
+          primaryStage.setScene(scene);
+          primaryStage.show();
      }
 
      @Override

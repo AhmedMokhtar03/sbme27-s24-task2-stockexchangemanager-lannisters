@@ -2,6 +2,8 @@ package frontendmalak.ViewControl;
 
 import backend.DataManager;
 import backend.User;
+import frontendmalak.HelloApplication;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +27,8 @@ import static frontendmalak.ViewControl.AdminManageUsersController.userList;
 public class LogIn {
     public static User currentUser;
     @FXML
+    private MFXButton window;
+    @FXML
     private Label myLabel;
 
     @FXML
@@ -42,6 +46,7 @@ public class LogIn {
     @FXML
     private ChoiceBox<String> choicebox;
 
+
     private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
 
     @FXML
@@ -52,7 +57,10 @@ public class LogIn {
         choicebox.setItems(userTypes);
         choicebox.setValue("User");
     }
-
+    @FXML
+    public void windowAction(ActionEvent event) {
+        HelloApplication.openNewWindow();
+    }
 
     @FXML
     public void getSelectStatus(ActionEvent event) {
@@ -186,4 +194,5 @@ public class LogIn {
         }
         return false;
     }
+
 }
