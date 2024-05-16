@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="frontendmalak.ViewControl.AdminManageSecurtiesController">
+    <Label text="Company Name:"/>
+    <TextField fx:id="companyNameField"/>
+    <Label text="Company Label:"/>
+    <TextField fx:id="companyLabelField"/>
 
-            prefHeight="400.0" prefWidth="600.0">
+    <Label text="Stock Price:"/>
+    <TextField fx:id="stockPriceField"/>
+    <Label text="Dividends:"/>
+    <TextField fx:id="dividendsField"/>
+    <Label text="Number of Available Stocks:"/>
+    <TextField fx:id="numOfAvailableStocksField"/>
+    <Button text="Create Company" onAction="#createCompany"/>
 
-</AnchorPane>
+    <TableView fx:id="tableView">
+        <columns>
+            <TableColumn fx:id="companyNameColumn" text="Company Name"/>
+            <TableColumn fx:id="companyLabelColumn" text="Company Label"/>
+            <TableColumn fx:id="stockPriceColumn" text="Stock Price"/>
+            <TableColumn fx:id="dividendsColumn" text="Dividends"/>
+            <TableColumn fx:id="numOfAvailableStocksColumn" text="Available Stocks"/>
+        </columns>
+    </TableView>
+</VBox>

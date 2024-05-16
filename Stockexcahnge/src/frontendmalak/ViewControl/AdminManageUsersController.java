@@ -23,7 +23,7 @@ import javafx.util.Duration;
 import java.io.*;
 import java.time.LocalDate;
 
-public class AdminMangeUsersController {
+public class AdminManageUsersController {
     @FXML
     private JFXButton openMenuBTN;
     @FXML

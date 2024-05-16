@@ -1,19 +1,22 @@
 package backend;
 
-import frontendmalak.ViewControl.AdminMangeUsersController;
+import frontendmalak.ViewControl.AdminManageUsersController;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 
-import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
+import static frontendmalak.ViewControl.AdminManageUsersController.userList;
 import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
 
 public class DataManager {
     private static final String companiesFile = "companies.csv";
     private static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
     private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
-    public static ArrayList<Company> companyList;
+    public static ObservableList<Company> companyList;
     public static void saveCompanies(Company company) {
         try {
             File file = new File(companiesFile);
@@ -45,7 +48,7 @@ public class DataManager {
         }
     }
     public static void loadCompanies() {
-        companyList = new ArrayList<>();
+        companyList= FXCollections.observableArrayList();
         try {
             File file = new File(companiesFile);
             if (file.exists()) {
@@ -132,7 +135,7 @@ public class DataManager {
                 }
             }
         } catch (IOException e) {
-            AdminMangeUsersController.showAlert("Error", "Failed to load users from CSV file.");
+            AdminManageUsersController.showAlert("Error", "Failed to load users from CSV file.");
             e.printStackTrace();
         }
     }

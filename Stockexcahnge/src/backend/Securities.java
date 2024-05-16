@@ -1,6 +1,6 @@
 package backend;
 
-abstract class Securities {
+public abstract class Securities {
    private String label;
 
 

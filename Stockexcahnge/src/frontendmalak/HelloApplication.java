@@ -23,6 +23,8 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
+
         stg = stage;
         // Load the initial scene
         //changeScene("/frontendmalak/View/helloView.fxml");

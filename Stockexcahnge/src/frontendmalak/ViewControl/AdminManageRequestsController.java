@@ -1,7 +1,6 @@
 package frontendmalak.ViewControl;
 
 import backend.DataManager;
-import backend.SecurityFactory;
 import backend.Transactions;
 import backend.User;
 import javafx.application.Platform;
@@ -12,13 +11,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.jfoenix.controls.JFXButton;
 import javafx.stage.Stage;
 
-import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
+import static frontendmalak.ViewControl.AdminManageUsersController.userList;
 import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
 
 import java.io.*;

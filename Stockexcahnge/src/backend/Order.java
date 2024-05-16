@@ -1,7 +1,6 @@
 package backend;
 
-import frontendmalak.ViewControl.AdminManageRequestsController;
-import frontendmalak.ViewControl.AdminMangeUsersController;
+import frontendmalak.ViewControl.AdminManageUsersController;
 
 import java.io.IOException;
 
@@ -20,7 +19,7 @@ public class Order {
     public void buy(String Label, int quantity, int userID) throws IOException {
         this.UserID = userID;
         User user= null;
-        for(User u : AdminMangeUsersController.userList){
+        for(User u : AdminManageUsersController.userList){
             if(UserID == u.getID()){
                 user = u;
             }
@@ -38,7 +37,7 @@ public class Order {
 public void sell(String Label, int quantity, int userID) throws IOException {
     this.UserID = userID;
     User user= null;
-    for(User u : AdminMangeUsersController.userList){
+    for(User u : AdminManageUsersController.userList){
         if(UserID == u.getID()){
             user = u;
         }

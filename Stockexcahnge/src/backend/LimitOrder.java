@@ -1,6 +1,6 @@
 package backend;
 
-import frontendmalak.ViewControl.AdminMangeUsersController;
+import frontendmalak.ViewControl.AdminManageUsersController;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class LimitOrder extends Order {
     @Override
     public void buy(String label, int quantity, int userID) throws IOException {
         User user = null;
-        for(User u : AdminMangeUsersController.userList){
+        for(User u : AdminManageUsersController.userList){
             if(UserID == u.getID()){
                 user = u;
             }
@@ -41,7 +41,7 @@ public class LimitOrder extends Order {
     @Override
     public void sell(String label, int quantity, int userID) throws IOException {
         User user = null;
-        for(User u : AdminMangeUsersController.userList){
+        for(User u : AdminManageUsersController.userList){
             if(UserID == u.getID()){
                 user = u;
             }

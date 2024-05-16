@@ -1,9 +1,8 @@
 package backend;
 
-import frontendmalak.ViewControl.AdminMangeUsersController;
+import frontendmalak.ViewControl.AdminManageUsersController;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Admin {
@@ -97,7 +96,7 @@ public class Admin {
 
         User newUser = new User(userName, password);
         newUser.setID(newUser.hashCode());
-        AdminMangeUsersController.userList.add(newUser);
+        AdminManageUsersController.userList.add(newUser);
     }
 
     //i imagine it is like the admin will have a page that show all the users and there are two buttons add and delete
@@ -105,7 +104,7 @@ public class Admin {
     private void deleteUser(int userID) {
         // Check if the user ID in the arraylist matches the wanted ID
         //if he didnt find a match no user will be deleted
-        AdminMangeUsersController.userList.removeIf(tempUser -> tempUser.getID() == userID);
+        AdminManageUsersController.userList.removeIf(tempUser -> tempUser.getID() == userID);
     }
 
     // i will use stock class cause i dont understand securities company

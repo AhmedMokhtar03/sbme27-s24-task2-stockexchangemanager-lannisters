@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
-import static frontendmalak.ViewControl.AdminMangeUsersController.userList;
+import static frontendmalak.ViewControl.AdminManageUsersController.userList;
 
 
 public class LogIn {
@@ -47,6 +47,7 @@ public class LogIn {
     @FXML
     public void initialize() {
         DataManager.loadCompanies();
+        DataManager.loadUsersFromCSV();
         ObservableList<String> userTypes = FXCollections.observableArrayList("Admin", "User");
         choicebox.setItems(userTypes);
         choicebox.setValue("User");
@@ -129,7 +130,7 @@ public class LogIn {
                 return;
             }            User user = new User(username, password);
             userList.add(user);
-            try (PrintWriter writer = new PrintWriter(new FileWriter(new File(CSV_FILE), true))) {
+            try (PrintWriter writer = new PrintWriter(new FileWriter(new File(CSV_FILE)))) {
                 for (User tempuser : userList) {
                     writer.println(tempuser.toCSV());
                 }
