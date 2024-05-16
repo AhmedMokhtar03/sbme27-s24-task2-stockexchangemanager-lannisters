@@ -182,6 +182,21 @@ public class DataManager {
             e.printStackTrace();
         }
     }
+
+//////////
+    public static int countRowsInCSV() {
+        int rowCount = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
+            while (br.readLine() != null) {
+                rowCount++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return rowCount;
+    }
+////////////
+
     }
 
 

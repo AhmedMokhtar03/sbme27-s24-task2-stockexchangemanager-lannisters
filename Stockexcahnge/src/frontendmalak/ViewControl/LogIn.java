@@ -79,6 +79,7 @@ public class LogIn {
                 DataManager.loadUsersFromCSV();
                 if ("Admin".equals(userType)) {
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminHomePage.fxml"));
+
                 } else {
                     //currentUser = new User(username);
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));

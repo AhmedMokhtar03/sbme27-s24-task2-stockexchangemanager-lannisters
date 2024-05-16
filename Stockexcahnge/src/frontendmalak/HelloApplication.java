@@ -1,6 +1,8 @@
 package frontendmalak;
 
+import backend.DataManager;
 import backend.User;
+import frontendmalak.ViewControl.AdminManageRequestsController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,6 +32,11 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
+
+
+
+
+
 
 
 

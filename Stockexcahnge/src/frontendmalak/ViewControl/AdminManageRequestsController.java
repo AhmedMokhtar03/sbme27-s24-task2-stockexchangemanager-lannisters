@@ -172,5 +172,13 @@ public class AdminManageRequestsController {
 
     }
 
+    public int numOfRequests(){
+
+
+        int k =tableView.getItems().size();
+        System.out.println(k);
+        return k;
+    }
+
 
 }

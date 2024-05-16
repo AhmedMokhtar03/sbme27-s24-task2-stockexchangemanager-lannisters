@@ -1,5 +1,6 @@
 package frontendmalak.ViewControl;
 
+import backend.DataManager;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -9,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -35,6 +37,10 @@ public class AdminHomePageController {
     private JFXButton mangeUsersBTN;
     @FXML
     private JFXButton mangeSecuritiesBTN;
+
+    @FXML
+    private Label numOfRequestsLabel;
+
 
     @FXML
     private AnchorPane slider;
@@ -99,6 +105,11 @@ public class AdminHomePageController {
     @FXML
     void endSession(ActionEvent event) {
 
+    }
+
+    public void initialize() {
+        String numOfRequests = String.valueOf(DataManager.countRowsInCSV());
+        numOfRequestsLabel.setText(numOfRequests);
     }
 
     @FXML
