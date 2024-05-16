@@ -61,7 +61,7 @@
          <left>
             <Pane prefHeight="200.0" prefWidth="220.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="slider" layoutY="27.0">
+                  <AnchorPane fx:id="slider" layoutY="27.0" translateX="-220.0">
                      <children>
                         <JFXButton fx:id="mangeSecuritiesBTN" alignment="BASELINE_LEFT" layoutX="5.0" layoutY="230.0" onAction="#mangeSecurities" opacity="0.3" prefHeight="100.0" prefWidth="210.0" styleClass="button12" text="     Manage Securities">
                            <font>
