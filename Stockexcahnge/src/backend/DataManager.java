@@ -13,6 +13,7 @@ import static frontendmalak.ViewControl.AdminManageUsersController.userList;
 import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
 
 public class DataManager {
+    private static final String SUBSCRIPTION_FILE = "subscriptions.csv";
     private static final String companiesFile = "companies.csv";
     private static final String CSV_FILE_PATH = "Stockexcahnge/src/frontendmalak/transactions.csv";
     private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
@@ -79,7 +80,7 @@ public class DataManager {
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
             // Write the header row
-            bw.write("Date,OpeningPrice,ClosingPrice,LowestPrice,HighestPrice");
+            bw.write("Date,OpeningPrice,ClosingPrice,HighestPrice,LowestPrice");
             bw.newLine();
             // Write each price history entry to the CSV file
             for (Map<String, Double> entry : company.getPriceHistory()) {
@@ -195,6 +196,50 @@ public class DataManager {
             e.printStackTrace();
         }
         return rowCount;
+    }
+    public static void saveSubscriptions(Map<String, List<String>> subscriptions) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(SUBSCRIPTION_FILE))) {
+            for (Map.Entry<String, List<String>> entry : subscriptions.entrySet()) {
+                String username = entry.getKey();
+                List<String> subscribedCompanyLabels = entry.getValue();
+                String line = username + "," + String.join(",", subscribedCompanyLabels);
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static Map<String, List<String>> loadSubscriptions() {
+        User currentUser= null;
+        Map<String, List<String>> subscriptions = new HashMap<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(SUBSCRIPTION_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                String username = parts[0];
+                List<String> subscribedCompanyLabels = new ArrayList<>(Arrays.asList(parts).subList(1, parts.length));
+                subscriptions.put(username, subscribedCompanyLabels);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for(Map.Entry<String, List<String>> entry : subscriptions.entrySet()) {
+            String username = entry.getKey();
+            for(User user : userList) {
+                if(user.getUserName().equalsIgnoreCase(username)){
+                    currentUser = user;
+                }
+            }
+            for(String companies : entry.getValue()) {
+                for(Company company : companyList) {
+                    if(company.getLabel().equalsIgnoreCase(companies)){
+                        company.addObserver(currentUser);
+                    }
+                }
+            }
+        }
+        return subscriptions;
     }
 }
 
