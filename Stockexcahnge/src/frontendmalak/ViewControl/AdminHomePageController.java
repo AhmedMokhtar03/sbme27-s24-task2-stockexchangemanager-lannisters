@@ -1,5 +1,7 @@
 package frontendmalak.ViewControl;
 
+import backend.Calendar;
+import backend.Company;
 import backend.DataManager;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
@@ -19,6 +21,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class AdminHomePageController {
+    public static boolean started = false;
     @FXML
     private JFXButton closeAppBTN;
     @FXML
@@ -99,12 +102,19 @@ public class AdminHomePageController {
 
     @FXML
     void startSession(ActionEvent event) {
-
+for(Company company : DataManager.companyList){
+    company.setOpenningPrice(company.getStockPrice());
+}
+started = true;
     }
 
     @FXML
     void endSession(ActionEvent event) {
-
+for(Company company: DataManager.companyList){
+    company.setClosingPrice(company.getStockPrice());
+}
+started = false;
+Calendar.advanceDay();
     }
 
     public void initialize() {

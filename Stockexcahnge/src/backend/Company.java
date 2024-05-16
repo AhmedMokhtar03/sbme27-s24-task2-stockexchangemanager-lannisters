@@ -6,6 +6,8 @@ public class Company extends Observable {
     private String name;
     private String label;
     private int ID;
+    public double openningPrice;
+    public double closingPrice;
     private double stockPrice;
     private double dividends;
     private int numOfAvailableStocks;
@@ -29,8 +31,8 @@ public class Company extends Observable {
     public void add_price_entry(Date date, double oldPrice, double newPrice) {
         Map<String, Double> entry = new HashMap<String, Double>();
         entry.put("date", (double) date.getTime());
-        entry.put("OpeningPrice", newPrice);
-        entry.put("closingPrice", newPrice);
+        entry.put("OpeningPrice", getOpenningPrice());
+        entry.put("closingPrice", getClosingPrice());
         entry.put("HighestPrice", getMaximumPrice());
         entry.put("LowestPrice", getMinimumPrice());
         priceHistory.add(entry);
@@ -70,6 +72,22 @@ public class Company extends Observable {
 
     public double getStockPrice() {
         return stockPrice;
+    }
+
+    public double getOpenningPrice() {
+        return openningPrice;
+    }
+
+    public void setOpenningPrice(double openningPrice) {
+        this.openningPrice = openningPrice;
+    }
+
+    public double getClosingPrice() {
+        return closingPrice;
+    }
+
+    public void setClosingPrice(double closingPrice) {
+        this.closingPrice = closingPrice;
     }
 
     public void setStockPrice(double stockPrice, double current_price) {
