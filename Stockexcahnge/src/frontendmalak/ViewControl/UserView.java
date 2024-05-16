@@ -2,6 +2,7 @@ package frontendmalak.ViewControl;
 
 import backend.User;
 import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import frontendmalak.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,15 +11,29 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.swing.*;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLOutput;
 
 import static frontendmalak.HelloApplication.stg;
 
 public class UserView {
+    ///////////////////////////////////////
+    @FXML
+    private FontAwesomeIconView notificationBell;
+    @FXML
+    private Circle notificationCircle;
+    @FXML
+    private Label numOfNotifications;
+    ////////////////////////////////////////
+
     @FXML
     private JFXButton manageAccount;
     @FXML
@@ -42,6 +57,32 @@ public class UserView {
         currentUser = LogIn.currentUser;
         updatewelcome();
     }
+    ///////////////////////////////////////////////
+    @FXML
+    public void mouseIN(javafx.scene.input.MouseEvent mouseEvent) {
+        notificationBell.setOpacity(1);
+    }
+    @FXML
+    public void mouseOUT(javafx.scene.input.MouseEvent mouseEvent) {
+    notificationBell.setOpacity(.5);
+    }
+
+    @FXML
+    public void doAction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/notifications.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Lannister Exchange");
+        stage.setScene(new Scene(root));
+        stage.show();
+
+    }
+
+
+    /////////////////////////////////////////////////
+
+
+
 
     @FXML
     void signOut(ActionEvent event) throws IOException {
@@ -116,6 +157,7 @@ public class UserView {
     private void updatewelcome() {
         welcome.setText("Welcome, " + currentUser.getUserName());
     }
+
 
 
 }
