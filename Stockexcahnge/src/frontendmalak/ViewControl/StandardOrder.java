@@ -27,9 +27,8 @@ public class StandardOrder {
     public Label currentPriceLabel;
     @FXML public Label EstimatedTotalCostLabel;
     @FXML public Label EstimatedTotalProceedsLabel;
-    @FXML private MenuButton orderTypeMenuButton;
-    @FXML public MenuItem buyMenuItem;
-    @FXML public MenuItem sellMenuItem;
+    @FXML public Button BuyButton;
+    @FXML public Button SellButton;
     @FXML
     public Label stockLabelField;
     @FXML
@@ -54,18 +53,16 @@ public class StandardOrder {
         quantityField.textProperty().addListener((observable, oldValue, newValue) -> updateEstimates());
     }
     @FXML
-    private void handleBuyMenuItemAction(ActionEvent event) throws IOException {
-        orderTypeMenuButton.setText("Buy");
+    private void handleBuyButtonAction(ActionEvent event) throws IOException {
         updateEstimates();
-        currentUser.addOrder(selectedStock, quantity, "BUY", currentPrice);
+        currentUser.addOrder(selectedStock, quantity, String.valueOf(BuyButton), currentPrice);
         DataManager.saveUsersToCSV();
     }
 
     @FXML
-    private void handleSellMenuItemAction(ActionEvent event) throws IOException {
-        orderTypeMenuButton.setText("Sell");
+    private void handleSellButtonAction(ActionEvent event) throws IOException {
         updateEstimates();
-        currentUser.addOrder(selectedStock, quantity, "SELL", currentPrice);
+        currentUser.addOrder(selectedStock, quantity, String.valueOf(SellButton), currentPrice);
         DataManager.saveUsersToCSV();
     }
 
@@ -77,15 +74,13 @@ public class StandardOrder {
                 quantity = Integer.parseInt(quantityText);
                 currentPrice = getCurrentPrice(selectedStock);
                 currentPriceLabel.setText(String.format("Current Price: %.2f", currentPrice));
-                if (orderTypeMenuButton.getText().equals("Buy")) {
                     double estimatedCost = quantity * currentPrice;
                     EstimatedTotalCostLabel.setText(String.format("Estimated Cost: %.2f", estimatedCost));
                     EstimatedTotalProceedsLabel.setText("Estimated Proceeds: N/A");
-                } else if (orderTypeMenuButton.getText().equals("Sell")) {
                     double estimatedProceeds = quantity * currentPrice;
                     EstimatedTotalCostLabel.setText(String.format("Estimated Proceeds: %.2f", estimatedProceeds));
                     EstimatedTotalProceedsLabel.setText("Estimated Cost: N/A");
-                }
+
             } catch (NumberFormatException ex) {
                 // Handle invalid input (e.g., display error message)
                 System.err.println("Invalid quantity: " + quantityText);
