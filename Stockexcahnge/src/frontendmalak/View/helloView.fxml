@@ -42,7 +42,7 @@
                         </FXCollections>
                      </items>
                   </ChoiceBox>
-                  <Label fx:id="wronglogin" layoutX="11.0" layoutY="70.0" prefHeight="27.0" prefWidth="317.0" textFill="#ff0004">
+                  <Label fx:id="wronglogin" layoutX="69.0" layoutY="70.0" prefHeight="27.0" prefWidth="259.0" textFill="#ff0004">
                      <font>
                         <Font name="Comfortaa Light" size="13.0" />
                      </font>
@@ -60,7 +60,7 @@
                      </image>
                   </ImageView>
                   <PasswordField fx:id="password" layoutX="97.0" layoutY="207.0" opacity="0.6" prefHeight="35.0" prefWidth="200.0" promptText="password" />
-                  <MFXButton fx:id="window" layoutX="233.0" layoutY="2.0" prefHeight="25.0" prefWidth="102.0" rippleColor="#cd94ba" text="new window" onAction="#windowAction" AnchorPane.topAnchor="2.0" />
+                  <MFXButton fx:id="window" layoutX="215.0" layoutY="3.0" onAction="#windowAction" opacity="0.8" prefHeight="30.0" prefWidth="121.0" rippleColor="#5e005e" style="-fx-background-color: grey;" text="New window" textFill="#ffffffe1" />
                </children>
             </AnchorPane>
          </right>

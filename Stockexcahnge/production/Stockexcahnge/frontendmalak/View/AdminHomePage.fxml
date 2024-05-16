@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.AdminHomePageController">
@@ -62,55 +63,48 @@
                <children>
                   <AnchorPane fx:id="slider" layoutY="27.0" translateX="-220.0">
                      <children>
-                        <VBox prefHeight="340.0" prefWidth="220.0">
-                           <children>
-                              <JFXButton fx:id="requestsBTN" alignment="BASELINE_LEFT" onAction="#requests" opacity="0.3" prefHeight="100.0" prefWidth="220.0" styleClass="button12" text="      Requests">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../img/icon1.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <VBox.margin>
-                                    <Insets left="5.0" right="5.0" top="10.0" />
-                                 </VBox.margin>
-                              </JFXButton>
-                              <JFXButton fx:id="mangeUsersBTN" alignment="BASELINE_LEFT" onAction="#mangeUsers" opacity="0.3" prefHeight="100.0" prefWidth="220.0" styleClass="button12" text="     Manage Users">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../img/icon2.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <VBox.margin>
-                                    <Insets left="5.0" right="5.0" top="10.0" />
-                                 </VBox.margin>
-                              </JFXButton>
-                              <JFXButton fx:id="mangeSecuritiesBTN" alignment="BASELINE_LEFT" onAction="#mangeSecurities" opacity="0.3" prefHeight="100.0" prefWidth="220.0" styleClass="button12" text="     Manage Securities">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../img/icon3.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <VBox.margin>
-                                    <Insets left="5.0" right="5.0" top="10.0" />
-                                 </VBox.margin>
-                              </JFXButton>
-                           </children>
-                        </VBox>
+                        <JFXButton fx:id="mangeSecuritiesBTN" alignment="BASELINE_LEFT" layoutX="5.0" layoutY="230.0" onAction="#mangeSecurities" opacity="0.3" prefHeight="100.0" prefWidth="210.0" styleClass="button12" text="     Manage Securities">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icon3.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="mangeUsersBTN" alignment="BASELINE_LEFT" layoutX="5.0" layoutY="119.0" onAction="#mangeUsers" opacity="0.3" prefHeight="100.0" prefWidth="210.0" styleClass="button12" text="     Manage Users">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icon2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="requestsBTN" alignment="BASELINE_LEFT" layoutX="5.0" layoutY="7.0" onAction="#requests" opacity="0.3" prefHeight="100.0" prefWidth="210.0" styleClass="button12" text="      Requests">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icon1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <Circle fill="#ed82ed92" layoutX="170.0" layoutY="57.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Label fx:id="numOfRequestsLabel" alignment="CENTER" layoutX="157.0" layoutY="48.0" prefHeight="17.0" prefWidth="25.0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <Pane prefHeight="27.0" prefWidth="220.0">

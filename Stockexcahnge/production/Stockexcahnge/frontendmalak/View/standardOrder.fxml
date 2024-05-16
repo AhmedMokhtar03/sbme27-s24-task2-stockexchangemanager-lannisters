@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,6 +21,9 @@
                <image>
                   <Image url="@../img/Standard order.png" />
                </image>
+               <effect>
+                  <ColorAdjust />
+               </effect>
             </ImageView>
             <Label fx:id="stockLabelField" layoutX="27.0" layoutY="107.0" prefHeight="37.0" prefWidth="122.0" text="Stock Label" textFill="#e4e4e4">
                <font>
@@ -32,18 +35,7 @@
                   <Font name="System Italic" size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="149.0" layoutY="172.0" prefHeight="27.0" prefWidth="150.0" />
-            <MenuButton fx:id="orderTypeMenuButton" layoutX="139.0" layoutY="246.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" style="-fx-background-color: white;" styleClass="button1" stylesheets="@Designs.css" text="Order Type">
-
-               <items>
-                  <MenuItem fx:id="buyMenuItem" mnemonicParsing="false" onAction="#handleBuyMenuItemAction" text="Buy" />
-                  <MenuItem fx:id="sellMenuItem" mnemonicParsing="false" onAction="#handleSellMenuItemAction" text="Sell" />
-
-               </items>
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </MenuButton>
+            <TextField fx:id="quantity1" layoutX="149.0" layoutY="172.0" prefHeight="27.0" prefWidth="150.0" />
             <Label fx:id="EstimatedTotalCostLabel" layoutX="327.0" layoutY="150.0" prefHeight="54.0" prefWidth="276.0" text=" Estimated Total Costs :" textAlignment="CENTER" textFill="#e4e4e4">
                <font>
                   <Font name="System Italic" size="15.0" />
@@ -62,6 +54,22 @@
             <ChoiceBox fx:id="stockchoicebox" layoutX="149.0" layoutY="113.0" prefWidth="150.0" style="-fx-background-color: white;" styleClass="text-field1" />
             <Line endX="-99.99996948242188" endY="251.20001220703125" layoutX="419.0" layoutY="140.0" startX="-99.99996948242188" startY="-48.00001525878906" stroke="#eae3e3" />
             <MFXButton layoutY="6.0" minWidth="49.0" onAction="#back2" prefHeight="28.0" prefWidth="57.0" style="-fx-background-color: red;" text="Back" />
+            <Button fx:id="BuyButton" layoutX="43.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleBuyButtonAction" prefHeight="34.0" prefWidth="97.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Buy" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <ColorAdjust contrast="0.02" />
+               </effect>
+            </Button>
+            <Button fx:id="SellButton" layoutX="183.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleSellButtonAction" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Sell">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <ColorAdjust contrast="0.02" />
+               </effect>
+            </Button>
          </children></AnchorPane>
    </center>
 </BorderPane>
