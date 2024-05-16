@@ -21,7 +21,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static frontendmalak.HelloApplication.stg;
+import static frontendmalak.HelloApplication.primaryStage;
 
 public class PremiumSubscribtion {
     @FXML
@@ -55,8 +55,8 @@ public class PremiumSubscribtion {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     @FXML
@@ -82,7 +82,7 @@ public class PremiumSubscribtion {
                     Scene newScene = new Scene(root);
 
                     // Get the current scene and its root node
-                    Scene currentScene = stg.getScene();
+                    Scene currentScene = primaryStage.getScene();
                     AnchorPane currentRoot = (AnchorPane) currentScene.getRoot();
 
                     // Set the new scene's dimensions to match the current scene
@@ -103,7 +103,7 @@ public class PremiumSubscribtion {
                     timeline.setOnFinished(event1 -> {
                         // Remove the old scene after animation is complete
                         currentRoot.getChildren().remove(currentScene.getRoot());
-                        stg.setScene(newScene);
+                        primaryStage.setScene(newScene);
                     });
                     timeline.play();
 

@@ -22,7 +22,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLOutput;
 
-import static frontendmalak.HelloApplication.stg;
+import static frontendmalak.HelloApplication.primaryStage;
 
 public class UserView {
     ///////////////////////////////////////
@@ -101,8 +101,8 @@ public class UserView {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public void ManageAccountt(ActionEvent event) throws IOException {
@@ -110,8 +110,8 @@ public class UserView {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageAccount.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public void ManageOrderr(ActionEvent event) throws IOException {
@@ -119,8 +119,8 @@ public class UserView {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageOrder.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public void Transactionss(ActionEvent event) throws IOException {
@@ -128,8 +128,8 @@ public class UserView {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/transactions.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
     }
 
@@ -139,16 +139,16 @@ public class UserView {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premium.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            stg.setScene(scene);
-            stg.show();
+            primaryStage.setScene(scene);
+            primaryStage.show();
             System.out.println("you are premium uer");
 
         } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/charts.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            stg.setScene(scene);
-            stg.show();
+            primaryStage.setScene(scene);
+            primaryStage.show();
             System.out.println("you are not premium uer");
 
         }
