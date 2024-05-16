@@ -1,0 +1,299 @@
+.button1
+{
+    -fx-background-color : #393351;
+    -fx-background-radius :  30 0 0 30;
+}
+.button1:hover
+{
+    -fx-background-color : #524A7B ;
+    -fx-background-radius :  30 0 0 30;
+}
+.button1:pressed
+{
+    -fx-background-color : #2F2B43 ;
+    -fx-background-radius :  30 0 0 30;
+}
+
+.button2
+{
+    -fx-background-color : #393351;
+    -fx-background-radius :  20;
+}
+.button2:hover
+{
+    -fx-background-color : #524A7B ;
+    -fx-background-radius :  20;
+}
+.button2:pressed
+{
+    -fx-background-color : #2F2B43 ;
+    -fx-background-radius :  20;
+}
+
+.button3
+{
+    -fx-background-color : #141124;
+    -fx-background-radius :  0 0 0 0;
+}
+.button3:hover
+{
+    -fx-background-color : #524A7B ;
+}
+.button3:pressed
+{
+    -fx-background-color : #2F2B43 ;
+}
+
+.button4
+{
+    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-radius :  30 30 30 30;
+}
+.button4:hover
+{
+    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
+    -fx-background-radius :  30 30 30 30;
+}
+.button4:pressed
+{
+    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-radius :  30 30 30 30;
+}
+
+
+.combo-box
+{
+    -fx-background-color : #141124;
+    -fx-border-color:  #141124;
+    -fx-border-radius: 30;
+    -fx-text-fill: white;
+
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+.combo-box:hover
+{
+    -fx-background-color : #141124;
+    -fx-border-radius: 30;
+}
+.combo-box:pressed
+{
+    -fx-background-color : #141124;
+    -fx-border-radius: 30;
+}
+
+/* chart properties */
+
+.chart {
+    -fx-padding: 10px;
+    -fx-background-color: transparent;
+    -fx-legend-visible: false;
+}
+.chart-plot-background {
+    -fx-background-color:transparent;
+}
+
+.chart-pie {
+    -fx-border-color: derive(-fx-pie-color, 1%);
+    -fx-border-width: 0px;
+}
+.linear-grad
+{
+    -fx-background-color: linear-gradient(to bottom left, #A868A0, #2D75E8);
+}
+.text-field1 {
+    -fx-opacity: 0.6; /* Initial opacity */
+}
+
+.text-field1:hover {
+    -fx-opacity: .8; /* Opacity on hover */
+
+    -fx-text-fill: Black; /* Set the text color to red when focused */
+}
+
+
+
+.button10
+{
+    -fx-background-color :  #b80303;
+
+}
+.button10:hover
+{
+    -fx-background-color : RED ;
+
+}
+.button11
+{
+
+    -fx-opacity: 1;
+
+
+}
+.button11:hover
+{
+
+    -fx-background-color : WHITE ;
+    -fx-opacity: 0.3;
+
+
+}
+
+
+.anchorPane1 {
+
+    -fx-opacity: 1; /* Set the default opacity */
+}
+
+.anchorPane1:hover {
+    -fx-background-color: WHITE; /* Set the default background color */
+    -fx-opacity: 0.3; /* Change opacity on hover */
+}
+.button12{
+
+    -fx-background-color :  #e0e0e0;
+;
+
+
+}
+.button12:hover
+{
+
+    -fx-background-color : VIOLET;
+    -fx-opacity: 1;
+
+
+}
+.button13
+{
+    -fx-background-color :  VIOLET;
+    fx-opacity: 0.2;
+
+}
+
+.button13:hover
+{
+    -fx-background-color : red ;
+    -fx-opacity: .2;
+
+}
+.button14
+{
+
+    -fx-background-color : #905299;
+
+
+}
+
+.button14:hover
+{
+    -fx-background-color : purple ;
+    -fx-opacity: .6;
+
+}
+.button15
+{
+
+    -fx-background-color : red;
+
+
+}
+
+.button15:hover
+{
+    -fx-background-color : red ;
+    -fx-opacity: .6;
+
+}
+
+.button16
+{
+
+    -fx-background-color : violet;
+    -fx-opacity: .5;
+
+}
+
+.button16:hover
+{
+    -fx-background-color : violet ;
+    -fx-opacity: 1;
+
+
+}
+
+
+.table-viewA {
+    -fx-background-color: transparent;
+}
+
+.table-viewA .column-header,
+.table-viewA .column-header-background .filler {
+    -fx-cell-size : 30;
+    -fx-background-color: #6d1634;
+    -fx-border-width: .3;
+    -fx-border-color: black;
+}
+.table-viewA .column-header .label{
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+.table-viewA .cell{
+    -fx-cell-size: 30;
+    -fx-alignment: center;
+    -fx-text-fill: black;
+    -fx-border-width: .3;
+    -fx-border-color: black;
+}
+
+.table-row-cell:selected {
+    -fx-opacity:1;
+}
+.table-row-cell:selected .text {
+    -fx-font-weight: bold;
+    -fx-fill : white ;
+
+
+}
+/* scroll bar starts here */
+
+/* The increment and decrement button CSS class of scrollbar */
+.table-viewA .increment-button ,.table-view .decrement-button {
+    -fx-background-color:black;
+    -fx-background-radius: 2em;
+
+}
+
+/* The main scrollbar **track** CSS class  */
+.table-viewA .scroll-bar:horizontal .track,
+.table-viewA .scroll-bar:vertical .track{
+    -fx-background-color: #9750a5;
+    -fx-border-color:black;
+    -fx-background-radius: 2em;
+    -fx-border-radius:2em;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.table-viewA .scroll-bar:horizontal .thumb,
+.table-viewA .scroll-bar:vertical .thumb {
+
+
+    -fx-background-color: #6d1634;
+
+
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+
+}
+.table-viewA .table-row-cell:odd {
+    -fx-background-color: #d59ad5;
+    -fx-opacity: .5;
+
+}
+
+/* Styling for even rows */
+.table-viewA .table-row-cell:even {
+    -fx-background-color: #892489;
+    -fx-opacity: .5;
+}

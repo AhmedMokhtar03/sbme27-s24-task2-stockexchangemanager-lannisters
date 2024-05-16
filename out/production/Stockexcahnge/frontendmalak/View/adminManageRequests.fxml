@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- AdminManageTransactions.fxml -->
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.AdminManageRequestsController">
+    <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>
+        <TableView fx:id="tableView" layoutY="52.0" prefHeight="348.0" prefWidth="600.0" styleClass="table-viewA">
+            <columns>
+                <TableColumn fx:id="usernameColumn" prefWidth="100.0" text="Username" />
+                <TableColumn fx:id="typeOfTransactionColumn" prefWidth="100.0" text="Type of Transaction" />
+                <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
+                <TableColumn fx:id="amountColumn" prefWidth="100.0" text="Amount" />
+                <TableColumn fx:id="currentBalanceColumn" prefWidth="100.0" text="Current Balance" />
+                <TableColumn fx:id="newBalanceColumn" prefWidth="100.0" text="New Balance" />
+            </columns>
+        </TableView>
+      <Pane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;">
+         <children>
+            <JFXButton fx:id="closeAppBTN" layoutX="575.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" text="x" />
+         </children>
+      </Pane>
+      <JFXButton fx:id="goBackBTN" layoutX="7.0" layoutY="27.0" onAction="#goBack" styleClass="button16" text="Back">
+         <graphic>
+            <FontAwesomeIconView glyphName="UNDO" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="acceptButton" layoutX="216.0" layoutY="27.0" onAction="#handleAccept" opacity="0.3" prefHeight="25.0" prefWidth="77.0" styleClass="button16" text="Accept" />
+      <JFXButton fx:id="rejectButton" layoutX="307.0" layoutY="27.0" onAction="#handleReject" opacity="0.56" prefHeight="25.0" prefWidth="77.0" styleClass="button15" text="Reject" />
+    </children>
+</AnchorPane>
