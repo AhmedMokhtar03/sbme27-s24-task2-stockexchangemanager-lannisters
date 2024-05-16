@@ -7,6 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -97,6 +99,39 @@ public class DataManager {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    public static void loadPriceHistoryFromCSV() {
+        for (Company company : companyList) {
+            String fileName = company.getLabel() + ".csv"; // Use the company label as the file name
+            File file = new File(fileName);
+
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                br.readLine(); // Skip the header row
+
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split(",");
+                    if (parts.length == 5) {
+                        Date date = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(parts[0]);
+                        double openingPrice = Double.parseDouble(parts[1]);
+                        double closingPrice = Double.parseDouble(parts[2]);
+                        double highestPrice = Double.parseDouble(parts[3]);
+                        double lowestPrice = Double.parseDouble(parts[4]);
+
+                        Map<String, Double> priceHistoryEntry = new HashMap<>();
+                        priceHistoryEntry.put("date", (double) date.getTime()); // Store date as milliseconds since epoch
+                        priceHistoryEntry.put("OpeningPrice", openingPrice);
+                        priceHistoryEntry.put("closingPrice", closingPrice);
+                        priceHistoryEntry.put("HighestPrice", highestPrice);
+                        priceHistoryEntry.put("LowestPrice", lowestPrice);
+
+                        company.getPriceHistory().add(priceHistoryEntry);
+                    }
+                }
+            } catch (IOException | ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
     public static void loadUsersFromCSV() {

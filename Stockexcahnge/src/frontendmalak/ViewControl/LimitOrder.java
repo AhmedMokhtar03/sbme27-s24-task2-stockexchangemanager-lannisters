@@ -29,9 +29,8 @@ public class LimitOrder {
     private Label quantityField;
     @FXML
     private Label limitPriceField;
-    @FXML private MenuButton orderTypeMenuButton;
-    @FXML public MenuItem buyMenuItem;
-    @FXML public MenuItem sellMenuItem;
+    @FXML public Button buybutton;
+    @FXML public Button sellbutton;
     @FXML
     private Label orderStatusLabel;
     @FXML
@@ -50,30 +49,30 @@ public class LimitOrder {
         }
     }
     @FXML
-    private void handleBuyMenuItemAction(ActionEvent event) throws IOException {
+    private void handlebuybuttonAction(ActionEvent event) throws IOException {
         String stockLabel = stockChoiceBox.getValue();
         int quantity = Integer.parseInt(Quantity.getText());
         double limitPrice = Double.parseDouble(Price.getText());
         currentUser.addOrder(stockLabel, quantity, "LimitBuy", limitPrice);
         if (currentUser.order.executed) {
-            orderStatusLabel.setText("Limit buy order executed!");
+            orderStatusLabel.setText("executed!");
             DataManager.saveUsersToCSV();
         } else {
             orderStatusLabel.setText("pending.");
         }
     }
     @FXML
-    private void handleSellMenuItemAction(ActionEvent event) throws IOException {
+    private void handlesellbuttonAction(ActionEvent event) throws IOException {
         String stockLabel = stockChoiceBox.getValue();
         int quantity = Integer.parseInt(quantityField.getText());
         double limitPrice = Double.parseDouble(limitPriceField.getText());
 
         currentUser.addOrder(stockLabel, quantity, "LimitSell", limitPrice);
         if (currentUser.order.executed) {
-            orderStatusLabel.setText("Limit buy order executed!");
+            orderStatusLabel.setText(" executed!");
             DataManager.saveUsersToCSV();
         } else {
-            orderStatusLabel.setText("Limit buy order pending.");
+            orderStatusLabel.setText(" pending.");
         }
     }
     public void back2(ActionEvent event) throws IOException {
