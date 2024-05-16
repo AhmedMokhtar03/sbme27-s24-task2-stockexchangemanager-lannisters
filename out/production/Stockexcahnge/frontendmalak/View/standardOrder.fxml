@@ -54,14 +54,20 @@
             <ChoiceBox fx:id="stockchoicebox" layoutX="149.0" layoutY="113.0" prefWidth="150.0" style="-fx-background-color: white;" styleClass="text-field1" />
             <Line endX="-99.99996948242188" endY="251.20001220703125" layoutX="419.0" layoutY="140.0" startX="-99.99996948242188" startY="-48.00001525878906" stroke="#eae3e3" />
             <MFXButton layoutY="6.0" minWidth="49.0" onAction="#back2" prefHeight="28.0" prefWidth="57.0" style="-fx-background-color: red;" text="Back" />
-            <Button layoutX="46.0" layoutY="267.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="82.0" styleClass="button14" stylesheets="@Designs.css" text="Buy">
+            <Button fx:id="BuyButton" layoutX="43.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleBuyButtonAction" prefHeight="34.0" prefWidth="97.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Buy" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
                <effect>
-                  <ColorAdjust contrast="-0.09" />
+                  <ColorAdjust contrast="0.02" />
                </effect>
             </Button>
-            <Button layoutX="175.0" layoutY="267.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="82.0" styleClass="button14" stylesheets="@Designs.css" text="Sell">
+            <Button fx:id="SellButton" layoutX="183.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleSellButtonAction" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Sell">
+               <font>
+                  <Font size="18.0" />
+               </font>
                <effect>
-                  <ColorAdjust contrast="-0.09" />
+                  <ColorAdjust contrast="0.02" />
                </effect>
             </Button>
          </children></AnchorPane>
