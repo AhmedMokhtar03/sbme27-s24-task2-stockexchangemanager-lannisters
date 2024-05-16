@@ -185,8 +185,6 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
-//////////
     public static int countRowsInCSV() {
         int rowCount = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
@@ -198,8 +196,6 @@ public class DataManager {
         }
         return rowCount;
     }
-////////////
-
-    }
+}
 
 

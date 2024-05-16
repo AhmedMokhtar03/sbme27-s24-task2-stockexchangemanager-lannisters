@@ -1,6 +1,5 @@
 package frontendmalak.ViewControl;
 import backend.Company;
-import backend.CompanyController;
 import backend.DataManager;
 import backend.User;
 import javafx.collections.FXCollections;

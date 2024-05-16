@@ -68,10 +68,11 @@ public class AdminManageSecurtiesController {
         double stockPrice = Double.parseDouble(stockPriceField.getText());
         double dividends = Double.parseDouble(dividendsField.getText());
         int numOfAvailableStocks = Integer.parseInt(numOfAvailableStocksField.getText());
-
-        Company newCompany = new Company(companyName, companyLabel,5, stockPrice, dividends, numOfAvailableStocks);
+        DataManager.loadUsersFromCSV();
+        Company newCompany = new Company(companyName, companyLabel, 5, stockPrice, dividends, numOfAvailableStocks);
         companyList.add(newCompany);
         DataManager.saveCompanies(newCompany);
+        DataManager.saveUsersToCSV();
         System.out.println("New Company created: " + newCompany.getName());
 
     }

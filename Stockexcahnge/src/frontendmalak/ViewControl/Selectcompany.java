@@ -20,7 +20,7 @@ public class Selectcompany {
 
         ObservableList<String> select = FXCollections.observableArrayList("subscribe", "unsubscribe");
         aapl.setItems(select);
-        //aapl.setValue("subscribe");
+        aapl.setValue("subscribe");
         if(aapl.getValue().equals("subscribe")) {
             for(Company company : DataManager.companyList){
                 if(company.getLabel().equalsIgnoreCase("aap")){
@@ -35,6 +35,7 @@ public class Selectcompany {
             }
         ObservableList<String> select1 = FXCollections.observableArrayList("subscribe", "unsubscribe");
         amzn.setItems(select);
+        amzn.setValue("subscribe");
         if(amzn.getValue().equals("subscribe")) {
             for(Company company : DataManager.companyList){
                 if(company.getLabel().equalsIgnoreCase("amzn")){
