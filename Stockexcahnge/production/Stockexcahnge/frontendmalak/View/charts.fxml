@@ -33,15 +33,15 @@
                   <Label layoutX="64.0" layoutY="340.0" text="Subscribe now for displaying premium features" textFill="WHITE" />
                   <Label layoutX="435.0" layoutY="339.0" text="export csv file" textFill="WHITE" />
                   <MFXButton layoutX="515.0" layoutY="336.0" rippleColor="#690074" style="-fx-background-color: #ffa7e0;" styleClass="button11" stylesheets="@Designs.css" text="export" />
+                  <LineChart fx:id="lineChart" layoutX="28.0" layoutY="83.0" prefHeight="261.0" prefWidth="569.0" styleClass="chart-plot-background" stylesheets="@charts.css">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="yAxis" side="LEFT" />
+                    </yAxis>
+                  </LineChart>
                </children></AnchorPane>
-            <LineChart fx:id="lineChart" createSymbols="false" layoutX="37.0" layoutY="90.0" prefHeight="247.0" prefWidth="533.0" styleClass="chart-plot-background" stylesheets="@charts.css">
-               <xAxis>
-                  <CategoryAxis side="BOTTOM" />
-               </xAxis>
-               <yAxis>
-                  <NumberAxis side="LEFT" tickLabelFill="WHITE" />
-               </yAxis>
-            </LineChart>
             <Label layoutX="56.0" layoutY="40.0" stylesheets="@charts.css" text="Visual Analytics" textFill="WHITE">
                <font>
                   <Font size="26.0" />
