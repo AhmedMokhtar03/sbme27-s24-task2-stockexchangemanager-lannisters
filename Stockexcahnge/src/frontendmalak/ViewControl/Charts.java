@@ -2,11 +2,14 @@ package frontendmalak.ViewControl;
 
 import backend.Company;
 import backend.DataManager;
+import backend.User;
+import frontendmalak.HelloApplication;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -43,8 +46,26 @@ public class Charts implements Initializable {
     private ScheduledExecutorService scheduledExecutorService;
     private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
+    public static boolean isInitialized = false;
+
+    public boolean isInitialized() {
+        return isInitialized;
+    }
+
+    public void setInitialized(boolean initialized) {
+        isInitialized = initialized;
+    }
+
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Check if the chart is not initialized already
+        if (!isInitialized) {
+            initializeChart();
+            isInitialized = true;
+        }
+    }
+
+    private void initializeChart() {
         for (Company company : DataManager.companyList) {
             XYChart.Series<String, Double> series = new XYChart.Series<>();
             series.setName(company.getName());
