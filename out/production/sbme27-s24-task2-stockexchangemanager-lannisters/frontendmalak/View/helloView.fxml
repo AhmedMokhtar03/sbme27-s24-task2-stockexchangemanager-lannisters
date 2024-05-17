@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.LogIn">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/440751908_3466850260271714_519064189478753276_n.jpg" />
+         </image>
+      </ImageView>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Designs.css">
+         <left>
+            <AnchorPane prefHeight="400.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <AnchorPane prefHeight="400.0" prefWidth="339.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="47.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Untitled_design__4_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <MFXButton fx:id="button" layoutX="204.0" layoutY="274.0" onAction="#userLogIn" opacity="0.8" prefHeight="30.0" prefWidth="80.0" rippleColor="#57055c" style="-fx-background-color: #ffa7e0;" text="Log in" />
+                  <ChoiceBox fx:id="choicebox" layoutX="97.0" layoutY="105.0" opacity="0.6" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="text-field1">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Admin" />
+                           <String fx:value="User" />
+                           <String fx:value="Premium User" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+                  <Label fx:id="wronglogin" layoutX="69.0" layoutY="70.0" prefHeight="27.0" prefWidth="259.0" textFill="#ff0004">
+                     <font>
+                        <Font name="Comfortaa Light" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="username" layoutX="97.0" layoutY="164.0" opacity="0.6" prefHeight="35.0" prefWidth="200.0" promptText="username" style="-fx-background-color: white;" />
+                  <MFXButton fx:id="button1" layoutX="109.0" layoutY="274.0" onAction="#handleSignUp" opacity="0.77" prefHeight="30.0" prefWidth="80.0" rippleColor="#57055c" style="-fx-background-color: #ffa7e0;" text="Register" />
+                  <ImageView fitHeight="40.0" fitWidth="39.0" layoutX="55.0" layoutY="162.0">
+                     <image>
+                        <Image url="@../img/Untitled_design__2_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="49.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Untitled_design__3_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <PasswordField fx:id="password" layoutX="97.0" layoutY="207.0" opacity="0.6" prefHeight="35.0" prefWidth="200.0" promptText="password" />
+                  <MFXButton fx:id="window" layoutX="215.0" layoutY="3.0" onAction="#windowAction" opacity="0.8" prefHeight="30.0" prefWidth="121.0" rippleColor="#5e005e" style="-fx-background-color: grey;" text="New window" textFill="#ffffffe1" />
+               </children>
+            </AnchorPane>
+         </right>
+         <bottom>
+            <AnchorPane prefHeight="9.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="11.0" opacity="0.5" prefHeight="17.0" prefWidth="579.0" text="\@2024                  Lannisters Team                 Privacy Policy               Cookies Policy           Report a problem" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

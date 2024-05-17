@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="386.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.ManageOrder">
+   <children>
+      <ImageView fitHeight="416.0" fitWidth="600.0">
+         <image>
+            <Image url="@../img/order management.png" />
+         </image>
+         <effect>
+            <ColorAdjust contrast="-0.06" />
+         </effect>
+      </ImageView>
+      <MFXButton fx:id="standardOrderButton" layoutX="34.0" layoutY="168.0" onAction="#handleStandardOrderButtonAction" prefHeight="50.0" prefWidth="208.0" rippleColor="#e7d1d1" style="-fx-background-color: pink;" styleClass="button4" stylesheets="@Designs.css" text="Standard Order" textFill="#030000">
+         <effect>
+            <ColorAdjust brightness="0.02" contrast="-0.24" hue="-0.06" saturation="-0.47" />
+         </effect>
+         <font>
+            <Font size="21.0" />
+         </font>
+      </MFXButton>
+      <MFXButton fx:id="limitOrderButton" defaultButton="true" layoutX="34.0" layoutY="251.0" onAction="#handleLimitOrderButtonAction" prefHeight="49.0" prefWidth="208.0" rippleColor="#e7d1d1" style="-fx-background-color: pink;" styleClass="button4" stylesheets="@Designs.css" text="Limit Order" textFill="#030000">
+         <effect>
+            <ColorAdjust brightness="0.02" contrast="-0.24" hue="-0.06" saturation="-0.47" />
+         </effect>
+         <font>
+            <Font size="23.0" />
+         </font>
+      </MFXButton>
+      <MFXButton layoutX="-3.0" layoutY="-2.0" onAction="#back2" prefHeight="29.0" prefWidth="46.0" style="-fx-background-color: red;" text="Back" />
+      <Text fx:id="Started" fill="#d03a9b" layoutX="43.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session is not started yet" visible="false">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
