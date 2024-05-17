@@ -39,13 +39,15 @@ public class PortfolioController {
     private TableColumn<Company, String> holdingsStockNameColumn;
 
     @FXML
-    private TableColumn<Company, Double> holdingsQuantityColumn;
+    private TableColumn<Company, Integer> holdingsQuantityColumn;
 
     @FXML
     private TableColumn<Company, Double> holdingsPriceColumn;
 
     @FXML
     private TableColumn<Company, Double> holdingsValueColumn;
+    @FXML
+    private TableColumn<Company,Double> dividendsColumn;
 
     @FXML
     private TableView<Transactions> transactionTable;
@@ -62,8 +64,10 @@ public class PortfolioController {
     @FXML
     private TableColumn<Transactions, String> statusColumn;
 
-
+    private ObservableList<Company> holdingsList = FXCollections.observableArrayList();
+    Company tempholding;
     public void initialize() {
+
         DataManager.loadTransactionsFromCSV();
         nameLabel.setText(LogIn.currentUser.getUserName());
 
@@ -82,29 +86,34 @@ public class PortfolioController {
         transactionTable.setItems(filteredTransactions);
         //========================================
 //still need to fill the table with the data of the owned stocks
-
-
-
-
-
-
-    }
-
-void lsl(){
         for(Company i:DataManager.companyList) {
 
-            if(LogIn.currentUser.ownedStocks.get(i.getLabel())!=null)
-           System.out.println(i.getLabel() +""+LogIn.currentUser.ownedStocks.get(i.getLabel()));
-
+            if(LogIn.currentUser.ownedStocks.get(i.getLabel())!=null) {
+                String label= i.getLabel();
+                int quantity=LogIn.currentUser.ownedStocks.get(i.getLabel());
+                double price=i.getStockPrice();
+                double dividends=i.getDividends();
+                double totalPrice=quantity * price;
+                tempholding=new Company(label,quantity ,price,totalPrice,dividends);
+                holdingsList.add(tempholding);
+            }
 
         }
+loadTable();
+    }
+
+void loadTable(){
+    holdingsStockNameColumn.setCellValueFactory(new PropertyValueFactory<>("label"));
+    holdingsQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+    holdingsPriceColumn.setCellValueFactory(new PropertyValueFactory<>("stockPrice"));
+    holdingsValueColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+    dividendsColumn.setCellValueFactory(new PropertyValueFactory<>("dividends"));
+
+    holdingsTable.setItems(holdingsList);
+
 }
-
-
-
-    @FXML
+@FXML
     void goBack(ActionEvent event) throws IOException {
-        lsl();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);

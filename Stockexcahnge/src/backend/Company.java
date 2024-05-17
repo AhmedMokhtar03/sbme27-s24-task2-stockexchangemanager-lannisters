@@ -15,11 +15,20 @@ public class Company extends Observable {
     double MaximumPrice;
     double MinimumPrice;
     private List<Map<String, Double>> priceHistory = new ArrayList<Map<String, Double>>();
-
+    private double totalPrice;
+    private int quantity;
     public Company() {
     }
 
-    public Company( String name, String label,int ID, double stockPrice, double dividends, int numOfAvailableStocks) {
+    public Company(String label, int quantity, double stockPrice, double totalPrice, double dividends) {
+        this.label = label;
+        this.quantity = quantity;
+        this.stockPrice = stockPrice;
+        this.totalPrice = totalPrice;
+        this.dividends = dividends;
+    }
+
+    public Company(String name, String label, int ID, double stockPrice, double dividends, int numOfAvailableStocks) {
         this.ID = ID;
         this.name = name;
         this.label = label;
@@ -108,6 +117,22 @@ public class Company extends Observable {
 
     public void setDividends(double dividends) {
         this.dividends = dividends;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getNumOfAvailableStocks() {
