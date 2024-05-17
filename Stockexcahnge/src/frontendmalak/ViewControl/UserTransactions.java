@@ -107,7 +107,7 @@ public class UserTransactions {
 
 
     private void updateBalanceLabel() {
-        balanceLabel.setText(String.valueOf("Balance=" + balance));
+        balanceLabel.setText(String.valueOf("Balance=" + String.format("%.2f", balance)));
     }
 
     public void Back1(ActionEvent event) throws IOException {

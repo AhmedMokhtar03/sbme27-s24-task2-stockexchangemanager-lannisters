@@ -48,7 +48,7 @@ public class PremiumSubscribtion {
     }
 
     private void updateBalanceLabel() {
-        Balance1.setText("Your balance= " + balance);
+        Balance1.setText("Your balance= " + String.format("%.2f", balance));
     }
 
     public void Back2(ActionEvent event) throws IOException {

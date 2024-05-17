@@ -62,7 +62,7 @@
                   <ColorAdjust contrast="0.02" />
                </effect>
             </Button>
-            <Button fx:id="SellButton" layoutX="183.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleSellButtonAction" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Sell">
+            <Button fx:id="SellButton" layoutX="183.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleSellButtonAction" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Sell" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

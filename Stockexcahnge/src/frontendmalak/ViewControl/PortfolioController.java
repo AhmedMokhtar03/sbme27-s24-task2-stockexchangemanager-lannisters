@@ -1,6 +1,7 @@
 package frontendmalak.ViewControl;
 
 import backend.Company;
+import backend.DataManager;
 import backend.Transactions;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.transformation.FilteredList;
@@ -17,7 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import static frontendmalak.HelloApplication.stg;
+import static frontendmalak.HelloApplication.primaryStage;
 import static frontendmalak.ViewControl.AdminManageUsersController.userList;
 import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
 
@@ -63,7 +64,9 @@ public class PortfolioController {
 
 
     public void initialize() {
-        nameLabel.setText("Your Portfolio");
+        DataManager.loadTransactionsFromCSV();
+        nameLabel.setText(LogIn.currentUser.getUserName());
+
         Double text = LogIn.currentUser.getCashBalance();
         balanceLabel.setText(String.valueOf(text));
 
@@ -90,10 +93,11 @@ public class PortfolioController {
 
     @FXML
     void goBack(ActionEvent event) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
