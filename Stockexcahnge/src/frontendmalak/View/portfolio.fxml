@@ -5,52 +5,107 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.PortfolioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.PortfolioController">
     <children>
-        <VBox layoutX="10.0" layoutY="10.0" spacing="10">
-            <children>
-                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Your Portfolio" />
-                <HBox spacing="20">
-                    <children>
-                        <VBox spacing="5">
-                            <Label text="Name:" />
-                            <Label text="Balance:" />
-                        </VBox>
-                        <VBox spacing="5">
-                            <Label fx:id="nameLabel" />
-                            <Label fx:id="balanceLabel" />
-                        </VBox>
-                    </children>
-                </HBox>
-                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Holdings" />
-                <TableView fx:id="holdingsTable" prefHeight="159.0" prefWidth="580.0">
-                    <columns>
-                        <TableColumn fx:id="holdingsStockNameColumn" prefWidth="105.60003662109375" text="Stock" />
-                        <TableColumn fx:id="holdingsQuantityColumn" prefWidth="144.79998779296875" text="Quantity" />
-                        <TableColumn fx:id="holdingsPriceColumn" prefWidth="91.99993896484375" text="Price" />
-                        <TableColumn fx:id="holdingsValueColumn" prefWidth="126.4000244140625" text="Value" />
-                  <TableColumn fx:id="dividendsColumn" prefWidth="109.5999755859375" text="dividends" />
-                    </columns>
-                </TableView>
-                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Transaction History" />
-                <TableView fx:id="transactionTable" prefHeight="150.0" prefWidth="580.0">
-                    <columns>
-                        <TableColumn fx:id="transactionTypeColumn" prefWidth="150.0" text="Type" />
-                        <TableColumn fx:id="transactionAmountColumn" prefWidth="100.0" text="Amount" />
-                        <TableColumn fx:id="transactionDateColumn" prefWidth="150.0" text="Date" />
-                        <TableColumn fx:id="statusColumn" prefWidth="150.0" text="Status" />
-                    </columns>
-                </TableView>
-            </children>
-        </VBox>
-        <JFXButton fx:id="goBackBTN" layoutX="7.0" layoutY="27.0" onAction="#goBack" styleClass="button16" text="Back">
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>
+        <JFXButton fx:id="goBackBTN" layoutX="5.0" layoutY="35.0" onAction="#goBack" styleClass="button16" text="Back">
             <graphic>
                 <FontAwesomeIconView glyphName="UNDO" />
             </graphic>
         </JFXButton>
+             <Label layoutX="214.0" layoutY="23.0" text="Welcome," textFill="#5b6180">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+             <Label layoutX="383.0" layoutY="23.0" text="Your Balance:" textFill="#5b6180">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+             <Label fx:id="nameLabel" layoutX="293.0" layoutY="28.0" prefHeight="17.0" prefWidth="84.0" textFill="#8e95b7">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+             <Label fx:id="balanceLabel" layoutX="487.0" layoutY="29.0" prefHeight="17.0" prefWidth="105.0" textFill="#8e95b7">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;">
+         <children>
+            <JFXButton fx:id="closeAppBTN" layoutX="575.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" text="x" />
+            <ImageView fitHeight="25.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="closeHistoryBTN" layoutX="67.0" layoutY="35.0" onAction="#closeHistory" opacity="0.45" prefHeight="25.0" prefWidth="138.0" styleClass="button13" text="Transaction History">
+         <graphic>
+            <FontAwesomeIconView glyphName="BOOK" size="16" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="openHistoryBTN" layoutX="67.0" layoutY="35.0" onAction="#openHistory" opacity="0.45" prefHeight="25.0" prefWidth="138.0" styleClass="button13" text="Transaction History">
+         <graphic>
+            <FontAwesomeIconView glyphName="BOOK" size="16" />
+         </graphic>
+      </JFXButton>
+      <AnchorPane fx:id="historyPane" layoutY="60.0" prefHeight="340.0" prefWidth="600.0" translateX="-620.0">
+         <children>
+                <TableView fx:id="holdingsTable" layoutY="20.0" prefHeight="320.0" prefWidth="600.0" styleClass="table-viewB">
+                    <columns>
+                        <TableColumn fx:id="holdingsStockNameColumn" prefWidth="120.0" text="Stock" />
+                        <TableColumn fx:id="holdingsQuantityColumn" prefWidth="120.0" text="Quantity" />
+                        <TableColumn fx:id="holdingsPriceColumn" prefWidth="120.0" text="Price" />
+                        <TableColumn fx:id="holdingsValueColumn" prefWidth="120.0" text="Value" />
+                  <TableColumn fx:id="dividendsColumn" prefWidth="120.0" text="dividends" />
+                    </columns>
+                </TableView>
+            <Label layoutX="4.0" layoutY="-1.0" text="-Transaction History List" textFill="#5b6180">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="holdingsPane" layoutY="60.0" prefHeight="340.0" prefWidth="600.0">
+         <children>
+                <TableView fx:id="transactionTable" layoutY="20.0" prefHeight="320.0" prefWidth="600.0" styleClass="table-viewB">
+                    <columns>
+                        <TableColumn fx:id="transactionTypeColumn" prefWidth="150.0" text="Type" />
+                        <TableColumn fx:id="transactionAmountColumn" prefWidth="150.0" text="Amount" />
+                        <TableColumn fx:id="transactionDateColumn" prefWidth="150.0" text="Date" />
+                        <TableColumn fx:id="statusColumn" prefWidth="150.0" text="Status" />
+                    </columns>
+                </TableView>
+            <Label layoutX="4.0" layoutY="-1.0" text="-Holdings List" textFill="#5b6180">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="385.0" layoutY="51.0" text="Total Profits/Losses:" textFill="#5b6180">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="profitLabel" layoutX="486.0" layoutY="50.0" prefHeight="17.0" prefWidth="105.0" textFill="#8e95b7">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
