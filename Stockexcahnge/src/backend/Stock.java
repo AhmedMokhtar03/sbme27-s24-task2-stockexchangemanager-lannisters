@@ -75,6 +75,7 @@ public class Stock extends Securities {
 
     double Calculate_dividends() {
         //elmafrod ttgab mn el map bta3et ownedstocks
+
         return (getDividend() *numberofstocks);
     }
 

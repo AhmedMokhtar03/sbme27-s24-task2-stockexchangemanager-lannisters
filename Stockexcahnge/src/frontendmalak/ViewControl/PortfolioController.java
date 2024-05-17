@@ -67,6 +67,7 @@ public class PortfolioController {
         DataManager.loadTransactionsFromCSV();
         nameLabel.setText(LogIn.currentUser.getUserName());
 
+
         Double text = LogIn.currentUser.getCashBalance();
         balanceLabel.setText(String.valueOf(text));
 
@@ -89,11 +90,21 @@ public class PortfolioController {
 
     }
 
+void lsl(){
+        for(Company i:DataManager.companyList) {
+
+            if(LogIn.currentUser.ownedStocks.get(i.getLabel())!=null)
+           System.out.println(i.getLabel() +""+LogIn.currentUser.ownedStocks.get(i.getLabel()));
+
+
+        }
+}
+
 
 
     @FXML
     void goBack(ActionEvent event) throws IOException {
-
+        lsl();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);

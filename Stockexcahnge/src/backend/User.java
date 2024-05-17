@@ -13,7 +13,7 @@ public  class User implements Observer {
     private boolean isPremium;
     LocalDate firstDateOfPremium;
     //each user will have an arraylist for his/her owned stocks in different companies
-    private Map<String, Integer> ownedStocks;
+    public Map<String, Integer> ownedStocks;
 
     public User() {}
 
