@@ -13,6 +13,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -31,7 +32,11 @@ public class Charts implements Initializable {
     private List<XYChart.Series<String, Double>> series = new ArrayList<>();
 
     @FXML
+
     private LineChart<String, Double> lineChart;
+@FXML
+    private Button back3;
+
 
     @FXML
     private CategoryAxis xAxis;
