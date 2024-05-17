@@ -2,21 +2,17 @@ package frontendmalak.ViewControl;
 
 import backend.Company;
 import backend.DataManager;
-import backend.User;
-import frontendmalak.HelloApplication;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,20 +42,12 @@ public class Charts implements Initializable {
     private ScheduledExecutorService scheduledExecutorService;
     private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    public boolean isInitialized = false;
+    // Flag to track whether initialization has been done
+    private boolean isInitialized = false;
 
-    public boolean isInitialized() {
-        return isInitialized;
-    }
-
-    public void setInitialized(boolean initialized) {
-        isInitialized = initialized;
-        //,
-    }
-
-    @FXML
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Check if the chart is not initialized already
+        // Ensure initialization is done only once
         if (!isInitialized) {
             initializeChart();
             isInitialized = true;
@@ -92,14 +80,6 @@ public class Charts implements Initializable {
                 series.getData().add(new XYChart.Data<>(timeStamp, company.getStockPrice()));
             }
         });
-    }
-
-    public void Back3(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
 
     public void Gopremium(ActionEvent event) throws IOException {
