@@ -54,6 +54,7 @@ public class Charts implements Initializable {
 
     public void setInitialized(boolean initialized) {
         isInitialized = initialized;
+        //,
     }
 
     @FXML
