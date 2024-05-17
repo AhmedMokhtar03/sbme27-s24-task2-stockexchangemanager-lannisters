@@ -73,7 +73,7 @@
                   <TableColumn fx:id="dividendsColumn" prefWidth="120.0" text="dividends" />
                     </columns>
                 </TableView>
-            <Label text="-Transaction History List" textFill="#5b6180">
+            <Label layoutX="4.0" layoutY="-1.0" text="-Transaction History List" textFill="#5b6180">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

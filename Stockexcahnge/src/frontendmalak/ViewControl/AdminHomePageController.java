@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -105,6 +106,7 @@ public class AdminHomePageController {
 for(Company company : DataManager.companyList){
     company.setOpenningPrice(company.getStockPrice());
 }
+        showAlert("Done", "Session has been started");
 started = true;
     }
 
@@ -112,7 +114,9 @@ started = true;
     void endSession(ActionEvent event) {
 for(Company company: DataManager.companyList){
     company.setClosingPrice(company.getStockPrice());
+
 }
+        showAlert("Done", "Session has been ended");
 started = false;
 Calendar.advanceDay();
     }
@@ -152,6 +156,15 @@ Calendar.advanceDay();
 
         stage.setScene(new Scene(root));
         stage.show();
+
+    }
+
+    public static void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
 
     }
 

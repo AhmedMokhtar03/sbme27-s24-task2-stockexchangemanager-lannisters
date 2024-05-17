@@ -138,7 +138,7 @@ public class LogIn {
         } else {
             wronglogin.setText("Invalid username, password, or user type.");
         }
-        initializeCharts();
+        //initializeCharts();
 
 
     }
