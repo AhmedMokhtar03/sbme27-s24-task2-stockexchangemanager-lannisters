@@ -48,38 +48,41 @@ public class StandardOrder {
         EstimatedTotalCostLabel.setText("Estimated Cost: 0 ");
         EstimatedTotalProceedsLabel.setText("Estimated Proceeds: 0");
         stockchoicebox.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> updateEstimates()
+                (observable, oldValue, newValue) -> {
+                    selectedStock = newValue;
+                    if (selectedStock != null) {
+                        currentPrice = getCurrentPrice(selectedStock);
+                        updateEstimates();
+                    }
+                }
         );
-        quantityField.textProperty().addListener((observable, oldValue, newValue) -> updateEstimates());
+
+       quantity1.textProperty().addListener((observable, oldValue, newValue) -> updateEstimates());
+        DataManager.saveUsersToCSV();
     }
     @FXML
     private void handleBuyButtonAction(ActionEvent event) throws IOException {
-        updateEstimates();
         currentUser.addOrder(selectedStock, quantity, "BUY", currentPrice);
-        DataManager.saveUsersToCSV();
+        //DataManager.saveUsersToCSV();
     }
 
     @FXML
     private void handleSellButtonAction(ActionEvent event) throws IOException {
-        updateEstimates();
         currentUser.addOrder(selectedStock, quantity, "SELL", currentPrice);
-        DataManager.saveUsersToCSV();
+//        DataManager.saveUsersToCSV();
     }
 
     private void updateEstimates() {
-        selectedStock = stockchoicebox.getValue();
         String quantityText = quantity1.getText();
-        if (selectedStock != null && !quantityText.isEmpty()) {
+        currentPriceLabel.setText(String.format("Current Price: %.2f", currentPrice));
+        if (selectedStock != null && !quantityText.isEmpty() ) {
             try {
                 quantity = Integer.parseInt(quantityText);
-                currentPrice = getCurrentPrice(selectedStock);
-                currentPriceLabel.setText(String.format("Current Price: %.2f", currentPrice));
-                    double estimatedCost = quantity * currentPrice;
-                    EstimatedTotalCostLabel.setText(String.format("Estimated Cost: %.2f", estimatedCost));
-                    EstimatedTotalProceedsLabel.setText("Estimated Proceeds: N/A");
-                    double estimatedProceeds = quantity * currentPrice;
-                    EstimatedTotalCostLabel.setText(String.format("Estimated Proceeds: %.2f", estimatedProceeds));
-                    EstimatedTotalProceedsLabel.setText("Estimated Cost: N/A");
+                //currentPriceLabel.setText(String.format("Current Price: %.2f", currentPrice));
+                double estimatedCost = quantity * currentPrice;
+                double estimatedProceeds = quantity * currentPrice;
+                EstimatedTotalCostLabel.setText(String.format("Estimated Cost: %.2f", estimatedCost));
+                EstimatedTotalProceedsLabel.setText(String.format("Estimated Proceeds: %.2f", estimatedProceeds));
 
             } catch (NumberFormatException ex) {
                 // Handle invalid input (e.g., display error message)

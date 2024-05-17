@@ -1,5 +1,6 @@
 package frontendmalak.ViewControl;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +43,12 @@ import static frontendmalak.HelloApplication.primaryStage;
 
         @FXML
         private AnchorPane sideBar;
+        private JFXButton aapl;
+        private JFXButton tss;
+        private JFXButton tar;
+        private JFXButton sta;
+        private JFXButton o;
+
 
         private Stage stage;
 

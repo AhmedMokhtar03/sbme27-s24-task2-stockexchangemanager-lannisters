@@ -125,8 +125,8 @@ public class DataManager {
                         priceHistoryEntry.put("closingPrice", closingPrice);
                         priceHistoryEntry.put("HighestPrice", highestPrice);
                         priceHistoryEntry.put("LowestPrice", lowestPrice);
-
                         company.getPriceHistory().add(priceHistoryEntry);
+                        company.graphList.add(highestPrice);
                     }
                 }
             } catch (IOException | ParseException e) {

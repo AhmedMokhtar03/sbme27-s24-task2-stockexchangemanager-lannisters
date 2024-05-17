@@ -10,51 +10,49 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.StandardOrder">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="406.0" prefWidth="577.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="409.0" fitWidth="609.0" layoutX="-2.0" layoutY="6.0">
+            <ImageView fitHeight="400.0" fitWidth="605.0" layoutX="-2.0" layoutY="6.0">
                <image>
-                  <Image url="@../img/Standard order.png" />
+                  <Image url="@../img/img.png" />
                </image>
                <effect>
                   <ColorAdjust />
                </effect>
             </ImageView>
-            <Label fx:id="stockLabelField" layoutX="27.0" layoutY="107.0" prefHeight="37.0" prefWidth="122.0" text="Stock Label" textFill="#e4e4e4">
+            <Label fx:id="stockLabelField" layoutX="28.0" layoutY="146.0" prefHeight="37.0" prefWidth="122.0" text="Stock Label" textFill="#e4e4e4">
                <font>
                   <Font name="System Italic" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="quantityField" layoutX="27.0" layoutY="165.0" prefHeight="41.0" prefWidth="148.0" text="Quantity" textFill="#e4e4e4">
+            <Label fx:id="quantityField" layoutX="29.0" layoutY="214.0" prefHeight="41.0" prefWidth="148.0" text="Quantity" textFill="#e4e4e4">
                <font>
                   <Font name="System Italic" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="quantity1" layoutX="149.0" layoutY="172.0" prefHeight="27.0" prefWidth="150.0" />
-            <Label fx:id="EstimatedTotalCostLabel" layoutX="327.0" layoutY="150.0" prefHeight="54.0" prefWidth="276.0" text=" Estimated Total Costs :" textAlignment="CENTER" textFill="#e4e4e4">
+            <TextField fx:id="quantity1" layoutX="149.0" layoutY="221.0" prefHeight="27.0" prefWidth="150.0" />
+            <Label fx:id="EstimatedTotalCostLabel" layoutX="327.0" layoutY="228.0" prefHeight="54.0" prefWidth="276.0" text=" Estimated Total Costs :" textAlignment="CENTER" textFill="#e4e4e4">
                <font>
                   <Font name="System Italic" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="currentPriceLabel" layoutX="330.0" layoutY="104.0" prefHeight="46.0" prefWidth="222.0" text="Current Price :" textFill="#e4e4e4">
+            <Label fx:id="currentPriceLabel" layoutX="333.0" layoutY="191.0" prefHeight="46.0" prefWidth="222.0" text="Current Price :" textFill="#e4e4e4">
                <font>
                   <Font name="System Italic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="EstimatedTotalProceedsLabel" layoutX="330.0" layoutY="185.0" prefHeight="82.0" prefWidth="270.0" text=" Estimated Total proceeds :" textFill="#e4e4e4">
+            <Label fx:id="EstimatedTotalProceedsLabel" layoutX="327.0" layoutY="264.0" prefHeight="82.0" prefWidth="270.0" text=" Estimated Total proceeds :" textFill="#e4e4e4">
                <font>
                   <Font name="System Italic" size="14.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="stockchoicebox" layoutX="149.0" layoutY="113.0" prefWidth="150.0" style="-fx-background-color: white;" styleClass="text-field1" />
-            <Line endX="-99.99996948242188" endY="251.20001220703125" layoutX="419.0" layoutY="140.0" startX="-99.99996948242188" startY="-48.00001525878906" stroke="#eae3e3" />
-            <MFXButton layoutY="6.0" minWidth="49.0" onAction="#back2" prefHeight="28.0" prefWidth="57.0" style="-fx-background-color: red;" text="Back" />
-            <Button fx:id="BuyButton" layoutX="43.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleBuyButtonAction" prefHeight="34.0" prefWidth="97.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Buy" textFill="WHITE">
+            <ChoiceBox fx:id="stockchoicebox" layoutX="149.0" layoutY="151.0" prefWidth="150.0" style="-fx-background-color: white;" styleClass="text-field1" />
+            <MFXButton layoutX="1.0" layoutY="6.0" minWidth="48.0" onAction="#back2" prefHeight="29.0" prefWidth="48.0" style="-fx-background-color: red;" styleClass="button1" stylesheets="@Designs.css" text="Back" />
+            <Button fx:id="BuyButton" layoutX="41.0" layoutY="305.0" mnemonicParsing="false" onAction="#handleBuyButtonAction" prefHeight="34.0" prefWidth="97.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Buy" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -62,7 +60,7 @@
                   <ColorAdjust contrast="0.02" />
                </effect>
             </Button>
-            <Button fx:id="SellButton" layoutX="183.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleSellButtonAction" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Sell" textFill="WHITE">
+            <Button fx:id="SellButton" layoutX="176.0" layoutY="305.0" mnemonicParsing="false" onAction="#handleSellButtonAction" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Sell" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
