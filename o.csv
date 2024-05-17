@@ -1,4 +1,5 @@
-Date,OpeningPrice,ClosingPrice,LowestPrice,HighestPrice
+Date,OpeningPrice,ClosingPrice,HighestPrice,LowestPrice
 Thu May 16 18:27:34 EEST 2024,10.26,10.26,10.26,0.00
 Thu May 16 18:27:46 EEST 2024,8.62,8.62,10.26,0.00
 Thu May 16 18:27:55 EEST 2024,10.27,10.27,10.27,0.00
+Fri May 17 03:19:17 EEST 2024,10.27,10.27,10.27,9.77
