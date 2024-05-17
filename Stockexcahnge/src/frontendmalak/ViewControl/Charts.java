@@ -46,7 +46,7 @@ public class Charts implements Initializable {
     private ScheduledExecutorService scheduledExecutorService;
     private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    public static boolean isInitialized = false;
+    public boolean isInitialized = false;
 
     public boolean isInitialized() {
         return isInitialized;
