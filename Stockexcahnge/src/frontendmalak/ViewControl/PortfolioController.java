@@ -21,12 +21,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import static frontendmalak.HelloApplication.primaryStage;
 import static frontendmalak.ViewControl.AdminManageUsersController.userList;
 import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
+import static java.lang.Math.abs;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -93,14 +95,18 @@ public class PortfolioController {
 
     private ObservableList<Company> holdingsList = FXCollections.observableArrayList();
     Company tempholding;
+    double balance;
+    double totalIn;
+    double totalOut;
+
     public void initialize() {
 
         DataManager.loadTransactionsFromCSV();
         nameLabel.setText(LogIn.currentUser.getUserName());
 
 
-        Double text = LogIn.currentUser.getCashBalance();
-        balanceLabel.setText(String.valueOf(text));
+        balance = LogIn.currentUser.getCashBalance();
+        balanceLabel.setText(String.valueOf(balance));
 
         transactionTypeColumn.setCellValueFactory(new PropertyValueFactory<>("typeOfTransaction"));
         transactionAmountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
@@ -111,6 +117,8 @@ public class PortfolioController {
                 transaction.getUsername().equals(LogIn.currentUser.getUserName())
         );
         transactionTable.setItems(filteredTransactions);
+        calculateTotals(filteredTransactions);
+
         //========================================
 //still need to fill the table with the data of the owned stocks
         for(Company i:DataManager.companyList) {
@@ -127,6 +135,43 @@ public class PortfolioController {
 
         }
 loadTable();
+        displayProfit();
+
+    }
+
+    private void calculateTotals(FilteredList<Transactions> filteredTransactions) {
+        totalIn = 0;
+        totalOut = 0;
+
+        for (Transactions transaction : filteredTransactions) {
+            if (transaction.getStatus().equals("Confirmed")) {
+                if (transaction.getTypeOfTransaction().equals("Deposit")) {
+                    totalIn += transaction.getAmount();
+                } else if (transaction.getTypeOfTransaction().equals("Withdrawal")) {
+                    totalOut += transaction.getAmount();
+                }
+            }
+        }
+    }
+
+    private void displayProfit() {
+        double totalHoldingsValue = holdingsList.stream().mapToDouble(Company::getTotalPrice).sum();
+        double allUsedCash = (totalIn - totalOut) ;
+        double allOwnedCash=totalHoldingsValue+balance;
+        double diff=allUsedCash-allOwnedCash;
+        if (diff>=0) {
+            profitLabel.setText(String.format("Profit: %.2f", diff));
+            profitLabel.setTextFill(Color.GREEN);
+        }
+        else {
+            profitLabel.setText(String.format("Losses: %.2f", abs(diff)));
+            profitLabel.setTextFill(Color.RED);
+
+
+
+        }
+
+
     }
 
 

@@ -60,25 +60,8 @@ public class LogIn {
         choicebox.setValue("User");
     }
 
-    private void initializeCharts() {
-        // Load necessary data
-        DataManager.loadCompanies();
-        DataManager.loadUsersFromCSV();
-        DataManager.loadPriceHistoryFromCSV();
 
-        // Initialize the charts
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/Charts.fxml"));
-            AnchorPane chartsPane = loader.load();
-            Charts chartsController = loader.getController();
-            chartsController.initialize(null, null);
 
-            // Add the charts to the main scene
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     @FXML
     public void windowAction(ActionEvent event) {
         HelloApplication.openNewWindow();
@@ -128,7 +111,6 @@ public class LogIn {
                 }
                 Parent root = loader.load();
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (IOException e) {
@@ -138,7 +120,7 @@ public class LogIn {
         } else {
             wronglogin.setText("Invalid username, password, or user type.");
         }
-        //initializeCharts();
+
 
 
     }
@@ -218,6 +200,6 @@ public class LogIn {
             e.printStackTrace();
         }
         return false;
-    }
+}
 
 }
