@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="280.0" prefWidth="400.0" styleClass="table-viewB" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.NotificationController">
    <children>
-      <Label layoutX="52.0" layoutY="43.0" prefHeight="114.0" prefWidth="195.0" text="Sooooon">
-         <font>
-            <Font size="47.0" />
-         </font>
-      </Label>
+      <ImageView fitHeight="267.0" fitWidth="400.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="notificationTable" layoutY="25.0" prefHeight="225.0" prefWidth="400.0" style="-fx-background-color: transparent;" styleClass="table-viewC">
+        <columns>
+          <TableColumn fx:id="contentColumn" prefWidth="400.0" text="Notifications" />
+        </columns>
+      </TableView>
+      <Pane prefHeight="25.0" prefWidth="400.0" style="-fx-background-color: #8E7D9D;">
+         <children>
+            <JFXButton fx:id="closeAppBTN" layoutX="375.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" text="x" />
+            <ImageView fitHeight="23.0" fitWidth="127.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <JFXButton layoutX="338.0" layoutY="254.0" onAction="#clearNotification" styleClass="button13" text="Clear All" />
    </children>
 </AnchorPane>

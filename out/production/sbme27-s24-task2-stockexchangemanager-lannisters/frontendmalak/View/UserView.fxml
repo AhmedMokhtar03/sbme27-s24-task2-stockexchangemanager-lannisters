@@ -48,7 +48,7 @@
       <Button layoutX="513.0" layoutY="344.0" mnemonicParsing="false" onAction="#signOut" prefHeight="35.0" prefWidth="74.0" style="-fx-background-color: #ffa7e0;" styleClass="button10" stylesheets="@Designs.css" text="Sign out" />
       <Circle fx:id="notificationCircle" fill="#ff1f1fc0" layoutX="301.0" layoutY="36.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <FontAwesomeIconView fx:id="notificationBell" fill="#fda6de" glyphName="BELL" layoutX="276.0" layoutY="61.0" onMouseClicked="#doAction" onMouseEntered="#mouseIN" onMouseExited="#mouseOUT" opacity="0.5" size="30" text="" wrappingWidth="32.0" />
-      <Label fx:id="numOfNotifications" alignment="CENTER" layoutX="283.0" layoutY="27.0" prefHeight="17.0" prefWidth="35.0" text="6" textFill="WHITE">
+      <Label fx:id="numOfNotifications" alignment="CENTER" layoutX="283.0" layoutY="27.0" prefHeight="17.0" prefWidth="35.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="8.0" />
          </font>
