@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.PortfolioController">
     <children>
@@ -26,12 +27,13 @@
                     </children>
                 </HBox>
                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Holdings" />
-                <TableView fx:id="holdingsTable" prefHeight="59.0" prefWidth="580.0">
+                <TableView fx:id="holdingsTable" prefHeight="159.0" prefWidth="580.0">
                     <columns>
-                        <TableColumn fx:id="holdingsStockNameColumn" prefWidth="150.0" text="Stock" />
-                        <TableColumn fx:id="holdingsQuantityColumn" prefWidth="100.0" text="Quantity" />
-                        <TableColumn fx:id="holdingsPriceColumn" prefWidth="150.0" text="Price" />
-                        <TableColumn fx:id="holdingsValueColumn" prefWidth="150.0" text="Value" />
+                        <TableColumn fx:id="holdingsStockNameColumn" prefWidth="105.60003662109375" text="Stock" />
+                        <TableColumn fx:id="holdingsQuantityColumn" prefWidth="144.79998779296875" text="Quantity" />
+                        <TableColumn fx:id="holdingsPriceColumn" prefWidth="91.99993896484375" text="Price" />
+                        <TableColumn fx:id="holdingsValueColumn" prefWidth="126.4000244140625" text="Value" />
+                  <TableColumn fx:id="dividendsColumn" prefWidth="109.5999755859375" text="dividends" />
                     </columns>
                 </TableView>
                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Transaction History" />
