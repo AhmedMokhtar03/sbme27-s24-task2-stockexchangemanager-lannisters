@@ -5,6 +5,7 @@ import java.util.*;
 public class Company extends Observable {
     private String name;
     private String label;
+    public List<Double> graphList = new ArrayList<>();
     private int ID;
     public double openningPrice;
     public double closingPrice;
