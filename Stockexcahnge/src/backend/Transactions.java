@@ -9,16 +9,16 @@ public class Transactions {
     private double amount;
     private double currentBalance;
     private double newBalance ;
-   // private boolean decision;
+    private String status;
 
-    public Transactions(String username, String typeOfTransaction, LocalDate date, double amount, double currentBalance, double newBalance) {
+    public Transactions(String username, String typeOfTransaction, LocalDate date, double amount, double currentBalance, double newBalance, String status) {
         this.username = username;
         this.typeOfTransaction = typeOfTransaction;
         this.date = date;
         this.amount = amount;
         this.currentBalance = currentBalance;
         this.newBalance = newBalance;
-     //   this.decision = false;
+        this.status = status;
     }
 
     public String getUsername() {
@@ -68,7 +68,16 @@ public class Transactions {
     public void setNewBalance(double newBalance) {
         this.newBalance = newBalance;
     }
-//
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    //
 //    public boolean getDecision() {
 //        return decision;
 //    }

@@ -107,7 +107,7 @@ public class UserView {
 
     public void ManageAccountt(ActionEvent event) throws IOException {
         this.event = event;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageAccount.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/portfolio.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

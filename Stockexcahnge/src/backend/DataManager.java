@@ -198,8 +198,9 @@ public class DataManager {
                 double amount = Double.parseDouble(parts[3]);
                 double currentBalance = Double.parseDouble(parts[4]);
                 double newBalance = Double.parseDouble(parts[5]);
+                String status = parts[6];
 
-                Transactions transaction = new Transactions(username, typeOfTransaction, date, amount, currentBalance, newBalance);
+                Transactions transaction = new Transactions(username, typeOfTransaction, date, amount, currentBalance, newBalance,status);
                 TransactionsList.add(transaction);
             }
         } catch (IOException e) {
@@ -214,7 +215,7 @@ public class DataManager {
                         transaction.getDate() + "," +
                         transaction.getAmount() + "," +
                         transaction.getCurrentBalance() + "," +
-                        transaction.getNewBalance());
+                        transaction.getNewBalance() + "," +transaction.getStatus());
                 writer.newLine();
             }
             System.out.println("Transactions saved successfully to CSV file.");
@@ -225,8 +226,14 @@ public class DataManager {
     public static int countRowsInCSV() {
         int rowCount = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
-            while (br.readLine() != null) {
-                rowCount++;
+            String line;
+
+            while ((line=br.readLine()) != null) {
+                String[] elements = line.split(",");
+                if (elements.length > 6 && "Pending".equals(elements[6])) {
+
+                    rowCount++;
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -4,6 +4,9 @@ import backend.DataManager;
 import backend.Transactions;
 import backend.User;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,6 +21,7 @@ import javafx.stage.Stage;
 
 import static frontendmalak.ViewControl.AdminManageUsersController.userList;
 import static frontendmalak.ViewControl.UserTransactions.TransactionsList;
+//import static frontendmalak.ViewControl.PortfolioController.confirmedTransactionsList;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -56,11 +60,12 @@ public class AdminManageRequestsController {
     @FXML
     private JFXButton rejectButton;
 
-    public boolean decision;
-
+    private ObservableList<Transactions> pendingTransactionsList = FXCollections.observableArrayList();
+    public Transactions confirmTransaction;
 
     public void initialize() {
         DataManager.loadTransactionsFromCSV();
+        loadPendingTransactions();
         DataManager.loadUsersFromCSV();
         loadTable();
     }
@@ -96,6 +101,11 @@ public class AdminManageRequestsController {
             currentUser.setCashBalance(currentUser.getCashBalance() + selectedTransactions.getAmount());
 //            updateBalance();
             DataManager.saveUsersToCSV();
+            //here i take copy of the slected and change status and then add to the list
+            confirmTransaction=selectedTransactions;
+            confirmTransaction.setStatus("Confirmed");
+            TransactionsList.add(confirmTransaction);
+//i remove the old one and value of the pendinglist(table ones)
             TransactionsList.remove(selectedTransactions);
             tableView.getItems().remove(selectedTransactions);
             updateCurrentBalanceColumn();
@@ -103,19 +113,27 @@ public class AdminManageRequestsController {
             currentUser.setCashBalance(currentUser.getCashBalance() - selectedTransactions.getAmount());
             //updateBalance();
             DataManager.saveUsersToCSV();
+            confirmTransaction=selectedTransactions;
+            confirmTransaction.setStatus("Confirmed");
+            TransactionsList.add(confirmTransaction);
             TransactionsList.remove(selectedTransactions);
             tableView.getItems().remove(selectedTransactions);
             updateCurrentBalanceColumn();
         }
         DataManager.saveTransactionsToCSV();
+
     }
 
     @FXML
     private void handleReject(ActionEvent event) {
         Transactions selectedTransactions = tableView.getSelectionModel().getSelectedItem();
+        confirmTransaction=selectedTransactions;
+        confirmTransaction.setStatus("Rejected");
+        TransactionsList.add(confirmTransaction);
         TransactionsList.remove(selectedTransactions);
         tableView.getItems().remove(selectedTransactions);
         DataManager.saveTransactionsToCSV();
+
     }
 
 //    public void updateBalance() throws IOException {
@@ -141,8 +159,23 @@ public class AdminManageRequestsController {
 //        } else System.out.println("couldn't find user");
 //    }
 
+    private void loadPendingTransactions(){
+        for(Transactions j : TransactionsList){
+            if("Pending".equals(j.getStatus())){
+                pendingTransactionsList.add(j);
+            }
+
+        }
+
+
+
+
+    }
+
     public void loadTable() {
-        tableView.setItems(TransactionsList);
+
+
+        tableView.setItems(pendingTransactionsList);
 
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         typeOfTransactionColumn.setCellValueFactory(new PropertyValueFactory<>("typeOfTransaction"));
@@ -154,7 +187,7 @@ public class AdminManageRequestsController {
     }
 
     public void updateCurrentBalanceColumn() {
-        for (Transactions i : TransactionsList) {
+        for (Transactions i : pendingTransactionsList) {
             if (i.getUsername().equals(currentUser.getUserName())) {
                 i.setCurrentBalance(currentUser.getCashBalance());
                 if (i.getTypeOfTransaction().equals("deposit")) {

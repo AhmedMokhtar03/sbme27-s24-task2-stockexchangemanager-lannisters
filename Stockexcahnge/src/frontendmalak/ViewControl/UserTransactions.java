@@ -61,8 +61,10 @@ public class UserTransactions {
             throw new RuntimeException("Withdrawal amount exceeds withdraw limit.");
 
         }
-        Transactions transaction = new Transactions(LogIn.currentUser.getUserName(), "withdrawal", LocalDate.now(), amount, LogIn.currentUser.getCashBalance(), LogIn.currentUser.getCashBalance() - amount);
-       TransactionsList.add(transaction);
+        Transactions transaction = new Transactions(LogIn.currentUser.getUserName(), "withdrawal", LocalDate.now(), amount, LogIn.currentUser.getCashBalance(), LogIn.currentUser.getCashBalance() - amount,"Pending");
+        transaction.setStatus("Pending");
+
+        TransactionsList.add(transaction);
         DataManager.saveTransactionsToCSV();
         messageLabel.setText("Request pending");
 
@@ -74,7 +76,7 @@ public class UserTransactions {
             messageLabel.setText("Deposit amount must be positive.");
             throw new IllegalArgumentException("Deposit amount must be positive.");
         }
-        Transactions transaction = new Transactions(LogIn.currentUser.getUserName(), "deposit", LocalDate.now(), amount, LogIn.currentUser.getCashBalance(), LogIn.currentUser.getCashBalance() + amount);
+        Transactions transaction = new Transactions(LogIn.currentUser.getUserName(), "deposit", LocalDate.now(), amount, LogIn.currentUser.getCashBalance(), LogIn.currentUser.getCashBalance() + amount,"Pending");
         TransactionsList.add(transaction);
         DataManager.saveTransactionsToCSV();
         messageLabel.setText("Request pending");
