@@ -1,4 +1,7 @@
 package backend;
+import javafx.collections.ObservableList;
+import static frontendmalak.ViewControl.NotificationController.notificationList;
+
 import java.time.LocalDate;
 import java.util.*;
 
@@ -161,6 +164,11 @@ public  class User implements Observer {
     public void update(Observable o, Object arg) {
         if (o instanceof Company company && isSubscribed) {
             double newPrice = (double) arg;
+
+
+            Notification notification = new Notification("Stock price of " + company.getLabel() + " has changed to " + String.format("%.2f", newPrice)+"$   At  "+LocalDate.now());
+            notificationList.add(notification);
+
             System.out.println("Notification: Stock price of " + company.getLabel() + " has changed to " + newPrice);
         }
     }

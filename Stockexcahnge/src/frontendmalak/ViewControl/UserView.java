@@ -1,4 +1,5 @@
 package frontendmalak.ViewControl;
+import static frontendmalak.ViewControl.NotificationController.notificationList;
 
 import backend.User;
 import com.jfoenix.controls.JFXButton;
@@ -17,10 +18,13 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.management.Notification;
+import javax.management.StringValueExp;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLOutput;
+import java.time.LocalDateTime;
 
 import static frontendmalak.HelloApplication.primaryStage;
 
@@ -56,6 +60,12 @@ public class UserView {
     public void initialize() {
         currentUser = LogIn.currentUser;
         updatewelcome();
+
+
+        numOfNotifications.setText(String.valueOf(notificationList.size()));
+
+
+        //System.out.println(String.valueOf(notificationList.size()));
     }
     ///////////////////////////////////////////////
     @FXML
@@ -75,7 +85,7 @@ public class UserView {
         stage.setTitle("Lannister Exchange");
         stage.setScene(new Scene(root));
         stage.show();
-
+        numOfNotifications.setText(String.valueOf(0));
     }
 
 
