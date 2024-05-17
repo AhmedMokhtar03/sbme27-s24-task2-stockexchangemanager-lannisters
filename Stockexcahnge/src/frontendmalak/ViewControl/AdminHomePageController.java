@@ -168,4 +168,19 @@ Calendar.advanceDay();
 
     }
 
+    @FXML
+    public void switchToAdminManageBondsScene(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/Bonds.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setScene(new Scene(root));
+        stage.show();
+
+
+
+
+
+    }
+
 }
