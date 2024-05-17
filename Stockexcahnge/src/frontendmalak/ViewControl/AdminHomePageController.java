@@ -21,7 +21,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class AdminHomePageController {
-    public static boolean started = false;
+    public static boolean started = true;
     @FXML
     private JFXButton closeAppBTN;
     @FXML

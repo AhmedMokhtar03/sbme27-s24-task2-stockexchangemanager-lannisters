@@ -1,5 +1,8 @@
 package frontendmalak.ViewControl;
 
+import backend.Company;
+import backend.DataManager;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,82 +13,85 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static frontendmalak.HelloApplication.primaryStage;
 
 public class Charts implements Initializable {
 
+    @FXML
+    private LineChart<String, Double> lineChart;
 
-     @FXML
-  private LineChart<String, Double> lineChart;
+    @FXML
+    private CategoryAxis xAxis;
 
-     @FXML
-
-     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
 
-
+    private Map<Company, XYChart.Series<String, Double>> companycharts = new HashMap<>();
+    private ScheduledExecutorService scheduledExecutorService;
+    private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     @FXML
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        for (Company company : DataManager.companyList) {
+            XYChart.Series<String, Double> series = new XYChart.Series<>();
+            series.setName(company.getName());
+            companycharts.put(company, series);
+            lineChart.getData().add(series);
+            System.out.println("Initialized series for company: " + company.getName());
+        }
 
+        // Schedule a periodic task to update the chart
+        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        scheduledExecutorService.scheduleAtFixedRate(this::updateChart, 0, 10, TimeUnit.SECONDS);
+    }
 
-
-
-
-     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-
-
-          XYChart.Series<String, Double> series1 = new XYChart.Series<>();
-
-               series1.setName("High");
-          series1.getData().add(new XYChart.Data("Jan",100.0));
-          series1.getData().add(new XYChart.Data("Feb",40.0));
-          series1.getData().add(new XYChart.Data("Mar",70.0));
-          series1.getData().add(new XYChart.Data("Aprl",60.0));
-          series1.getData().add(new XYChart.Data("May",50.0));
-
-        XYChart.Series<String, Double> series2 = new XYChart.Series<>();
-
-
-        series2.getData().add(new XYChart.Data("Jan",10.0));
-        series2.getData().add(new XYChart.Data("Feb",60.0));
-        series2.getData().add(new XYChart.Data("Mar",30.0));
-        series2.getData().add(new XYChart.Data("Aprl",120.0));
-        series2.getData().add(new XYChart.Data("May",100.0));
-
-
-
-
-
-
-          lineChart.getData().addAll(series1,series2);
-     }
-
+    private void updateChart() {
+        Platform.runLater(() -> {
+            for (Company company : DataManager.companyList) {
+                XYChart.Series<String, Double> series = companycharts.get(company);
+                // Ensure data point count does not exceed a certain limit (e.g., 100) to avoid excessive memory usage
+                if (series.getData().size() > 100) {
+                    series.getData().remove(0);
+                }
+                String timeStamp = LocalDateTime.now().format(dateTimeFormatter);
+                series.getData().add(new XYChart.Data<>(timeStamp, company.getStockPrice()));
+            }
+        });
+    }
 
     public void Back3(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
-          Parent root = loader.load();
-          Scene scene = new Scene(root);
-          primaryStage.setScene(scene);
-          primaryStage.show();
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 
-     }
-     public void Gopremium(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
-          Parent root = loader.load();
-          Scene scene = new Scene(root);
-          primaryStage.setScene(scene);
-          primaryStage.show();
-     }
+    public void Gopremium(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 
-
+    // Ensure to shutdown the executor service when the application stops
+    public void stop() {
+        if (scheduledExecutorService != null && !scheduledExecutorService.isShutdown()) {
+            scheduledExecutorService.shutdown();
+        }
+    }
 }

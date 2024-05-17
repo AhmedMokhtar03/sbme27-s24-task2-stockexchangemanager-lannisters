@@ -17,6 +17,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -57,6 +58,26 @@ public class LogIn {
         ObservableList<String> userTypes = FXCollections.observableArrayList("Admin", "User");
         choicebox.setItems(userTypes);
         choicebox.setValue("User");
+    }
+
+    private void initializeCharts() {
+        // Load necessary data
+        DataManager.loadCompanies();
+        DataManager.loadUsersFromCSV();
+        DataManager.loadPriceHistoryFromCSV();
+
+        // Initialize the charts
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/Charts.fxml"));
+            AnchorPane chartsPane = loader.load();
+            Charts chartsController = loader.getController();
+            chartsController.initialize(null, null);
+
+            // Add the charts to the main scene
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     public void windowAction(ActionEvent event) {
