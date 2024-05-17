@@ -3,11 +3,15 @@ package frontendmalak.ViewControl;
 import backend.Company;
 import backend.DataManager;
 import backend.Transactions;
+import com.jfoenix.controls.JFXButton;
+import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -16,7 +20,9 @@ import javafx.scene.control.TableColumn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import static frontendmalak.HelloApplication.primaryStage;
 import static frontendmalak.ViewControl.AdminManageUsersController.userList;
@@ -26,6 +32,27 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class PortfolioController {
+    /////////////////////
+    @FXML
+    private JFXButton closeAppBTN;
+
+    @FXML
+    private JFXButton closeHistoryBTN;
+    @FXML
+    private JFXButton goBackBTN;
+
+    @FXML
+    private AnchorPane historyPane;
+
+    @FXML
+    private AnchorPane holdingsPane;
+
+    @FXML
+    private JFXButton openHistoryBTN;
+
+    @FXML
+    private Label profitLabel;
+    ////////////////////
     @FXML
     private Label nameLabel;
 
@@ -102,7 +129,60 @@ public class PortfolioController {
 loadTable();
     }
 
-void loadTable(){
+
+    @FXML
+    void closeApp(ActionEvent event) {
+        Platform.exit();
+    }
+
+    @FXML
+    void goBack(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+    }
+
+
+    @FXML
+    void openHistory(ActionEvent event) {
+        TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), historyPane);
+        slide1.setToX(0);
+        slide1.play();
+
+        TranslateTransition slide2 = new TranslateTransition(Duration.millis(500), holdingsPane);
+        slide2.setToX(620);
+        slide2.play();
+
+        slide1.setOnFinished((ActionEvent e) -> {
+            openHistoryBTN.setVisible(false);
+            closeHistoryBTN.setVisible(true);
+        });
+
+    }
+
+    @FXML
+    void closeHistory(ActionEvent event) {
+        TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), historyPane);
+        slide1.setToX(-620);
+        slide1.play();
+
+        TranslateTransition slide2 = new TranslateTransition(Duration.millis(500), holdingsPane);
+        slide2.setToX(0);
+        slide2.play();
+
+
+        slide1.setOnFinished((ActionEvent e) -> {
+            openHistoryBTN.setVisible(true);
+            closeHistoryBTN.setVisible(false);
+        });
+
+    }
+
+    void loadTable(){
     holdingsStockNameColumn.setCellValueFactory(new PropertyValueFactory<>("label"));
     holdingsQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
     holdingsPriceColumn.setCellValueFactory(new PropertyValueFactory<>("stockPrice"));
@@ -112,12 +192,5 @@ void loadTable(){
     holdingsTable.setItems(holdingsList);
 
 }
-@FXML
-    void goBack(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
+
 }
