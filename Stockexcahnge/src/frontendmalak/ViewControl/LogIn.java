@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -46,6 +47,9 @@ public class LogIn {
 
     @FXML
     private ChoiceBox<String> choicebox;
+    @FXML
+    private Text title;
+
 
 
     private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
@@ -58,6 +62,7 @@ public class LogIn {
         ObservableList<String> userTypes = FXCollections.observableArrayList("Admin", "User");
         choicebox.setItems(userTypes);
         choicebox.setValue("User");
+
     }
 
 

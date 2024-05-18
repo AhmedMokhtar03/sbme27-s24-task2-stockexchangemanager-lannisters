@@ -5,7 +5,11 @@ import backend.DataManager;
 import backend.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -14,8 +18,12 @@ import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 
+import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import static frontendmalak.HelloApplication.primaryStage;
 
 public class Selectcompany {
     private User currentUser = LogIn.currentUser;
@@ -23,7 +31,8 @@ public class Selectcompany {
 
     @FXML
     private ListView<Company> companyListView;
-
+@FXML
+private Button back;
     @FXML
     private Text titleLabel; // Change Label to Text
 
@@ -48,6 +57,16 @@ public class Selectcompany {
         loadSubscriptions();
     }
 
+    public void Backk(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+
+
     private class CompanyCell extends ListCell<Company> {
         private HBox hbox;
         private Text companyNameText;
@@ -59,7 +78,7 @@ public class Selectcompany {
             hbox.setStyle("-fx-padding: 10;");
 
             companyNameText = new Text();
-            companyNameText.getStyleClass().addAll("text-company-name", "neon-label"); // Add neon-label style class
+            companyNameText.getStyleClass().addAll("text-company-name","shining-label"); // Add neon-label style class
 
             choiceBox = new ChoiceBox<>();
             choiceBox.getStyleClass().add("choice-box-subscribe");
@@ -76,6 +95,13 @@ public class Selectcompany {
             HBox.setHgrow(companyNameText, Priority.ALWAYS);
             hbox.getChildren().addAll(companyNameText, choiceBox);
         }
+//        public void Backk(ActionEvent event) throws IOException {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
+//            Parent root = loader.load();
+//            Scene scene = new Scene(root);
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        }
 
         @Override
         protected void updateItem(Company company, boolean empty) {

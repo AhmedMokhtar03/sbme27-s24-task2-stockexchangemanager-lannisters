@@ -76,5 +76,5 @@
 /* styles.css */
 .neon-label {
     -fx-fill: #ffffff; /* Neon color */
-    -fx-effect: dropshadow(gaussian, #ffffff, 30, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgb(255, 255, 255), 20, 0, 0, 0);
 }
