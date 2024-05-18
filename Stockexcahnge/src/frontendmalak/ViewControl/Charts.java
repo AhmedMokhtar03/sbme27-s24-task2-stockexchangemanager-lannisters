@@ -3,12 +3,10 @@ package frontendmalak.ViewControl;
 import backend.Company;
 import backend.DataManager;
 import frontendmalak.HelloApplication;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -72,11 +70,6 @@ public class Charts implements Initializable {
         lineChart.getData().addAll(series);
     }
 
-    @FXML
-    void closeApp(ActionEvent event) {
-        Platform.exit();
-    }
-
     private class CustomNode extends StackPane {
         private final Tooltip tooltip;
 
@@ -98,19 +91,12 @@ public class Charts implements Initializable {
         }
     }
 
-    public void back3(ActionEvent event) throws IOException {
+    public void Back3(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-
-
-
-//        Scene scene = new Scene(root);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public void Gopremium(ActionEvent event) throws IOException {

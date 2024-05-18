@@ -4,7 +4,6 @@ import backend.DataManager;
 import backend.User;
 import frontendmalak.HelloApplication;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -65,12 +64,6 @@ public class LogIn {
         choicebox.setValue("User");
 
     }
-
-    @FXML
-    void closeApp(ActionEvent event) {
-        Platform.exit();
-    }
-
 
 
 

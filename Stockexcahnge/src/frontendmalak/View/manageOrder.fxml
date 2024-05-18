@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.ManageOrder">
+<AnchorPane prefHeight="386.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.ManageOrder">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0">
          <image>
@@ -37,31 +34,11 @@
             <Font size="23.0" />
          </font>
       </MFXButton>
+      <MFXButton layoutY="6.0" onAction="#back2" prefHeight="29.0" prefWidth="46.0" style="-fx-background-color: red;" styleClass="button1" stylesheets="@Designs.css" text="Back" />
       <Text fx:id="Started" fill="#d03a9b" layoutX="43.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session is not started yet" visible="false">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
-      <AnchorPane layoutX="31.0" layoutY="35.0" prefHeight="50.0" prefWidth="127.0" style="-fx-background-color: #251f38;" />
-      <ImageView fitHeight="77.0" fitWidth="244.0" layoutX="11.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/Logo.png" />
-         </image>
-      </ImageView>
-      <Pane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;">
-         <children>
-            <JFXButton fx:id="closeAppBTN" layoutX="575.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" stylesheets="@Designs.css" text="x" />
-            <ImageView fitHeight="23.0" fitWidth="127.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/Logo.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <JFXButton fx:id="goBackBTN" layoutX="10.0" layoutY="363.0" onAction="#back2" styleClass="button16" stylesheets="@Designs.css" text="Back">
-         <graphic>
-            <FontAwesomeIconView glyphName="UNDO" />
-         </graphic>
-      </JFXButton>
    </children>
 </AnchorPane>
