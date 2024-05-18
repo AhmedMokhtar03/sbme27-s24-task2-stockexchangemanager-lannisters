@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="frontendmalak.ViewControl.AdminManageBondsController">
-
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.AdminManageBondsController">
     <children>
         <TableView fx:id="bondTableView">
             <columns>
@@ -17,15 +14,14 @@
                 <TableColumn fx:id="bondPriceColumn" text="Bond Price" />
                 <TableColumn fx:id="bondInterestColumn" text="Bond Interest" />
                 <TableColumn fx:id="durationColumn" text="Duration" />
-                <TableColumn fx:id="dateColumn" text="Date" />
+                <TableColumn fx:id="quantityColumn" text="Quantity" />
             </columns>
         </TableView>
-
-        <TextField fx:id="companyTextField" promptText="Company"/>
-        <TextField fx:id="bondPriceTextField" promptText="Bond Price"/>
-        <TextField fx:id="bondInterestTextField" promptText="Bond Interest"/>
-        <TextField fx:id="durationTextField" promptText="Duration"/>
-
-        <Button text="Add Bond" onAction="#addBond"/>
+        <TextField fx:id="companyTextField" promptText="Company" />
+        <TextField fx:id="bondPriceTextField" promptText="Bond Price" />
+        <TextField fx:id="bondInterestTextField" promptText="Bond Interest in %" />
+        <TextField fx:id="durationTextField" promptText="Duration (PnYnMnD)" />
+        <TextField fx:id="quantityTextField" promptText="Quantity" />
+        <Button onAction="#addBond" text="Add Bond" />
     </children>
 </VBox>
