@@ -270,6 +270,9 @@
 .table-viewA .scroll-bar:vertical .track{
     -fx-background-color: #9750a5;
     -fx-border-color:black;
+
+
+
     -fx-background-radius: 2em;
     -fx-border-radius:2em;
 }
