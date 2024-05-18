@@ -1,83 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="597.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.Premium">
-    <children>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="592.0" stylesheets="@charts.css">
-            <children>
-                <AnchorPane fx:id="sideBar" layoutX="-25.0" layoutY="-11.0" prefHeight="35.0" prefWidth="600.0" styleClass="topBar" stylesheets="@charts.css">
-                    <children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.Premium">
+   <children>
+      <VBox layoutX="10.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="597.0" style="-fx-background-color: transparent;" stylesheets="@styles.css">
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="592.0" stylesheets="@charts.css">
+               <children>
+                  <AnchorPane fx:id="sideBar" layoutX="-25.0" layoutY="-11.0" prefHeight="35.0" prefWidth="600.0" styleClass="topBar" stylesheets="@charts.css">
+                     <children>
                         <ImageView fitHeight="390.0" fitWidth="685.0" layoutX="-20.666666666666668" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-161.0" AnchorPane.leftAnchor="-21.0" AnchorPane.rightAnchor="-54.0" AnchorPane.topAnchor="2.0">
-                            <image>
-                                <Image url="@../img/About.png" />
-                            </image>
+                           <image>
+                              <Image url="@../img/About.png" />
+                           </image>
                         </ImageView>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/Logo.png" />
-                            </image>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/Logo.png" />
+                           </image>
                         </ImageView>
-                        <Line endX="148.3333740234375" layoutX="162.0" layoutY="89.0" startX="-100.0" stroke="WHITE" />
-                  <JFXButton fx:id="aapl" layoutX="24.0" layoutY="114.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Apple" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </JFXButton>
-                  <Line endX="78.50001525878906" layoutX="80.0" layoutY="160.0" startX="-100.0" stroke="WHITE" />
-                  <Line endX="68.50001525878906" endY="-0.833343505859375" layoutX="90.0" layoutY="115.0" startX="-100.0" stroke="WHITE" />
-                  <JFXButton fx:id="tss" layoutX="25.0" layoutY="160.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Tesla" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </JFXButton>
-                  <Line endX="78.50001525878906" layoutX="81.0" layoutY="206.0" startX="-100.0" stroke="WHITE" />
-                  <JFXButton fx:id="tar" layoutX="25.0" layoutY="207.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Tarly" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </JFXButton>
-                  <Line endX="78.50001525878906" layoutX="81.0" layoutY="253.0" startX="-100.0" stroke="WHITE" />
-                  <JFXButton fx:id="sta" layoutX="24.0" layoutY="254.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Starks" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </JFXButton>
-                  <Line endX="78.50001525878906" layoutX="81.0" layoutY="300.0" startX="-100.0" stroke="WHITE" />
-                  <JFXButton fx:id="o" layoutX="25.0" layoutY="300.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="ooo" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </JFXButton>
-                  <Line endX="78.50001525878906" layoutX="81.0" layoutY="345.0" startX="-100.0" stroke="WHITE" />
-                  <Button fx:id="back3" layoutX="565.0" layoutY="20.0" mnemonicParsing="false" onAction="#Back3" style="-fx-background-color: red;" text="Back" textFill="#fffdfd" />
-                    </children></AnchorPane>
-                <LineChart fx:id="lineChart" createSymbols="false" layoutX="137.0" layoutY="77.0" prefHeight="308.0" prefWidth="456.0" styleClass="chart-plot-background" stylesheets="@charts.css">
-                    <xAxis>
+                        <Line endX="163.66665649414062" layoutX="141.0" layoutY="78.0" startX="-100.0" stroke="WHITE" styleClass="neon-label" />
+                        <JFXButton fx:id="aapl" layoutX="24.0" layoutY="114.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Apple" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </JFXButton>
+                        <Line endX="78.50001525878906" layoutX="80.0" layoutY="160.0" startX="-100.0" stroke="WHITE" styleClass="neon-label" />
+                        <Line endX="68.50001525878906" endY="-0.833343505859375" layoutX="90.0" layoutY="115.0" startX="-100.0" stroke="WHITE" styleClass="neon-label" />
+                        <JFXButton fx:id="tss" layoutX="25.0" layoutY="160.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Tesla" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </JFXButton>
+                        <Line endX="78.50001525878906" layoutX="81.0" layoutY="206.0" startX="-100.0" stroke="WHITE" styleClass="neon-label" />
+                        <JFXButton fx:id="tar" layoutX="25.0" layoutY="207.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Tarly" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </JFXButton>
+                        <Line endX="78.50001525878906" layoutX="81.0" layoutY="253.0" startX="-100.0" stroke="WHITE" styleClass="neon-label" />
+                        <JFXButton fx:id="sta" layoutX="24.0" layoutY="254.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Starks" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </JFXButton>
+                        <Line endX="78.50001525878906" layoutX="81.0" layoutY="300.0" startX="-100.0" stroke="WHITE" styleClass="neon-label" />
+                        <JFXButton fx:id="o" layoutX="25.0" layoutY="300.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="ooo" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </JFXButton>
+                        <Line endX="78.50001525878906" layoutX="81.0" layoutY="345.0" startX="-100.0" stroke="WHITE" styleClass="neon-label" />
+                        <Label layoutX="50.0" layoutY="49.0" styleClass="neon-label" stylesheets="@charts.css" text="VISUAL ANALYTICS" textFill="WHITE">
+                           <font>
+                              <Font name="Bookman Old Style" size="26.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="goBackBTN" layoutX="551.0" layoutY="20.0" onAction="#back3" styleClass="button16" stylesheets="@Designs.css" text="Back">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="UNDO" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+                  <LineChart fx:id="lineChart" createSymbols="false" layoutX="137.0" layoutY="72.0" prefHeight="308.0" prefWidth="456.0" styleClass="chart-plot-background" stylesheets="@charts.css">
+                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                        <NumberAxis side="LEFT" tickLabelFill="WHITE" />
-                    </yAxis>
-                </LineChart>
-                <Label layoutX="56.0" layoutY="35.0" stylesheets="@charts.css" text="Visual Analytics" textFill="WHITE">
-                    <font>
-                        <Font size="26.0" />
-                    </font>
-                </Label>
-            <Line endX="-99.99998474121094" endY="207.33334350585938" layoutX="234.0" layoutY="127.0" startX="-99.99998474121094" startY="-23.333343505859375" stroke="WHITE" />
-            </children>
-        </AnchorPane>
-    </children>
-</VBox>
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" styleClass="neon-label" tickLabelFill="WHITE" />
+                     </yAxis>
+                  </LineChart>
+                  <Line endX="-99.99998474121094" endY="207.33334350585938" layoutX="234.0" layoutY="127.0" startX="-99.99998474121094" startY="-23.333343505859375" stroke="WHITE" styleClass="neon-label" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Pane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;">
+         <children>
+            <JFXButton fx:id="closeAppBTN" layoutX="575.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" stylesheets="@Designs.css" text="x" />
+            <ImageView fitHeight="23.0" fitWidth="127.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

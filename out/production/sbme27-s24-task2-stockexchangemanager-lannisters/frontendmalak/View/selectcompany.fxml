@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.Selectcompany">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/background.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="196.0" layoutX="7.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="38.0" fitWidth="196.0" layoutX="5.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Logo.png" />
          </image>
       </ImageView>
-      <Line endX="-293.0" endY="169.66665649414062" layoutX="291.0" layoutY="-95.0" startX="299.83331298828125" startY="169.66665649414062" stroke="#ffffff9b" />
-      <ListView fx:id="companyListView" editable="true" layoutX="-1.0" layoutY="75.0" prefHeight="318.0" prefWidth="598.0" styleClass="chart-plot-background" stylesheets="@charts.css" />
-      <HBox layoutX="3.0" layoutY="74.0" prefHeight="326.0" prefWidth="175.0" />
-      <Text fx:id="titleLabel" fill="WHITE" fontSmoothingType="LCD" layoutX="28.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="neon-label" text="SELECT COMPANY OF YOUR INTEREST" wrappingWidth="568.6666564941406">
+      <Line endX="-293.0" endY="169.66665649414062" layoutX="296.0" layoutY="-71.0" startX="299.83331298828125" startY="169.66665649414062" stroke="#ffffff9b" />
+      <ListView fx:id="companyListView" editable="true" layoutX="3.0" layoutY="102.0" prefHeight="298.0" prefWidth="594.0" styleClass="chart-plot-background" stylesheets="@charts.css" />
+      <HBox layoutX="5.0" layoutY="102.0" prefHeight="298.0" prefWidth="175.0" />
+      <Text fx:id="titleLabel" fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="neon-label" text="SELECT COMPANY OF YOUR INTEREST" wrappingWidth="568.6666564941406">
          <font>
             <Font name="Bodoni MT" size="28.0" />
          </font>
       </Text>
-      <Button fx:id="back2" layoutX="541.0" layoutY="6.0" mnemonicParsing="false" onAction="#Backk" prefHeight="18.0" prefWidth="43.0" style="-fx-background-color: #e00e0e;" text="Back" textFill="WHITE" />
+      <JFXButton fx:id="goBackBTN" layoutX="534.0" layoutY="35.0" onAction="#Backk" styleClass="button16" stylesheets="@Designs.css" text="Back">
+         <graphic>
+            <FontAwesomeIconView glyphName="UNDO" />
+         </graphic>
+      </JFXButton>
+      <Pane layoutX="-1.0" prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;">
+         <children>
+            <JFXButton fx:id="closeAppBTN" layoutX="575.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" stylesheets="@Designs.css" text="x" />
+            <ImageView fitHeight="23.0" fitWidth="127.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

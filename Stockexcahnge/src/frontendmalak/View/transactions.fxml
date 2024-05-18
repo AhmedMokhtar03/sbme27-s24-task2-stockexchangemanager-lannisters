@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -18,47 +20,57 @@
             <Image url="@../img/FAQs.png" />
          </image>
       </ImageView>
-      <Rectangle arcWidth="5.0" fill="#3e01479e" height="291.0" layoutX="27.0" layoutY="94.0" stroke="WHITE" strokeType="INSIDE" width="273.0" />
-      <Line endX="159.33331298828125" endY="-6.333335876464844" layoutX="141.0" layoutY="237.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" styleClass="neon-label" />
-      <Line endX="158.33331298828125" endY="-6.3333282470703125" layoutX="425.0" layoutY="237.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" styleClass="neon-label" />
-      <Label layoutX="66.0" layoutY="79.0" prefHeight="78.0" prefWidth="265.0" styleClass="neon-label" text="Deposit Amount" textFill="WHITE">
+      <Rectangle arcWidth="5.0" fill="#3e01479e" height="291.0" layoutX="26.0" layoutY="104.0" stroke="WHITE" strokeType="INSIDE" width="273.0" />
+      <Line endX="159.33331298828125" endY="-6.333335876464844" layoutX="140.0" layoutY="248.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" styleClass="neon-label" />
+      <Line endX="158.33331298828125" endY="-6.3333282470703125" layoutX="424.0" layoutY="249.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" styleClass="neon-label" />
+      <Label layoutX="65.0" layoutY="92.0" prefHeight="78.0" prefWidth="265.0" styleClass="neon-label" text="Deposit Amount" textFill="WHITE">
          <font>
             <Font name="Century" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="depositAmountField" layoutX="61.0" layoutY="143.0" prefHeight="29.0" prefWidth="200.0" promptText="enter amount" />
-      <Label layoutX="51.0" layoutY="219.0" prefHeight="69.0" prefWidth="251.0" styleClass="neon-label" text="Withdrawal Amount" textFill="WHITE">
+      <TextField fx:id="depositAmountField" layoutX="60.0" layoutY="156.0" prefHeight="29.0" prefWidth="200.0" promptText="enter amount" />
+      <Label layoutX="50.0" layoutY="232.0" prefHeight="69.0" prefWidth="251.0" styleClass="neon-label" text="Withdrawal Amount" textFill="WHITE">
          <font>
             <Font name="Century" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="withdrawalAmountField" layoutX="60.0" layoutY="277.0" prefHeight="29.0" prefWidth="200.0" promptText="enter amount" />
-      <Label fx:id="messageLabel" layoutX="311.0" layoutY="164.0" prefHeight="53.0" prefWidth="265.0" textFill="WHITE">
+      <TextField fx:id="withdrawalAmountField" layoutX="59.0" layoutY="290.0" prefHeight="29.0" prefWidth="200.0" promptText="enter amount" />
+      <Label fx:id="messageLabel" layoutX="310.0" layoutY="177.0" prefHeight="53.0" prefWidth="265.0" textFill="WHITE">
          <font>
             <Font name="Javanese Text" size="16.0" />
          </font></Label>
-      <MFXButton fx:id="depositButton" layoutX="130.0" layoutY="182.0" onAction="#handleDeposit" rippleColor="#000a4a" style="-fx-background-color: #bc78b6;" text="Deposit" textFill="#0d0000" />
-      <MFXButton fx:id="withdrawButton" layoutX="124.0" layoutY="318.0" onAction="#handleWithdrawal" rippleColor="#000a4a" style="-fx-background-color: #bc78b6;" text="Withdraw" />
-      <Label fx:id="balanceLabel" layoutX="312.0" layoutY="240.0" prefHeight="65.0" prefWidth="273.0" textFill="WHITE">
+      <MFXButton fx:id="depositButton" layoutX="129.0" layoutY="195.0" onAction="#handleDeposit" rippleColor="#000a4a" style="-fx-background-color: #bc78b6;" text="Deposit" textFill="#0d0000" />
+      <MFXButton fx:id="withdrawButton" layoutX="123.0" layoutY="331.0" onAction="#handleWithdrawal" rippleColor="#000a4a" style="-fx-background-color: #bc78b6;" text="Withdraw" />
+      <Label fx:id="balanceLabel" layoutX="311.0" layoutY="253.0" prefHeight="65.0" prefWidth="273.0" textFill="WHITE">
          <font>
             <Font name="Javanese Text" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="149.0" layoutY="29.0" prefHeight="53.0" prefWidth="349.0" styleClass="neon-label" text="TRANSACTION" textFill="WHITE">
+      <Label layoutX="148.0" layoutY="50.0" prefHeight="53.0" prefWidth="349.0" styleClass="neon-label" text="TRANSACTION" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="38.0" />
          </font>
       </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="5.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Logo.png" />
          </image>
       </ImageView>
-      <Line endX="149.66668701171875" endY="-5.500007629394531" layoutX="309.0" layoutY="85.0" startX="-167.0" startY="-5.500007629394531" stroke="WHITE" styleClass="neon-label" />
-      <Button fx:id="back1" layoutX="537.0" layoutY="3.0" mnemonicParsing="false" onAction="#Back1" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: #f80000;" text="Back" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
+      <Line endX="149.66668701171875" endY="-5.500007629394531" layoutX="308.0" layoutY="103.0" startX="-167.0" startY="-5.500007629394531" stroke="WHITE" styleClass="neon-label" />
+      <JFXButton fx:id="goBackBTN" layoutX="535.0" layoutY="35.0" onAction="#Back1" styleClass="button16" stylesheets="@Designs.css" text="Back">
+         <graphic>
+            <FontAwesomeIconView glyphName="UNDO" />
+         </graphic>
+      </JFXButton>
+      <Pane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;">
+         <children>
+            <JFXButton fx:id="closeAppBTN" layoutX="575.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" stylesheets="@Designs.css" text="x" />
+            <ImageView fitHeight="23.0" fitWidth="127.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

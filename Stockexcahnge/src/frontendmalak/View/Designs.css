@@ -432,6 +432,7 @@
 }
 .table-viewC .column-header .label{
     -fx-text-fill: black;
+
     -fx-font-weight: bold;
     -fx-alignment: CENTER;
 }

@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -38,7 +39,7 @@
             <Font size="26.0" />
          </font>
       </JFXButton>
-      <Label fx:id="welcome" layoutX="48.0" layoutY="35.0" prefHeight="100.0" prefWidth="346.0" textFill="WHITE">
+      <Label fx:id="welcome" layoutX="48.0" layoutY="49.0" prefHeight="100.0" prefWidth="346.0" textFill="WHITE">
          <font>
             <Font name="Javanese Text" size="29.0" />
          </font>
@@ -46,12 +47,31 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d61fff3c" height="88.0" layoutX="321.0" layoutY="35.0" stroke="#1091e2" strokeType="INSIDE" width="261.0" />
       <JFXButton fx:id="gopremium" layoutX="319.0" layoutY="36.0" onAction="#Gopremium" prefHeight="88.0" prefWidth="261.0" styleClass="button11" stylesheets="@Designs.css" text=" " />
       <Button layoutX="513.0" layoutY="344.0" mnemonicParsing="false" onAction="#signOut" prefHeight="35.0" prefWidth="74.0" style="-fx-background-color: #ffa7e0;" styleClass="button10" stylesheets="@Designs.css" text="Sign out" />
-      <Circle fx:id="notificationCircle" fill="#ff1f1fc0" layoutX="301.0" layoutY="36.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <FontAwesomeIconView fx:id="notificationBell" fill="#fda6de" glyphName="BELL" layoutX="276.0" layoutY="61.0" onMouseClicked="#doAction" onMouseEntered="#mouseIN" onMouseExited="#mouseOUT" opacity="0.5" size="30" text="" wrappingWidth="32.0" />
-      <Label fx:id="numOfNotifications" alignment="CENTER" layoutX="283.0" layoutY="27.0" prefHeight="17.0" prefWidth="35.0" text="0" textFill="WHITE">
+      <Circle fx:id="notificationCircle" fill="#ff1f1fc0" layoutX="302.0" layoutY="41.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <FontAwesomeIconView fx:id="notificationBell" fill="#fda6de" glyphName="BELL" layoutX="277.0" layoutY="66.0" onMouseClicked="#doAction" onMouseEntered="#mouseIN" onMouseExited="#mouseOUT" opacity="0.5" size="30" text="" wrappingWidth="32.0" />
+      <Label fx:id="numOfNotifications" alignment="CENTER" layoutX="284.0" layoutY="32.0" prefHeight="17.0" prefWidth="35.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="8.0" />
          </font>
       </Label>
+      <AnchorPane layoutY="13.0" prefHeight="54.0" prefWidth="156.0" style="-fx-background-color: #251c3d;">
+         <children>
+            <ImageView fitHeight="77.0" fitWidth="244.0" layoutX="11.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;">
+         <children>
+            <JFXButton fx:id="closeAppBTN" layoutX="575.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" text="x" />
+            <ImageView fitHeight="23.0" fitWidth="127.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
