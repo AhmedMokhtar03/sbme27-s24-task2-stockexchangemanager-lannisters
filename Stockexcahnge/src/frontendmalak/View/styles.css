@@ -1,0 +1,80 @@
+/* styles.css */
+.list-view {
+    -fx-background-color: transparent;
+}
+
+.list-cell {
+    -fx-padding: 10;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 0 0 1px 0;
+    -fx-background-color: transparent;
+}
+
+.text-company-name {
+    -fx-font-size: 24px;  /* Larger text */
+    -fx-font-weight: bold;
+    -fx-fill: #ffffff;  /* White text */
+}
+
+.choice-box-subscribe {
+    -fx-padding: 8 5;  /* Adjusted padding (vertical, horizontal) */
+    -fx-background-color: #ffffff; /* Green background */
+    -fx-background-radius: 5; /* Rounded corners */
+    -fx-text-fill: white; /* White text */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px; /* Adjusted font size */
+    -fx-border-color: #ffffff; /* Border color */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+}
+
+.choice-box-subscribe .choice-box-popup {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+}
+
+.choice-box-subscribe .list-cell {
+    -fx-background-color: #fcfcfc;
+    -fx-text-fill: #40254e;
+}
+
+.choice-box-subscribe .list-cell:hover {
+    -fx-background-color: #ffffff;
+}
+/* styles.css */
+@keyframes shine {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Initial shadow */
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.9); /* Stronger shadow */
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Return to initial shadow */
+    }
+}
+
+.shining-label {
+    animation: shine 2s infinite alternate; /* Apply animation */
+}
+/* styles.css */
+@keyframes neon {
+    0% {
+        text-shadow: 0 0 10px #1a0627, 0 0 20px #250b45, 0 0 30px #2e114e, 0 0 40px #250c3c, 0 0 70px #00ff00, 0 0 80px #00ff00, 0 0 100px #00ff00, 0 0 150px #00ff00;
+    }
+    50% {
+        text-shadow: none;
+    }
+    100% {
+        text-shadow: 0 0 10px #4c0f75, 0 0 20px #4c1273, 0 0 30px #7f2897, 0 0 40px #561f7a, 0 0 70px #00ff00, 0 0 80px #00ff00, 0 0 100px #00ff00, 0 0 150px #00ff00;
+    }
+}
+
+
+/* styles.css */
+.neon-label {
+    -fx-fill: #ffffff; /* Neon color */
+    -fx-effect: dropshadow(gaussian, #ffffff, 30, 0, 0, 0);
+}
