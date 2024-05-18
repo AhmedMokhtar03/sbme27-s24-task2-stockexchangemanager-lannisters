@@ -49,7 +49,6 @@ public class AdminManageBondsController {
     public void initialize() {
         BondList.clear();
         loadBondsListFromCSV();
-
         bondTableView.setItems(BondList);
         companyColumn.setCellValueFactory(new PropertyValueFactory<>("company"));
         bondPriceColumn.setCellValueFactory(new PropertyValueFactory<>("bondPrice"));

@@ -1,5 +1,6 @@
 package backend;
 
+import java.time.LocalDate;
 import java.time.Period;
 
 public class Bonds extends Securities {
@@ -8,6 +9,19 @@ public class Bonds extends Securities {
     private double bondInterest;
     private Period duration;
     private int quantity;
+//==============================
+private String userName;
+private int numberOfOwnedBonds;
+private LocalDate maturityDate;
+private double totalReturnedMoney;
+
+    public Bonds(String userName, String company, int numberOfOwnedBonds, LocalDate maturityDate, double totalReturnedMoney) {
+        this.userName = userName;
+        this.company = company;
+        this.numberOfOwnedBonds = numberOfOwnedBonds;
+        this.maturityDate = maturityDate;
+        this.totalReturnedMoney = totalReturnedMoney;
+    }
 
     public Bonds(String company, double bondPrice, double bondInterest, Period duration, int quantity) {
         this.company = company;
@@ -57,4 +71,37 @@ public class Bonds extends Securities {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public int getNumberOfOwnedBonds() {
+        return numberOfOwnedBonds;
+    }
+
+    public void setNumberOfOwnedBonds(int numberOfOwnedBonds) {
+        this.numberOfOwnedBonds = numberOfOwnedBonds;
+    }
+
+    public LocalDate getMaturityDate() {
+        return maturityDate;
+    }
+
+    public void setMaturityDate(LocalDate maturityDate) {
+        this.maturityDate = maturityDate;
+    }
+
+    public double getTotalReturnedMoney() {
+        return totalReturnedMoney;
+    }
+
+    public void setTotalReturnedMoney(double totalReturnedMoney) {
+        this.totalReturnedMoney = totalReturnedMoney;
+    }
 }
+
