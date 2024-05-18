@@ -15,9 +15,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
 
 public class AdminManageBondsController {
 
@@ -32,7 +30,7 @@ public class AdminManageBondsController {
     @FXML
     private TableColumn<Bonds, Period> durationColumn;
     @FXML
-    private TableColumn<Bonds, LocalDate> dateColumn;
+    private TableColumn<Bonds, Integer> quantityColumn;
 
     @FXML
     private TextField companyTextField;
@@ -42,20 +40,20 @@ public class AdminManageBondsController {
     private TextField bondInterestTextField;
     @FXML
     private TextField durationTextField;
+    @FXML
+    private TextField quantityTextField;
 
-    private ObservableList<Bonds> BondList = FXCollections.observableArrayList();
-    private static final String bondsCSV = "Stockexcahnge/src/frontendmalak/bonds.csv";
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
+    public static ObservableList<Bonds> BondList = FXCollections.observableArrayList();
+    public static final String BONDS_CSV = "Stockexcahnge/src/frontendmalak/bonds.csv";
     public void initialize() {
+        BondList.clear();
         loadBondsListFromCSV();
         bondTableView.setItems(BondList);
         companyColumn.setCellValueFactory(new PropertyValueFactory<>("company"));
         bondPriceColumn.setCellValueFactory(new PropertyValueFactory<>("bondPrice"));
         bondInterestColumn.setCellValueFactory(new PropertyValueFactory<>("bondInterest"));
         durationColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
     }
 
     public void addBond() {
@@ -66,9 +64,9 @@ public class AdminManageBondsController {
             double bondPrice = Double.parseDouble(bondPriceTextField.getText());
             double bondInterest = Double.parseDouble(bondInterestTextField.getText());
             Period duration = Period.parse(durationTextField.getText());
+            int quantity = Integer.parseInt(quantityTextField.getText());
 
-            Bonds bond = new Bonds(company, bondPrice, bondInterest, duration);
-            bond.setDate(LocalDate.now().plus(duration)); // Set the date based on the current date plus the duration
+            Bonds bond = new Bonds(company, bondPrice, bondInterest, duration, quantity);
             BondList.add(bond);
 
             // Clear the text fields after adding the bond
@@ -76,6 +74,7 @@ public class AdminManageBondsController {
             bondPriceTextField.clear();
             bondInterestTextField.clear();
             durationTextField.clear();
+            quantityTextField.clear();
 
             saveBondsListToCSV();
         } catch (Exception e) {
@@ -85,14 +84,14 @@ public class AdminManageBondsController {
         }
     }
 
-    public void saveBondsListToCSV() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(bondsCSV))) {
+    public static void saveBondsListToCSV() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BONDS_CSV))) {
             for (Bonds bond : BondList) {
                 writer.write(bond.getCompany() + "," +
                         bond.getBondPrice() + "," +
                         bond.getBondInterest() + "," +
                         bond.getDuration() + "," +
-                        bond.getDate().format(DATE_FORMATTER));
+                        bond.getQuantity());
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -100,8 +99,8 @@ public class AdminManageBondsController {
         }
     }
 
-    public void loadBondsListFromCSV() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(bondsCSV))) {
+    public static void loadBondsListFromCSV() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(BONDS_CSV))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(",");
@@ -109,10 +108,9 @@ public class AdminManageBondsController {
                 double bondPrice = Double.parseDouble(fields[1]);
                 double bondInterest = Double.parseDouble(fields[2]);
                 Period duration = Period.parse(fields[3]);
-                LocalDate date = LocalDate.parse(fields[4], DATE_FORMATTER);
+                int quantity = Integer.parseInt(fields[4]);
 
-                Bonds bond = new Bonds(company, bondPrice, bondInterest, duration);
-                bond.setDate(date);
+                Bonds bond = new Bonds(company, bondPrice, bondInterest, duration, quantity);
                 BondList.add(bond);
             }
         } catch (IOException e) {

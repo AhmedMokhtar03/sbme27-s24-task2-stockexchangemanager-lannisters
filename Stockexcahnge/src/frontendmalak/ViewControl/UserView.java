@@ -198,6 +198,14 @@ public class UserView {
         welcome.setText("Welcome, " + currentUser.getUserName());
     }
 
+    @FXML
+    public void switchToBond(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserBonds.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
 }

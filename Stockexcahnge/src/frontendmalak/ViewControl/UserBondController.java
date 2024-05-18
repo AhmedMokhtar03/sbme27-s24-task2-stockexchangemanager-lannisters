@@ -110,7 +110,7 @@ public class UserBondController {
 
 
             }
-            if (!canBuy&&newQuantity>0){
+            if (!canBuy&&newQuantity>=0){
                 showAlert("Error", "not enough money.");
             }
             if (newQuantity<0){
