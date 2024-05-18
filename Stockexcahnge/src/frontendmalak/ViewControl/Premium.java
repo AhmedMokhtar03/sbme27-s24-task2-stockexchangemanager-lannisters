@@ -1,5 +1,8 @@
 package frontendmalak.ViewControl;
 
+import backend.Company;
+import backend.DataManager;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,18 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,88 +25,79 @@ import java.util.ResourceBundle;
 
 import static frontendmalak.HelloApplication.primaryStage;
 
+public class Premium implements Initializable {
+    @FXML
+    private LineChart<String, Double> lineChart;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+    @FXML
+    private AnchorPane sideBar;
 
-import static frontendmalak.HelloApplication.primaryStage;
+    @FXML
+    private JFXButton aapl;
 
-    public class Premium implements Initializable {
-        private double x = 0,y = 0;
+    @FXML
+    private JFXButton tss;
 
-        @FXML
-        private LineChart<?, ?> lineChart;
+    @FXML
+    private JFXButton tar;
 
-        @FXML
-        private AnchorPane sideBar;
+    @FXML
+    private JFXButton sta;
 
-        private Stage stage;
+    @FXML
+    private JFXButton o;
 
+    private Stage stage;
+    @FXML
+    private Button back3;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeButtons();
+    }
 
-        public void initialize() {
-            sideBar.setOnMousePressed(mouseEvent -> {
-                x = mouseEvent.getSceneX();
-                y = mouseEvent.getSceneY();
-            });
+    private void initializeButtons() {
+        aapl.setOnAction(this::handleButtonClick);
+        tss.setOnAction(this::handleButtonClick);
+        tar.setOnAction(this::handleButtonClick);
+        sta.setOnAction(this::handleButtonClick);
+        o.setOnAction(this::handleButtonClick);
+    }
 
-            sideBar.setOnMouseDragged(mouseEvent -> {
-                stage.setX(mouseEvent.getScreenX() - x);
-                stage.setY(mouseEvent.getScreenY() - y);
-            });
-
-            lineChart.getXAxis().setLabel("XAxis");
-            lineChart.getYAxis().setLabel("YAxis");
-
-            XYChart.Series series1 = new XYChart.Series();
-
-            series1.getData().add(new XYChart.Data("1",5));
-            series1.getData().add(new XYChart.Data("2",4));
-            series1.getData().add(new XYChart.Data("3",6));
-            series1.getData().add(new XYChart.Data("5",3));
-            series1.getData().add(new XYChart.Data("9",10));
-
-            XYChart.Series series2 = new XYChart.Series();
-
-            series2.getData().add(new XYChart.Data("1",2));
-            series2.getData().add(new XYChart.Data("3",2));
-            series2.getData().add(new XYChart.Data("4",5));
-
-            XYChart.Series series3 = new XYChart.Series();
-
-            series3.getData().add(new XYChart.Data("1",1));
-            series3.getData().add(new XYChart.Data("2",4));
-            series3.getData().add(new XYChart.Data("4",9));
-
-            lineChart.getData().addAll(series1,series2,series3);
-        }
-
-        public void setStage(Stage stage){
-            this.stage = stage;
-        }
-
-        @FXML
-        void closeProgram(ActionEvent event) {
-            stage.close();
-        }
-
-        private ActionEvent event;
-
-        public void Back3(ActionEvent event) throws IOException {
-            this.event = event;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-
-        }
-
-        @Override
-        public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    private void handleButtonClick(ActionEvent event) {
+        if (event.getSource() instanceof JFXButton) {
+            JFXButton clickedButton = (JFXButton) event.getSource();
+            String companyName = clickedButton.getText();
+            Company company = getCompanyByName(companyName);
+            if (company != null) {
+                populateLineChart(company);
+            }
         }
     }
 
+    private Company getCompanyByName(String name) {
+        for (Company company : DataManager.companyList) {
+            if (company.getName().equals(name)) {
+                return company;
+            }
+        }
+        return null;
+    }
 
+    private void populateLineChart(Company company) {
+        lineChart.getData().clear(); // Clear existing data
+        XYChart.Series<String, Double> series = new XYChart.Series<>();
+        series.setName(company.getName());
+        for (int i = 0; i < company.graphList.size(); i++) {
+            series.getData().add(new XYChart.Data<>(String.valueOf(i), company.graphList.get(i)));
+        }
+        lineChart.getData().add(series);
+}
+    public void Back3(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}

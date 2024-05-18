@@ -51,7 +51,7 @@
                </font>
             </Label>
             <ChoiceBox fx:id="stockchoicebox" layoutX="149.0" layoutY="151.0" prefWidth="150.0" style="-fx-background-color: white;" styleClass="text-field1" />
-            <MFXButton layoutX="2.0" layoutY="8.0" minWidth="50.0" onAction="#back2" prefHeight="29.0" prefWidth="54.0" style="-fx-background-color: red;" styleClass="button1" stylesheets="@Designs.css" text="Back" />
+            <MFXButton layoutX="1.0" layoutY="6.0" minWidth="48.0" onAction="#back2" prefHeight="29.0" prefWidth="48.0" style="-fx-background-color: red;" styleClass="button1" stylesheets="@Designs.css" text="Back" />
             <Button fx:id="BuyButton" layoutX="41.0" layoutY="305.0" mnemonicParsing="false" onAction="#handleBuyButtonAction" prefHeight="34.0" prefWidth="97.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Buy" textFill="WHITE">
                <font>
                   <Font size="18.0" />

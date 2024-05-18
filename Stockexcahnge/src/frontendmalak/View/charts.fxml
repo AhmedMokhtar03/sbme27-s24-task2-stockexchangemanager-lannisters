@@ -4,6 +4,7 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="597.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.Charts">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="597.0" style="-fx-background-color: transparent;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.Charts">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="607.0" stylesheets="@charts.css">
          <children>
@@ -29,11 +30,11 @@
                      </image>
                   </ImageView>
                   <Line endX="148.3333740234375" layoutX="162.0" layoutY="92.0" startX="-100.0" stroke="WHITE" />
-                  <MFXButton fx:id="gopremium" layoutX="323.0" layoutY="337.0" onAction="#Gopremium" rippleColor="#690074" style="-fx-background-color: #ffa7e0;" styleClass="button11" stylesheets="@Designs.css" text="subscribe" />
-                  <Label layoutX="64.0" layoutY="340.0" text="Subscribe now for displaying premium features" textFill="WHITE" />
-                  <Label layoutX="435.0" layoutY="339.0" text="export csv file" textFill="WHITE" />
-                  <MFXButton layoutX="515.0" layoutY="336.0" rippleColor="#690074" style="-fx-background-color: #ffa7e0;" styleClass="button11" stylesheets="@Designs.css" text="export" />
-                  <LineChart fx:id="lineChart" layoutX="28.0" layoutY="83.0" prefHeight="261.0" prefWidth="569.0" styleClass="chart-plot-background" stylesheets="@charts.css">
+                  <MFXButton fx:id="gopremium" layoutX="323.0" layoutY="346.0" onAction="#Gopremium" rippleColor="#690074" style="-fx-background-color: #ffa7e0;" styleClass="button11" stylesheets="@Designs.css" text="subscribe" />
+                  <Label layoutX="64.0" layoutY="347.0" text="Subscribe now for displaying premium features" textFill="WHITE" />
+                  <Label layoutX="435.0" layoutY="350.0" text="export csv file" textFill="WHITE" />
+                  <MFXButton layoutX="515.0" layoutY="344.0" rippleColor="#690074" style="-fx-background-color: #ffa7e0;" styleClass="button11" stylesheets="@Designs.css" text="export" />
+                  <LineChart fx:id="lineChart" layoutX="28.0" layoutY="96.0" prefHeight="259.0" prefWidth="569.0" styleClass="chart-plot-background" stylesheets="@charts.css">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" fx:id="xAxis" />
                     </xAxis>
@@ -41,6 +42,7 @@
                       <NumberAxis fx:id="yAxis" side="LEFT" />
                     </yAxis>
                   </LineChart>
+                  <Button fx:id="back3" layoutX="559.0" layoutY="20.0" mnemonicParsing="false" onAction="#Back3" style="-fx-background-color: red;" text="Back" textFill="WHITE" />
                </children></AnchorPane>
             <Label layoutX="56.0" layoutY="40.0" stylesheets="@charts.css" text="Visual Analytics" textFill="WHITE">
                <font>

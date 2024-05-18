@@ -3,6 +3,7 @@ package frontendmalak.ViewControl;
 import backend.DataManager;
 import com.jfoenix.controls.JFXButton;
 import frontendmalak.ViewControl.LogIn;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;
@@ -29,7 +30,9 @@ public class PremiumSubscribtion {
     @FXML
     private Label messagee;
     @FXML
-    private JFXButton subscribeButton;
+    private MFXButton subscribeButton;
+    @FXML
+    private MFXButton selectcompany;
 
     private double balance;
     private static final String CSV_FILE = "Stockexcahnge/src/frontendmalak/users.csv";
@@ -42,9 +45,11 @@ public class PremiumSubscribtion {
         if (LogIn.currentUser.isPremium()) {
             subscribeButton.setDisable(true);
             subscribeButton.setVisible(false);
+            selectcompany.setVisible(true);
             Balance1.setText(Balance1.getText());
             messagee.setText("You are a Premium member!");
         }
+       else selectcompany.setVisible(false);
     }
 
     private void updateBalanceLabel() {
@@ -53,6 +58,13 @@ public class PremiumSubscribtion {
 
     public void Back2(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    public void select(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/Selectcompany.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

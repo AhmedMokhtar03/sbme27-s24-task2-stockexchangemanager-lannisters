@@ -67,12 +67,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="buybutton" layoutX="456.0" layoutY="187.0" mnemonicParsing="false" onAction="#handlebuybuttonAction" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Buy" textFill="#f4f2f2">
+      <Button fx:id="buybutton" layoutX="456.0" layoutY="208.0" mnemonicParsing="false" onAction="#handlebuybuttonAction" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Buy" textFill="#f4f2f2">
          <effect>
             <Glow level="0.49" />
          </effect>
       </Button>
-      <Button fx:id="sellbutton" layoutX="456.0" layoutY="272.0" mnemonicParsing="false" onAction="#handlesellbuttonAction" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Sell" textFill="#f4f2f2">
+      <Button fx:id="sellbutton" layoutX="456.0" layoutY="271.0" mnemonicParsing="false" onAction="#handlesellbuttonAction" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: purple;" styleClass="button14" stylesheets="@Designs.css" text="Sell" textFill="#f4f2f2">
          <effect>
             <Glow level="0.49" />
          </effect>
