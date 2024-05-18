@@ -30,11 +30,11 @@
                      </image>
                   </ImageView>
                   <Line endX="148.3333740234375" layoutX="162.0" layoutY="92.0" startX="-100.0" stroke="WHITE" />
-                  <MFXButton fx:id="gopremium" layoutX="323.0" layoutY="337.0" onAction="#Gopremium" rippleColor="#690074" style="-fx-background-color: #ffa7e0;" styleClass="button11" stylesheets="@Designs.css" text="subscribe" />
-                  <Label layoutX="64.0" layoutY="340.0" text="Subscribe now for displaying premium features" textFill="WHITE" />
-                  <Label layoutX="435.0" layoutY="339.0" text="export csv file" textFill="WHITE" />
-                  <MFXButton layoutX="515.0" layoutY="336.0" rippleColor="#690074" style="-fx-background-color: #ffa7e0;" styleClass="button11" stylesheets="@Designs.css" text="export" />
-                  <LineChart fx:id="lineChart" layoutX="28.0" layoutY="83.0" prefHeight="261.0" prefWidth="569.0" styleClass="chart-plot-background" stylesheets="@charts.css">
+                  <MFXButton fx:id="gopremium" layoutX="323.0" layoutY="346.0" onAction="#Gopremium" rippleColor="#690074" style="-fx-background-color: #ffa7e0;" styleClass="button11" stylesheets="@Designs.css" text="subscribe" />
+                  <Label layoutX="64.0" layoutY="347.0" text="Subscribe now for displaying premium features" textFill="WHITE" />
+                  <Label layoutX="435.0" layoutY="350.0" text="export csv file" textFill="WHITE" />
+                  <MFXButton layoutX="515.0" layoutY="344.0" rippleColor="#690074" style="-fx-background-color: #ffa7e0;" styleClass="button11" stylesheets="@Designs.css" text="export" />
+                  <LineChart fx:id="lineChart" layoutX="28.0" layoutY="96.0" prefHeight="259.0" prefWidth="569.0" styleClass="chart-plot-background" stylesheets="@charts.css">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" fx:id="xAxis" />
                     </xAxis>
