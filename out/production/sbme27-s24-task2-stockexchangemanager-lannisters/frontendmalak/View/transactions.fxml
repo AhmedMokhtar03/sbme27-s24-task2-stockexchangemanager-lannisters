@@ -19,8 +19,8 @@
          </image>
       </ImageView>
       <Rectangle arcWidth="5.0" fill="#3e01479e" height="291.0" layoutX="27.0" layoutY="94.0" stroke="WHITE" strokeType="INSIDE" width="273.0" />
-      <Line endX="159.33331298828125" endY="-6.333335876464844" layoutX="141.0" layoutY="237.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" />
-      <Line endX="158.33331298828125" endY="-6.3333282470703125" layoutX="425.0" layoutY="237.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" />
+      <Line endX="159.33331298828125" endY="-6.333335876464844" layoutX="141.0" layoutY="237.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" styleClass="neon-label" />
+      <Line endX="158.33331298828125" endY="-6.3333282470703125" layoutX="425.0" layoutY="237.0" startX="-113.0" startY="-6.333335876464844" stroke="WHITE" styleClass="neon-label" />
       <Label layoutX="66.0" layoutY="79.0" prefHeight="78.0" prefWidth="265.0" styleClass="neon-label" text="Deposit Amount" textFill="WHITE">
          <font>
             <Font name="Century" size="24.0" />
@@ -54,7 +54,7 @@
             <Image url="@../img/Logo.png" />
          </image>
       </ImageView>
-      <Line endX="195.0" endY="-6.0" layoutX="309.0" layoutY="85.0" startX="-207.66665649414062" startY="-5.5" stroke="WHITE" styleClass="neon-label" />
+      <Line endX="149.66668701171875" endY="-5.500007629394531" layoutX="309.0" layoutY="85.0" startX="-167.0" startY="-5.500007629394531" stroke="WHITE" styleClass="neon-label" />
       <Button fx:id="back1" layoutX="537.0" layoutY="3.0" mnemonicParsing="false" onAction="#Back1" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: #f80000;" text="Back" textFill="WHITE">
          <font>
             <Font size="14.0" />
