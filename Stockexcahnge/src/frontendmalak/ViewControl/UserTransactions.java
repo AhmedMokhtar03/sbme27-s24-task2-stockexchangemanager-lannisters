@@ -3,17 +3,20 @@ package frontendmalak.ViewControl;
 import backend.DataManager;
 import backend.Transactions;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import backend.User; // Assuming you have a User class in the backend package
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -49,6 +52,11 @@ public class UserTransactions {
         updateBalanceLabel();
         depositButton.setOnAction(this::handleDeposit);
         withdrawButton.setOnAction(this::handleWithdrawal);
+    }
+    @FXML
+    void closeApp(ActionEvent event) {
+        Platform.exit();
+
     }
 
     public void withdraw(double amount) throws IOException {
@@ -113,9 +121,13 @@ public class UserTransactions {
     public void Back1(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
 
     }
 

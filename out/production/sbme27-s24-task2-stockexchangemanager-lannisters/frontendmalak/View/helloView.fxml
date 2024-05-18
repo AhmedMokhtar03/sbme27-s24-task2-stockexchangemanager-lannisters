@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
@@ -28,7 +29,7 @@
             <AnchorPane prefHeight="400.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
          </left>
          <right>
-            <AnchorPane prefHeight="400.0" prefWidth="339.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="357.0" prefWidth="326.0" BorderPane.alignment="CENTER">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#320343a1" height="279.0" layoutX="45.0" layoutY="71.0" stroke="TRANSPARENT" strokeType="INSIDE" width="270.0" />
                   <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="47.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
@@ -64,7 +65,7 @@
                      </image>
                   </ImageView>
                   <PasswordField fx:id="password" layoutX="97.0" layoutY="207.0" opacity="0.6" prefHeight="35.0" prefWidth="200.0" promptText="password" />
-                  <MFXButton fx:id="window" layoutX="215.0" layoutY="3.0" onAction="#windowAction" opacity="0.8" prefHeight="30.0" prefWidth="121.0" rippleColor="#5e005e" style="-fx-background-color: grey;" text="New window" textFill="#ffffffe1" />
+                  <MFXButton fx:id="window" layoutX="195.0" layoutY="14.0" onAction="#windowAction" opacity="0.8" prefHeight="30.0" prefWidth="121.0" rippleColor="#5e005e" style="-fx-background-color: grey;" text="New window" textFill="#ffffffe1" />
                   <Text fill="WHITE" layoutX="-237.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Exchange Market" wrappingWidth="262.66676330566406">
                      <font>
                         <Font name="Eras Bold ITC" size="52.0" />
@@ -84,8 +85,20 @@
                </children>
             </AnchorPane>
          </bottom>
+         <top>
+            <AnchorPane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="closeAppBTN" layoutX="574.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" stylesheets="@Designs.css" text="x" />
+                  <ImageView fitHeight="25.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </top>
       </BorderPane>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="6.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="5.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Logo.png" />
          </image>

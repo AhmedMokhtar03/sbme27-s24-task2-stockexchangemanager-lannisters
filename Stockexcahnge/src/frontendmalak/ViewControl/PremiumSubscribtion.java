@@ -8,13 +8,16 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
@@ -52,6 +55,12 @@ public class PremiumSubscribtion {
        else selectcompany.setVisible(false);
     }
 
+    @FXML
+    void closeApp(ActionEvent event) {
+        //Platform.exit();
+
+    }
+
     private void updateBalanceLabel() {
         Balance1.setText("Your balance= " + String.format("%.2f", balance));
     }
@@ -59,9 +68,12 @@ public class PremiumSubscribtion {
     public void Back2(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        //Scene scene = new Scene(root);
+        //primaryStage.setScene(scene);
+        //primaryStage.show();
     }
     public void select(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/Selectcompany.fxml"));

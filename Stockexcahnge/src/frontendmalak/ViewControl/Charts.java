@@ -3,10 +3,12 @@ package frontendmalak.ViewControl;
 import backend.Company;
 import backend.DataManager;
 import frontendmalak.HelloApplication;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -47,6 +49,12 @@ public class Charts implements Initializable {
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeChart();
+    }
+
+    @FXML
+    void closeApp(ActionEvent event) {
+        Platform.exit();
+
     }
 
     private void initializeChart() {
@@ -94,16 +102,23 @@ public class Charts implements Initializable {
     public void Back3(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
     }
 
     public void Gopremium(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
     }
 }

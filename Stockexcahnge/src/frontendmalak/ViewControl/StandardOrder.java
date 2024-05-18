@@ -2,14 +2,17 @@ package frontendmalak.ViewControl;
 import backend.Company;
 import backend.DataManager;
 import backend.User;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -61,6 +64,12 @@ public class StandardOrder {
         DataManager.saveUsersToCSV();
     }
     @FXML
+    void closeApp(ActionEvent event) {
+        Platform.exit();
+
+    }
+
+    @FXML
     private void handleBuyButtonAction(ActionEvent event) throws IOException {
         currentUser.addOrder(selectedStock, quantity, "BUY", currentPrice);
         //DataManager.saveUsersToCSV();
@@ -102,9 +111,13 @@ public class StandardOrder {
     public void back2(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/manageOrder.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
 
 
     }
