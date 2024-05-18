@@ -82,7 +82,7 @@ public class Stock extends Securities {
 
     public void update_available_stocks(int no_of_stocks) //only call this method when you approve the user's request to buy or sell a stock
     {
-        company.setNumOfAvailableStocks(Math.abs(company.getNumOfAvailableStocks() - no_of_stocks));
+        company.setNumOfAvailableStocks(company.getNumOfAvailableStocks() - no_of_stocks);
         System.out.println(company.getNumOfAvailableStocks());
     }
 
