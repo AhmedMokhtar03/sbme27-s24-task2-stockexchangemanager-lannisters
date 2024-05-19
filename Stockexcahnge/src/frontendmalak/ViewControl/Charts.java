@@ -2,7 +2,6 @@ package frontendmalak.ViewControl;
 
 import backend.Company;
 import backend.DataManager;
-import frontendmalak.HelloApplication;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,21 +23,20 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import static frontendmalak.HelloApplication.primaryStage;
 
 public class Charts implements Initializable {
     private List<XYChart.Series<String, Double>> series = new ArrayList<>();
 
     @FXML
-
     private LineChart<String, Double> lineChart;
-@FXML
-    private Button back3;
 
+    @FXML
+    private Button back3;
 
     @FXML
     private CategoryAxis xAxis;
@@ -54,10 +52,11 @@ public class Charts implements Initializable {
     @FXML
     void closeApp(ActionEvent event) {
         Platform.exit();
-
     }
 
     private void initializeChart() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM"); // Date format
+
         for (Company company : DataManager.companyList) {
             XYChart.Series<String, Double> series1 = new XYChart.Series<>();
             series1.setName(company.getName());
@@ -67,8 +66,11 @@ public class Charts implements Initializable {
             tooltip.setShowDuration(Duration.INDEFINITE);
 
             for (int i = 0; i < company.graphList.size(); i++) {
-                String xValue = String.valueOf(i);
-                XYChart.Data<String, Double> data = new XYChart.Data(xValue, company.graphList.get(i));
+                // Generate fake dates for x-axis
+                LocalDate fakeDate = LocalDate.of(2024, 5, 7).plusDays(i); // Starting from 15th May 2022
+                String xValue = fakeDate.format(dateFormatter);
+
+                XYChart.Data<String, Double> data = new XYChart.Data<>(xValue, company.graphList.get(i));
                 data.setNode(new CustomNode(tooltip));
                 series1.getData().add(data);
             }
@@ -76,6 +78,23 @@ public class Charts implements Initializable {
             series.add(series1);
         }
         lineChart.getData().addAll(series);
+    }
+
+    public void Gopremium(ActionEvent event) throws IOException{ FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+    }
+
+    public void Back3(ActionEvent event) throws IOException {FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     private class CustomNode extends StackPane {
@@ -97,28 +116,8 @@ public class Charts implements Initializable {
             tooltip.hide();
             tooltip.setAutoHide(true);
         }
+
     }
 
-    public void Back3(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
 
-//        Scene scene = new Scene(root);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-    }
-
-    public void Gopremium(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premiumsubscribtion.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-//        Scene scene = new Scene(root);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-    }
 }

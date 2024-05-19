@@ -23,6 +23,8 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import static frontendmalak.HelloApplication.primaryStage;
@@ -49,7 +51,6 @@ public class Premium implements Initializable {
     @FXML
     private JFXButton o;
 
-    private Stage stage;
     @FXML
     private Button back3;
 
@@ -69,7 +70,6 @@ public class Premium implements Initializable {
     @FXML
     void closeApp(ActionEvent event) {
         Platform.exit();
-
     }
 
     private void handleButtonClick(ActionEvent event) {
@@ -96,19 +96,25 @@ public class Premium implements Initializable {
         lineChart.getData().clear(); // Clear existing data
         XYChart.Series<String, Double> series = new XYChart.Series<>();
         series.setName(company.getName());
+
+        // Date format for fake dates
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM");
+
         for (int i = 0; i < company.graphList.size(); i++) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(i), company.graphList.get(i)));
+            // Generate fake dates for x-axis starting from 15th May 2022
+            LocalDate fakeDate = LocalDate.of(2024, 5, 7).plusDays(i);
+            String xValue = fakeDate.format(dateFormatter);
+
+            series.getData().add(new XYChart.Data<>(xValue, company.graphList.get(i)));
         }
         lineChart.getData().add(series);
-}
+    }
+
     public void Back3(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-//        Scene scene = new Scene(root);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
     }
 }
