@@ -332,21 +332,22 @@
 .table-viewB .column-header,
 .table-viewB .column-header-background .filler {
     -fx-cell-size : 30;
-    -fx-background-color: #5b6180;
+    -fx-background-color: #280d40;
     -fx-border-width: .3;
-    -fx-border-color: black;
+    -fx-border-color: #f4f2f2;
 }
 .table-viewB .column-header .label{
-    -fx-text-fill: black;
+    -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
     -fx-alignment: CENTER;
 }
 .table-viewB .cell{
     -fx-cell-size: 30;
     -fx-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
     -fx-border-width: .3;
-    -fx-border-color: black;
+    -fx-border-color: #ffffff;
 }
 
 .table-viewB-row-cell:selected {
@@ -362,7 +363,7 @@
 
 /* The increment and decrement button CSS class of scrollbar */
 .table-viewB .increment-button ,.table-view .decrement-button {
-    -fx-background-color:black;
+    -fx-background-color: #ffffff;
     -fx-background-radius: 2em;
 
 }
@@ -370,8 +371,8 @@
 /* The main scrollbar **track** CSS class  */
 .table-viewB .scroll-bar:horizontal .track,
 .table-viewB .scroll-bar:vertical .track{
-    -fx-background-color: #5b6180;
-    -fx-border-color: rgba(0, 0, 0, 0.64);
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-border-color: rgba(37, 12, 60, 0.09);
     -fx-background-radius: 2em;
     -fx-border-radius:2em;
 }
@@ -381,7 +382,7 @@
 .table-viewB .scroll-bar:vertical .thumb {
 
 
-    -fx-background-color: rgba(0, 0, 0, 0.53);
+    -fx-background-color: rgba(108, 4, 105, 0.11);
 
 
     -fx-background-insets: 2, 0, 0;
@@ -389,14 +390,14 @@
 
 }
 .table-viewB .table-row-cell:odd {
-    -fx-background-color: gray;
+    -fx-background-color: rgba(255, 255, 255, 0.07);
     -fx-opacity: .5;
 
 }
 
 /* Styling for even rows */
 .table-viewB .table-row-cell:even {
-    -fx-background-color: #5d5c5c;
+    -fx-background-color: rgba(26, 6, 39, 0.15);
     -fx-opacity: .5;
 }
 

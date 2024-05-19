@@ -1,34 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.UserBondController">
-    <children>
-        <TableView fx:id="bondTableView" prefHeight="300.0" prefWidth="600.0">
-            <columns>
-                <TableColumn fx:id="companyColumn" prefWidth="100.0" text="Company" />
-                <TableColumn fx:id="bondPriceColumn" prefWidth="100.0" text="Bond Price" />
-                <TableColumn fx:id="bondInterestColumn" prefWidth="100.0" text="Bond Interest" />
-                <TableColumn fx:id="durationColumn" prefWidth="100.0" text="Duration" />
-                <TableColumn fx:id="quantityColumn" prefWidth="100.0" text="Available Bonds" />
-            <TableColumn fx:id="ownedquantityColumn" prefWidth="100.0" text="Owned Bonds" />
-            </columns>
-        </TableView>
-        <HBox spacing="10.0">
-            <VBox spacing="5.0">
-                <Label text="Enter Quantity" />
-                <TextField fx:id="quantityTextField" prefWidth="150.0" />
-            </VBox>
-            <Button onAction="#buyBonds" text="Buy" />
-        </HBox>
-        <Label fx:id="totalCostLabel" />
-        <Label fx:id="maturityDateLabel" />
-        <Label fx:id="returnedCashLabel" />
-    </children>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.UserBondController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="bondTableView" layoutY="42.0" prefHeight="277.0" prefWidth="600.0" styleClass="table-viewB" stylesheets="@Designs.css">
+        <columns>
+          <TableColumn fx:id="companyColumn" prefWidth="75.0" text="Company" />
+          <TableColumn fx:id="bondPriceColumn" prefWidth="75.0" text="Bond Price" />
+            <TableColumn fx:id="bondInterestColumn" prefWidth="104.0" text="Bond Interest" />
+            <TableColumn fx:id="durationColumn" prefWidth="93.33331298828125" text="Duration" />
+            <TableColumn fx:id="quantityColumn" prefWidth="132.00006103515625" text="Available Bonds" />
+            <TableColumn fx:id="ownedquantityColumn" prefWidth="117.33331298828125" text="Owned Bonds" />
+        </columns>
+      </TableView>
+      <TextField fx:id="quantityTextField" layoutX="11.0" layoutY="357.0" />
+      <Line endX="499.0" endY="0.33331298828125" layoutX="101.0" layoutY="320.0" startX="-100.99999237060547" startY="0.33331298828125" stroke="WHITE" />
+      <Label fx:id="totalCostLabel" layoutX="236.0" layoutY="332.0" prefHeight="19.0" prefWidth="222.0" textFill="WHITE">
+         <font>
+            <Font name="Javanese Text" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="maturityDateLabel" layoutX="236.0" layoutY="360.0" prefHeight="35.0" prefWidth="199.0" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="returnedCashLabel" layoutX="450.0" layoutY="326.0" prefHeight="52.0" prefWidth="199.0" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <MFXButton layoutX="176.0" layoutY="356.0" onAction="#buyBonds" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: #280d40;" text="Buy" textFill="WHITE" />
+      <Text fill="WHITE" layoutX="8.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Quantity">
+         <font>
+            <Font name="Javanese Text" size="23.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="38.0" fitWidth="185.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Logo.png" />
+         </image>
+      </ImageView>
+      <Line endX="25.833343505859375" endY="56.999969482421875" layoutX="419.0" layoutY="343.0" startX="25.833343505859375" startY="-21.0" stroke="WHITE" />
+   </children>
+</AnchorPane>

@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="600.0" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.UserView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="600.0" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.UserView">
    <children>
-      <ImageView fitHeight="407.0" fitWidth="643.0" layoutX="-21.0">
+      <ImageView fitHeight="419.0" fitWidth="643.0" layoutX="-21.0">
          <image>
-            <Image url="@../img/Annual%20Report%20Business%20Website%20in%20Violet%20Dark%20Blue%20Neon%20Pink%20Gradient%20Tech%20Style.png" />
+            <Image url="@../img/yasm.png" />
          </image>
       </ImageView>
       <JFXButton fx:id="manageAccount" layoutX="24.0" layoutY="138.0" onAction="#ManageAccountt" prefHeight="200.0" prefWidth="128.0" ripplerFill="WHITE" styleClass="button11" text=" " textFill="WHITE">
