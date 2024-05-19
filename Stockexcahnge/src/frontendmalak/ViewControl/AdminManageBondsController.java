@@ -96,13 +96,36 @@ public class AdminManageBondsController {
     @FXML
     void openMenu(ActionEvent event) {
 
-        AdminManageSecuritiesController.menuOpen(menuPane, tablePane, openMenuBTN, closeMenuBTN);
+        TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), menuPane);
+        slide1.setToX(0);
+        slide1.play();
+
+        TranslateTransition slide2 = new TranslateTransition(Duration.millis(500), tablePane);
+        slide2.setToX(200);
+        slide2.play();
+
+        slide1.setOnFinished((ActionEvent e) -> {
+            openMenuBTN.setVisible(false);
+            closeMenuBTN.setVisible(true);
+        });
     }
 
     @FXML
     void closeMenu(ActionEvent event) {
 
-        AdminManageSecuritiesController.menuClose(menuPane, tablePane, openMenuBTN, closeMenuBTN);
+        TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), menuPane);
+        slide1.setToX(-200);
+        slide1.play();
+
+        TranslateTransition slide2 = new TranslateTransition(Duration.millis(500), tablePane);
+        slide2.setToX(0);
+        slide2.play();
+
+
+        slide1.setOnFinished((ActionEvent e) -> {
+            openMenuBTN.setVisible(true);
+            closeMenuBTN.setVisible(false);
+        });
     }
 
 

@@ -28,11 +28,16 @@ public void switchToBond(ActionEvent event) throws IOException {
     @FXML
     private void handleStandardOrderButtonAction(ActionEvent event) throws IOException {
         if(AdminHomePageController.started){
+            //this.event = event;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/standardOrder.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
         }
         else{
             Started.setVisible(true);
@@ -40,11 +45,15 @@ public void switchToBond(ActionEvent event) throws IOException {
     }@FXML
     public void handleLimitOrderButtonAction(ActionEvent event) throws IOException {
         if(AdminHomePageController.started){
+            //this.event = event;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/limitOrder.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
         }
         else{
             Started.setVisible(true);
@@ -57,6 +66,11 @@ public void switchToBond(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+
 
     }
 }

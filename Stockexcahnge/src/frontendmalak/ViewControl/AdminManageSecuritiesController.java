@@ -71,6 +71,10 @@ public class AdminManageSecuritiesController {
     private AnchorPane tablePane;
 
 
+
+
+    //public static ObservableList<Company> companyList = FXCollections.observableArrayList();
+
     @FXML
     public void initialize() {
         companyList.clear();
@@ -103,10 +107,7 @@ public class AdminManageSecuritiesController {
 
     @FXML
     void openMenu(ActionEvent event) {
-        menuOpen(menuPane, tablePane, openMenuBTN, closeMenuBTN);
-    }
 
-    static void menuOpen(AnchorPane menuPane, AnchorPane tablePane, JFXButton openMenuBTN, JFXButton closeMenuBTN) {
         TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), menuPane);
         slide1.setToX(0);
         slide1.play();
@@ -123,22 +124,22 @@ public class AdminManageSecuritiesController {
 
     @FXML
     void closeMenu(ActionEvent event) {
-        menuClose(menuPane, tablePane, openMenuBTN, closeMenuBTN);
-    }
 
-    static void menuClose(AnchorPane menuPane, AnchorPane tablePane, JFXButton openMenuBTN, JFXButton closeMenuBTN) {
         TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), menuPane);
         slide1.setToX(-200);
         slide1.play();
+
         TranslateTransition slide2 = new TranslateTransition(Duration.millis(500), tablePane);
         slide2.setToX(0);
         slide2.play();
+
 
         slide1.setOnFinished((ActionEvent e) -> {
             openMenuBTN.setVisible(true);
             closeMenuBTN.setVisible(false);
         });
     }
+
 
 
     private void clearFields() {

@@ -87,6 +87,7 @@ public class StandardOrder {
         if (selectedStock != null && !quantityText.isEmpty() ) {
             try {
                 quantity = Integer.parseInt(quantityText);
+                //currentPriceLabel.setText(String.format("Current Price: %.2f", currentPrice));
                 double estimatedCost = quantity * currentPrice;
                 double estimatedProceeds = quantity * currentPrice;
                 EstimatedTotalCostLabel.setText(String.format("Estimated Cost: %.2f", estimatedCost));
@@ -113,5 +114,11 @@ public class StandardOrder {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+
+
     }
 }

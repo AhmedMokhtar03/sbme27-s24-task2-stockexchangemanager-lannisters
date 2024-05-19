@@ -57,7 +57,8 @@ public class PremiumSubscribtion {
 
     @FXML
     void closeApp(ActionEvent event) {
-        Platform.exit();
+        //Platform.exit();
+
     }
 
     private void updateBalanceLabel() {
@@ -70,6 +71,9 @@ public class PremiumSubscribtion {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+        //Scene scene = new Scene(root);
+        //primaryStage.setScene(scene);
+        //primaryStage.show();
     }
     public void select(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/Selectcompany.fxml"));
