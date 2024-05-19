@@ -40,14 +40,6 @@ public  class User implements Observer {
         this.ID = ID;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getUserName() {
         return userName;
     }

@@ -50,7 +50,6 @@ public void sell(String Label, int quantity, int userID) throws IOException {
             case "BUY":
                 if (company.getNumOfAvailableStocks() >= quantity && user.getCashBalance() >= price) {
                 user.setCashBalance(user.getCashBalance() - price);
-                Securities newstock = SecurityFactory.createSecurity("stock", label, quantity, state);
                 }
                 else{
                     throw new IllegalArgumentException("NOT ENOUGH MONEY OR STOCKS");
