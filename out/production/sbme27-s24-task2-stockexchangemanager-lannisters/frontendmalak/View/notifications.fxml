@@ -15,7 +15,7 @@
             <Image url="@../img/background.png" />
          </image>
       </ImageView>
-      <TableView fx:id="notificationTable" layoutY="25.0" prefHeight="225.0" prefWidth="400.0" style="-fx-background-color: transparent;" styleClass="table-viewC">
+      <TableView fx:id="notificationTable" layoutY="25.0" prefHeight="225.0" prefWidth="400.0" style="-fx-background-color: transparent;" styleClass="table-viewB">
         <columns>
           <TableColumn fx:id="contentColumn" prefWidth="400.0" text="Notifications" />
         </columns>

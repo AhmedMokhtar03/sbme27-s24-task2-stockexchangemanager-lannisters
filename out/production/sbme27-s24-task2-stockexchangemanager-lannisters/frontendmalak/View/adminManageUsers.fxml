@@ -26,7 +26,7 @@
          </children></AnchorPane>
       <AnchorPane fx:id="tablePane" layoutY="54.0" prefHeight="348.0" prefWidth="600.0">
          <children>
-            <TableView fx:id="tableView" prefHeight="345.0" prefWidth="600.0" styleClass="table-viewA">
+            <TableView fx:id="tableView" prefHeight="345.0" prefWidth="600.0" styleClass="table-viewB">
                <columns>
                   <TableColumn fx:id="idColumn" prefWidth="100.0" text="ID">
                      <cellValueFactory>

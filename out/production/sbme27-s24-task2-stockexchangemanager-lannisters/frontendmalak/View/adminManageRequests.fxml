@@ -18,7 +18,7 @@
             <Image url="@../img/background.png" />
          </image>
       </ImageView>
-        <TableView fx:id="tableView" layoutY="52.0" prefHeight="348.0" prefWidth="600.0" styleClass="table-viewA">
+        <TableView fx:id="tableView" layoutY="52.0" prefHeight="348.0" prefWidth="600.0" styleClass="table-viewB">
             <columns>
                 <TableColumn fx:id="usernameColumn" prefWidth="100.0" text="Username" />
                 <TableColumn fx:id="typeOfTransactionColumn" prefWidth="100.0" text="Type of Transaction" />

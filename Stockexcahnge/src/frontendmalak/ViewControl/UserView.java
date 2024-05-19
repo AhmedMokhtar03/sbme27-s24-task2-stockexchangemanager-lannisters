@@ -83,6 +83,7 @@ public class UserView {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/notifications.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.setTitle("Lannister Exchange");
         stage.setScene(new Scene(root));
         stage.show();
