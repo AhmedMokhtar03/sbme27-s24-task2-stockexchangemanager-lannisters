@@ -169,12 +169,16 @@ public class UserView {
 
     public void chartss(ActionEvent event) throws IOException {
         if (currentUser.isPremium()) {
-
+            //this.event = event;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/premium.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+//            Scene scene = new Scene(root);
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+            System.out.println("you are premium uer");
 
         } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/charts.fxml"));
@@ -182,11 +186,19 @@ public class UserView {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+
+//            Scene scene = new Scene(root);
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+            System.out.println("you are not premium uer");
+
         }
     }
 
     private void updatewelcome() {
         welcome.setText("Welcome, " + currentUser.getUserName());
     }
+
+
 
 }

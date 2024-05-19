@@ -1,5 +1,7 @@
 package frontendmalak.ViewControl;
 
+// Assuming your FXML files are in the frontend package
+
 import backend.User;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
@@ -18,6 +20,7 @@ import java.io.IOException;
 
 import static frontendmalak.HelloApplication.primaryStage;
 
+// ... other imports as needed
 
 public class ManageOrder {
     private User currentUser = LogIn.currentUser;
@@ -48,6 +51,11 @@ public class ManageOrder {
 
     @FXML
     public void initialize() {
+        // ... (Initialize table columns and cell factories as shown in previous examples)
+
+        // Initialize order data (replace with your actual logic to get orders)
+        // orderData = FXCollections.observableArrayList(currentUser.getOrders());
+        // orderTable.setItems(orderData);
     }
 
     @FXML
@@ -59,11 +67,16 @@ public class ManageOrder {
     @FXML
     private void handleStandardOrderButtonAction(ActionEvent event) throws IOException {
        if(AdminHomePageController.started){
+        //this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/standardOrder.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
         }
        else{
            Started.setVisible(true);
@@ -73,11 +86,15 @@ public class ManageOrder {
     @FXML
     public void handleLimitOrderButtonAction(ActionEvent event) throws IOException {
         if(AdminHomePageController.started){
+        //this.event = event;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/limitOrder.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
         }
         else{
             Started.setVisible(true);
@@ -90,6 +107,12 @@ public class ManageOrder {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+
+
     }
 
 }

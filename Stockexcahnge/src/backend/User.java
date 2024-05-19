@@ -31,7 +31,10 @@ public  class User implements Observer {
         generateUniqueID();
 
     }
-
+    //        public User(String username) {
+//        this.userName = username;
+//    }
+    //=============================================
     public int getID() {
         return ID;
     }
@@ -42,6 +45,18 @@ public  class User implements Observer {
 
     public String getUserName() {
         return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public double getCashBalance() {

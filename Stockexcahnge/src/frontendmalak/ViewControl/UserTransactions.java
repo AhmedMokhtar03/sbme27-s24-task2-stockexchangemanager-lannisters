@@ -125,6 +125,10 @@ public class UserTransactions {
         stage.setScene(new Scene(root));
         stage.show();
 
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+
     }
 
 

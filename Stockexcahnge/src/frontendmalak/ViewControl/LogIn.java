@@ -106,6 +106,7 @@ public class LogIn {
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/adminHomePage.fxml"));
 
                 } else {
+                    //currentUser = new User(username);
                     loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
                     for (User u : userList) {
                         if (u.getUserName().equals(username)) {

@@ -164,4 +164,10 @@ public class Company extends Observable {
     {
         return priceHistory;
     }
+
+
+    @Override
+    public String toString() {
+        return "Company{" + name +"," + label +","+ID+","+stockPrice+","+numOfAvailableStocks+","+dividends+"}";
+    }
 }
