@@ -99,7 +99,6 @@ public class AdminManageRequestsController {
         }
         if (selectedTransactions.getTypeOfTransaction().equals("deposit")) {
             currentUser.setCashBalance(currentUser.getCashBalance() + selectedTransactions.getAmount());
-//            updateBalance();
             DataManager.saveUsersToCSV();
             //here i take copy of the slected and change status and then add to the list
             confirmTransaction=selectedTransactions;
@@ -111,7 +110,6 @@ public class AdminManageRequestsController {
             updateCurrentBalanceColumn();
         } else if (selectedTransactions.getTypeOfTransaction().equals("withdrawal")) {
             currentUser.setCashBalance(currentUser.getCashBalance() - selectedTransactions.getAmount());
-            //updateBalance();
             DataManager.saveUsersToCSV();
             confirmTransaction=selectedTransactions;
             confirmTransaction.setStatus("Confirmed");
@@ -135,29 +133,6 @@ public class AdminManageRequestsController {
         DataManager.saveTransactionsToCSV();
 
     }
-
-//    public void updateBalance() throws IOException {
-//        RandomAccessFile file = new RandomAccessFile("Stockexcahnge/src/frontendmalak/users.csv", "rw");
-//        String line;
-//        StringBuffer modifiedContent = new StringBuffer();
-//        boolean userFound = false;
-//        while ((line = file.readLine()) != null) {
-//            String[] parts = line.split(",");
-//            if (parts[0].equals(String.valueOf(currentUser.getID()))) {
-//                parts[3] = String.valueOf(currentUser.getCashBalance());
-//                line = String.join(",", parts);
-//                System.out.println(parts[3]);
-//                userFound = true;
-//            }
-//            modifiedContent.append(line).append(System.lineSeparator());
-//        }
-//        if (userFound) {
-//            file.seek(0);
-//            file.writeBytes(modifiedContent.toString());
-//            file.setLength(modifiedContent.length());
-//            file.close();
-//        } else System.out.println("couldn't find user");
-//    }
 
     private void loadPendingTransactions(){
         for(Transactions j : TransactionsList){
@@ -202,14 +177,4 @@ public class AdminManageRequestsController {
 
 
     }
-
-    public int numOfRequests(){
-
-
-        int k =tableView.getItems().size();
-        System.out.println(k);
-        return k;
-    }
-
-
 }

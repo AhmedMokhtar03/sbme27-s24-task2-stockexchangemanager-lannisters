@@ -95,13 +95,6 @@ private Button back;
             HBox.setHgrow(companyNameText, Priority.ALWAYS);
             hbox.getChildren().addAll(companyNameText, choiceBox);
         }
-//        public void Backk(ActionEvent event) throws IOException {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
-//            Parent root = loader.load();
-//            Scene scene = new Scene(root);
-//            primaryStage.setScene(scene);
-//            primaryStage.show();
-//        }
 
         @Override
         protected void updateItem(Company company, boolean empty) {

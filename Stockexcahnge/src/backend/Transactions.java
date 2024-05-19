@@ -33,10 +33,6 @@ public class Transactions {
         return typeOfTransaction;
     }
 
-    public void setTypeOfTransaction(String typeOfTransaction) {
-        this.typeOfTransaction = typeOfTransaction;
-    }
-
     public LocalDate getDate() {
         return date;
     }
@@ -49,9 +45,6 @@ public class Transactions {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
 
     public double getCurrentBalance() {
         return currentBalance;

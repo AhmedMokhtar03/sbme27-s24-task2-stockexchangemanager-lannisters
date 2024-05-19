@@ -66,7 +66,6 @@ public class Charts implements Initializable {
             tooltip.setShowDuration(Duration.INDEFINITE);
 
             for (int i = 0; i < company.graphList.size(); i++) {
-                // Generate fake dates for x-axis
                 LocalDate fakeDate = LocalDate.of(2024, 5, 7).plusDays(i); // Starting from 15th May 2022
                 String xValue = fakeDate.format(dateFormatter);
 
@@ -85,9 +84,6 @@ public class Charts implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-//        Scene scene = new Scene(root);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
     }
 
     public void Back3(ActionEvent event) throws IOException {FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/UserView.fxml"));
@@ -118,6 +114,4 @@ public class Charts implements Initializable {
         }
 
     }
-
-
 }
