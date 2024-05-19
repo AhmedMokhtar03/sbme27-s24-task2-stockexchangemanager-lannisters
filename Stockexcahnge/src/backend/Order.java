@@ -54,17 +54,20 @@ public void sell(String Label, int quantity, int userID) throws IOException {
 }
 
 protected void orderExecution(Company company, double price, int quantity, User user, String label, String state) throws IOException {
-        Securities newstock = SecurityFactory.createSecurity("stock", label, quantity, state);
+
         switch (state) {
             case "BUY":
                 if (company.getNumOfAvailableStocks() >= quantity && user.getCashBalance() >= price) {
-                user.setCashBalance(user.getCashBalance() - price);}
+                user.setCashBalance(user.getCashBalance() - price);
+                Securities newstock = SecurityFactory.createSecurity("stock", label, quantity, state);
+                }
                 else{
                     throw new IllegalArgumentException("NOT ENOUGH MONEY OR STOCKS");
                 }
                 break;
             case "SELL":
                 user.setCashBalance(user.getCashBalance() + price);
+                Securities newstock = SecurityFactory.createSecurity("stock", label, quantity, state);
                 break;
         }
         orderStatus = "EXECUTED";

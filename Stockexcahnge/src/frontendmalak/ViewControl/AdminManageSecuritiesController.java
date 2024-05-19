@@ -163,6 +163,7 @@ public class AdminManageSecuritiesController {
         companyList.add(newCompany);
         DataManager.saveCompanies(newCompany);
         DataManager.saveUsersToCSV();
+        DataManager.savePriceHistory(newCompany);
         System.out.println("New Company created: " + newCompany.getName());
 
         clearFields();
