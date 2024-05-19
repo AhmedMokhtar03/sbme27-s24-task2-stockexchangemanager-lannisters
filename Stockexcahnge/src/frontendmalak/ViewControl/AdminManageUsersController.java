@@ -87,11 +87,6 @@ public class AdminManageUsersController {
             User user = cellData.getValue();
             return new SimpleStringProperty(user.isPremium() ? user.getFirstDateOfPremium().toString() : "Not Premium");
         });
-       // System.out.println(userList.get(0).getFirstDateOfPremium().toString());
-        //System.out.println(userList.get(1).getFirstDateOfPremium().toString());
-        //System.out.println(userList.get(2).getFirstDateOfPremium().toString());
-
-
     }
 
     @FXML
@@ -112,37 +107,12 @@ public class AdminManageUsersController {
 
     @FXML
     void openMenu(ActionEvent event) {
-
-        TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), menuPane);
-        slide1.setToX(0);
-        slide1.play();
-
-        TranslateTransition slide2 = new TranslateTransition(Duration.millis(500), tablePane);
-        slide2.setToX(200);
-        slide2.play();
-
-        slide1.setOnFinished((ActionEvent e) -> {
-            openMenuBTN.setVisible(false);
-            closeMenuBTN.setVisible(true);
-        });
+        AdminManageSecuritiesController.menuOpen(menuPane, tablePane, openMenuBTN, closeMenuBTN);
     }
 
     @FXML
     void closeMenu(ActionEvent event) {
-
-        TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), menuPane);
-        slide1.setToX(-200);
-        slide1.play();
-
-        TranslateTransition slide2 = new TranslateTransition(Duration.millis(500), tablePane);
-        slide2.setToX(0);
-        slide2.play();
-
-
-        slide1.setOnFinished((ActionEvent e) -> {
-            openMenuBTN.setVisible(true);
-            closeMenuBTN.setVisible(false);
-        });
+        AdminManageSecuritiesController.menuClose(menuPane, tablePane, openMenuBTN, closeMenuBTN);
     }
 
     @FXML
