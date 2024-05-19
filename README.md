@@ -1,4 +1,1 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/hIpamZ_2)
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=14867727)
-# CMP1242_S24_JavaStarterRepo
-Java Starter Repo with common IDE folders get ignored.
+[![Web Version](https://img.shields.io/badge/Shield_Buttons-37a779?style=for-the-badge)](https://bow-handstand-732.notion.site/README-630f9f0dffe947f4b9a5c6f7b2756115?pvs=4)
