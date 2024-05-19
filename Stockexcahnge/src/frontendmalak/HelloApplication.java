@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -26,6 +27,7 @@ public class HelloApplication extends Application {
             Stage newStage = new Stage();
             newStage.setTitle("Lannister Exchange");
             newStage.initStyle(StageStyle.TRANSPARENT);
+            newStage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/frontendmalak/img/Logo - Copy.png"))); // Set the icon
             Scene scene = new Scene(root);
             newStage.setScene(scene);
             initMovableWindow(newStage);

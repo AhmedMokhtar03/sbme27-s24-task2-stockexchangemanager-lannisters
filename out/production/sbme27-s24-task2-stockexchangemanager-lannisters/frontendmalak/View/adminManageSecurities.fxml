@@ -67,7 +67,7 @@
       </AnchorPane>
       <AnchorPane fx:id="tablePane" layoutY="54.0" prefHeight="346.0" prefWidth="600.0">
          <children>
-            <TableView fx:id="tableView" prefHeight="345.0" prefWidth="600.0" styleClass="table-viewA">
+            <TableView fx:id="tableView" prefHeight="345.0" prefWidth="600.0" styleClass="table-viewB">
                <columns>
                   <TableColumn fx:id="companyNameColumn" prefWidth="120.0" text="Company Name" />
                   <TableColumn fx:id="companyLabelColumn" prefWidth="120.0" text="Company Label" />
