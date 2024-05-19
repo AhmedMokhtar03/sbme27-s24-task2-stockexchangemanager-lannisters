@@ -20,7 +20,7 @@
             <Image url="@../img/background.png" />
          </image>
       </ImageView>
-      <TableView fx:id="bondTableView" layoutY="42.0" prefHeight="277.0" prefWidth="600.0" styleClass="table-viewB" stylesheets="@Designs.css">
+      <TableView fx:id="bondTableView" layoutY="42.0" prefHeight="277.0" prefWidth="600.0" styleClass="table-viewA" stylesheets="@Designs.css">
         <columns>
           <TableColumn fx:id="companyColumn" prefWidth="75.0" text="Company" />
           <TableColumn fx:id="bondPriceColumn" prefWidth="75.0" text="Bond Price" />
