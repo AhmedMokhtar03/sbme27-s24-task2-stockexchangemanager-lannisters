@@ -2,13 +2,24 @@ package frontendmalak.ViewControl;
 
 import backend.Bonds;
 import backend.DataManager;
+import com.jfoenix.controls.JFXButton;
+import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -43,6 +54,16 @@ public class AdminManageBondsController {
     @FXML
     private TextField quantityTextField;
 
+    @FXML
+    private JFXButton openMenuBTN;
+    @FXML
+    private JFXButton closeMenuBTN;
+
+    @FXML
+    private AnchorPane menuPane;
+    @FXML
+    private AnchorPane tablePane;
+
     public static ObservableList<Bonds> BondList = FXCollections.observableArrayList();
     public static final String BONDS_CSV = "Stockexcahnge/src/frontendmalak/bonds.csv";
     public void initialize() {
@@ -55,6 +76,58 @@ public class AdminManageBondsController {
         durationColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
     }
+
+    @FXML
+    void closeApp(ActionEvent event) {
+        Platform.exit();
+    }
+
+    @FXML
+    void goBack(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/frontendmalak/View/AdminHomePage.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+    }
+
+    @FXML
+    void openMenu(ActionEvent event) {
+
+        TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), menuPane);
+        slide1.setToX(0);
+        slide1.play();
+
+        TranslateTransition slide2 = new TranslateTransition(Duration.millis(500), tablePane);
+        slide2.setToX(200);
+        slide2.play();
+
+        slide1.setOnFinished((ActionEvent e) -> {
+            openMenuBTN.setVisible(false);
+            closeMenuBTN.setVisible(true);
+        });
+    }
+
+    @FXML
+    void closeMenu(ActionEvent event) {
+
+        TranslateTransition slide1 = new TranslateTransition(Duration.millis(500), menuPane);
+        slide1.setToX(-200);
+        slide1.play();
+
+        TranslateTransition slide2 = new TranslateTransition(Duration.millis(500), tablePane);
+        slide2.setToX(0);
+        slide2.play();
+
+
+        slide1.setOnFinished((ActionEvent e) -> {
+            openMenuBTN.setVisible(true);
+            closeMenuBTN.setVisible(false);
+        });
+    }
+
 
     public void addBond() {
         try {

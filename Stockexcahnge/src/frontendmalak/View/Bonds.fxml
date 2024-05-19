@@ -1,28 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.AdminManageBondsController">
-    <children>
-        <TableView fx:id="bondTableView">
-            <columns>
-                <TableColumn fx:id="companyColumn" text="Company" />
-                <TableColumn fx:id="bondPriceColumn" text="Bond Price" />
-                <TableColumn fx:id="bondInterestColumn" text="Bond Interest" />
-                <TableColumn fx:id="durationColumn" text="Duration" />
-            <TableColumn fx:id="quantityColumn" text="Quantity" />
-            </columns>
 
-        </TableView>
-        <TextField fx:id="companyTextField" promptText="Company" />
-        <TextField fx:id="bondPriceTextField" promptText="Bond Price" />
-        <TextField fx:id="bondInterestTextField" promptText="Bond Interest in %" />
-        <TextField fx:id="durationTextField" promptText="Duration (PnYnMnD)" />
-        <TextField fx:id="quantityTextField" promptText="Quantity" />
-        <Button onAction="#addBond" text="Add Bond" />
-    </children>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Designs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.AdminManageBondsController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #8E7D9D;">
+         <children>
+            <JFXButton fx:id="closeAppBTN" layoutX="574.0" onAction="#closeApp" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 0;" styleClass="button14" text="x" />
+            <ImageView fitHeight="25.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="menuPane" layoutY="61.0" prefHeight="250.0" prefWidth="200.0" translateX="-200.0">
+         <children>
+            <TextField fx:id="companyTextField" layoutX="10.0" layoutY="15.0" prefHeight="25.0" prefWidth="180.0" promptText="Company" />
+            <TextField fx:id="quantityTextField" layoutX="10.0" layoutY="105.0" prefHeight="25.0" prefWidth="180.0" promptText="Quantity" />
+            <TextField fx:id="durationTextField" layoutX="10.0" layoutY="75.0" prefHeight="25.0" prefWidth="180.0" promptText="Duration (PnYnMnD)" />
+            <TextField fx:id="bondPriceTextField" layoutX="10.0" layoutY="45.0" prefHeight="25.0" prefWidth="180.0" promptText="Bond Price" />
+            <TextField fx:id="bondInterestTextField" layoutX="10.0" layoutY="135.0" prefHeight="25.0" prefWidth="180.0" promptText="Bond Interest in %" />
+            <JFXButton layoutX="50.0" layoutY="179.0" onAction="#addBond" opacity="0.3" prefHeight="50.0" prefWidth="100.0" styleClass="button12" text="Add Bond">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" size="20" />
+               </graphic>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="closeMenuBTN" layoutX="67.0" layoutY="27.0" onAction="#closeMenu" opacity="0.3" prefHeight="25.0" prefWidth="90.0" styleClass="button13" text="Edit Companies">
+         <graphic>
+            <FontAwesomeIconView glyphName="EDIT" size="16" />
+         </graphic>
+         <font>
+            <Font size="8.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="openMenuBTN" layoutX="67.0" layoutY="27.0" onAction="#openMenu" opacity="0.3" prefHeight="25.0" prefWidth="90.0" styleClass="button13" text="Edit Companies">
+         <graphic>
+            <FontAwesomeIconView glyphName="EDIT" size="16" />
+         </graphic>
+         <font>
+            <Font size="8.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="goBackBTN" layoutX="4.0" layoutY="27.0" onAction="#goBack" styleClass="button16" text="Back">
+         <graphic>
+            <FontAwesomeIconView glyphName="UNDO" />
+         </graphic>
+      </JFXButton>
+      <AnchorPane fx:id="tablePane" layoutY="54.0" prefHeight="346.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="bondTableView" prefHeight="346.0" prefWidth="600.0">
+               <columns>
+                  <TableColumn fx:id="companyColumn" prefWidth="120.0" text="Company" />
+                  <TableColumn fx:id="bondPriceColumn" prefWidth="120.0" text="Bond Price" />
+                  <TableColumn fx:id="bondInterestColumn" prefWidth="120.0" text="Bond Interest" />
+                  <TableColumn fx:id="durationColumn" prefWidth="120.0" text="Duration" />
+                  <TableColumn fx:id="quantityColumn" prefWidth="120.0" text="Quantity" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
