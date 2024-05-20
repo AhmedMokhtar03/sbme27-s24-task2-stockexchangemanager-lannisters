@@ -62,9 +62,31 @@
             <FontAwesomeIconView glyphName="BOOK" size="16" />
          </graphic>
       </JFXButton>
-      <AnchorPane fx:id="historyPane" layoutY="60.0" prefHeight="340.0" prefWidth="600.0" translateX="-620.0">
+      <AnchorPane fx:id="historyPane" layoutY="67.0" prefHeight="333.0" prefWidth="600.0" translateX="-620.0">
          <children>
-                <TableView fx:id="holdingsTable" layoutY="20.0" prefHeight="320.0" prefWidth="600.0" styleClass="table-viewB">
+            <Label layoutX="4.0" layoutY="-1.0" text="-Transaction History List" textFill="#5b6180">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+                <TableView fx:id="transactionTable" prefHeight="320.0" prefWidth="600.0" styleClass="table-viewB">
+                    <columns>
+                        <TableColumn fx:id="transactionTypeColumn" prefWidth="150.0" text="Type" />
+                        <TableColumn fx:id="transactionAmountColumn" prefWidth="150.0" text="Amount" />
+                        <TableColumn fx:id="transactionDateColumn" prefWidth="150.0" text="Date" />
+                        <TableColumn fx:id="statusColumn" prefWidth="150.0" text="Status" />
+                    </columns>
+                </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="holdingsPane" layoutY="67.0" prefHeight="333.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="4.0" layoutY="-1.0" text="-Holdings List" textFill="#5b6180">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+                <TableView fx:id="holdingsTable" prefHeight="320.0" prefWidth="600.0" styleClass="table-viewB">
                     <columns>
                         <TableColumn fx:id="holdingsStockNameColumn" prefWidth="120.0" text="Stock" />
                         <TableColumn fx:id="holdingsQuantityColumn" prefWidth="120.0" text="Quantity" />
@@ -73,28 +95,6 @@
                   <TableColumn fx:id="dividendsColumn" prefWidth="120.0" text="dividends" />
                     </columns>
                 </TableView>
-            <Label layoutX="4.0" layoutY="-1.0" text="-Transaction History List" textFill="#5b6180">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="holdingsPane" layoutY="60.0" prefHeight="340.0" prefWidth="600.0">
-         <children>
-                <TableView fx:id="transactionTable" layoutY="20.0" prefHeight="320.0" prefWidth="600.0" styleClass="table-viewB">
-                    <columns>
-                        <TableColumn fx:id="transactionTypeColumn" prefWidth="150.0" text="Type" />
-                        <TableColumn fx:id="transactionAmountColumn" prefWidth="150.0" text="Amount" />
-                        <TableColumn fx:id="transactionDateColumn" prefWidth="150.0" text="Date" />
-                        <TableColumn fx:id="statusColumn" prefWidth="150.0" text="Status" />
-                    </columns>
-                </TableView>
-            <Label layoutX="4.0" layoutY="-1.0" text="-Holdings List" textFill="#5b6180">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
       <Label layoutX="385.0" layoutY="51.0" text="Total Profits/Losses:" textFill="#5b6180">
