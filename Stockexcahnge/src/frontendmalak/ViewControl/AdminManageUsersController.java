@@ -154,8 +154,7 @@ public class AdminManageUsersController {
             User user = new User(username, password);
 
              //i was testing if premium columns work
-             user.setPremium(true);
-            user.setFirstDateOfPremium(LocalDate.now());
+
             userList.add(user);
             clearFields();
             }

@@ -58,6 +58,7 @@ public class UserBondController {
 
     @FXML
     private void initialize() {
+        BondList.clear();
         AdminManageBondsController.loadBondsListFromCSV();
         loadOwnedBondsFromCSV();
         companyColumn.setCellValueFactory(new PropertyValueFactory<>("company"));
