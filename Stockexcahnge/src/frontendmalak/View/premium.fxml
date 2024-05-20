@@ -13,7 +13,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontendmalak.ViewControl.Premium">
    <children>
       <VBox layoutX="1.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="597.0" style="-fx-background-color: transparent;" stylesheets="@styles.css">
@@ -46,7 +45,7 @@
                            </font>
                         </JFXButton>
                         <Line endX="78.50001525878906" layoutX="81.0" layoutY="206.0" startX="-100.0" stroke="WHITE" styleClass="neon-label" />
-                        <JFXButton fx:id="tar" layoutX="25.0" layoutY="207.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Tarly" textFill="WHITE">
+                        <JFXButton fx:id="tar" layoutX="25.0" layoutY="207.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Targaryen" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -58,7 +57,7 @@
                            </font>
                         </JFXButton>
                         <Line endX="78.50001525878906" layoutX="81.0" layoutY="300.0" startX="-100.0" stroke="WHITE" styleClass="neon-label" />
-                        <JFXButton fx:id="o" layoutX="25.0" layoutY="300.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="ooo" textFill="WHITE">
+                        <JFXButton fx:id="LAN" layoutX="25.0" layoutY="300.0" prefHeight="45.0" prefWidth="134.0" styleClass="button11" stylesheets="@Designs.css" text="Lannisters" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>

@@ -14,20 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-
-import static frontendmalak.HelloApplication.primaryStage;
 
 public class Premium implements Initializable {
     @FXML
@@ -49,7 +43,7 @@ public class Premium implements Initializable {
     private JFXButton sta;
 
     @FXML
-    private JFXButton o;
+    private JFXButton LAN;
 
     @FXML
     private Button back3;
@@ -64,7 +58,7 @@ public class Premium implements Initializable {
         tss.setOnAction(this::handleButtonClick);
         tar.setOnAction(this::handleButtonClick);
         sta.setOnAction(this::handleButtonClick);
-        o.setOnAction(this::handleButtonClick);
+        LAN.setOnAction(this::handleButtonClick);
     }
 
     @FXML
