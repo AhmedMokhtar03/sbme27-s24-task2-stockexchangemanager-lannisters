@@ -28,7 +28,7 @@ public void switchToBond(ActionEvent event) throws IOException {
             stage.show();
         }
         else{
-            showAlert("Error","Session in not started yet");
+            showAlert("Error","Session has not started yet");
 
         }
 }
@@ -49,7 +49,7 @@ public void switchToBond(ActionEvent event) throws IOException {
         }
         else{
             //Started.setVisible(true);
-            showAlert("Error","Session in not started yet");
+            showAlert("Error","Session has not started yet");
 
         }
     }@FXML
@@ -67,7 +67,7 @@ public void switchToBond(ActionEvent event) throws IOException {
         }
         else{
            // Started.setVisible(true);
-            showAlert("Error","Session in not started yet");
+            showAlert("Error","Session has not started yet");
 
         }
     }
